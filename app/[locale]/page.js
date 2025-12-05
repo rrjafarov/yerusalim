@@ -11,6 +11,7 @@ const page = () => {
       <HeroSlider />
       <HomePageCategory />
       <Advantages />
+      
     </div>
   )
 }
