@@ -11,35 +11,35 @@ export const metadata = {
   icons: "/favicon.png",
 };
 
-async function getTranslations() {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+// async function getTranslations() {
+//   const cookieStore = await cookies();
+//   const lang = cookieStore.get("NEXT_LOCALE");
 
-  try {
-    const response = await axiosInstance.get("/translation-list", {
-      headers: { Lang: lang?.value || "az" },
-    });
-    const data = response.data;
+//   try {
+//     const response = await axiosInstance.get("/translation-list", {
+//       headers: { Lang: lang?.value || "az" },
+//     });
+//     const data = response.data;
 
-    return data.reduce((acc, item) => {
-      acc[item.key] = item.value;
-      return acc;
-    }, {});
-  } catch (err) {
-    console.log(err);
-    return {};
-  }
-}
+//     return data.reduce((acc, item) => {
+//       acc[item.key] = item.value;
+//       return acc;
+//     }, {});
+//   } catch (err) {
+//     console.log(err);
+//     return {};
+//   }
+// }
 
 export default async function RootLayout({ children }) {
-  const t = await getTranslations();
+  // const t = await getTranslations();
 
   return (
     <html lang="en">
       <body suppressHydrationWarning>
         <StoreProvider>
           <GuestUUIDProvider />
-          <FormValidationProvider t={t} />
+          <FormValidationProvider />
           {children}
         </StoreProvider>
       </body>
