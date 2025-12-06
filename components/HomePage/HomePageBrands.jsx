@@ -28,6 +28,21 @@ const HomePageBrands = () => {
                 delay: 2000,
                 disableOnInteraction: false,
               }}
+              breakpoints={{
+              0: {
+                slidesPerView: 2.2,
+                centeredSlides: true,
+                spaceBetween: 16,
+              },
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 18,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+            }}
             >
               <SwiperSlide>
                 <div className="brandsLogo">

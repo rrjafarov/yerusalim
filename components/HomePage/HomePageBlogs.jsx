@@ -28,6 +28,20 @@ const HomePageBlogs = () => {
                 delay: 2000,
                 disableOnInteraction: false,
               }}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1.2,
+                  spaceBetween: 16,
+                },
+                640: {
+                  slidesPerView: 1.8,
+                  spaceBetween: 18,
+                },
+                1024: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+              }}
             >
               <SwiperSlide>
                 <div className="blogsLogo">
