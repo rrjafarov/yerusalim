@@ -2187,3 +2187,26 @@ ul {
   }
 }
 // ? Breadcrumbs CSS end
+
+.searchCheck {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 0.4rem;
+  background: transparent;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+
+  &:checked {
+    background: #ff0000
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M14.0371 4.64538L7.31592 12.7119L2.03711 8.48828L3.03344 7.34035L7.09251 10.5881L12.8218 3.71191L14.0371 4.64538Z' fill='white'/%3E%3C/svg%3E");
+    border: 0.4rem solid #ff0000;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.2rem;
+  }
+}

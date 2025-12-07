@@ -208,3 +208,110 @@
   line-height: normal !important;
   padding: 0rem !important;
 }
+.ant-collapse-body {
+  padding: 0rem !important;
+}
+
+.filterAccordionContent {
+  position: relative;
+  height: 30rem;
+  .filterAccordionScroll {
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 0.8rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+    ul {
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      align-items: flex-start;
+      li {
+        cursor: pointer;
+        color: #3a3a3a;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+  }
+  .filterAccordionCustomScrollbar {
+    position: absolute;
+    top: 2rem; // 🔹 Normal accordion üçün
+    right: 0;
+    bottom: 0;
+    width: 0.2rem;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .filterAccordionCustomThumb {
+    width: 100%;
+    background: #681616;
+    border-radius: 2rem;
+    transform: translateY(0);
+    transition: transform 0.1s linear;
+  }
+}
+
+.filterAccordionContentSearch {
+  .filterAccordionSearch {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 4rem;
+    border-radius: 0.7rem;
+    border: 1px solid #ddd;
+    input {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: #a5a5a5;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-left: 1.2rem;
+      letter-spacing: -0.014rem;
+      &::placeholder {
+        color: #a5a5a5;
+      }
+    }
+    p {
+      width: 1.6rem;
+      height: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.2rem;
+    }
+  }
+  .searchUL {
+    li {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .searchCheck {
+        margin-right: 1.4rem;
+      }
+    }
+  }
+
+  // 🔹 Search olan accordion üçün: scroll bu blokun ALTINDAN başlayır
+  .filterAccordionScroll {
+    height: calc(100% - 6rem);
+    // 2rem (margin-top) + 4rem (search height) ≈ 6rem
+  }
+  // 🔹 Search olan accordion üçün scrollbar track bir az aşağıdan startsın
+  .filterAccordionCustomScrollbar {
+    top: 5rem;
+  }
+}
