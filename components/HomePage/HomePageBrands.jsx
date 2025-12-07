@@ -35,11 +35,11 @@ const HomePageBrands = () => {
                 spaceBetween: 16,
               },
               640: {
-                slidesPerView: 3,
+                slidesPerView: 3.5,
                 spaceBetween: 18,
               },
               1024: {
-                slidesPerView: 4,
+                slidesPerView: 5,
                 spaceBetween: 20,
               },
             }}
