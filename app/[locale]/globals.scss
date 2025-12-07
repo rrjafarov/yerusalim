@@ -1793,7 +1793,7 @@ ul {
   .productCardButton {
     position: absolute;
     left: 50%;
-    bottom: -3.2rem;
+    bottom: -3rem;
     transform: translate(-50%, -1.2rem);
     z-index: 3;
     padding: 1.2rem 2.4rem;
@@ -1803,7 +1803,7 @@ ul {
     gap: 0.8rem;
     border-radius: 0.8rem;
     background: #6b5a5e;
-    width: 24.8rem;
+    width: 22.8rem;
     height: 4rem;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.4s ease-in-out;
@@ -2104,28 +2104,28 @@ ul {
 @media only screen and (max-width: 767.9px) {
   .mostPopularCategory {
     width: 100%;
-    overflow-x: auto;                    // sürüşmə BURDA
+    overflow-x: auto; // sürüşmə BURDA
     overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;   // mobil üçün yumşaq scroll
-    -ms-overflow-style: none;            // köhnə Edge/IE
-    scrollbar-width: none;               // Firefox
+    -webkit-overflow-scrolling: touch; // mobil üçün yumşaq scroll
+    -ms-overflow-style: none; // köhnə Edge/IE
+    scrollbar-width: none; // Firefox
 
     &::-webkit-scrollbar {
-      display: none;                     // scrollbarı gizlət
+      display: none; // scrollbarı gizlət
     }
 
     ul {
       display: flex;
-      flex-wrap: nowrap;                 // bükülməsin, hamısı yan-yana
+      flex-wrap: nowrap; // bükülməsin, hamısı yan-yana
       gap: 3.2rem;
       align-items: center;
       justify-content: flex-start;
-      width: max-content;                // içi qədər en — SCROLL ÜÇÜN ƏN VACİBİ
+      width: max-content; // içi qədər en — SCROLL ÜÇÜN ƏN VACİBİ
       padding: 0 1.6rem 0.4rem;
 
       li {
-        flex: 0 0 auto;                  // sıxılıb qısalmasın
-        white-space: nowrap;             // sözlər alt sətrə düşməsin
+        flex: 0 0 auto; // sıxılıb qısalmasın
+        white-space: nowrap; // sözlər alt sətrə düşməsin
       }
 
       .activeCategory {
@@ -2141,4 +2141,49 @@ ul {
 }
 // ? mostPopularProduct CSS emd
 
-
+// ? Breadcrumbs CSS start
+.productPageBackground {
+  background: #f9f7f3;
+}
+.breadcrumbs {
+  padding-top: 2.8rem;
+  ul {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    span {
+      width: 0.9487rem;
+      // height: 0;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    li {
+      color: #000;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: 0.08rem;
+      text-transform: uppercase;
+      a {
+        color: #000;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.08rem;
+        text-transform: uppercase;
+        text-decoration: underline;
+        text-underline-offset: 0.4rem;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 767.9px) {
+  .breadcrumbs {
+    display: none !important;
+  }
+}
+// ? Breadcrumbs CSS end
