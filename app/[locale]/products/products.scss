@@ -315,3 +315,523 @@
     top: 5rem;
   }
 }
+
+//!   Product Detail Page ------------------------------------------------------------
+
+.productDetailPage {
+  padding-top: 2.9rem;
+  .productDetailPageLeft {
+    // width: 72.9rem;
+    width: 100%;
+    height: 72.9rem;
+    padding-right: 2.5rem;
+  }
+  .productDetailPageRight {
+    .productDetailPageRightTop {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2.4rem;
+      h1 {
+        padding-top: 4rem;
+        color: #202020;
+        font-family: "Noto Serif Display";
+        font-size: 4rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 4rem */
+        letter-spacing: -0.08rem;
+        text-transform: uppercase;
+      }
+      p {
+        width: 75%;
+        color: #222;
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 2.24rem */
+      }
+      .productDetailPageRightTopPriceBasket {
+        padding-top: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 1.3rem;
+        .productDetailPageRightTopPrice {
+          height: 5.6rem;
+          border-radius: 0.8rem;
+          background: #f0e6e6;
+          display: flex;
+          align-items: center;
+          gap: 3.5rem;
+          .productDetailPageRightTopNewPrice {
+            color: #681616;
+            font-size: 2.4rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 2.1918rem; /* 91.323% */
+            letter-spacing: -0.048rem;
+            margin-left: 2.7rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            p {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+          .productDetailPageRightTopOldPrice {
+            color: #681616;
+            font-size: 1.5rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 2.1918rem; /* 146.117% */
+            letter-spacing: 0.015rem;
+            margin-right: 2.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 0.244rem;
+              background: #ab1d1d; // productCardOldPrice-dakı rənglə eyni
+              opacity: 1;
+              pointer-events: none;
+            }
+
+            p {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              // opacity: 0.3; // mətni bir az solğun elədik
+            }
+
+            span {
+              // opacity: 0.3;
+              text-decoration: none;
+            }
+          }
+        }
+        .productDetailPageRightTopBasket {
+          width: 28.8rem;
+          height: 5.6rem;
+          border-radius: 0.8rem;
+          background: #000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          button {
+            width: 100%;
+            // margin: 0 2rem;
+            border-radius: 0.8rem;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            gap: 1rem;
+          }
+          strong {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          span {
+            color: #fff;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 2.0117rem; /* 143.69% */
+            letter-spacing: 0.014rem;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+    .productDetailPageRightSetting {
+      margin-top: 5.9rem;
+    }
+  }
+
+  .productDetailPageShareLiks {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 2.5rem 0 4.5rem;
+
+    span {
+      color: #3a3a3a;
+      font-size: 1.6104rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 116.1%; /* 1.8697rem */
+      letter-spacing: -0.0161rem;
+    }
+
+    ul {
+      display: flex;
+      gap: 1.61rem;
+      align-items: center;
+
+      button {
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3.7163rem;
+        border: 1.239px solid #d9d9d9;
+        min-width: 13.7rem;
+        height: 4.2rem;
+        color: #3a3a3a;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 116.1%; /* 1.5093rem */
+        letter-spacing: -0.013rem;
+
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-right: 1rem;
+        }
+      }
+      .productDetailPageShareCopied {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #681616;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .productDetailPageShareCopied.visible {
+        opacity: 1;
+      }
+    }
+  }
+}
+.productDetailPageRightSettingItems {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    li {
+      display: flex;
+      gap: 3.4rem;
+      span {
+        min-width: 15rem;
+        color: #222;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 1.96rem */
+      }
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: #222;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%; /* 1.96rem */
+        a {
+          color: #222;
+          font-size: 1.4rem;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 140%; /* 1.96rem */
+          text-decoration-line: underline;
+          text-decoration-style: solid;
+          text-decoration-skip-ink: none;
+          text-decoration-thickness: auto;
+          text-underline-offset: 0.1rem;
+          text-underline-position: from-font;
+        }
+        strong {
+          color: #222;
+          font-size: 1.4rem;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 140%;
+        }
+      }
+      .productDpValueSize {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        button {
+          border-radius: 0.8rem;
+          border: 1px solid #f2eee7;
+          height: 4rem;
+          width: 9.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          span {
+            color: #222;
+            // padding: 1rem 2rem;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 140%; /* 1.96rem */
+          }
+        }
+      }
+    }
+  }
+}
+.productDetailPageLeftSlider {
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.productDpSliderSwiper {
+  width: 100%;
+  height: 100%;
+  position: relative; // pagination üçün bazis olsun
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    margin-right: 2rem;
+    color: #000;
+    width: 5.3rem;
+    height: 5.3rem;
+    border-radius: 50%;
+    background-image: url("../../../public/icons/ellips2.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    // ortadan götürürük, aşağı salırıq
+    top: auto;
+    bottom: 2.5rem;
+    transform: translateY(0);
+  }
+  .swiper-button-prev {
+    margin-left: 2rem !important;
+  }
+  .swiper-navigation-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  .swiper-pagination {
+    position: absolute;
+    bottom: 4.1rem !important;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto !important; // full width almasın
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .swiper-pagination-bullet {
+    width: 1.2rem;
+    height: 1.2rem;
+    background: #c4c4c4;
+    opacity: 1;
+  }
+  .swiper-pagination-bullet-active {
+    background: #711111;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .productDetailPageLeftSliderTopButtons {
+    position: absolute;
+    top: 2.4rem;
+    left: 2.4rem;
+    z-index: 2;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    .productDetailPageLeftSliderTopButtonBestSeller {
+      border-radius: 0.447rem;
+      background: #6b5a5e;
+      button {
+        border-radius: 0.447rem;
+        color: #fff;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.048rem;
+        text-transform: uppercase;
+        padding: 1.24rem 1.12rem;
+        background: #6b5a5e;
+      }
+    }
+    .productDetailPageLeftSliderTopButtonLimited {
+      border-radius: 0.447rem;
+      background: #252525;
+      button {
+        border-radius: 0.447rem;
+        color: #fff;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.048rem;
+        text-transform: uppercase;
+        padding: 1.24rem 1.12rem;
+        background: #252525;
+      }
+    }
+  }
+}
+
+.productDetailPageAccordion {
+  margin-top: 5rem;
+  .ant-collapse {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+  .ant-collapse-header {
+    color: #000 !important;
+    font-family: "Inter", sans-serif !important;
+    font-size: 2rem !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: normal !important;
+    padding: 0rem !important;
+  }
+  .ant-collapse-body {
+    padding: 0rem !important;
+  }
+  .acordionLineDP {
+    background: #efe9f0;
+    height: 0.1rem;
+  }
+  .productDetailPageAccordionContent {
+    padding-top: 2rem;
+    p {
+      color: #222;
+      font-size: 1.35rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 170%; /* 2.21rem */
+      opacity: 0.86;
+    }
+    .productDetailPageAccordionContentDelivery {
+      ul {
+        li {
+          display: flex;
+          gap: 0.5rem;
+        }
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        span {
+          color: #222;
+          font-size: 1.3rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 150%; /* 1.95rem */
+          opacity: 0.86;
+        }
+        p {
+          opacity: 0.86;
+          color: #222;
+          font-size: 1.3rem;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 150%;
+        }
+      }
+    }
+    .productDetailPageAccordionContentSpesifications {
+      ul {
+        li {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          color: #222;
+          // font-family: Inter;
+          font-size: 1.3rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 120%; /* 1.56rem */
+        }
+        display: flex;
+        gap: 2rem;
+        flex-direction: column;
+      }
+    }
+    .productDetailPageAccordionContentVideo {
+      width: 100%;
+      height: 23.5rem;
+      border-radius: 0.8rem;
+      position: relative;
+      img {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+      }
+      .playButton {
+        cursor: pointer;
+        width: 4.4rem;
+        height: 4.4rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+.videoPopupOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(22, 22, 22, 0.32); // opacity: 0.32
+  z-index: 9999;
+}
+
+.videoPopupContent {
+  position: relative;
+  width: 108rem;
+  height: 60.1rem;
+  border-radius: 4rem;
+  background: #161616; // var(--black-100, #161616)
+  overflow: hidden;
+}
+
+.videoPopupCloseBtn {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #f9f7f3;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.videoPopupInner {
+  width: 100%;
+  height: 100%;
+  /* burda videonu ortala, istəsən flex ilə, və s. */
+}
