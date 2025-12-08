@@ -8,10 +8,11 @@ import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
+import BlogCard from "../Mixed/BlogCard";
 
 const HomePageBlogs = () => {
   return (
-    <div className="homePageBlogs">
+    <div className="homePageBlogs"> 
       <div className="homePageBlogsItem">
         <h2>Blogroom</h2>
         <div className="blogsLogos">
@@ -30,11 +31,11 @@ const HomePageBlogs = () => {
               }}
               breakpoints={{
                 0: {
-                  slidesPerView: 1.2,
+                  slidesPerView: 1.1,
                   spaceBetween: 16,
                 },
                 640: {
-                  slidesPerView: 1.8,
+                  slidesPerView: 1.5,
                   spaceBetween: 18,
                 },
                 1024: {
@@ -44,59 +45,18 @@ const HomePageBlogs = () => {
               }}
             >
               <SwiperSlide>
-                <div className="blogsLogo">
-                  <Link href="#">
-                    <Image
-                      src="/img/homeBlog.png"
-                      alt="blog"
-                      width={610}
-                      height={350}
-                    />
-                  </Link>
-                  <div className="blogsLogoTitle">
-                    <span>How to Choose the Right Scent for Every Room..</span>
-                  </div>
-                  <div className="blogsLogoDate">
-                    <span>Mon 20 Oct</span>
-                  </div>
-                </div>
+                <BlogCard />
               </SwiperSlide>
               <SwiperSlide>
-                <div className="blogsLogo">
-                  <Link href="#">
-                    <Image
-                      src="/img/homeBlog02.png"
-                      alt="blog"
-                      width={610}
-                      height={350}
-                    />
-                  </Link>
-                  <div className="blogsLogoTitle">
-                    <span>How to Choose the Right Scent for Every Room..</span>
-                  </div>
-                  <div className="blogsLogoDate">
-                    <span>Mon 20 Oct</span>
-                  </div>
-                </div>
+                <BlogCard />
               </SwiperSlide>
               <SwiperSlide>
-                <div className="blogsLogo">
-                  <Link href="#">
-                    <Image
-                      src="/img/homeBlog.png"
-                      alt="blog"
-                      width={610}
-                      height={350}
-                    />
-                  </Link>
-                  <div className="blogsLogoTitle">
-                    <span>How to Choose the Right Scent for Every Room..</span>
-                  </div>
-                  <div className="blogsLogoDate">
-                    <span>Mon 20 Oct</span>
-                  </div>
-                </div>
+                <BlogCard />
               </SwiperSlide>
+              <SwiperSlide>
+                <BlogCard />
+              </SwiperSlide>
+              
             </Swiper>
             <div className="allBlogsBttn">
               <Link href="/blogs">

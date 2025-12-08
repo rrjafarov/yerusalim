@@ -1,0 +1,125 @@
+.blogsPageHero {
+  width: 100%;
+  height: 17.2rem;
+  background: #1c141f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    color: #fff;
+    text-align: center;
+    font-family: "Noto Serif Display";
+    font-size: 3.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 3.8rem */
+    letter-spacing: 0.076rem;
+    text-transform: uppercase;
+  }
+}
+
+.blogsPage {
+  padding: 7.1rem 0 7.7rem;
+  h2 {
+    color: #000;
+    text-align: center;
+    font-size: 2.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 3.36rem */
+    letter-spacing: -0.056rem;
+    margin-bottom: 3.2rem;
+  }
+
+  .blogsPageCategories {
+    padding: 0rem 0 4rem;
+    ul {
+      display: flex;
+      gap: 3.2rem;
+      align-items: center;
+      justify-content: center;
+      .activeCategory {
+        color: #000;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+      li {
+        cursor: pointer;
+        color: #959595;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.productPageLayoutRightCardsPaginationItem {
+  padding-top: 3.2rem;
+//   padding-bottom: 9.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  .paginationArrow {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: #681616;
+    }
+  }
+
+  .paginationPages {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem; // bütün dairələr arasında 1.2rem
+  }
+
+  .paginationItem {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 1px solid #d9d9d9;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &.active {
+      background: #681616;
+      border-color: #681616;
+      color: #fff;
+    }
+
+    &:hover:not(.active) {
+      border-color: #681616;
+    }
+  }
+
+  .paginationDots {
+    font-size: 2rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
