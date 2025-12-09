@@ -160,8 +160,193 @@
   }
 }
 
+// .contactMap {
+//   .contactMapItems {
+//     padding: 8.2rem 0 10.2rem 0;
+//     .contactMapItemsLeft {
+//       height: 55.7rem;
+//       iframe {
+//         width: 100%;
+//         height: 100%;
+//       }
+//     }
+//     .contactMapItemsRight {
+//       padding-top: 4.4rem;
+//       padding-left: 3rem;
+//       .contactForm {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 2.4rem;
+//         input {
+//           border-radius: 0.4rem;
+//           border: 1px solid #e0d5e2;
+//           height: 5.4rem;
+//           background: transparent;
+//           width: 100%;
+//         }
+//         textarea {
+//           height: 20.6rem;
+//           border-radius: 0.4rem;
+//           border: 1px solid #e0d5e2;
+//           background: transparent;
+//         }
+//         .contactFormNamePhone {
+//           display: flex;
+//           gap: 2.4rem;
+//           input {
+//             border-radius: 0.4rem;
+//             border: 1px solid #e0d5e2;
+//             height: 5.4rem;
+//             width: 100%;
+//             background: transparent;
+//           }
+//         }
+//         .contactFormButton {
+//           border-radius: 0.8rem;
+//           background: #000;
+//           width: 100%;
+//           height: 5.6rem;
+//           color: #fff;
+//           text-align: center;
+//           font-size: 1.4rem;
+//           font-style: normal;
+//           font-weight: 600;
+//           line-height: 2.0117rem; /* 143.69% */
+//           letter-spacing: 0.014rem;
+//           text-transform: uppercase;
+//         }
+//       }
+//     }
+//   }
+// }
+
 .contactMap {
   .contactMapItems {
     padding: 8.2rem 0 10.2rem 0;
+    .contactMapItemsLeft {
+      height: 55.7rem;
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .contactMapItemsRight {
+      padding-top: 4.4rem;
+      padding-left: 3rem;
+      span {
+        color: #000;
+        font-size: 2.2rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%; /* 2.64rem */
+        letter-spacing: -0.044rem;
+      }
+      .contactForm {
+        margin-top: 1.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.4rem;
+
+        input {
+          border-radius: 0.4rem;
+          border: 1px solid #e0d5e2;
+          height: 5.4rem;
+          background: transparent;
+          width: 100%;
+        }
+
+        textarea {
+          height: 20.6rem;
+          border-radius: 0.4rem;
+          border: 1px solid #e0d5e2;
+          background: transparent;
+          width: 100%;
+        }
+
+        .contactFormNamePhone {
+          display: flex;
+          gap: 2.4rem;
+
+          input {
+            border-radius: 0.4rem;
+            border: 1px solid #e0d5e2;
+            height: 5.4rem;
+            width: 100%;
+            background: transparent;
+          }
+        }
+
+        .contactFormButton {
+          border-radius: 0.8rem;
+          background: #000;
+          width: 100%;
+          height: 5.6rem;
+          color: #fff;
+          text-align: center;
+          font-size: 1.4rem;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 2.0117rem; /* 143.69% */
+          letter-spacing: 0.014rem;
+          text-transform: uppercase;
+        }
+
+        /* 🔹 FLOATING LABEL MENTIQI (MUI TextField stilində) */
+        .floatingInput {
+          position: relative;
+          width: 100%;
+
+          input,
+          textarea {
+            padding: 1.6rem 1.2rem 0.8rem;
+            font-size: 1.4rem;
+            outline: none;
+            background: transparent;
+
+            &::placeholder {
+              color: transparent; // floating label üçün
+            }
+          }
+
+          /* 🔹 Textarea üçün xüsusi padding – sol yuxarıdan 1.5rem */
+          textarea {
+            padding: 1.5rem 1.5rem 0.8rem;
+          }
+
+          label {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 0.4rem;
+            background: #f9f7f3; /* 1) arxa fon rəngi dəyişdirildi */
+            transition: all 0.18s ease-in-out;
+
+            /* 2) font stilini tam sənin verdiyin kimi edirəm */
+            color: #000;
+            font-family: "Noto Serif Display";
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+
+          input:focus + label,
+          input:not(:placeholder-shown) + label,
+          textarea:focus + label,
+          textarea:not(:placeholder-shown) + label {
+            top: 0;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            color: #681616;
+          }
+
+          input:focus,
+          textarea:focus {
+            border-color: #681616;
+          }
+        }
+      }
+    }
   }
 }
