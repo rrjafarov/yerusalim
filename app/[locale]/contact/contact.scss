@@ -1,0 +1,167 @@
+.contactPageHero {
+  width: 100%;
+  height: 17.2rem;
+  background: #1c141f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    color: #fff;
+    text-align: center;
+    font-family: "Noto Serif Display";
+    font-size: 3.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 3.8rem */
+    letter-spacing: 0.076rem;
+    text-transform: uppercase;
+  }
+}
+
+.contactPageMain {
+  .contactPageMainItems {
+    padding: 7.1rem 0 8.5rem 0;
+    border-bottom: 0.1rem solid #eceae7;
+    h2 {
+      color: #000;
+      text-align: center;
+      font-size: 2.8rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 120%; /* 3.36rem */
+      letter-spacing: -0.056rem;
+    }
+    .contactPageMainItemsContent {
+      padding-top: 4.2rem;
+      height: 59.6rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 5rem;
+      .contactPageMainItemsContentLeft {
+        padding: 2.7rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .contactPageMainItemsContentLeftTop {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          span {
+            color: #000;
+            font-size: 2.2rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 120%; /* 2.64rem */
+            letter-spacing: -0.044rem;
+          }
+          p {
+            color: #000;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 2.4rem; /* 171.429% */
+            letter-spacing: -0.014rem;
+            opacity: 0.5;
+            width: 24.7rem;
+          }
+        }
+        .contactPageMainItemsContentLeftBottom {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          span {
+            color: #000;
+            font-size: 2.2rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 120%; /* 2.64rem */
+            letter-spacing: -0.044rem;
+          }
+          p {
+            color: #000;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 2.4rem; /* 171.429% */
+            letter-spacing: -0.014rem;
+            opacity: 0.5;
+            width: 24.7rem;
+          }
+          .contactPageMainItemsContentLeftBottomSocials {
+            padding-bottom: 3.3rem;
+            ul {
+              display: flex;
+              gap: 2.56rem;
+              align-items: center;
+              li {
+                width: 1.6023rem;
+                height: 1.6023rem;
+              }
+            }
+          }
+        }
+      }
+
+      .contactPageMainItemsContentMiddle {
+        width: 100%;
+        width: 50rem;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .contactPageMainItemsContentRight {
+        padding: 2.7rem 0;
+        .contactPageMainItemsContentRightCards {
+          display: flex;
+          flex-direction: column;
+          gap: 5rem;
+          .contactPageMainItemsContentRightCard {
+            display: flex;
+            flex-direction: column;
+            span {
+              color: #000;
+              font-size: 2.2rem;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 120%; /* 2.64rem */
+              letter-spacing: -0.044rem;
+              margin-bottom: 2rem;
+            }
+            p {
+              color: #000;
+              opacity: 0.5;
+              font-size: 1.4rem;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 2.4rem; /* 171.429% */
+              letter-spacing: -0.014rem;
+              width: 26.6rem;
+            }
+            a {
+              color: #000;
+              font-size: 1.4rem;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 2.4rem; /* 171.429% */
+              letter-spacing: -0.014rem;
+              text-decoration-line: underline;
+              text-decoration-style: solid;
+              text-decoration-skip-ink: none;
+              text-decoration-thickness: auto;
+              text-underline-offset: 0.2rem;
+              text-underline-position: from-font;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.contactMap {
+  .contactMapItems {
+    padding: 8.2rem 0 10.2rem 0;
+  }
+}

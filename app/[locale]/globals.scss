@@ -1299,6 +1299,9 @@ ul {
     }
   }
 }
+.blogDpColor {
+  background: #f9f7f3;
+}
 .blogsLogo {
   width: 100%;
   height: 31.5rem;
@@ -2281,6 +2284,62 @@ ul {
 }
 #forcedXL {
   width: 100%;
-  height: 27rem !important; 
+  height: 27rem !important;
 }
 // !   PHOTO Gallery <><><><><><><><>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// !VIDEO POPUP
+.videoPopupOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(22, 22, 22, 0.32); // opacity: 0.32
+  z-index: 9999;
+}
+
+.videoPopupContent {
+  position: relative;
+  width: 108rem;
+  height: 60.1rem;
+  border-radius: 4rem;
+  background: #161616; // var(--black-100, #161616)
+  overflow: hidden;
+}
+
+.videoPopupCloseBtn {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #f9f7f3;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.videoPopupInner {
+  width: 100%;
+  height: 100%;
+  /* burda videonu ortala, istəsən flex ilə, və s. */
+}
+// !VIDEO POPUP

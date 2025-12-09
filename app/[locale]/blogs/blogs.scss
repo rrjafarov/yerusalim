@@ -61,7 +61,7 @@
 
 .productPageLayoutRightCardsPaginationItem {
   padding-top: 3.2rem;
-//   padding-bottom: 9.3rem;
+  //   padding-bottom: 9.3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,3 +123,285 @@
     justify-content: center;
   }
 }
+
+// !Blogs Detail Page<><><><><><>
+.blogsDetailHero {
+  padding: 4.3rem 0 6.6rem;
+  .blogsDetailHeroItem {
+    width: 100%;
+    height: 65.1rem;
+    border-radius: 0.8rem;
+    border: 1px solid #e4e4e4;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(270deg, rgba(217, 217, 217, 0) 0%, #000 120%);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    .blogsDetailHeroItemTitle {
+      position: absolute;
+      left: 8.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      span {
+        color: #fff;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%; /* 2.1rem */
+      }
+      h1 {
+        color: #fff;
+        font-family: "Noto Serif Display";
+        font-size: 4.4rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 4.4rem */
+        letter-spacing: -0.088rem;
+        text-transform: uppercase;
+        width: 36.3rem;
+      }
+    }
+    .blogsDetailHeroItemHashtag {
+      position: absolute;
+      left: 8.5rem;
+      bottom: 5.4rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      z-index: 1;
+      a {
+        color: #fff;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+.blogDetailDescription {
+  background: #efece8;
+  .blogDetailDescriptionItems {
+    padding: 10.1rem 23rem 7.35rem 23rem;
+    display: flex;
+    gap: 6.4rem;
+    flex-direction: column;
+    .blogDetailDescriptionItem {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+    h2 {
+      color: #681616;
+      font-family: "Noto Serif Display";
+      font-size: 3.8rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%; /* 3.8rem */
+      letter-spacing: -0.076rem;
+      text-transform: uppercase;
+    }
+    p,
+    li {
+      color: #222;
+      font-size: 1.6rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 170%; /* 2.72rem */
+      opacity: 0.64;
+    }
+  }
+}
+.blogDetailVideo {
+  display: flex;
+  flex-direction: column;
+  .blogDetailVideoItems {
+    cursor: pointer;
+    margin: 0 10rem;
+    h3 {
+      color: #202020;
+      text-align: center;
+      font-family: "Noto Serif Display";
+      font-size: 4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%; /* 4rem */
+      letter-spacing: -0.08rem;
+      text-transform: uppercase;
+    }
+    .blogDetailVideoCover {
+      margin-top: 3.6rem;
+      margin-bottom: 4rem;
+      width: 100%;
+      height: 51.9474rem;
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        width: 4.821rem;
+        height: 4.821rem;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767.9px) {
+  .blogDetailDescriptionItems {
+    padding: 6.1rem 2rem 6.1rem 2rem !important;
+  }
+  .blogDetailVideoCover {
+    margin: 1rem !important;
+  }
+}
+.blogDpColor {
+  background: #f9f7f3;
+}
+.blogShareLinks {
+  border-top: 0.1rem solid #efece8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .blogShareLinksRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      color: #000;
+      font-size: 1.6104rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 116.1%; /* 1.8697rem */
+      letter-spacing: -0.0161rem;
+    }
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      margin-left: 1rem;
+      li {
+        a {
+          color: #000;
+          font-size: 1.6104rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 116.1%; /* 1.8697rem */
+          letter-spacing: -0.0161rem;
+          opacity: 0.5;
+        }
+        color: #000;
+        font-size: 1.6104rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 116.1%; /* 1.8697rem */
+        letter-spacing: -0.0161rem;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+// *Share Links
+.productDetailPageShareLiks {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2.5rem 0 0rem;
+
+  span {
+    color: #3a3a3a;
+    font-size: 1.6104rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 116.1%; /* 1.8697rem */
+    letter-spacing: -0.0161rem;
+  }
+
+  ul {
+    display: flex;
+    gap: 1.61rem;
+    align-items: center;
+
+    button {
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3.7163rem;
+      border: 1.239px solid #d9d9d9;
+      min-width: 13.7rem;
+      height: 4.2rem;
+      color: #3a3a3a;
+      font-size: 1.3rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 116.1%; /* 1.5093rem */
+      letter-spacing: -0.013rem;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 1rem;
+      }
+    }
+    .productDetailPageShareCopied {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #681616;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .productDetailPageShareCopied.visible {
+      opacity: 1;
+    }
+  }
+}
+// *Share Links
+.otherBlogs {
+  .otherBlog {
+    padding-top: 10.5rem;
+    padding-bottom: 11.6rem;
+    h3 {
+      color: #202020;
+      text-align: center;
+      font-family: "Noto Serif Display";
+      font-size: 4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%; /* 4rem */
+      letter-spacing: -0.08rem;
+      text-transform: uppercase;
+      margin-bottom: 3.1rem;
+    }
+  }
+}
+// !Blogs Detail Page<><><><><><>
