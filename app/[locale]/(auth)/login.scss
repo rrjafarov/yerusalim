@@ -1,0 +1,594 @@
+.login {
+  padding: 11.2rem 0 12.78rem;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    color: #000;
+    font-family: "Noto Serif Display";
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 4rem */
+    letter-spacing: -0.08rem;
+    text-align: center;
+  }
+
+  p {
+    color: #3a3a3a;
+    text-align: center;
+    font-family: "Noto Serif Display";
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 1.6rem */
+    letter-spacing: -0.016rem;
+    padding-top: 2.09rem;
+  }
+
+  .loginForm {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .loginFormGroup {
+    width: 50rem;
+    margin-bottom: 2.6rem;
+  }
+
+  /* FLOATING LABEL MENTIQI */
+  .floatingInput {
+    position: relative;
+    width: 100%;
+
+    input {
+      width: 100%;
+      height: 5.4rem;
+      border-radius: 0.4rem;
+      border: 1px solid #e0d5e2;
+      background: transparent;
+      padding: 1.6rem 1.2rem 0.8rem;
+      font-size: 1.4rem;
+      outline: none;
+
+      &::placeholder {
+        color: transparent; // floating label üçün
+      }
+    }
+
+    label {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 0.4rem;
+      background: #f9f7f3; // formun fonu ilə eyni
+      transition: all 0.18s ease-in-out;
+
+      color: #000;
+      font-family: "Noto Serif Display";
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      opacity: 0.6; // 🔹 input içindəykən 0.6
+    }
+
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+      top: 0;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: #681616;
+      opacity: 1; // 🔹 yuxarı qalxanda tam görünən olsun
+    }
+
+    input:focus {
+      border-color: #681616;
+    }
+  }
+
+  /* Password inputunda sağda forgot link */
+  .floatingInputPassword {
+    input {
+      padding-right: 16rem; // link üçün sağda yer
+    }
+
+    .forgotPasswordInside {
+      position: absolute;
+      right: 1.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #000;
+      font-family: "Noto Serif Display";
+      font-size: 1.3rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      white-space: nowrap;
+      opacity: 0.6;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /* I’m not robot bloku */
+  .loginFormCheckbox {
+    width: 50rem;
+    margin-bottom: 2.6rem;
+    display: flex;
+    justify-content: flex-start;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      width: 24rem;
+      height: 4rem;
+      border-radius: 0.4rem;
+      border: 1px solid #e0d5e2;
+      padding: 0 1.2rem;
+      background: transparent;
+      color: #000;
+      font-family: "Inter", sans-serif !important;
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 0.4rem;
+      border: 1px solid #e0d5e2;
+      position: relative;
+      cursor: pointer;
+      border-radius: 0.6rem;
+      border: 1px solid #e0d5e2;
+    }
+
+    input[type="checkbox"]:checked {
+      background: #ff0000;
+      border-color: #fa0000;
+    }
+
+    input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 0.75rem;
+      top: 0.3rem;
+      width: 0.6rem;
+      height: 1rem;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(45deg);
+    }
+
+    span {
+      //   font-family: "Noto Serif Display";
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Button */
+  .loginSubmitBtn {
+    border-radius: 0.8rem;
+    background: #000;
+    width: 50rem;
+    height: 5.6rem;
+    color: #fff;
+    text-align: center;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.0117rem; /* 143.69% */
+    letter-spacing: 0.014rem;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  }
+
+  .loginFormBottom {
+    margin-top: 2rem;
+    p {
+      color: #3a3a3a;
+      text-align: center;
+      //   font-family: Inter;
+      font-family: "Inter", sans-serif !important;
+
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%; /* 1.4rem */
+      letter-spacing: -0.014rem;
+    }
+
+    .signupLink {
+      padding-left: 1.5rem;
+      text-decoration: underline;
+      color: #3a3a3a;
+      text-align: center;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 100%; /* 1.4rem */
+      letter-spacing: -0.014rem;
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-skip-ink: none;
+      text-decoration-thickness: auto;
+      text-underline-offset: 0.1rem;
+      text-underline-position: from-font;
+    }
+  }
+}
+
+// !forgotPassword<><><><><><><<><<<><>
+
+.forgotPassword {
+  padding: 11.2rem 0 12.78rem;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    color: #000;
+    font-family: "Noto Serif Display";
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 4rem */
+    letter-spacing: -0.08rem;
+    text-align: center;
+  }
+
+  p {
+    color: #3a3a3a;
+    text-align: center;
+    font-family: "Noto Serif Display";
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 1.6rem */
+    letter-spacing: -0.016rem;
+    padding-top: 2.09rem;
+  }
+
+  .forgotPasswordForm {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .forgotPasswordFormGroup {
+    width: 50rem;
+    margin-bottom: 2.6rem;
+  }
+
+  /* FLOATING LABEL – login ilə eyni mentiq */
+  .floatingInput {
+    position: relative;
+    width: 100%;
+
+    input {
+      width: 100%;
+      height: 5.4rem;
+      border-radius: 0.4rem;
+      border: 1px solid #e0d5e2;
+      background: transparent;
+      padding: 1.6rem 1.2rem 0.8rem;
+      font-size: 1.4rem;
+      outline: none;
+
+      &::placeholder {
+        color: transparent; // floating label üçün
+      }
+    }
+
+    label {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 0.4rem;
+      background: #f9f7f3;
+      transition: all 0.18s ease-in-out;
+
+      color: #000;
+      font-family: "Noto Serif Display";
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      opacity: 0.6; // input içindəykən 0.6
+    }
+
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+      top: 0;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: #681616;
+      opacity: 1; // yuxarı qalxanda tam görünən
+    }
+
+    input:focus {
+      border-color: #681616;
+    }
+  }
+
+  /* Button – login ilə eyni ölçü */
+  .forgotPasswordSubmitBtn {
+    border-radius: 0.8rem;
+    background: #000;
+    width: 50rem;
+    height: 5.6rem;
+    color: #fff;
+    text-align: center;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.0117rem; /* 143.69% */
+    letter-spacing: 0.014rem;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  }
+
+  .forgotPasswordBottom {
+    margin-top: 2rem;
+
+    p {
+      padding-top: 0;
+      color: #3a3a3a;
+      text-align: center;
+      font-family: "Inter", sans-serif !important;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%; /* 1.4rem */
+      letter-spacing: -0.014rem;
+    }
+
+    .forgotPasswordBackLink {
+      padding-left: 1.5rem;
+      text-decoration: underline;
+      color: #3a3a3a;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 100%;
+      letter-spacing: -0.014rem;
+      text-underline-offset: 0.1rem;
+    }
+  }
+}
+
+// ! sign up<><><><><><><<><<<><><><><><
+
+.signup {
+  padding: 11.2rem 0 12.78rem;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    color: #000;
+    font-family: "Noto Serif Display";
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 4rem */
+    letter-spacing: -0.08rem;
+    text-align: center;
+  }
+
+  p {
+    color: #3a3a3a;
+    text-align: center;
+    font-family: "Noto Serif Display";
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 1.6rem */
+    letter-spacing: -0.016rem;
+    padding-top: 2.09rem;
+  }
+
+  .signupForm {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .signupFormGroup {
+    width: 50rem;
+    margin-bottom: 2.6rem;
+  }
+
+  /* FLOATING LABEL – login ilə eyni */
+  .floatingInput {
+    position: relative;
+    width: 100%;
+
+    input {
+      width: 100%;
+      height: 5.4rem;
+      border-radius: 0.4rem;
+      border: 1px solid #e0d5e2;
+      background: transparent;
+      padding: 1.6rem 1.2rem 0.8rem;
+      font-size: 1.4rem;
+      outline: none;
+
+      &::placeholder {
+        color: transparent; // floating label üçün
+      }
+    }
+
+    label {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 0.4rem;
+      background: #f9f7f3; // səhifə fonu
+      transition: all 0.18s ease-in-out;
+
+      color: #000;
+      font-family: "Noto Serif Display";
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      opacity: 0.6; // input içindəykən 0.6
+    }
+
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+      top: 0;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: #681616;
+      opacity: 1; // yuxarı qalxanda 1
+    }
+
+    input:focus {
+      border-color: #681616;
+    }
+  }
+
+  /* I’m not robot – login ilə eyni stil */
+  .signupFormCheckbox {
+    width: 50rem;
+    margin-bottom: 2.6rem;
+    display: flex;
+    justify-content: flex-start;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      width: 24rem;
+      height: 4rem;
+      border-radius: 0.4rem;
+      border: 1px solid #e0d5e2;
+      padding: 0 1.2rem;
+      background: transparent;
+      color: #000;
+      font-family: "Inter", sans-serif !important;
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 0.6rem;
+      border: 1px solid #e0d5e2;
+      position: relative;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"]:checked {
+      background: #ff0000;
+      border-color: #fa0000;
+    }
+
+    input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 0.75rem;
+      top: 0.3rem;
+      width: 0.6rem;
+      height: 1rem;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(45deg);
+    }
+
+    span {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Button */
+  .signupSubmitBtn {
+    border-radius: 0.8rem;
+    background: #000;
+    width: 50rem;
+    height: 5.6rem;
+    color: #fff;
+    text-align: center;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.0117rem; /* 143.69% */
+    letter-spacing: 0.014rem;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  }
+
+  .signupFormBottom {
+    margin-top: 2rem;
+
+    p {
+      color: #3a3a3a;
+      text-align: center;
+      font-family: "Inter", sans-serif !important;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%; /* 1.4rem */
+      letter-spacing: -0.014rem;
+    }
+
+    .signupBottomLink {
+      padding-left: 1.5rem;
+      text-decoration: underline;
+      color: #3a3a3a;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 100%;
+      letter-spacing: -0.014rem;
+      text-underline-offset: 0.1rem;
+    }
+  }
+}

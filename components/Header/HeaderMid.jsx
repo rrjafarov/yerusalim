@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import HeaderLang from "./HeaderLang";
 
 const HeaderMid = () => {
   return (
@@ -121,7 +122,7 @@ const HeaderMid = () => {
                   <p>+994 000 00 00</p>
                 </Link>
                 <div className="headerMidTopRightContactLine"></div>
-                <div className="headerMidTopRightLang">
+                {/* <div className="headerMidTopRightLang">
                   <span>AZ</span>
                   <p>
                     <svg
@@ -139,7 +140,8 @@ const HeaderMid = () => {
                       />
                     </svg>
                   </p>
-                </div>
+                </div> */}
+                <HeaderLang />
               </div>
             </div>
           </div>
