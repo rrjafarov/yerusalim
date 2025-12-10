@@ -36,8 +36,13 @@ const HomePageCategory = () => {
                 centeredSlides: true,
                 spaceBetween: 16,
               },
+              480: {
+                slidesPerView: 1.8,
+                centeredSlides: true,
+                spaceBetween: 16,
+              },
               640: {
-                slidesPerView: 2,
+                slidesPerView: 2.5,
                 spaceBetween: 18,
               },
               1024: {
