@@ -54,7 +54,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="xl-2 lg-2 md-3 sm-6">
+              <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
                   <span>MORE</span>
                   <ul>
@@ -70,7 +70,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="xl-2 lg-2 md-3 sm-6">
+              <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
                   <span>
                     <Link href="/about">SUPPORT</Link>
@@ -94,7 +94,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="xl-2 lg-2 md-3 sm-6">
+              <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
                   <span>
                     <Link href="/about">CONTACTS</Link>
@@ -112,7 +112,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="xl-2 lg-2 md-3 sm-6">
+              <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
                   <span>
                     <Link href="/about">FOLLOW US</Link>
@@ -200,6 +200,8 @@ const Footer = () => {
                 </div>
               </div>
             </div>
+
+            
             <div className="footerPaymentMethods">
               <span>PAYMENT METHODS</span>
               <div className="footerPaymentMethodsItems">

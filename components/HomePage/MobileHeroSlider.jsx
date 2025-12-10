@@ -65,3 +65,13 @@ const MobileHeroSlider = () => {
 };
 
 export default MobileHeroSlider;
+
+
+
+
+
+// @media only screen and (max-width: 767.9px) {
+//   .breadcrumbs {
+//     display: none !important;
+//   }
+// }
