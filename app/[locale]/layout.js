@@ -6,8 +6,8 @@ import axiosInstance from "@/lib/axios";
 import { cookies } from "next/headers";
 
 export const metadata = {
-  title: "Barkod Electronics",
-  description: "Barkod Electronics",
+  title: "Yerusalim18",
+  description: "Yerusalim18",
   icons: "/favicon.png",
 };
 

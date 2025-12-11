@@ -1,0 +1,315 @@
+.accountHero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 19.6rem;
+  background: #f3efe7;
+  .accountHeroItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    width: 130rem;
+    max-width: 130rem;
+    height: 19.6rem;
+  }
+  h1 {
+    color: #000;
+    text-align: center;
+    font-family: "Noto Serif Display";
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 4rem */
+    letter-spacing: -0.08rem;
+  }
+  p {
+    padding-top: 2.45rem;
+    color: #3a3a3a;
+    text-align: center;
+    font-family: "Noto Serif Display";
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 1.4rem */
+    letter-spacing: -0.014rem;
+  }
+  .logOut {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    bottom: 2.4rem;
+    left: 1rem;
+    cursor: pointer;
+    span {
+      padding-left: 0.5rem;
+      color: #000;
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}
+.account {
+  display: flex;
+  flex-direction: column;
+  .accountTopLinks {
+    padding: 3.6rem 0 7.4rem;
+  }
+}
+.accountLinks {
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16.8rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s ease;
+
+      a {
+        color: #000;
+        font-size: 1.4rem;
+        opacity: 0.4;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        transition: opacity 0.3s ease, color 0.3s ease;
+      }
+
+      &.active {
+        border-bottom: 1px solid #000;
+
+        a {
+          opacity: 1;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+.accountBackground {
+  background: #f9f7f3;
+}
+
+// ! PROFILE
+.profilePage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .profilePageItems {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profilePageTitle {
+    color: #000;
+    font-family: "Inter", sans-serif;
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin-bottom: 3rem;
+  }
+
+  .profileForm {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  .profileField {
+    position: relative;
+    width: 50rem;
+
+    input {
+      width: 100%;
+      height: 5.4rem;
+      border-radius: 0.4rem;
+      border: 1px solid #e0d5e2;
+      background: transparent;
+      outline: none;
+      box-sizing: border-box;
+      /* label yuxarıda, mətn isə ortada olsun deyə padding */
+      padding: 1.3rem 4.4rem 1.1rem 2rem;
+
+      color: #000;
+      font-family: "Noto Serif Display";
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    input:disabled {
+      cursor: default;
+      background: transparent;
+    }
+
+    .profileFieldLabel {
+      position: absolute;
+      z-index: 10;
+      left: 1.3rem;
+      top: -0.9rem;
+      color: #969696;
+      font-family: "Noto Serif Display";
+      font-size: 1.3rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      background-color: #f9f7f3;
+      padding: 0 0.5rem;
+    }
+
+    .profileEditBtn {
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.7rem;
+      height: 1.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+    }
+  }
+
+  .profileSaveBtn {
+    // margin-top: 2.8rem;
+    width: 50rem;
+    height: 5.6rem;
+    border-radius: 0.8rem;
+    background: #000;
+    border: none;
+    cursor: pointer;
+
+    color: #fff;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.0117rem; /* 143.69% */
+    letter-spacing: 0.014rem;
+    text-transform: uppercase;
+
+    transition: background 0.2s ease;
+  }
+  .profileSaveBtn:hover {
+    background: #711111;
+  }
+}
+// ! PROFILE
+
+
+// ? ADDRESS
+// ? ADDRESS
+
+// * CHANGE PASS
+.changePasswordPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .changePasswordPageItems {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .changePasswordTitle {
+    color: #000;
+    font-family: "Inter", sans-serif;
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin-bottom: 3rem;
+  }
+
+  .changePasswordForm {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  .changePasswordField {
+    position: relative;
+    width: 50rem;
+
+    input {
+      width: 100%;
+      height: 5.4rem;
+      border-radius: 0.4rem;
+      border: 1px solid #e0d5e2;
+      background: transparent;
+      outline: none;
+      box-sizing: border-box;
+      padding: 1.3rem 4.4rem 1.1rem 2rem;
+
+      color: #000;
+      font-family: "Noto Serif Display";
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    .changePasswordFieldLabel {
+      position: absolute;
+      z-index: 10;
+      left: 1.3rem;
+      top: -0.9rem;
+      color: #969696;
+      font-family: "Noto Serif Display";
+      font-size: 1.3rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      background-color: #f9f7f3;
+      padding: 0 0.5rem;
+    }
+  }
+
+  .changePasswordSaveBtn {
+    width: 50rem;
+    height: 5.6rem;
+    border-radius: 0.8rem;
+    background: #000;
+    border: none;
+    cursor: pointer;
+
+    color: #fff;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.0117rem; /* 143.69% */
+    letter-spacing: 0.014rem;
+    text-transform: uppercase;
+
+    transition: background 0.2s ease;
+  }
+
+  .changePasswordSaveBtn:hover {
+    background: #711111;
+  }
+}
+// * CHANGE PASS
