@@ -1,8 +1,11 @@
+import Address from '@/components/Account/Address'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <Address />
+    </div>
   )
 }
 

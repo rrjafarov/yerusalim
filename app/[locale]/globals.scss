@@ -1402,8 +1402,6 @@ ul {
 }
 // * Home Brands CSS end
 
-
-
 // ? HomePageSEO CSS start---------------------------
 .seoMain {
   padding: 9.1rem 0 8.4rem;
@@ -2390,3 +2388,210 @@ ul {
   }
 }
 // ? Mobile Hero SLider
+
+// *Add newAddress Popup
+/* OVERLAY */
+.addAddressOverlay {
+  position: fixed;
+  inset: 0; // top:0; right:0; bottom:0; left:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+
+  /* overlay fonu pseudo-element ilə – content qismən görünür,
+     popupın ağ background-u toxunulmur */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.50); // daha açıq, arxa content görünür
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+}
+
+/* POPUP */
+.addAddressPopup {
+  width: 58.1rem;
+  border-radius: 0.8rem;
+  background: #fff;
+  box-shadow: 0 14.427px 35.037px 0 rgba(194, 194, 194, 0.25);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* daha yumşaq açılma animasiyası */
+  animation: popupFadeIn 0.3s ease-out;
+
+  .addAddressPopupItems {
+    .newAddressPopupCloseIcon {
+      position: absolute;
+      top: 3.2rem;
+      right: 4.3rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      cursor: pointer;
+    }
+    .addAddressPopupItemsForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 8.3rem;
+      padding-bottom: 5.4rem;
+
+      .addAddressPopupTitle {
+        color: var(--Secondary-06, #1c1c1c);
+        text-align: center;
+        font-family: "Noto Serif Display";
+        font-size: 3.2rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 3.6rem; /* 112.5% */
+        letter-spacing: -0.064rem;
+        text-transform: uppercase;
+      }
+
+      .addAddressPopupForm {
+        margin-top: 3.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3.2rem; // 2) inputlar arası 3.2rem
+
+        .floatingInput {
+          position: relative;
+          width: 43.8rem; // 1) input ölçüsü
+
+          input,
+          select {
+            width: 43.8rem;
+            height: 5.4rem;
+            border-radius: 0.4rem;
+            border: 1px solid #e0d5e2;
+            background: transparent; // 2) arxa plan transparent
+            padding: 1.7rem 2.4rem 1.7rem;
+            font-size: 1.4rem;
+            outline: none;
+
+            &::placeholder {
+              color: transparent;
+            }
+          }
+
+          label {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 0.4rem;
+            background: #f9f7f3; // label background
+            transition: all 0.18s ease-in-out;
+
+            color: #000;
+            font-family: "Noto Serif Display";
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+
+          /* input üçün floating label */
+          input:focus + label,
+          input:not(:placeholder-shown) + label {
+            top: 0;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            color: #681616;
+          }
+
+          input:focus {
+            border-color: #681616;
+          }
+        }
+
+        /* SELECT (City) üçün xüsusi stil */
+        .floatingSelect {
+          select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding-right: 4rem; // sağdakı ox üçün boşluq
+            cursor: pointer;
+            border-radius: 0.4rem;
+            background: transparent;
+          }
+
+          select:focus + label,
+          select:valid + label {
+            top: 0;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            color: #681616;
+          }
+
+          select:focus {
+            border-color: #681616;
+          }
+
+          /* Açılan menyunun görünüşü (option-lar) – sənin dəyərlərin saxlanıb */
+          select option {
+            background: transparent;
+            padding: 7.8rem 1.2rem;
+          }
+
+          select option:first-child {
+            padding-top: 1.5rem;
+          }
+
+          .selectArrow {
+            position: absolute;
+            right: 2.1rem; // icon sağdan 2.1rem
+            top: 50%;
+            transform: translateY(-50%); // tam ortada
+            width: 1.8rem;
+            height: 1.6rem;
+            pointer-events: none;
+          }
+        }
+
+        .addAddressPopupButton {
+          margin-top: 0.8rem;
+          border-radius: 0.8rem;
+          background: #000;
+          width: 43.8rem;
+          height: 5.6rem;
+          color: #fff;
+          text-align: center;
+          font-size: 1.4rem;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 2.0117rem;
+          letter-spacing: 0.014rem;
+          text-transform: uppercase;
+          border: none;
+          cursor: pointer;
+          transition: background 0.2s ease-in-out;
+
+          &:hover {
+            background: #711111; // 3) hover rəngi
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ✨ daha yumşaq açılış animasiyası */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+// *Add newAddress Popup
