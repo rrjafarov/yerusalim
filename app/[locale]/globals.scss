@@ -2405,7 +2405,7 @@ ul {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.50); // daha açıq, arxa content görünür
+    background: rgba(0, 0, 0, 0.5); // daha açıq, arxa content görünür
     mix-blend-mode: multiply;
     pointer-events: none;
   }
@@ -2583,7 +2583,6 @@ ul {
   }
 }
 
-/* ✨ daha yumşaq açılış animasiyası */
 @keyframes popupFadeIn {
   from {
     opacity: 0;
@@ -2595,3 +2594,278 @@ ul {
   }
 }
 // *Add newAddress Popup
+
+// *delete adress Popup
+
+.deleteAddressOverlay {
+  position: fixed;
+  inset: 0; // top:0; right:0; bottom:0; left:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+
+  /* overlay fonu – AddAddressPopup ilə eyni məntiq */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 0; // ⬅ overlay həmişə altda qalsın
+  }
+}
+
+.deleteAddress {
+  width: 61.1rem;
+  height: 31.1rem;
+  border-radius: 0.8rem;
+  background: #fff;
+  box-shadow: 0 14.427px 35.037px 0 rgba(194, 194, 194, 0.25);
+  animation: popupFadeIn 0.3s ease-out; // AddAddressPopup ilə eyni açılma effekti
+
+  position: relative; // ⬅ popup-u yeni stacking context edir
+  z-index: 1; // ⬅ və overlay-in ::before-dan yuxarıda göstərir
+
+  .deleteAddressItems {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    position: relative;
+
+    .infoMark {
+      padding-bottom: 1.4rem;
+    }
+
+    span {
+      color: var(--Secondary-06, #1c1c1c);
+      text-align: center;
+      font-family: "Noto Serif Display";
+      font-size: 3.2rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 3.6rem; /* 112.5% */
+      letter-spacing: -0.064rem;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #000;
+      text-align: center;
+      opacity: 0.5;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 2.4rem; /* 171.429% */
+      letter-spacing: -0.014rem;
+    }
+
+    .deleteAddressButtons {
+      display: flex;
+      gap: 1.5rem;
+      padding-top: 1.4rem;
+
+      .deleteAddressButtonsNo {
+        width: 19.6rem;
+        height: 5.6rem;
+        border-radius: 0.8rem;
+        border: 1px solid #000;
+        color: #000;
+        text-align: center;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 115%; /* 1.61rem */
+        letter-spacing: 0.056rem;
+        text-transform: uppercase;
+        background-color: transparent;
+        cursor: pointer;
+      }
+
+      .deleteAddressButtonsYes {
+        border-radius: 0.8rem;
+        background: #000;
+        width: 19.6rem;
+        height: 5.6rem;
+        color: #fff;
+        text-align: center;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 115%; /* 1.61rem */
+        letter-spacing: 0.056rem;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+
+    .deleteAddressCloseIcon {
+      position: absolute;
+      top: 2.8rem;
+      right: 2.8rem;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// *delete adress Popup
+
+
+
+
+// ? ADDRESS page<><><<
+.address {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .addressItem {
+    width: 75rem;
+    .addressItemAdding {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      span {
+        color: #000;
+        font-size: 2.2rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%; /* 2.64rem */
+        letter-spacing: -0.044rem;
+      }
+      button {
+        border-radius: 1rem;
+        border: 1px solid #efe9f0;
+        width: 17.3rem;
+        height: 4.7rem;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        span {
+          color: #1c1c1c;
+          text-align: center;
+          font-size: 1.3rem;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          letter-spacing: -0.013rem;
+        }
+        div {
+          width: 2.8rem;
+          height: 2.8rem;
+          border-radius: 0.4rem;
+          opacity: 0.3;
+          background: #e0dddb;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          svg {
+            width: 1.1rem;
+            height: 1.1rem;
+            color: #000;
+          }
+        }
+      }
+      padding-bottom: 1.2rem;
+    }
+    .addressCards {
+      .addressCard {
+        height: 22.5rem;
+        border-radius: 1rem;
+        border: 1.5px solid #efe9f0;
+        transition: border-color 0.25s ease;
+        &:has(input[type="radio"]:checked) {
+          border-radius: 1rem;
+          border: 2px solid #af1414;
+        }
+        .addressCardInner {
+          padding: 1.8rem;
+          .addressCardInnerTop {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .addressCardInnerTitle {
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+              span {
+                margin-top: 0.2rem;
+                color: #000;
+                font-size: 1.5rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 2.4rem; /* 160% */
+                letter-spacing: -0.015rem;
+              }
+              input[type="radio"] {
+                accent-color: #af1414;
+              }
+            }
+            .addressCardInnerEditAndDelete {
+              display: flex;
+              align-items: center;
+              gap: 1.35rem;
+              .addressCardInnerEditIcon {
+                width: 1.7rem;
+                height: 1.7rem;
+                background-color: transparent;
+              }
+              .addressCardInnerDeleteIcon {
+                width: 1.7rem;
+                height: 1.7rem;
+                background-color: transparent;
+              }
+            }
+          }
+          .addressCardInnerDetails {
+            padding-left: 0.5rem;
+            margin-top: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            .addressCardInnerDetail {
+              display: flex;
+              flex-direction: column;
+              span {
+                color: #2c2c2c;
+                font-size: 1.1rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 2.4rem; /* 218.182% */
+                letter-spacing: -0.011rem;
+                opacity: 0.5;
+              }
+              p {
+                color: #000;
+                font-size: 1.4rem;
+                font-style: normal;
+                font-weight: 500;
+                letter-spacing: -0.014rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// ? ADDRESS page<><><<

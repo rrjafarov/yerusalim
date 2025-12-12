@@ -1,0 +1,23 @@
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
+import React from "react";
+import "./cart.scss";
+import CartHero from "@/components/Cart/CartHero";
+import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
+import Cart from "@/components/Cart/Cart";
+
+const page = () => {
+  return (
+    <div>
+      <Header />
+      <CartHero />
+      <div className="productPageBackground">
+        <Breadcrumbs />
+        <Cart />
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default page;
