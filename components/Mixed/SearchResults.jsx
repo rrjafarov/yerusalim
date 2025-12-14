@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const SearchResults = () => {
+const SearchResults = ({onClose }) => {
   return (
     <div className="searchResults">
       <div className="searchResultsItem">
         <div className="searchResultsTop">
           <span>Search Results</span>
-          <p>
+          <p onClick={onClose}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -315,7 +315,7 @@ const SearchResults = () => {
             </Link>
           </div>
         </div>
-        <div className="mobileSearchAllButton">
+        <div className="searchAllButton">
           <button >
             <span>See All Results</span>
           </button>

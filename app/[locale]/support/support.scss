@@ -243,6 +243,14 @@
   }
 }
 
+@media only screen and (max-width: 767.9px) {
+  .ant-collapse-body {
+    font-size: 1.4rem;
+    width: 40rem !important;
+    margin-left: 2.2rem !important;
+  }
+}
+
 .paymentSupport {
   h3 {
     color: #000;
@@ -284,6 +292,28 @@
       font-weight: 400;
       line-height: 170%; /* 2.72rem */
       opacity: 0.64;
+    }
+  }
+}
+
+@media only screen and (max-width: 767.9px) {
+  .paymentSupport {
+    .paymentSupportImages {
+      .paymentSupportImage {
+        width: 48% !important;
+      }
+    }
+    .paymentSupportContent {
+      margin-bottom: 11rem;
+      padding-top: 4.7rem;
+      h3 {
+        font-size: 2rem;
+      }
+      p {
+        padding-top: 0rem !important;
+        width: 100% !important;
+        font-size: 1.4rem !important;
+      }
     }
   }
 }
@@ -334,6 +364,26 @@
       font-weight: 400;
       line-height: 170%; /* 2.72rem */
       opacity: 0.64;
+    }
+  }
+}
+
+@media only screen and (max-width: 767.9px) {
+  .deliverySupport {
+    .deliverySupportImages {
+      .deliverySupportImage {
+        width: 100% !important;
+        height: 34.6rem;
+      }
+    }
+    .deliverySupportContent {
+      h3 {
+        font-size: 2rem;
+      }
+      p {
+        width: 100% !important;
+        font-size: 1.4rem !important;
+      }
     }
   }
 }
@@ -442,5 +492,53 @@
     font-style: normal;
     font-weight: 400;
     line-height: 170%; /* 3.06rem */
+  }
+}
+
+@media only screen and (max-width: 767.9px) {
+  .privacyPage {
+    padding: 5rem 1rem 10.2rem 1rem !important;
+    display: flex;
+    flex-direction: column;
+    gap: 7.8rem;
+    .privacyPagePrivacyPolicy {
+      display: flex;
+      flex-direction: column;
+      gap: 4.6rem;
+    }
+    .privacyPageTerms {
+      display: flex;
+      flex-direction: column;
+      gap: 4.6rem;
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      li {
+        font-size: 1.4rem !important;
+      }
+    }
+    ol {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      padding: 0 !important;
+      li {
+        font-size: 1.4rem !important;
+      }
+    }
+    h2 {
+      color: #000;
+      font-size: 2.8rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      padding-bottom: 0rem !important;
+    }
+    p {
+      width: 100% !important;
+      font-size: 1.4rem !important;
+    }
   }
 }
