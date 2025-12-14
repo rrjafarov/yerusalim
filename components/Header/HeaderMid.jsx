@@ -14,16 +14,16 @@ const HeaderMid = () => {
                   <Link href="/about">About</Link>
                 </li>
                 <li>
-                  <Link href="/about">Offers</Link>
+                  <Link href="#">Offers</Link>
                 </li>
                 <li>
-                  <Link href="/about">Blogs</Link>
+                  <Link href="/blogs">Blogs</Link>
                 </li>
                 <li>
-                  <Link href="/about">Support</Link>
+                  <Link href="/support/faq">Support</Link>
                 </li>
                 <li>
-                  <Link href="/about">Contac us</Link>
+                  <Link href="/contact">Contac us</Link>
                 </li>
               </ul>
             </div>

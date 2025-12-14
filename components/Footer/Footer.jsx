@@ -43,13 +43,13 @@ const Footer = () => {
                   </span>
                   <ul>
                     <li>
-                      <Link href="/">Our Story</Link>
+                      <Link href="/about">Our Story</Link>
                     </li>
                     <li>
-                      <Link href="/">Explore Our Brands</Link>
+                      <Link href="/brands">Explore Our Brands</Link>
                     </li>
                     <li>
-                      <Link href="/">Our Stores</Link>
+                      <Link href="#">Our Stores</Link>
                     </li>
                   </ul>
                 </div>
@@ -59,34 +59,34 @@ const Footer = () => {
                   <span>MORE</span>
                   <ul>
                     <li>
-                      <Link href="/">Blogroom</Link>
+                      <Link href="/blogs">Blogroom</Link>
                     </li>
                     <li>
-                      <Link href="/">Login</Link>
+                      <Link href="/login">Login</Link>
                     </li>
                     <li>
-                      <Link href="/">Sign Up</Link>
+                      <Link href="/sign-up">Sign Up</Link>
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
-                  <span>
-                    <Link href="/about">SUPPORT</Link>
-                  </span>
+                  <span>SUPPORT</span>
                   <ul>
                     <li>
-                      <Link href="/">FAQs</Link>
+                      <Link href="/support/faq">FAQs</Link>
                     </li>
                     <li>
-                      <Link href="/">About payment</Link>
+                      <Link href="/support/payment-support">About payment</Link>
                     </li>
                     <li>
-                      <Link href="/">Delivery Terms </Link>
+                      <Link href="/support/delivery-terms">
+                        Delivery Terms{" "}
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/">Privacy</Link>
+                      <Link href="/privacy">Privacy</Link>
                     </li>
                     <li>
                       <Link href="/">Terms of use</Link>
@@ -97,7 +97,7 @@ const Footer = () => {
               <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
                   <span>
-                    <Link href="/about">CONTACTS</Link>
+                    <Link href="/contact">CONTACTS</Link>
                   </span>
                   <ul>
                     <li>
@@ -115,7 +115,7 @@ const Footer = () => {
               <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
                   <span>
-                    <Link href="/about">FOLLOW US</Link>
+                    FOLLOW US
                   </span>
                   <ul className="followUS">
                     <li>
@@ -201,7 +201,6 @@ const Footer = () => {
               </div>
             </div>
 
-            
             <div className="footerPaymentMethods">
               <span>PAYMENT METHODS</span>
               <div className="footerPaymentMethodsItems">
@@ -301,8 +300,10 @@ const Footer = () => {
               <p>Tax ID (VOEN): 1401234561</p>
             </div>
             <div className="footerBottomItemRight">
-              <Link href="https://one.az" target="_blank" >
-                <p>Site by <strong>One Studio</strong></p> 
+              <Link href="https://one.az" target="_blank">
+                <p>
+                  Site by <strong>One Studio</strong>
+                </p>
               </Link>
             </div>
           </div>

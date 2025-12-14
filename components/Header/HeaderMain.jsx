@@ -239,7 +239,7 @@ const HeaderMain = () => {
               </Link>
             </div>
             <div className="headerMainLinks">
-              <Link href="#">
+              <Link href="/login">
                 <div className="userProfile">
                   <span>
                     <svg
@@ -277,7 +277,8 @@ const HeaderMain = () => {
                   </span>
                 </div>
               </Link>
-              <Link href="#">
+
+              <Link href="/cart">
                 <div className="userProfile">
                   <span>
                     <svg
