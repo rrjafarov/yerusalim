@@ -11,6 +11,7 @@ import AboutMisionVision from "@/components/AboutPage/AboutMisionVision";
 import PhotoGallery from "@/components/Mixed/PhotoGallery";
 import AboutOurBrands from "@/components/AboutPage/AboutOurBrands";
 import AboutPageDirector from "@/components/AboutPage/AboutPageDirector";
+import AboutBreadcrumbs from "@/components/AboutPage/AboutBreadcrumbs";
 
 const page = () => {
   return (
@@ -18,7 +19,8 @@ const page = () => {
       <Header />
       <AboutPageHero />
       <div className="productPageBackground">
-        <Breadcrumbs />
+        {/* <Breadcrumbs /> */}
+        <AboutBreadcrumbs/>
         <AboutHeroUnderContent />
         <AboutPageOurHistory />
         <AboutPageOurCraft />

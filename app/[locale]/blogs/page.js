@@ -6,6 +6,7 @@ import BrandsHero from "@/components/BrandsPage/BrandsHero";
 import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
 import BlogsPageHero from "@/components/BlogsPage/BlogsPageHero";
 import BlogsPage from "@/components/BlogsPage/BlogsPage";
+import BlogsBreadcrumbs from "@/components/BlogsPage/BlogsBreadcrumbs";
 
 const page = () => {
   return (
@@ -13,7 +14,8 @@ const page = () => {
       <Header />
       <BlogsPageHero />
       <div className="productPageBackground">
-        <Breadcrumbs />
+        {/* <Breadcrumbs /> */}
+        <BlogsBreadcrumbs />
         <BlogsPage />
       </div>
       <Footer />

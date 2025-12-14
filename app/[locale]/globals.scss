@@ -850,6 +850,278 @@ ul {
     }
   }
 }
+
+.mobileSearch {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  z-index: 9999;
+}
+
+.mobileSearch.active {
+  transform: translateX(0);
+}
+
+.mobileSearchCloseIcon {
+  margin-top: 2.5rem;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  cursor: pointer;
+  svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
+.mobileSearchTitle {
+  margin-top: 5.5rem;
+  text-align: center;
+  color: #000;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.014rem;
+  text-transform: uppercase;
+}
+
+.mobileSearchDetails {
+  margin-top: 5.2rem;
+  width: 100%;
+  .mobileSearchDetailsInput {
+    padding: 0 2.4rem;
+    width: 100%;
+    position: relative;
+
+    input {
+      height: 5.6rem;
+      border-radius: 0.7rem;
+      border: 1px solid #d9d9d9;
+      width: 100%;
+      padding-left: 5.55rem;
+      padding-right: 4.75rem;
+      background-color: transparent;
+      outline: none;
+    }
+
+    .mobileSearchInputIconLeft {
+      position: absolute;
+      left: 4.55rem; /* 2.4rem (wrapper padding) + 2.15rem */
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .mobileSearchInputIconRight {
+      position: absolute;
+      right: 4.55rem; /* 2.4rem (wrapper padding) + 2.15rem */
+      top: 50%;
+      transform: translateY(-50%);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+  }
+  .mobileSearchDetailsProducts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 3rem;
+    padding-top: 3.5rem;
+    .searchResultsLine {
+      width: 100%;
+      height: 0.1rem;
+      opacity: 0.3;
+      background: #e8e8e8;
+    }
+    .searchResultsProduct {
+      a {
+        display: flex;
+        gap: 1.6rem;
+        align-items: center;
+        img {
+          width: 11.05rem;
+          height: 11.05rem;
+          border-radius: 0.8rem;
+        }
+        .searchResultsProductInfo {
+          display: flex;
+          flex-direction: column;
+          gap: 1.8rem;
+          align-items: flex-start;
+          p {
+            display: inline-block;
+            color: rgba(32, 32, 32, 0.8);
+            font-size: 1.6rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 1.7516rem; /* 125.116% */
+            letter-spacing: 0.014rem;
+          }
+          span {
+            color: rgba(32, 32, 32, 0.8);
+            font-size: 1.6rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 1.7516rem; /* 125.116% */
+            letter-spacing: 0.014rem;
+          }
+          .searchResultsProductPrice {
+            display: flex;
+            gap: 1.64rem;
+            .searchNewPrice {
+              span {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                color: #202020;
+                font-size: 2rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 1.62rem;
+                letter-spacing: 0.016rem;
+                p {
+                  display: flex;
+                  align-items: center;
+                  svg {
+                    width: 1.62rem;
+                    height: 1.62rem;
+                  }
+                }
+              }
+            }
+            .searchOldPrice {
+              position: relative;
+              display: inline-flex;
+              align-items: center;
+              &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 0.144rem;
+                background: #ab1d1d;
+                opacity: 1;
+                pointer-events: none;
+              }
+              text-decoration: none !important;
+              span {
+                display: flex;
+                align-items: center;
+                gap: 0.1rem;
+                color: #202020;
+                font-size: 1.4rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 1.62rem; /* 135% */
+                letter-spacing: 0.012rem;
+                opacity: 0.5;
+                text-decoration: none !important;
+                p {
+                  display: flex;
+                  align-items: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .mobileSearchAllButton {
+    padding-top: 4.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    button {
+      border-radius: 0.8rem;
+      border: 1px solid #111;
+      width: 100%;
+
+      background: #111;
+      display: inline-flex;
+      height: 5.6rem;
+      padding: 1.2rem 2.4rem;
+      justify-content: center;
+      align-items: center;
+      span {
+        color: #fff;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 2.4rem; /* 171.429% */
+        letter-spacing: 0.056rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.mobileNavbarIcons {
+  display: none;
+}
+@media only screen and (max-width: 767.9px) {
+  .headerMid {
+    display: none !important;
+  }
+  .headerMainRight {
+    display: none !important;
+  }
+
+  .headerMainItem {
+    display: flex;
+    justify-content: space-between !important;
+  }
+  .headerLogo {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    a {
+      img {
+        width: 20rem !important;
+        height: 6.2rem !important;
+      }
+    }
+  }
+  .mobileHamburgerMenu {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 4.2rem;
+    height: 4.2rem;
+  }
+  .mobileNavbarIcons {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    .mobileNavbarIcon {
+      a {
+        svg {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+    }
+  }
+}
+.mobileHamburgerMenu {
+  display: none;
+}
 // ? Header CSS end
 
 // * HeroSlider CSS start
@@ -2174,17 +2446,21 @@ ul {
       margin-bottom: 4.1rem;
     }
     .photoGalleryItemsSlider {
-      height: 56rem;
+      // height: 56rem;
       #rowForced {
         width: 100% !important;
-        height: 56rem !important;
+        // height: 56rem !important;
       }
       .productDetailPageLeftSlider {
         width: 100%;
         height: 100%;
-        img {
+        a {
           width: 100%;
           height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
     }
@@ -2276,6 +2552,14 @@ ul {
   width: 100%;
   height: 100%;
   /* burda videonu ortala, istəsən flex ilə, və s. */
+}
+
+@media only screen and (max-width: 767.9px) {
+  .videoPopupContent {
+    position: relative;
+    width: 90% !important;
+    height: 50.1rem !important;
+  }
 }
 // !VIDEO POPUP
 
@@ -2410,7 +2694,6 @@ ul {
     pointer-events: none;
   }
 }
-
 /* POPUP */
 .addAddressPopup {
   width: 58.1rem;
@@ -2583,6 +2866,36 @@ ul {
   }
 }
 
+@media only screen and (max-width: 767.9px) {
+  .addAddressPopup {
+    // width: 58.1rem;
+    width: 90% !important;
+    .addAddressPopupItems {
+      .addAddressPopupItemsForm {
+        .addAddressPopupForm {
+          .floatingInput {
+            width: 100% !important;
+            input,
+            select {
+              width: 100% !important;
+            }
+          }
+          .floatingSelect {
+            .selectArrow {
+              width: 1.8rem !important;
+              height: 1.8rem;
+              svg {
+                width: 100% !important;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @keyframes popupFadeIn {
   from {
     opacity: 0;
@@ -2714,7 +3027,28 @@ ul {
     }
   }
 }
+@media only screen and (max-width: 767.9px) {
+  .deleteAddress {
+    width: 90% !important;
+    .deleteAddressItems {
+      width: 100%;
+      height: 100%;
+      span {
+        font-size: 3rem;
+      }
 
+      .deleteAddressButtons {
+        .deleteAddressButtonsNo {
+          width: 17.6rem;
+        }
+
+        .deleteAddressButtonsYes {
+          width: 17.6rem !important;
+        }
+      }
+    }
+  }
+}
 @keyframes popupFadeIn {
   from {
     opacity: 0;
@@ -2727,9 +3061,6 @@ ul {
 }
 
 // *delete adress Popup
-
-
-
 
 // ? ADDRESS page<><><<
 .address {
@@ -2860,6 +3191,29 @@ ul {
                 font-style: normal;
                 font-weight: 500;
                 letter-spacing: -0.014rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 767.9px) {
+  .address {
+    width: 100% !important;
+
+    .addressItem {
+      width: 100% !important;
+      .addressCards {
+        .addressCard {
+          height: 23.5rem !important;
+
+          .addressCardInner {
+            padding: 2rem 3rem 2rem 2rem !important;
+            .addressCardInnerTop {
+              .addressCardInnerEditAndDelete {
+                gap: 2.2rem !important;
               }
             }
           }

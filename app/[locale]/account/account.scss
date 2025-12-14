@@ -449,3 +449,27 @@
   }
 }
 // * CHANGE PASS
+
+// ?MOBILE
+@media only screen and (max-width: 767.9px) {
+  .address {
+    .addressItem {
+      width: 100% !important;
+      .addressCards {
+        .addressCard {
+          height: 23.5rem !important;
+          
+          .addressCardInner {
+            padding: 2rem 3rem 2rem 2rem !important;
+            .addressCardInnerTop {
+              .addressCardInnerEditAndDelete {
+                gap: 2.2rem !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// ?MOBILE

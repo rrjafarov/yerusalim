@@ -17,6 +17,7 @@
     text-transform: uppercase;
   }
 }
+
 .cartPage {
   .cartPageLeftItems {
     padding-top: 7.8rem;
@@ -118,7 +119,6 @@
 
 .guestUserForm {
   width: 75.5rem;
-
   .guestUserFormTopLink {
     display: flex;
     justify-content: space-between;
@@ -234,14 +234,15 @@
     }
   }
 }
+
 .basketProducts {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
   .cartPageLeftItemsProductsLine {
-    width: 78rem;
+    width: 79rem;
     height: 0.1rem;
-    background: #DBDBDB;
+    background: #dbdbdb;
   }
 }
 .cartPageLeftItemsProducts {
@@ -432,6 +433,302 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
   }
+}
+
+.paymentTitle {
+  color: #000;
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 2.64rem */
+  letter-spacing: -0.044rem;
+}
+.paymentMethods {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2.4rem 0 7.8rem 0;
+  .paymentMethod {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    input[type="radio"] {
+      width: 1.6rem;
+      height: 1.6rem;
+      accent-color: #af1414; // default mavi rəngi buna çevirir
+      cursor: pointer;
+    }
+    span {
+      color: #000;
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 2.4rem; /* 160% */
+      letter-spacing: -0.015rem;
+    }
+  }
+}
+
+.totalPaymet {
+  //   width: 39.8rem;
+  border-radius: 0.4rem;
+  background: #f9f7f3;
+  mix-blend-mode: multiply;
+  width: 100%;
+  height: 36.6rem;
+  margin-top: 7.8rem;
+
+  .totalPaymetItem {
+    padding: 5.7rem 3.7rem 4.2rem 3.7rem;
+    display: flex;
+    flex-direction: column;
+    .totalPaymetItemDetails {
+      width: 100%;
+      padding: 0 3rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+      span {
+        color: #000;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 3rem; /* 150% */
+        letter-spacing: -0.055rem;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding-top: 1.6rem;
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          span {
+            color: var(--Primary, #0d0d0d);
+            text-align: right;
+            font-feature-settings: "liga" off, "clig" off;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: -0.014rem;
+          }
+          p {
+            color: var(--Primary, #0d0d0d);
+            font-feature-settings: "liga" off, "clig" off;
+            font-size: 1.3rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -0.013rem;
+          }
+        }
+      }
+    }
+    .totalPaymetTotalPrice {
+      margin-top: 2.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0.4rem;
+      height: 4.5rem;
+      background: #681616;
+      padding: 0 2.65rem;
+      span,
+      p {
+        color: var(--Colors-White, #fff);
+        text-align: center;
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 2.2rem; /* 137.5% */
+        letter-spacing: -0.016rem;
+      }
+    }
+    .totalPaymetCompleteButton {
+      //   width: 32.3rem;
+      margin-top: 2.9rem;
+      width: 100%;
+      height: 5.6rem;
+      border-radius: 0.8rem;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        color: #fff;
+        text-align: center;
+        font-size: 1.4rem;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 2.0117rem; /* 143.69% */
+        letter-spacing: 0.014rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+.totalPaymetContactLink {
+  margin-top: 1.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+  p {
+    color: var(--Secondary-06, #1c1c1c);
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2rem; /* 142.857% */
+    letter-spacing: -0.042rem;
+  }
+  a {
+    color: var(--Secondary-06, #1c1c1c);
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2rem; /* 142.857% */
+    letter-spacing: -0.014rem;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: 0.2rem;
+    text-underline-position: from-font;
+  }
+}
+
+
+
+// ? Mobile Responsive
+
+@media only screen and (max-width: 767.9px) {
+  .cartPageLeftItems {
+    padding-top: 4.8rem !important;
+    .cartPageLeftItemsSearch {
+      span {
+        font-size: 2.5rem !important;
+      }
+      p {
+        font-size: 1.5rem !important;
+      }
+      .cartPageLeftItemsSearchInput {
+        width: 100% !important;
+      }
+    }
+    .guestUserForm {
+      width: 100% !important;
+      .guestUserFormTopLink {
+        span {
+          font-size: 2.5rem !important;
+        }
+        p {
+          font-size: 1.5rem !important;
+          a {
+            font-size: 1.5rem !important;
+          }
+        }
+      }
+      .guestUserFormSector {
+        width: 100% !important;
+
+        .guestUserFormSectorItem {
+          padding: 2.4rem !important;
+
+          .guestUserFormForm {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            .guestUserFormRow {
+              display: flex;
+              flex-direction: column !important;
+            }
+          }
+        }
+      }
+    }
+
+    .cartPageLeftItemsProducts {
+      .cartPageLeftItemsProductsLeft {
+        display: flex;
+        gap: 2rem !important;
+        .cartPageLeftItemsProductsLeftTitle {
+          margin-top: 0.5rem !important;
+          p {
+            font-size: 1.5rem !important;
+          }
+
+          .cartPageLeftItemsProductsLeftTitleCountUp {
+            width: 10rem;
+            height: 3.8rem;
+            button {
+              font-size: 1.9909rem;
+            }
+            span {
+              font-size: 1.8909rem;
+            }
+          }
+        }
+      }
+
+      .cartPageLeftItemsProductsRight {
+        .cartPageLeftItemsProductsRightOldPrice {
+          span {
+            font-size: 1.5rem !important;
+          }
+          p {
+            width: 1.5rem;
+          }
+        }
+        .cartPageLeftItemsProductsRightNewPrice {
+          display: flex;
+          gap: 1.4rem;
+          span {
+            font-size: 2.2rem;
+          }
+          .cartPageLeftItemsProductsRightDiscount {
+            display: none !important;
+            width: 0;
+            height: 0;
+            span {
+              font-size: 1.2rem !important;
+              padding: 0.8rem 1.6rem !important;
+            }
+          }
+        }
+        .cartPageLeftItemsProductsRightDelete {
+          margin-left: 2.03rem;
+        }
+      }
+    }
+  }
+  .totalPaymet {
+    margin-top: 0rem;
+  }
+  .paymentMethods {
+    padding: 2.4rem 0 3.8rem;
+  }
+  .totalPaymetContactLink{
+    padding-bottom: 4rem;
+  }
+}
+
+
+// ? Mobile Responsive
+.cartPageLeftItemsProductsRightDiscountInMobile {
+  display: none !important;
 }

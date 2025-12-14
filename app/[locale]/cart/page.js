@@ -5,6 +5,7 @@ import "./cart.scss";
 import CartHero from "@/components/Cart/CartHero";
 import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
 import Cart from "@/components/Cart/Cart";
+import CartBreadcrumbs from "@/components/Cart/CartBreadcrumbs";
 
 const page = () => {
   return (
@@ -12,7 +13,8 @@ const page = () => {
       <Header />
       <CartHero />
       <div className="productPageBackground">
-        <Breadcrumbs />
+        {/* <Breadcrumbs /> */}
+        <CartBreadcrumbs />
         <Cart />
       </div>
       <Footer />

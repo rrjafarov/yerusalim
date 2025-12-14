@@ -6,6 +6,7 @@ import "./contact.scss";
 import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
 import ContactPageMain from "@/components/ContactPage/ContactPageMain";
 import ContactMap from "@/components/ContactPage/ContactMap";
+import ContactBreadcrumbs from "@/components/ContactPage/ContactBreadcrumbs";
 
 const page = () => {
   return (
@@ -13,7 +14,8 @@ const page = () => {
       <Header />
       <ContactPageHero />
       <div className="productPageBackground">
-        <Breadcrumbs />
+        {/* <Breadcrumbs /> */}
+        <ContactBreadcrumbs />
         <ContactPageMain />
         <ContactMap />
       </div>

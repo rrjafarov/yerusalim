@@ -1,95 +1,4 @@
-// import React from "react";
-// import GuestUserForm from "./GuestUserForm";
-// import Address from "../Account/Address";
-// import Image from "next/image";
-
-// const Cart = () => {
-//   return (
-//     <div className="cartPage">
-//       <div className="container">
-//         <div className="row">
-//           <div className="xl-8 lg-8 md-8 sm-12">
-//             <div className="cartPageLeftItems">
-//               <div className="cartPageLeftItemsSearch">
-//                 <span>Basket</span>
-//                 <p>
-//                   Please fill and choose all optional forms and infos for buying
-//                   products
-//                 </p>
-
-//                 {/* Input + X icon wrapper */}
-//                 <div className="cartPageLeftItemsSearchInput">
-//                   <input
-//                     type="text"
-//                     name=""
-//                     id=""
-//                     placeholder="Here is a message about payment delivery bla bla bla"
-//                   />
-//                   <button
-//                     type="button"
-//                     className="cartPageLeftItemsSearchClear"
-//                     aria-label="Clear"
-//                   >
-//                     <svg
-//                       xmlns="http://www.w3.org/2000/svg"
-//                       width="20"
-//                       height="20"
-//                       viewBox="0 0 20 20"
-//                       fill="none"
-//                     >
-//                       <g opacity="0.7">
-//                         <path
-//                           d="M14.5576 4.55713C14.8015 4.3132 15.1983 4.31349 15.4424 4.55713C15.6865 4.80121 15.6865 5.19782 15.4424 5.44189L10.8848 9.99951L15.4424 14.5571C15.6865 14.8012 15.6865 15.1978 15.4424 15.4419C15.1983 15.686 14.8017 15.686 14.5576 15.4419L10 10.8843L5.44238 15.4419C5.19831 15.686 4.80169 15.686 4.55762 15.4419C4.31398 15.1978 4.31369 14.8011 4.55762 14.5571L9.11523 9.99951L4.55762 5.44189C4.31398 5.19778 4.31369 4.80106 4.55762 4.55713C4.80155 4.3132 5.19827 4.31349 5.44238 4.55713L10 9.11475L14.5576 4.55713Z"
-//                           fill="#1C1C1C"
-//                         />
-//                       </g>
-//                     </svg>
-//                   </button>
-//                 </div>
-//               </div>
-//               <div className="guesUserFormSection">
-//                 <GuestUserForm />
-//               </div>
-
-//               <div className="cartPageLeftItemsProducts">
-//                 <div className="cartPageLeftItemsProductsLeft">
-//                   <div className="cartPageLeftItemsProductsLeftImg">
-//                     <Image
-//                       src="/img/cartPro.png"
-//                       alt="product"
-//                       width={110}
-//                       height={110}
-//                     />
-//                   </div>
-//                   <div className="cartPageLeftItemsProductsLeftTitle">
-//                     <span>Product Name is here </span>
-//                     <p>
-//                       Size: <span>L</span>
-//                     </p>
-
-//                     <div className="cartPageLeftItemsProductsLeftTitleCountUp">
-
-//                     </div>
-//                   </div>
-//                 </div>
-//                 <div className="cartPageLeftItemsProductsRight">e</div>
-//               </div>
-
-//               <div className="getUserAddressSection">
-//                 <Address />
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Cart;
-
 "use client";
-
 import React, { useState } from "react";
 import GuestUserForm from "./GuestUserForm";
 import Address from "../Account/Address";
@@ -340,6 +249,62 @@ const Cart = () => {
               <div className="getUserAddressSection">
                 <Address />
               </div>
+
+              <p className="paymentTitle">Payment options</p>
+              <div className="paymentMethods">
+                <div className="paymentMethod">
+                  <input type="radio" />
+                  <span>By cash</span>
+                </div>
+                <div className="paymentMethod">
+                  <input type="radio" />
+                  <span>By card</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="xl-4 lg-4 md-4 sm-12">
+            <div className="totalPaymet">
+              <div className="totalPaymetItem">
+                <div className="totalPaymetItemDetails">
+                  <span>Order Summary</span>
+                  <ul>
+                    <li>
+                      <p>Total item</p> <span>4</span>
+                    </li>
+                    <li>
+                      <p>Subtotal</p> <span>4 azn</span>
+                    </li>
+                    <li>
+                      <p>Delivery</p> <span>4 azn</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="totalPaymetTotalPrice">
+                  <p>Total:</p>
+                  <span>121 azn</span>
+                </div>
+                <div className="totalPaymetCompleteButton">
+                  <button>Complete oreder</button>
+                </div>
+              </div>
+            </div>
+            <div className="totalPaymetContactLink">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18H2.5C2.31578 18 2.14666 17.8986 2.05957 17.7363C1.97256 17.5737 1.9817 17.3761 2.08398 17.2227C2.41288 16.7293 2.64783 16.377 2.81445 16.0928C2.98046 15.8096 3.05822 15.6276 3.09277 15.4785C3.1298 15.3188 3.13328 15.2917 3.1416 15.1279C3.14858 14.9888 3.11186 14.7436 2.98633 14.2852C2.86416 13.8391 2.67544 13.2477 2.41699 12.4395C2.17975 11.6974 2 10.8558 2 10C2 5.58172 5.58172 2 10 2ZM10 3C6.13401 3 3 6.13401 3 10C3 10.7213 3.15234 11.4566 3.36914 12.1348C3.62466 12.9339 3.8211 13.5492 3.9502 14.0205C4.07572 14.4789 4.15658 14.8632 4.14062 15.1787C4.12931 15.4014 4.11675 15.4869 4.06641 15.7041C3.99817 15.9985 3.86196 16.2827 3.67676 16.5986C3.60439 16.7221 3.51934 16.8542 3.42578 17H10C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3ZM6.66602 9.16699C7.12623 9.16699 7.49996 9.5398 7.5 10C7.5 10.4602 7.12625 10.833 6.66602 10.833C6.20593 10.8328 5.83301 10.4601 5.83301 10C5.83305 9.53991 6.20596 9.16717 6.66602 9.16699ZM10 9.16699C10.4602 9.16699 10.8339 9.5398 10.834 10C10.834 10.4602 10.4602 10.833 10 10.833C9.53991 10.8328 9.16699 10.4601 9.16699 10C9.16704 9.53991 9.53994 9.16717 10 9.16699ZM13.333 9.16699C13.7932 9.16699 14.1669 9.5398 14.167 10C14.167 10.4602 13.7932 10.833 13.333 10.833C12.8729 10.8328 12.5 10.4601 12.5 10C12.5 9.53991 12.8729 9.16717 13.333 9.16699Z"
+                  fill="#1C1C1C"
+                />
+              </svg>
+              <p>Need help..? </p>
+              <Link href="/contact">Contact us</Link>
             </div>
           </div>
         </div>

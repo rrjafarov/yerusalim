@@ -1,30 +1,83 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
-const SearchResults = () => {
+const MobileSearch = ({ isOpen, onClose }) => {
+  const [value, setValue] = useState("");
+
+  const handleClear = () => {
+    setValue("");
+  };
+
   return (
-    <div className="searchResults">
-      <div className="searchResultsItem">
-        <div className="searchResultsTop">
-          <span>Search Results</span>
-          <p>
+    <div className={`mobileSearch ${isOpen ? "active" : ""}`}>
+      <div className="mobileSearchCloseIcon" onClick={onClose}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M23.4697 7.46972C23.7626 7.17683 24.2373 7.17683 24.5302 7.46972C24.8231 7.76262 24.8231 8.2374 24.5302 8.53027L17.0605 16L24.5302 23.4697C24.8231 23.7626 24.8231 24.2374 24.5302 24.5303C24.2373 24.8231 23.7626 24.8231 23.4697 24.5303L15.9999 17.0605L8.53022 24.5303C8.23734 24.8231 7.76257 24.8231 7.46967 24.5303C7.17678 24.2374 7.17678 23.7626 7.46967 23.4697L14.9394 16L7.46967 8.53027C7.17678 8.23738 7.17678 7.76262 7.46967 7.46972C7.76256 7.17683 8.23732 7.17683 8.53022 7.46972L15.9999 14.9394L23.4697 7.46972Z"
+            fill="#22282F"
+          />
+        </svg>
+      </div>
+
+      <div className="mobileSearchTitle">Search</div>
+
+      <div className="mobileSearchDetails">
+        <div className="mobileSearchDetailsInput">
+          {/* SOL SEARCH ICON */}
+          <div className="mobileSearchInputIconLeft">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
+              viewBox="0 0 22 22"
               fill="none"
+              style={{ width: "2.2rem", height: "2.2rem" }}
             >
               <path
-                d="M14.4697 4.46973C14.7626 4.17683 15.2374 4.17683 15.5303 4.46973C15.8231 4.76262 15.8231 5.2374 15.5303 5.53027L11.0605 10L15.5303 14.4697C15.8231 14.7626 15.8231 15.2374 15.5303 15.5303C15.2374 15.8231 14.7626 15.8231 14.4697 15.5303L10 11.0605L5.53027 15.5303C5.2374 15.8231 4.76262 15.8231 4.46973 15.5303C4.17683 15.2374 4.17683 14.7626 4.46973 14.4697L8.93945 10L4.46973 5.53027C4.17683 5.23738 4.17683 4.76262 4.46973 4.46973C4.76262 4.17683 5.23738 4.17683 5.53027 4.46973L10 8.93945L14.4697 4.46973Z"
+                d="M10.083 2C14.5472 2 18.1668 5.61886 18.167 10.083C18.167 12.0451 17.4665 13.843 16.3037 15.2432L18.8633 17.8027C19.1562 18.0956 19.1562 18.5704 18.8633 18.8633C18.5704 19.1562 18.0956 19.1562 17.8027 18.8633L15.2432 16.3037C13.843 17.4665 12.0451 18.167 10.083 18.167C5.61886 18.1668 2 14.5472 2 10.083C2.00018 5.61896 5.61896 2.00018 10.083 2ZM10.083 3.5C6.44739 3.50018 3.50018 6.44739 3.5 10.083C3.5 13.7188 6.44728 16.6668 10.083 16.667C13.7189 16.667 16.667 13.7189 16.667 10.083C16.6668 6.44728 13.7188 3.5 10.083 3.5Z"
                 fill="#22282F"
               />
             </svg>
-          </p>
+          </div>
+
+          <input
+            type="search"
+            placeholder="Search some products here.."
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+
+          {/* SAG X ICON */}
+          <button
+            type="button"
+            className="mobileSearchInputIconRight"
+            onClick={handleClear}
+            aria-label="Clear search"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 14 14"
+              fill="none"
+              style={{ width: "1.4rem", height: "1.4rem" }}
+            >
+              <path
+                d="M9.96973 2.96979C10.2626 2.67689 10.7374 2.67689 11.0303 2.96979C11.3231 3.26269 11.3231 3.73746 11.0303 4.03033L8.06055 7.00006L11.0303 9.96979C11.3231 10.2627 11.3231 10.7375 11.0303 11.0303C10.7374 11.3232 10.2626 11.3232 9.96973 11.0303L7 8.06061L4.03027 11.0303C3.7374 11.3232 3.26262 11.3232 2.96973 11.0303C2.67683 10.7374 2.67683 10.2627 2.96973 9.96979L5.93945 7.00006L2.96973 4.03033C2.67683 3.73744 2.67683 3.26268 2.96973 2.96979C3.26262 2.67689 3.73738 2.67689 4.03027 2.96979L7 5.93951L9.96973 2.96979Z"
+                fill="#22282F"
+              />
+            </svg>
+          </button>
         </div>
 
-        <div className="searchResultsProducts">
+        <div className="mobileSearchDetailsProducts">
           <div className="searchResultsProduct">
             <Link href="#">
               <Image
@@ -314,15 +367,15 @@ const SearchResults = () => {
               </div>
             </Link>
           </div>
-        </div>
-        <div className="mobileSearchAllButton">
-          <button >
-            <span>See All Results</span>
-          </button>
+          <div className="mobileSearchAllButton">
+            <button>
+              <span>See All Producs</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default SearchResults;
+export default MobileSearch;
