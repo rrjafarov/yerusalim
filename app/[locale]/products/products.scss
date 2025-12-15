@@ -316,6 +316,43 @@
   }
 }
 
+
+
+.filterAccordionContentPrices {
+  padding-top: 1.5rem;
+  
+  .filterAccordionContentPricesItems {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    
+    .filterAccordionContentPricesItemsMinPrice {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      
+      p {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+      
+      .minPriceValue {
+        border-radius: 0.4rem;
+        background: #f2eee7;
+        width: 12.3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  
+}
+
+
+
+
 //!   Product Detail Page ------------------------------------------------------------
 
 .productDetailPage {
