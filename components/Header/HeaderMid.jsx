@@ -122,25 +122,6 @@ const HeaderMid = () => {
                   <p>+994 000 00 00</p>
                 </Link>
                 <div className="headerMidTopRightContactLine"></div>
-                {/* <div className="headerMidTopRightLang">
-                  <span>AZ</span>
-                  <p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="10"
-                      height="6"
-                      viewBox="0 0 10 6"
-                      fill="none"
-                    >
-                      <path
-                        d="M0.5 0.5L4.75 5L9 0.5"
-                        stroke="#202020"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </p>
-                </div> */}
                 <HeaderLang />
               </div>
             </div>

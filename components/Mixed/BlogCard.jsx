@@ -6,7 +6,7 @@ const BlogCard = () => {
   return (
     <div>
       <div className="blogsLogo">
-        <Link href="#">
+        <Link href="/blogs/id">
           <Image src="/img/homeBlog.png" alt="blog" width={610} height={350} />
         </Link>
         <div className="blogsLogoTitle">

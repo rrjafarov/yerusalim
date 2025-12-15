@@ -281,6 +281,20 @@
   .blogDetailVideoCover {
     margin: 1rem !important;
   }
+  .blogDetailVideoItems {
+    cursor: pointer;
+    margin: 0rem !important;
+  }
+  .blogDetailVideoCover {
+    margin: 0 !important;
+    margin-top: 3rem !important;
+  }
+  .blogShareLinks {
+    flex-wrap: wrap !important;
+    .blogShareLinksRight {
+      padding-top: 5rem !important;
+    }
+  }
 }
 .blogDpColor {
   background: #f9f7f3;
