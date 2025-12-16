@@ -14,7 +14,7 @@ const HeaderMid = () => {
                   <Link href="/about">About</Link>
                 </li>
                 <li>
-                  <Link href="#">Offers</Link>
+                  <Link href="/brands">Brands</Link>
                 </li>
                 <li>
                   <Link href="/blogs">Blogs</Link>
