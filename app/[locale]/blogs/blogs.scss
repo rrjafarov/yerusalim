@@ -274,7 +274,47 @@
     }
   }
 }
+
 @media (max-width: 767.9px) {
+  .blogsPageCategories {
+    ul {
+      display: flex; // əgər horizontal scroll üçündürsə
+      overflow-x: auto;
+      overflow-y: hidden;
+
+      /* Scrollbar gizlət (Chrome, Edge, Safari) */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Firefox */
+      scrollbar-width: none;
+
+      /* IE & old Edge */
+      -ms-overflow-style: none;
+
+      .activeCategory {
+        color: #000;
+        font-size: 1.4rem !important;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      li {
+        cursor: pointer;
+        color: #959595;
+        font-size: 1.4rem !important;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+    }
+  }
   .blogDetailDescriptionItems {
     padding: 6.1rem 2rem 6.1rem 2rem !important;
   }
@@ -295,7 +335,71 @@
       padding-top: 5rem !important;
     }
   }
+
+  .otherBlogs {
+    .otherBlog {
+      h3 {
+        font-size: 3.2rem !important;
+      }
+    }
+  }
+
+  .blogsDetailHero {
+    .blogsDetailHeroItem {
+      height: 55.1rem;
+
+      .blogsDetailHeroItemTitle {
+        left: 2.5rem;
+        span {
+          font-size: 1.4rem;
+        }
+        h1 {
+          font-size: 4rem !important;
+          width: 46.3rem !important;
+        }
+      }
+      .blogsDetailHeroItemHashtag {
+        left: 2.5rem;
+        a {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+
+  .blogDetailDescription {
+    .blogDetailDescriptionItems {
+      padding: 10.1rem 23rem 7.35rem 23rem;
+      gap: 6.4rem;
+      h2 {
+        font-size: 3.2rem;
+      }
+      p,
+      li {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  .blogDetailVideo {
+    .blogDetailVideoItems {
+      h3 {
+        font-size: 3.2rem;
+      }
+      .blogDetailVideoCover {
+        margin-top: 3.6rem;
+        margin-bottom: 4rem;
+        width: 100%;
+        height: 41.9474rem;
+      }
+    }
+  }
+
+  .productDetailPageShareLiks {
+    margin-top: 2rem;
+  }
 }
+
 .blogDpColor {
   background: #f9f7f3;
 }

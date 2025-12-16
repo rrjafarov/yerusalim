@@ -1,10 +1,48 @@
+
+"use client"
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const ShopCategory = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    let timeoutId = null;
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // bir az gec başlasın
+            timeoutId = setTimeout(() => {
+              setIsVisible(true);
+            }, 300);
+
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="shopCategory">
+    <div
+      className={`shopCategory ${isVisible ? "is-visible" : ""}`}
+      ref={sectionRef}
+    >
       <div className="container">
         <div className="shopCategoryItem">
           <div className="row">
@@ -23,6 +61,7 @@ const ShopCategory = () => {
                 </div>
               </div>
             </div>
+
             <div className="xl-6 lg-6 md-6 sm-12">
               <div className="shopCategoryImg">
                 <Image
@@ -38,6 +77,7 @@ const ShopCategory = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -46,3 +86,4 @@ const ShopCategory = () => {
 };
 
 export default ShopCategory;
+

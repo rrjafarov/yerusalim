@@ -549,6 +549,35 @@ ul {
     }
   }
 }
+
+@media only screen and (max-width: 767.9px) {
+  .headerMidTopRightLang {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    span {
+      color: #202020;
+      // font-family: Inter;
+      font-size: 1.7rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+    ul {
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+      li {
+        padding: 0 1rem;
+
+        button {
+          font-size: 1.6rem !important;
+          color: #000;
+        }
+      }
+    }
+  }
+}
 .headerMain {
   .headerMainItem {
     display: flex;
@@ -895,16 +924,18 @@ ul {
   top: 2rem;
   left: 2rem;
   cursor: pointer;
+  width: 3.2rem;
+  height: 3.2rem;
   svg {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 5rem;
+    height: 5rem;
   }
 }
 .mobileSearchTitle {
-  margin-top: 5.5rem;
+  margin-top: 6.2rem;
   text-align: center;
   color: #000;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -988,7 +1019,7 @@ ul {
           p {
             display: inline-block;
             color: rgba(32, 32, 32, 0.8);
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-style: normal;
             font-weight: 500;
             line-height: 1.7516rem; /* 125.116% */
@@ -996,7 +1027,7 @@ ul {
           }
           span {
             color: rgba(32, 32, 32, 0.8);
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-style: normal;
             font-weight: 500;
             line-height: 1.7516rem; /* 125.116% */
@@ -1011,7 +1042,7 @@ ul {
                 align-items: center;
                 gap: 0.3rem;
                 color: #202020;
-                font-size: 2rem;
+                font-size: 2.2rem;
                 font-style: normal;
                 font-weight: 700;
                 line-height: 1.62rem;
@@ -1038,7 +1069,7 @@ ul {
                 top: 50%;
                 transform: translateY(-50%);
                 height: 0.144rem;
-                background: #ab1d1d;
+                background: #8d8a8a;
                 opacity: 1;
                 pointer-events: none;
               }
@@ -1048,7 +1079,7 @@ ul {
                 align-items: center;
                 gap: 0.1rem;
                 color: #202020;
-                font-size: 1.4rem;
+                font-size: 1.6rem;
                 font-style: normal;
                 font-weight: 500;
                 line-height: 1.62rem; /* 135% */
@@ -1169,7 +1200,7 @@ ul {
         }
         span {
           color: #000;
-          font-size: 1.5rem;
+          font-size: 1.8rem;
           font-style: normal;
           font-weight: 500;
           line-height: normal;
@@ -1254,7 +1285,7 @@ ul {
       li {
         a {
           color: #3f3f3f;
-          font-size: 1.6rem;
+          font-size: 1.8rem;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
@@ -1275,7 +1306,7 @@ ul {
       gap: 1rem;
       align-items: center;
       color: #291d2d;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
@@ -1554,14 +1585,80 @@ ul {
 // ? HomePageCategory CSS end
 
 // * Adventages CSS start
+// .advantages {
+//   background: #10291a;
+//   .advantagesItems {
+//     padding: 6.7rem 0 8.2rem;
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+//     align-items: center;
+//     h2 {
+//       color: #f5eeee;
+//       text-align: center;
+//       font-family: "Noto Serif Display";
+//       font-size: 4rem;
+//       font-style: normal;
+//       font-weight: 400;
+//       line-height: 100%;
+//       letter-spacing: -0.08rem;
+//       text-transform: uppercase;
+//     }
+//     .advantagesItemsCards {
+//       margin-top: 5.5rem;
+//       .advantagesItemsCard {
+//         // width: 24.4rem;
+//         width: 100%;
+//         // height: 16.5rem;
+//         .advantagesItemsCardContent {
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           justify-content: center;
+//           gap: 2rem;
+//         }
+//         .advantagesItemsCardContentTitle {
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           justify-content: center;
+//           padding: 0 2rem;
+//           gap: 0.8rem;
+//           span {
+//             color: #fff;
+//             text-align: center;
+//             // font-family: Inter;
+//             font-size: 1.4rem;
+//             font-style: normal;
+//             font-weight: 400;
+//             line-height: 150%;
+//             opacity: 0.4;
+//           }
+//           p {
+//             color: #fff;
+//             text-align: center;
+//             // font-family: Inter;
+//             font-size: 1.8rem;
+//             font-style: normal;
+//             font-weight: 600;
+//             line-height: 140%;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
 .advantages {
   background: #10291a;
+
   .advantagesItems {
     padding: 6.7rem 0 8.2rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
     h2 {
       color: #f5eeee;
       text-align: center;
@@ -1573,12 +1670,13 @@ ul {
       letter-spacing: -0.08rem;
       text-transform: uppercase;
     }
+
     .advantagesItemsCards {
       margin-top: 5.5rem;
+
       .advantagesItemsCard {
-        // width: 24.4rem;
         width: 100%;
-        // height: 16.5rem;
+
         .advantagesItemsCardContent {
           display: flex;
           flex-direction: column;
@@ -1586,6 +1684,7 @@ ul {
           justify-content: center;
           gap: 2rem;
         }
+
         .advantagesItemsCardContentTitle {
           display: flex;
           flex-direction: column;
@@ -1593,20 +1692,20 @@ ul {
           justify-content: center;
           padding: 0 2rem;
           gap: 0.8rem;
+
           span {
             color: #fff;
             text-align: center;
-            // font-family: Inter;
             font-size: 1.4rem;
             font-style: normal;
             font-weight: 400;
             line-height: 150%;
             opacity: 0.4;
           }
+
           p {
             color: #fff;
             text-align: center;
-            // font-family: Inter;
             font-size: 1.8rem;
             font-style: normal;
             font-weight: 600;
@@ -1617,6 +1716,85 @@ ul {
     }
   }
 }
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* Əvvəlcə gizli saxla */
+.advantages
+  .advantagesItemsCards
+  .row
+  > div
+  .advantagesItemsCardContentImg
+  img {
+  opacity: 0;
+  transform: translateY(14px) scale(0.98);
+}
+
+/* .is-visible olduqda animasiyanı işə sal */
+.advantages.is-visible
+  .advantagesItemsCards
+  .row
+  > div
+  .advantagesItemsCardContentImg
+  img {
+  animation-name: fadeUp;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+/* Staggered delays (kart sıra ilə yanacaq) */
+.advantages.is-visible
+  .advantagesItemsCards
+  .row
+  > div:nth-child(1)
+  .advantagesItemsCardContentImg
+  img {
+  animation-delay: 0s;
+}
+.advantages.is-visible
+  .advantagesItemsCards
+  .row
+  > div:nth-child(2)
+  .advantagesItemsCardContentImg
+  img {
+  animation-delay: 0.12s;
+}
+.advantages.is-visible
+  .advantagesItemsCards
+  .row
+  > div:nth-child(3)
+  .advantagesItemsCardContentImg
+  img {
+  animation-delay: 0.24s;
+}
+.advantages.is-visible
+  .advantagesItemsCards
+  .row
+  > div:nth-child(4)
+  .advantagesItemsCardContentImg
+  img {
+  animation-delay: 0.36s;
+}
+@media (max-width: 768px) {
+  .advantages.is-visible
+    .advantagesItemsCards
+    .row
+    > div
+    .advantagesItemsCardContentImg
+    img {
+    animation-duration: 700ms;
+  }
+}
+
 @media only screen and (max-width: 767.9px) {
   .advantagesItems {
     h2 {
@@ -1627,32 +1805,35 @@ ul {
 // * Adventages CSS end
 
 // ? ShopCategory CSS start
+
 .shopCategory {
   background: #f2f3f3;
+
   .shopCategoryItem {
     padding: 8.9rem 0;
+
     .shopCategoryImg {
-      width: 62.2rem;
       width: 100%;
       height: 58.8rem;
       position: relative;
+
       img {
         width: 100%;
         height: 100%;
-        // object-fit: cover;
       }
+
       .shopCategoryImgAbsolute {
         position: absolute;
         z-index: 2;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(0.9);
         border-radius: 1rem;
         background: rgba(255, 255, 255, 0.7);
+
+        opacity: 0;
         transition: transform 0.5s ease;
-        &:hover {
-          transform: translate(-50%, -50%) scale(1.1);
-        }
+
         a {
           width: 100%;
           height: 100%;
@@ -1660,6 +1841,7 @@ ul {
           justify-content: center;
           align-items: center;
         }
+
         span {
           color: #000;
           text-align: center;
@@ -1670,17 +1852,44 @@ ul {
           line-height: 100%;
           letter-spacing: -0.072rem;
           text-transform: uppercase;
-          padding: 2.2rem 3.8rem 2.2rem 3.8rem !important;
+          padding: 2.2rem 3.8rem !important;
+        }
+
+        &:hover {
+          transform: translate(-50%, -50%) scale(1.1);
         }
       }
     }
   }
 }
+@keyframes fadeScaleCenter {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.shopCategory.is-visible .shopCategoryImgAbsolute {
+  animation: fadeScaleCenter 600ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+.shopCategory.is-visible .row > div:nth-child(2) .shopCategoryImgAbsolute {
+  animation-delay: 0.15s;
+}
+
 @media only screen and (max-width: 767.9px) {
   .shopCategoryImgAbsolute {
     span {
       font-size: 2.8rem !important;
     }
+  }
+  .shopCategoryImg {
+    width: 100%;
+    height: 45rem !important;
   }
 }
 // ? ShopCategory CSS end
@@ -2448,12 +2657,7 @@ ul {
       letter-spacing: 0.0492rem;
       text-transform: uppercase;
     }
-    cursor: pointer;
-
-    &:hover {
-      transition: 0.4s ease;
-      background: #711111;
-    }
+    // cursor: pointer;
   }
 }
 // !productCard CSS end
@@ -2857,6 +3061,12 @@ ul {
     width: 90% !important;
     height: 50.1rem !important;
   }
+
+  .photoGallery {
+  .photoGalleryItems {
+    h3 {
+      font-size: 3.2rem !important;
+    }}}
 }
 // !VIDEO POPUP
 
@@ -2875,17 +3085,13 @@ ul {
     z-index: 2;
     top: 7rem;
     left: 3rem;
-    // top: 50%;
-    // left: 30%;
-    // transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    // gap: 3rem;
     h1 {
       width: 34.7rem;
       color: #fff;
       font-family: "Noto Serif Display";
-      font-size: 3.6rem;
+      font-size: 3.7rem;
       font-style: normal;
       font-weight: 600;
       line-height: 130%; /* 4.16rem */
@@ -2894,7 +3100,7 @@ ul {
     p {
       color: #fff;
       opacity: 0.5;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-style: normal;
       font-weight: 400;
       line-height: 150%;
@@ -2914,7 +3120,7 @@ ul {
         align-items: center;
         gap: 0.8rem;
         color: #fff;
-        font-size: 1.4rem;
+        font-size: 1.7rem;
         font-style: normal;
         font-weight: 500;
         line-height: 2.4rem;

@@ -23,9 +23,9 @@ const SupportPageLeftLinks = () => {
         <li className={isActive("/support/delivery-terms") ? "active" : ""}>
           <Link href="/support/delivery-terms">Delivery terms</Link>
         </li>
-        <li className={isActive("/support/for-user") ? "active" : ""}>
+        {/* <li className={isActive("/support/for-user") ? "active" : ""}>
           <Link href="/support/for-user">For our users</Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

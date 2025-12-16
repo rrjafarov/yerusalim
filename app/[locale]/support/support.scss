@@ -34,7 +34,7 @@
   border: 1px solid #ebebeb;
   // width: 34.6rem;
   width: 100%;
-  height: 29.9rem;
+  height: 24.5rem;
 
   ul {
     padding: 3.8rem 3.3rem;
@@ -127,7 +127,9 @@
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
-    padding-bottom: 8.3rem;
+    background-color: transparent;
+    // padding-bottom: 8.3rem;
+    margin: 0 0 8rem 0;
   }
 
   .ant-collapse-item {
@@ -135,7 +137,7 @@
     border: 0.1rem solid #f0f0f0; /* bağlı halda açıq boz */
     overflow: hidden;
     transition: border-color 0.25s ease, background-color 0.25s ease;
-    min-height: 9.2rem; /* ✅ bağlı halda hündürlük 9.2rem */
+    // min-height: 9.2rem; /* ✅ bağlı halda hündürlük 9.2rem */
   }
 
   /* AÇIQ OLAN ZAMANI */
@@ -153,6 +155,11 @@
     line-height: 2.3rem; /* 164.286% */ /* 164.286% */
   }
 
+  ant-collapse-item:last-child{
+    border: 1px solid  #ab1d1d !important;
+    border-radius: 0.4rem !important;
+
+  }
   /* HEADER */
   .ant-collapse-header {
     margin-left: 5.2rem; /* ✅ başlıq soldan 5.2rem */

@@ -1,20 +1,3 @@
-// import React from "react";
-
-// const BlogsPage = () => {
-//   return (
-//     <div className="blogsPage">
-//       <div className="container">
-//         <h2>Discover candle care tips, fragrance guides every day..</h2>
-//         <div className="blogsPageCategories">
-
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default BlogsPage;
-
 "use client";
 import React, { useState } from "react";
 import BlogCard from "@/components/Mixed/BlogCard";

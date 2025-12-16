@@ -45,12 +45,17 @@ const FAQs = () => {
               voluptas sit aspernatur aut
             </p>
           </Panel>
+
+
           <Panel header="How to pre order products?" key="2">
             <p className="accordionParagraph">
               Quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
               ipsam voluptatem quia voluptas sit aspernatur autQuasi architecto
               beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
               voluptas sit aspernatur aut
+              Quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+              ipsam voluptatem quia voluptas sit aspernatur autQuasi architecto
+              beatae vitae dicta sunt explicabo. 
             </p>
           </Panel>
           
