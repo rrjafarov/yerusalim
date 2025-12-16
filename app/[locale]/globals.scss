@@ -621,9 +621,7 @@ ul {
             line-height: normal;
             letter-spacing: -0.016rem;
           }
-        }
-        &:hover {
-          button {
+          &:hover {
             background: white;
             border: 1px solid #efe9f0;
             span {
@@ -638,8 +636,34 @@ ul {
               color: black;
               transition: color 0.4s ease;
             }
-          }
+          
         }
+
+          
+
+
+
+
+
+        }
+        // &:hover {
+        //   button {
+        //     background: white;
+        //     border: 1px solid #efe9f0;
+        //     span {
+        //       svg {
+        //         path {
+        //           fill: black;
+        //           transition: fill 0.4s ease;
+        //         }
+        //       }
+        //     }
+        //     p {
+        //       color: black;
+        //       transition: color 0.4s ease;
+        //     }
+        //   }
+        // }
       }
 
       .headerSearch {
