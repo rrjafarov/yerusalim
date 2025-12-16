@@ -571,20 +571,44 @@ ul {
           gap: 0.5rem;
           align-items: center;
           justify-content: center;
+          transition: background 0.4s ease, border 0.4s ease;
           span {
             svg {
               width: 2.2367rem;
               height: 2.4rem;
+              path {
+                transition: fill 0.4s ease;
+              }
             }
           }
           p {
             color: #f3f3f3;
             font-size: 1.6rem;
+            transition: color 0.3s ease;
+
             font-family: "Inter", sans-serif !important;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
             letter-spacing: -0.016rem;
+          }
+        }
+        &:hover {
+          button {
+            background: white;
+            border: 1px solid #efe9f0;
+            span {
+              svg {
+                path {
+                  fill: black;
+                  transition: fill 0.4s ease;
+                }
+              }
+            }
+            p {
+              color: black;
+              transition: color 0.4s ease;
+            }
           }
         }
       }
@@ -1461,27 +1485,59 @@ ul {
         border-radius: 0.8rem;
         border: 1px solid #c4c4c4;
         margin-top: 3.2rem;
+        background-color: transparent;
+
+        /* 🔹 container üçün yumşaq keçid */
+        transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out;
+
         .homePageCategoryCardTitleItem {
           display: flex;
           align-items: center;
           gap: 1.6rem;
           padding: 1.2rem 2.4rem;
         }
+
         p {
           color: #202020;
-          //   font-family: Inter;
           font-size: 1.8rem;
           font-style: normal;
           font-weight: 500;
-          line-height: 2.4rem; /* 133.333% */
+          line-height: 2.4rem;
+
+          /* 🔹 text rəngi yumşaq dəyişsin */
+          transition: color 0.4s ease-in-out;
         }
+
         span {
           display: inline-block;
-          transition: transform 0.3s ease-in-out;
+
+          /* 🔹 icon hərəkəti yumşaq olsun */
+          transition: transform 0.4s ease-in-out;
+
+          svg {
+            path {
+              /* 🔹 icon rəngi yumşaq dəyişsin */
+              transition: fill 0.4s ease-in-out;
+            }
+          }
         }
+
         &:hover {
+          background-color: #681616;
+          border: 1px solid #681616;
+
           span {
             transform: translateX(10px);
+
+            svg {
+              path {
+                fill: #fff;
+              }
+            }
+          }
+
+          p {
+            color: #fff;
           }
         }
       }
@@ -2381,6 +2437,7 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.4s ease;
     span {
       padding: 0rem 1.32rem;
       color: #fff;
@@ -2390,6 +2447,12 @@ ul {
       line-height: normal;
       letter-spacing: 0.0492rem;
       text-transform: uppercase;
+    }
+    cursor: pointer;
+
+    &:hover {
+      transition: 0.4s ease;
+      background: #711111;
     }
   }
 }
@@ -2451,6 +2514,29 @@ ul {
           font-weight: 400;
           line-height: normal;
           text-transform: uppercase;
+          transition: transform 0.4s ease, color 0.4s ease;
+          position: relative; // alt xətt üçün
+
+          &:hover {
+            transform: scale(1.1);
+            color: #711111;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 0.5px; // xətt qalınlığı
+            background-color: #711111; // xətt rəngi
+            transition: width 0.4s ease, left 0.4s ease;
+          }
+
+          &:hover::after {
+            width: 100%;
+            left: 0;
+          }
         }
       }
     }
@@ -2477,6 +2563,20 @@ ul {
           font-weight: 500;
           line-height: 2.4rem;
           padding: 1.2rem 2.4rem;
+          transition: 0.4s ease;
+        }
+      }
+      &:hover {
+        a {
+          border: 1px solid #711111;
+          background: #711111;
+          transition: 0.4s ease;
+
+          button {
+            background: #711111;
+            color: #fff;
+            transition: 0.4s ease;
+          }
         }
       }
     }
