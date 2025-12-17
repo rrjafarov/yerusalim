@@ -253,11 +253,11 @@ const Cart = () => {
               <p className="paymentTitle">Payment options</p>
               <div className="paymentMethods">
                 <div className="paymentMethod">
-                  <input type="radio" />
+                  <input type="radio" name="card" />
                   <span>By cash</span>
                 </div>
                 <div className="paymentMethod">
-                  <input type="radio" />
+                  <input type="radio" name="card" />
                   <span>By card</span>
                 </div>
               </div>
