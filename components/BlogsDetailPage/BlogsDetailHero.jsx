@@ -18,9 +18,9 @@ const BlogsDetailHero = () => {
             <h1>How to Choose the Right Scent for Every Room..</h1>
           </div>
           <div className="blogsDetailHeroItemHashtag">
-            <Link href="#">#Blog</Link>
-            <Link href="#">#Candle</Link>
-            <Link href="#">#Candycare</Link>
+            <Link href="#">Blog</Link>
+            <Link href="#">Candle</Link>
+            <Link href="#">Candycare</Link>
           </div>
         </div>
       </div>

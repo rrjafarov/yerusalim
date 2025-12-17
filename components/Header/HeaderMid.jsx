@@ -104,7 +104,7 @@ const HeaderMid = () => {
                 </ul>
               </div>
               <div className="headerMidTopRightContact">
-                <Link href="#">WhatsApp</Link>
+                <Link href="#" className="whatsAppHeader">WhatsApp</Link>
                 <div className="headerMidTopRightContactLine"></div>
                 <Link href="#">
                   <svg

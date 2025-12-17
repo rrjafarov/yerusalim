@@ -8,6 +8,7 @@ import BlogDetailDescription from "@/components/BlogsDetailPage/BlogDetailDescri
 import PhotoGallery from "@/components/Mixed/PhotoGallery";
 import BlogDetailVideo from "@/components/BlogsDetailPage/BlogDetailVideo";
 import OtherBlogs from "@/components/BlogsDetailPage/OtherBlogs";
+import BlogGallery from "@/components/BlogsDetailPage/BlogGallery";
 
 const page = () => {
   return (
@@ -20,7 +21,8 @@ const page = () => {
       <BlogDetailDescription />
 
       <div className="blogDpColor">
-        <PhotoGallery />
+        {/* <PhotoGallery /> */}
+        <BlogGallery />
         <BlogDetailVideo />
         <OtherBlogs />
       </div>
