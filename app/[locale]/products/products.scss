@@ -18,25 +18,39 @@
   }
 }
 
+
+
+
+
+
+
+
+
+
 .productPageDetails {
   padding-top: 5.3rem;
+
   .productPageDetailsHeader {
     border-bottom: 0.1rem solid #efe9f0;
     padding-bottom: 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .productPageDetailsHeaderLeft {
       display: flex;
       gap: 3.9rem;
       align-items: center;
+
       span {
         color: #000;
         font-size: 2.8rem;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
+        cursor: pointer;
       }
+
       p {
         color: #000;
         font-size: 1.4rem;
@@ -44,6 +58,7 @@
         font-weight: 600;
         opacity: 0.4;
         line-height: normal;
+
         strong {
           color: #000;
           font-size: 1.4rem;
@@ -54,21 +69,26 @@
       }
     }
   }
+
   .productPageLayout {
     padding-top: 3.3rem;
+
     .productPageLayoutRight {
       .productPageLayoutRightBanner {
         height: 30rem;
         flex-shrink: 0;
         border-radius: 1.2rem;
+
         img {
           width: 100%;
           height: 100%;
           border-radius: 1.2rem;
         }
       }
+
       .productPageLayoutRightCards {
         padding-top: 3rem;
+
         .productPageLayoutRightCardsPagination {
           .productPageLayoutRightCardsPaginationItem {
             padding-top: 3.2rem;
@@ -77,6 +97,7 @@
             justify-content: center;
             align-items: center;
             gap: 1rem;
+
             .paginationArrow {
               width: 4rem;
               height: 4rem;
@@ -96,7 +117,7 @@
             .paginationPages {
               display: flex;
               align-items: center;
-              gap: 1.2rem; // bütün dairələr arasında 1.2rem
+              gap: 1.2rem;
             }
 
             .paginationItem {
@@ -143,16 +164,356 @@
     }
   }
 }
+.mobileFilterOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+
+  .mobileFilterContent {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 12rem 3rem 8rem; /* üst və alt padding 2rem, sağ-sol 3rem */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* iç kontent scroll üçün */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    &.open {
+      animation: slideIn 0.3s forwards;
+    }
+
+    &.closing {
+      animation: slideOut 0.3s forwards;
+    }
+
+    .closeButton {
+      position: absolute;
+      color: #000;
+      top: 2rem;
+      right: 3rem;
+      font-size: 4rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .mobileFilterOverlay {
+    display: none;
+  }
+}
+
+.filterAccordion .filterAccordionScroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Firefox üçün */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+/* WebKit-based browser-lar (Chrome / Edge / Safari) */
+.filterAccordion .filterAccordionScroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Yuxarı / aşağı (increment / decrement / single) button-ları tam gizlət */
+.filterAccordion .filterAccordionScroll::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* əlavə variantlar üçün sığorta */
+.filterAccordion .filterAccordionScroll::-webkit-scrollbar-button:single-button,
+.filterAccordion .filterAccordionScroll::-webkit-scrollbar-button:increment,
+.filterAccordion .filterAccordionScroll::-webkit-scrollbar-button:decrement {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* thumb (görünən tutacaq) */
+.filterAccordion .filterAccordionScroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+/* track */
+.filterAccordion .filterAccordionScroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Firefox üçün əlavə rəng/width təyini (əminlik üçün) */
+.filterAccordion .filterAccordionScroll {
+  scrollbar-color: rgba(0,0,0,0.3) transparent;
+  scrollbar-width: thin;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .productPageDetails {
+//   padding-top: 5.3rem;
+//   .productPageDetailsHeader {
+//     border-bottom: 0.1rem solid #efe9f0;
+//     padding-bottom: 2.5rem;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     .productPageDetailsHeaderLeft {
+//       display: flex;
+//       gap: 3.9rem;
+//       align-items: center;
+//       span {
+//         color: #000;
+//         font-size: 2.8rem;
+//         font-style: normal;
+//         font-weight: 600;
+//         line-height: normal;
+//       }
+//       p {
+//         color: #000;
+//         font-size: 1.4rem;
+//         font-style: normal;
+//         font-weight: 600;
+//         opacity: 0.4;
+//         line-height: normal;
+//         strong {
+//           color: #000;
+//           font-size: 1.4rem;
+//           font-style: normal;
+//           font-weight: 600;
+//           line-height: normal;
+//         }
+//       }
+//     }
+//   }
+//   .productPageLayout {
+//     padding-top: 3.3rem;
+//     .productPageLayoutRight {
+//       .productPageLayoutRightBanner {
+//         height: 30rem;
+//         flex-shrink: 0;
+//         border-radius: 1.2rem;
+//         img {
+//           width: 100%;
+//           height: 100%;
+//           border-radius: 1.2rem;
+//         }
+//       }
+//       .productPageLayoutRightCards {
+//         padding-top: 3rem;
+//         .productPageLayoutRightCardsPagination {
+//           .productPageLayoutRightCardsPaginationItem {
+//             padding-top: 3.2rem;
+//             padding-bottom: 9.3rem;
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             gap: 1rem;
+//             .paginationArrow {
+//               width: 4rem;
+//               height: 4rem;
+//               border-radius: 50%;
+//               background: transparent;
+//               display: flex;
+//               align-items: center;
+//               justify-content: center;
+//               cursor: pointer;
+//               transition: all 0.2s ease;
+
+//               &:hover {
+//                 border-color: #681616;
+//               }
+//             }
+
+//             .paginationPages {
+//               display: flex;
+//               align-items: center;
+//               gap: 1.2rem; // bütün dairələr arasında 1.2rem
+//             }
+
+//             .paginationItem {
+//               width: 4rem;
+//               height: 4rem;
+//               border-radius: 50%;
+//               border: 1px solid #d9d9d9;
+//               background: transparent;
+//               display: flex;
+//               align-items: center;
+//               justify-content: center;
+//               font-size: 1.6rem;
+//               font-weight: 500;
+//               color: #000;
+//               cursor: pointer;
+//               transition: all 0.2s ease;
+
+//               &.active {
+//                 background: #681616;
+//                 border-color: #681616;
+//                 color: #fff;
+//               }
+
+//               &:hover:not(.active) {
+//                 border-color: #681616;
+//               }
+//             }
+
+//             .paginationDots {
+//               font-size: 2rem;
+//               width: 4rem;
+//               height: 4rem;
+//               display: flex;
+//               align-items: center;
+//               justify-content: center;
+//             }
+//           }
+//         }
+//       }
+//     }
+
+//     .productPageLayoutLeft {
+//       padding-right: 3.9rem;
+//     }
+//   }
+// }
 @media only screen and (max-width: 767.9px) {
   .productPageDetailsHeaderLeft {
     display: flex;
     gap: 2rem !important;
     align-items: center;
   }
+
+  .productPageDetailsHeaderLeft {
+    span {
+      font-size: 2rem !important;
+      border: 1.5px solid #efe9f0;
+      border-radius: 0.8rem;
+      padding: 1.5rem 5.5rem;
+      cursor: pointer;
+    }
+  }
+
+  .sortBy {
+    border: 1.5px solid #efe9f0;
+    border-radius: 0.8rem;
+    padding: 0.5rem 2rem;
+    width: 19rem !important;
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+    span {
+      display: none !important;
+    }
+  }
 }
+
 .sortBy {
   display: flex;
   align-items: center;
+  width: 24rem;
+  justify-content: flex-end;
 
   span {
     color: #2b2e32;
@@ -163,8 +524,6 @@
     letter-spacing: 0.024rem;
     p {
       font-size: 1.2rem;
-      //   width: 2.4rem;
-      //   height: 2.4rem;
     }
     display: flex;
     align-items: center;
@@ -185,6 +544,22 @@
     opacity: 0.6;
   }
 }
+.ant-select-dropdown {
+  padding: 0 !important;
+  background-color: white;
+  box-sizing: border-box;
+  width: 19rem !important;
+}
+.ant-select-item-option-selected {
+  padding: 1rem;
+  color: #711111 !important;
+  background: #f9f7f3 !important;
+}
+.productPageDetailsHeaderRight {
+  position: relative;
+  /* overflow: visible ensures dropdown can show; if you want to clip dropdown to the box, use overflow: hidden */
+  overflow: visible;
+}
 
 .filterAccordion {
   .filterAccordionLine {
@@ -193,7 +568,6 @@
     width: 100%;
   }
 }
-
 .ant-collapse {
   display: flex;
   flex-direction: column;
@@ -342,6 +716,49 @@
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767.9px) {
+  .ant-collapse-header {
+    font-size: 2rem !important;
+  }
+  .filterAccordionContent {
+    .filterAccordionScroll {
+      ul {
+        gap: 2rem;
+        li {
+          font-size: 1.6rem;
+        }
+      }
+    }
+    .filterAccordionCustomScrollbar {
+      top: 5rem; 
+    }
+  }
+
+  .filterAccordionContentSearch {
+    .filterAccordionSearch {
+      width: 95%;
+      height: 4rem !important;
+      input {
+        font-size: 1.5rem;
+      }
+      p {
+        margin-right: 2rem;
+      }
+    }
+    .searchUL {
+      li {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .searchCheck {
+          margin-right: 1.4rem;
+        }
       }
     }
   }

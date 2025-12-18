@@ -3149,11 +3149,6 @@ ul {
   height: 27rem !important;
 }
 
-
-
-
-
-
 // !   PHOTO Gallery <><><><><><><><>
 
 // !VIDEO POPUP
@@ -3869,9 +3864,6 @@ ul {
 // ? ADDRESS page<><><<
 
 // ! PRODUCTSmENU
-
-// ! PRODUCTSmENU
-
 .productDropdownMenu {
   width: 100rem;
   // height: 55.8rem;
@@ -3898,6 +3890,13 @@ ul {
           justify-content: space-between;
           align-items: center;
           border-bottom: 0.1rem solid #f0ecec;
+          width: 100%;
+          height: 100%;
+          color: #3a3a3a;
+          font-size: 1.5rem;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
           a {
             width: 100%;
             height: 100%;
@@ -3929,6 +3928,24 @@ ul {
             line-height: 2.4rem;
           }
         }
+        &:hover {
+          border: 1px solid #111;
+          background: #111;
+          button {
+            width: 100%;
+            height: 4rem;
+            border-radius: 0.8rem;
+            border: 1px solid #111;
+            background: #111;
+            span {
+              color: #fff;
+              font-size: 1.4rem;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 2.4rem;
+            }
+          }
+        }
       }
     }
 
@@ -3947,14 +3964,15 @@ ul {
       }
       .productDropdownMenuItemRightLinks {
         display: flex;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
         gap: 7.1rem;
-        row-gap: 3rem;
+        // row-gap: 3rem;
         padding-top: 3.4rem;
         ul {
           width: 22rem;
           display: flex;
           flex-direction: column;
+          gap: 1rem;
           li {
             a {
               color: #a69191;
@@ -3967,10 +3985,28 @@ ul {
           }
         }
       }
+      .dropdownMenuAndMore {
+        padding-top: 5rem;
+        padding-left: 1rem;
+        color: #000;
+        text-decoration-skip-ink: none;
+        text-underline-offset: 0.2rem;
+        text-underline-position: from-font;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 700;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-thickness: auto;
+        transition: 0.4s ease;
+        &:hover {
+          transform: scale(1.05);
+          transition: 0.4s ease;
+        }
+      }
     }
   }
 
-  /* ====== HOVER EFFECT (pseudo-element ilə genişlənmiş fon) ====== */
   .productDropdownMenuItemLeft {
     ul {
       li {
@@ -3998,25 +4034,46 @@ ul {
           z-index: -1;
         }
 
-        &:hover {
-          /* hide the bottom dividing line while hovered so radius looks clean */
-          border-bottom-color: transparent;
+        // &:hover {
+        //   /* hide the bottom dividing line while hovered so radius looks clean */
+        //   border-bottom-color: transparent;
 
-          &::before {
-            opacity: 1;
-          }
+        //   &::before {
+        //     opacity: 1;
+        //   }
 
-          a {
-            color: #681616;
-          }
+        //   a {
+        //     color: #681616;
+        //   }
 
-          /* override inline svg fill */
-          svg path {
-            fill: #a12b2b !important;
-          }
-        }
+        //   /* override inline svg fill */
+        //   svg path {
+        //     fill: #a12b2b !important;
+        //   }
+        // }
       }
     }
   }
-  /* ============================================================= */
 }
+
+.productDropdownMenuItemLeft {
+  ul {
+    li.is-active {
+      border-bottom-color: transparent;
+
+      &::before {
+        opacity: 1;
+      }
+
+      a {
+        color: #681616;
+      }
+
+      svg path {
+        fill: #a12b2b !important;
+      }
+    }
+  }
+}
+
+// ! PRODUCTSmENU

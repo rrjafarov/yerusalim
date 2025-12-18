@@ -1,5 +1,5 @@
 // "use client";
-// import FilterPriceRange  from "./FilterPriceRange"
+// import FilterPriceRange from "./FilterPriceRange";
 // import React, { useRef, useState, useEffect } from "react";
 // import { Collapse } from "antd";
 // import RangeSlider from "../RangeSlider";
@@ -7,60 +7,51 @@
 // const { Panel } = Collapse;
 
 // const FilterAccordion = () => {
-//   // 🔹 1-ci accordion (Categories) üçün ref və state
+//   // 🔹 Accordion scroll ref və thumb state-ləri
 //   const scrollRefCategories = useRef(null);
 //   const [thumbStyleCategories, setThumbStyleCategories] = useState({
 //     height: "0%",
 //     translateY: 0,
 //   });
-
-//   // 🔹 2-ci accordion (Fragrance - birinci) üçün ref və state
 //   const scrollRefFragrance1 = useRef(null);
 //   const [thumbStyleFragrance1, setThumbStyleFragrance1] = useState({
 //     height: "0%",
 //     translateY: 0,
 //   });
-
-//   // 🔹 3-ci accordion (Fragrance - ikinci) üçün ref və state
 //   const scrollRefFragrance2 = useRef(null);
 //   const [thumbStyleFragrance2, setThumbStyleFragrance2] = useState({
 //     height: "0%",
 //     translateY: 0,
 //   });
 
+//   // 🔹 Price range state
+//   const [priceRange, setPriceRange] = useState([0, 999]);
+
+//   // 🔹 Custom scrollbar update function
 //   const updateThumb = (el, setThumbStyle) => {
 //     if (!el) return;
-
 //     const { scrollTop, scrollHeight, clientHeight } = el;
 
-//     // scroll yoxdursa – custom barı gizlət
 //     if (scrollHeight <= clientHeight) {
 //       setThumbStyle({ height: "0%", translateY: 0 });
 //       return;
 //     }
 
 //     const visibleRatio = clientHeight / scrollHeight;
-//     const thumbHeight = visibleRatio * 100; // % ilə
-
+//     const thumbHeight = visibleRatio * 100;
 //     const maxOffset = clientHeight - visibleRatio * clientHeight;
 //     const translateY = (scrollTop / (scrollHeight - clientHeight)) * maxOffset;
 
-//     setThumbStyle({
-//       height: `${thumbHeight}%`,
-//       translateY,
-//     });
+//     setThumbStyle({ height: `${thumbHeight}%`, translateY });
 //   };
 
 //   useEffect(() => {
-//     if (scrollRefCategories.current) {
+//     if (scrollRefCategories.current)
 //       updateThumb(scrollRefCategories.current, setThumbStyleCategories);
-//     }
-//     if (scrollRefFragrance1.current) {
+//     if (scrollRefFragrance1.current)
 //       updateThumb(scrollRefFragrance1.current, setThumbStyleFragrance1);
-//     }
-//     if (scrollRefFragrance2.current) {
+//     if (scrollRefFragrance2.current)
 //       updateThumb(scrollRefFragrance2.current, setThumbStyleFragrance2);
-//     }
 //   }, []);
 
 //   return (
@@ -109,23 +100,21 @@
 //               <ul>
 //                 <li>Jar Candels</li>
 //                 <li>Festive</li>
-//                 <li>Floral </li>
+//                 <li>Floral</li>
 //                 <li>Jar Candels</li>
 //                 <li>Festive</li>
-//                 <li>Floral </li>
+//                 <li>Floral</li>
 //                 <li>Jar Candels</li>
 //                 <li>Festive</li>
-//                 <li>Floral </li>
+//                 <li>Floral</li>
 //                 <li>Jar Candels</li>
 //                 <li>Festive</li>
-//                 <li>Floral </li>
+//                 <li>Floral</li>
 //                 <li>Jar Candels</li>
 //                 <li>Festive</li>
-//                 <li>Floral </li>
+//                 <li>Floral</li>
 //               </ul>
 //             </div>
-
-//             {/* Custom scrollbar */}
 //             <div className="filterAccordionCustomScrollbar">
 //               <div
 //                 className="filterAccordionCustomThumb"
@@ -155,21 +144,20 @@
 //                   <path
 //                     d="M11.25 11.25L14.25 14.25"
 //                     stroke="black"
-//                     strokeWidth="1.5"
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
+//                     stroke-width="1.5"
+//                     stroke-linecap="round"
+//                     stroke-linejoin="round"
 //                   />
 //                   <path
 //                     d="M7.5 12.25C10.1234 12.25 12.25 10.1234 12.25 7.5C12.25 4.87665 10.1234 2.75 7.5 2.75C4.87665 2.75 2.75 4.87665 2.75 7.5C2.75 10.1234 4.87665 12.25 7.5 12.25Z"
 //                     stroke="black"
-//                     strokeWidth="1.5"
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
+//                     stroke-width="1.5"
+//                     stroke-linecap="round"
+//                     stroke-linejoin="round"
 //                   />
 //                 </svg>
 //               </p>
 //             </div>
-
 //             <div
 //               className="filterAccordionScroll"
 //               ref={scrollRefFragrance1}
@@ -182,57 +170,43 @@
 //             >
 //               <ul className="searchUL">
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Black
+//                   <input className="searchCheck" type="checkbox" /> Black
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Red
+//                   <input className="searchCheck" type="checkbox" /> Red
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Blue
+//                   <input className="searchCheck" type="checkbox" /> Blue
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Yellow
+//                   <input className="searchCheck" type="checkbox" /> Yellow
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Black
+//                   <input className="searchCheck" type="checkbox" /> Black
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Red
+//                   <input className="searchCheck" type="checkbox" /> Red
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Blue
+//                   <input className="searchCheck" type="checkbox" /> Blue
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Yellow
+//                   <input className="searchCheck" type="checkbox" /> Yellow
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Black
+//                   <input className="searchCheck" type="checkbox" /> Black
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Red
+//                   <input className="searchCheck" type="checkbox" /> Red
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Blue
+//                   <input className="searchCheck" type="checkbox" /> Blue
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Yellow
+//                   <input className="searchCheck" type="checkbox" /> Yellow
 //                 </li>
 //               </ul>
 //             </div>
-
-//             {/* Custom scrollbar */}
 //             <div className="filterAccordionCustomScrollbar">
 //               <div
 //                 className="filterAccordionCustomThumb"
@@ -246,21 +220,20 @@
 //         </Panel>
 //         <div className="filterAccordionLine"></div>
 
+//         {/* Price accordion */}
 //         <Panel header="Price" key="4">
 //           <div className="filterAccordionContentPrices">
 //             <div className="filterAccordionContentPricesItems">
 //               <div className="filterAccordionContentPricesItemsMinPrice">
 //                 <p>Min.</p>
-//                 <div className="minPriceValue">0</div>
+//                 <div className="minPriceValue">{priceRange[0]}</div>
 //               </div>
 //               <div className="filterAccordionContentPricesItemsMinPrice">
 //                 <p>Max.</p>
-//                 <div className="minPriceValue">999</div>
+//                 <div className="minPriceValue">{priceRange[1]}</div>
 //               </div>
 //             </div>
-
-//             <RangeSlider />
-
+//             <RangeSlider value={priceRange} onChange={setPriceRange} />
 //           </div>
 //         </Panel>
 //         <div className="filterAccordionLine"></div>
@@ -281,21 +254,20 @@
 //                   <path
 //                     d="M11.25 11.25L14.25 14.25"
 //                     stroke="black"
-//                     strokeWidth="1.5"
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
+//                     stroke-width="1.5"
+//                     stroke-linecap="round"
+//                     stroke-linejoin="round"
 //                   />
 //                   <path
 //                     d="M7.5 12.25C10.1234 12.25 12.25 10.1234 12.25 7.5C12.25 4.87665 10.1234 2.75 7.5 2.75C4.87665 2.75 2.75 4.87665 2.75 7.5C2.75 10.1234 4.87665 12.25 7.5 12.25Z"
 //                     stroke="black"
-//                     strokeWidth="1.5"
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
+//                     stroke-width="1.5"
+//                     stroke-linecap="round"
+//                     stroke-linejoin="round"
 //                   />
 //                 </svg>
 //               </p>
 //             </div>
-
 //             <div
 //               className="filterAccordionScroll"
 //               ref={scrollRefFragrance2}
@@ -308,57 +280,43 @@
 //             >
 //               <ul className="searchUL">
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Black
+//                   <input className="searchCheck" type="checkbox" /> Black
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Red
+//                   <input className="searchCheck" type="checkbox" /> Red
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Blue
+//                   <input className="searchCheck" type="checkbox" /> Blue
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Yellow
+//                   <input className="searchCheck" type="checkbox" /> Yellow
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Black
+//                   <input className="searchCheck" type="checkbox" /> Black
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Red
+//                   <input className="searchCheck" type="checkbox" /> Red
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Blue
+//                   <input className="searchCheck" type="checkbox" /> Blue
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Yellow
+//                   <input className="searchCheck" type="checkbox" /> Yellow
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Black
+//                   <input className="searchCheck" type="checkbox" /> Black
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Red
+//                   <input className="searchCheck" type="checkbox" /> Red
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Blue
+//                   <input className="searchCheck" type="checkbox" /> Blue
 //                 </li>
 //                 <li>
-//                   <input className="searchCheck" type="checkbox" />
-//                   Yellow
+//                   <input className="searchCheck" type="checkbox" /> Yellow
 //                 </li>
 //               </ul>
 //             </div>
-
-//             {/* Custom scrollbar */}
 //             <div className="filterAccordionCustomScrollbar">
 //               <div
 //                 className="filterAccordionCustomThumb"
@@ -377,6 +335,97 @@
 // };
 
 // export default FilterAccordion;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// test
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 "use client";
 import FilterPriceRange from "./FilterPriceRange";
