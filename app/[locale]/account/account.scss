@@ -272,6 +272,42 @@
     background: #711111;
   }
 }
+
+@media only screen and (max-width: 767.9px) {
+  .profilePage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .profilePageItems {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .profilePageTitle {
+      color: #000;
+      font-family: "Inter", sans-serif;
+      font-size: 2.4rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 120%;
+      margin-bottom: 3rem;
+    }
+
+    .profileField {
+      input {
+        height: 6.4rem;
+        font-size: 1.8rem !important;
+      }
+
+      .profileFieldLabel {
+        font-size: 1.5rem !important;
+      }
+    }
+  }
+}
+
 // ! PROFILE
 
 // ? ADDRESS
@@ -505,6 +541,23 @@
     background: #711111;
   }
 }
+
+@media only screen and (max-width: 767.9px) {
+  .changePasswordPage {
+    .changePasswordField {
+      input {
+        font-size: 1.6rem;
+      }
+
+      .changePasswordFieldLabel {
+        font-size: 1.6rem;
+      }
+    }
+    .changePasswordSaveBtn {
+      font-size: 1.6rem !important;
+    }
+  }
+}
 // * CHANGE PASS
 
 // ?MOBILE
@@ -635,7 +688,7 @@
       justify-content: space-between;
       margin-right: 4.8rem;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid #EFE9F0;
+      border-bottom: 1px solid #efe9f0;
     }
     .product-card:last-child {
       border-bottom: none !important;
@@ -768,56 +821,6 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 768px) {
   .orderList {
     .order-list-container {
@@ -901,7 +904,7 @@
           justify-content: space-between;
           margin-right: 0;
           padding-bottom: 1rem;
-          border-bottom: 1px solid #EFE9F0;
+          border-bottom: 1px solid #efe9f0;
 
           .product-info {
             display: flex;
@@ -988,6 +991,389 @@
         font-size: 1.2rem;
       }
     }
-  } 
+  }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .orderList {
+    .order-list-container {
+      margin: 0 1rem;
+      .order-list-title {
+        font-size: 1.6rem;
+        line-height: 1.2;
+        padding: 1rem 0;
+      }
+
+      .order-table {
+        margin-top: 1rem;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 0.8rem;
+
+        thead {
+          display: none;
+        }
+
+        tbody {
+          display: block;
+        }
+
+        /* Hər order row-u kart kimi göstər */
+        .orderRow {
+          display: block;
+          background: #fff;
+          border-radius: 0.8rem;
+          margin-bottom: 1.2rem;
+          padding: 1.2rem 1.4rem;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+          cursor: pointer;
+
+          /* Hər td-ni solda başlıq, sağda dəyər şəklində göstər */
+          td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            font-size: 1.5rem !important;
+            border-bottom: none;
+
+            &:last-child {
+              padding-top: 0.8rem;
+            }
+
+            /* Başlığı əlavə et (::before ilə) */
+            &::before {
+              content: attr(data-label);
+              font-weight: 600;
+              color: #666;
+              font-size: 1.2rem;
+              min-width: 120px;
+            }
+
+            /* ORDER NO. */
+            &:nth-child(1)::before {
+              content: "ORDER NO.";
+            }
+
+            /* CUSTOMER NAME */
+            &:nth-child(2)::before {
+              content: "CUSTOMER NAME";
+            }
+
+            /* ORDER DATE */
+            &:nth-child(3)::before {
+              content: "ORDER DATE";
+            }
+
+            /* ADDRESS */
+            &:nth-child(4)::before {
+              content: "ADDRESS";
+            }
+
+            /* PAYMENT STATUS */
+            &:nth-child(5)::before {
+              content: "PAYMENT STATUS";
+            }
+
+            /* AMOUNT */
+            &:nth-child(6)::before {
+              content: "AMOUNT";
+            }
+
+            /* STATUS */
+            &:nth-child(7)::before {
+              content: "STATUS";
+            }
+          }
+        }
+
+        /* Status hissəsi üçün xüsusi stil */
+        .order-status-cell {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          &::before {
+            display: none !important;
+          }
+
+          .orderStatus {
+            margin-left: auto;
+            margin-right: 0.8rem;
+          }
+
+          .chevron-icon {
+            flex-shrink: 0;
+            svg {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+
+        /* Accordion row */
+        .accordionRow {
+          display: block;
+          margin-top: -0.8rem;
+          margin-bottom: 1.2rem;
+
+          td {
+            display: block;
+            padding: 0;
+
+            &::before {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .order-details {
+        padding: 1.2rem;
+        background: #fff;
+        border-radius: 0 0 0.8rem 0.8rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .order-details-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .products-section {
+        max-height: none;
+        overflow: visible;
+        gap: 0.8rem;
+
+        .product-card {
+          display: flex;
+          justify-content: space-between;
+          margin-right: 0;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid #efe9f0;
+
+          &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+          }
+
+          .product-info {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+          }
+
+          .product-image {
+            width: 11rem;
+            height: 11rem;
+            flex-shrink: 0;
+            border-radius: 0.4rem;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .product-text {
+            padding: 0.4rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            
+            .product-name {
+              font-size: 1.8rem;
+              line-height: 1.3;
+              font-weight: 600;
+              display: block;
+              margin-bottom: 0.4rem;
+            }
+            
+            .product-specs {
+              display: flex;
+              gap: 1.5rem;
+              
+              span {
+                font-size: 1.5rem;
+                color: #666;
+              }
+            }
+          }
+
+          .product-actions {
+            padding: 0.4rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            a {
+              font-size: 1.5rem;
+              color: #681616;
+              text-decoration: underline;
+            }
+            
+            span {
+              font-size: 1.9rem;
+              font-weight: 600;
+              color: #222;
+            }
+          }
+        }
+
+        .product-cardLine {
+          display: none;
+        }
+      }
+
+      .order-summary {
+        background: #faf8f4;
+        border-radius: 0.8rem;
+        height: auto;
+      }
+
+      .order-summaryItems {
+        padding: 1.4rem 1rem;
+        
+        .summary-title {
+          font-size: 1.6rem;
+          font-weight: 600;
+          padding: 1rem;
+          padding-bottom: 1rem;
+          color: #222;
+        }
+        
+        .summary-items {
+          padding: 0;
+          
+          .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.6rem;
+            padding: 0.5rem 1rem;
+            color: #666;
+
+            span:last-child {
+              font-weight: 500;
+              color: #222;
+            }
+          }
+        }
+      }
+
+      .summary-total {
+        margin-top: 1.2rem;
+        // padding: 1.2rem 0 0;
+        border-top: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: white;
+      }
+    }
+  }
+}

@@ -6,7 +6,6 @@
     flex-direction: column;
     align-items: center;
   }
-
   h1 {
     color: #000;
     font-family: "Noto Serif Display";
@@ -17,7 +16,6 @@
     letter-spacing: -0.08rem;
     text-align: center;
   }
-
   p {
     color: #3a3a3a;
     text-align: center;
@@ -34,19 +32,16 @@
     margin-top: 4rem;
     display: flex;
     justify-content: center;
-
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
   }
-
   .loginFormGroup {
     width: 50rem;
     margin-bottom: 2.6rem;
   }
-
   /* FLOATING LABEL MENTIQI */
   .floatingInput {
     position: relative;
@@ -60,7 +55,7 @@
       background: transparent;
       padding: 1.6rem 1.2rem 0.8rem;
       font-size: 1.4rem;
-      outline: none;
+      outline: none;  
 
       &::placeholder {
         color: transparent; // floating label üçün
@@ -75,7 +70,6 @@
       padding: 0 0.4rem;
       background: #f9f7f3; // formun fonu ilə eyni
       transition: all 0.18s ease-in-out;
-
       color: #000;
       font-family: "Noto Serif Display";
       font-size: 1.4rem;
@@ -236,6 +230,46 @@
     }
   }
 }
+
+
+@media screen and (max-width: 767.9px) {
+ .floatingInput {
+    input {
+      font-size: 1.7rem !important;
+    }
+
+    label {
+      font-size: 1.8rem !important;
+    }
+  }
+  .floatingInputPassword {
+    .forgotPasswordInside {
+      font-size: 1.4rem !important;
+    }
+  }
+  .loginFormCheckbox {
+    span {
+      font-size: 1.4rem !important;
+    }
+  }
+  .loginFormBottom {
+    p {
+      font-size: 1.6rem !important;
+    }
+
+    .signupLink {
+      font-size: 1.6rem !important;
+    }
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+  p {
+    font-size: 1.8rem !important;
+  }
+}
+
 
 // !forgotPassword<><><><><><><<><<<><>
 
