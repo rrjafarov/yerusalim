@@ -4,8 +4,6 @@
 
 // const SortBy = () => {
 //   const handleChange = (value) => {
-//     console.log("Selected sort:", value);
-//     // burda sort funksiyanı çağırarsan
 //   };
 
 //   return (
@@ -32,12 +30,17 @@
 //         defaultValue="priceLowToHigh"
 //         onChange={handleChange}
 //         bordered={false}
-//         dropdownMatchSelectWidth={false}
+//         /* IMPORTANT: render dropdown inside the .productPageDetailsHeaderRight element */
+//         getPopupContainer={() =>
+//           document.querySelector(".productPageDetailsHeaderRight") || document.body
+//         }
+//         /* make dropdown width equal to the select (prevents unexpected overflow) */
+//         dropdownMatchSelectWidth={true}
 //         suffixIcon={
 //           <svg
 //             xmlns="http://www.w3.org/2000/svg"
-//             width="16"
-//             height="16"
+//             width="14"
+//             height="14"
 //             viewBox="0 0 16 16"
 //             fill="none"
 //           >
@@ -52,15 +55,6 @@
 //             </g>
 //           </svg>
 //         }
-//         // style={{
-//         //   minWidth: "140px",
-//         //   height: "32px",
-//         //   display: "flex",
-//         //   alignItems: "center",
-//         // }}
-//         dropdownStyle={{
-//           minWidth: "19rem",
-//         }}
 //         options={[
 //           {
 //             value: "priceLowToHigh",
@@ -94,56 +88,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 import React from "react";
 import { Select } from "antd";
 
 const SortBy = () => {
   const handleChange = (value) => {
-    console.log("Selected sort:", value);
-    // burda sort funksiyanı çağırarsan
+    // handle sort change
   };
 
   return (
@@ -170,10 +121,8 @@ const SortBy = () => {
         defaultValue="priceLowToHigh"
         onChange={handleChange}
         bordered={false}
-        /* IMPORTANT: render dropdown inside the .productPageDetailsHeaderRight element */
-        getPopupContainer={() =>
-          document.querySelector(".productPageDetailsHeaderRight") || document.body
-        }
+        /* Render dropdown inside the .sortBy wrapper so it aligns and won't overflow */
+        getPopupContainer={() => document.querySelector(".sortBy") || document.body}
         /* make dropdown width equal to the select (prevents unexpected overflow) */
         dropdownMatchSelectWidth={true}
         suffixIcon={

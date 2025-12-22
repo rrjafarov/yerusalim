@@ -18,15 +18,6 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
 .productPageDetails {
   padding-top: 5.3rem;
 
@@ -278,80 +269,9 @@
 
 /* Firefox üçün əlavə rəng/width təyini (əminlik üçün) */
 .filterAccordion .filterAccordionScroll {
-  scrollbar-color: rgba(0,0,0,0.3) transparent;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
   scrollbar-width: thin;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // .productPageDetails {
 //   padding-top: 5.3rem;
@@ -478,6 +398,7 @@
 //     }
 //   }
 // }
+
 @media only screen and (max-width: 767.9px) {
   .productPageDetailsHeaderLeft {
     display: flex;
@@ -560,6 +481,70 @@
   /* overflow: visible ensures dropdown can show; if you want to clip dropdown to the box, use overflow: hidden */
   overflow: visible;
 }
+
+.sortBy {
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  width: 24rem;
+  justify-content: flex-end;
+
+  span {
+    color: #2b2e32;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.024rem;
+    p {
+      font-size: 1.2rem;
+    }
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .ant-select {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+  }
+
+  .ant-select-content {
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0.6;
+  }
+
+  /* Scoped dropdown: absolute inside .sortBy and aligned to right, width matches wrapper */
+  .ant-select-dropdown {
+    position: absolute !important;
+    top: calc(100% + 0.4rem) !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 100% !important;
+    z-index: 9999;
+    padding: 0 !important;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.ant-select-item-option-content {
+  text-align: center;
+}
+
+/* Remove or comment out the global fixed width rule that caused overflow:
+.ant-select-dropdown {
+  padding: 0 !important;
+  background-color: white;
+  box-sizing: border-box;
+  width: 19rem !important;  <-- remove this line
+}
+*/
 
 .filterAccordion {
   .filterAccordionLine {
@@ -735,7 +720,7 @@
       }
     }
     .filterAccordionCustomScrollbar {
-      top: 5rem; 
+      top: 5rem;
     }
   }
 

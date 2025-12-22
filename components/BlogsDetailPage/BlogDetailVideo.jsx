@@ -2,6 +2,7 @@
 // import Image from "next/image";
 // import React, { useState } from "react";
 // import VideoPopup from "../ProductDetailPage/VideoPopup";
+// import Link from "next/link";
 
 // const BlogDetailVideo = () => {
 //   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -155,8 +156,53 @@
 
 // export default BlogDetailVideo;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "use client";
-import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 import VideoPopup from "../ProductDetailPage/VideoPopup";
 import Link from "next/link";
@@ -206,18 +252,20 @@ const BlogDetailVideo = () => {
           <h3>Video</h3>
 
           <div className="blogDetailVideoCover" onClick={handleOpenVideo}>
-            <Image
-              src="/img/blogVideoCover.png"
-              alt="videoCover"
-              width={1000}
-              height={500}
-            />
-            <span>
-              <img src="/img/videoPlay.png" alt="play" />
-            </span>
+
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube-nocookie.com/embed/V9Cn2lsXzO4?rel=0&modestbranding=1"
+              
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
           </div>
 
-          {isVideoOpen && <VideoPopup onClose={handleCloseVideo} />}
+                      {/* {isVideoOpen && <VideoPopup onClose={handleCloseVideo} />} */}
         </div>
 
         <div className="blogShareLinks">

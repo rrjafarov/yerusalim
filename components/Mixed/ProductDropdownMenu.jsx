@@ -698,6 +698,7 @@ const ProductDropdownMenu = () => {
               <span>Shop all products</span>
             </button>
           </div>
+          
         </div>
 
         <div className="productDropdownMenuItemRight">
