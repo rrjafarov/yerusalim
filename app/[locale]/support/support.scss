@@ -135,7 +135,7 @@
   .ant-collapse-item {
     border-radius: 0.4rem;
     border: 0.1rem solid #f0f0f0; /* bağlı halda açıq boz */
-    overflow: hidden;
+    // overflow: hidden;
     transition: border-color 0.25s ease, background-color 0.25s ease;
     // min-height: 9.2rem; /* ✅ bağlı halda hündürlük 9.2rem */
   }
@@ -155,11 +155,18 @@
     line-height: 2.3rem; /* 164.286% */ /* 164.286% */
   }
 
-  .ant-collapse-item:last-child{
-    border: 1px solid  #ab1d1d !important;
+  .ant-collapse-item:last-child {
+    // border: 1px solid #ab1d1d !important;
+    border: 0.1rem solid #f0f0f0; /* bağlı halda açıq boz */
     border-radius: 0.4rem !important;
-
   }
+  .ant-collapse-item-active:last-child {
+    // border: 1px solid #ab1d1d !important;
+    border: 0.1rem solid #ab1d1d; /* bağlı halda açıq boz */
+    border-radius: 0.4rem !important;
+  }
+
+
   /* HEADER */
   .ant-collapse-header {
     margin-left: 5.2rem; /* ✅ başlıq soldan 5.2rem */
