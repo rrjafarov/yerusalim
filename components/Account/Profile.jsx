@@ -23,9 +23,8 @@ const Profile = () => {
 
     if (editableField === "email" && emailRef.current) {
       const input = emailRef.current;
-      const length = input.value.length;
       input.focus();
-      input.setSelectionRange(length, length);
+      // Email input üçün setSelectionRange işləmir, sadəcə fokus edirik
     }
 
     if (editableField === "phone" && phoneRef.current) {
@@ -133,7 +132,7 @@ const Profile = () => {
           </div>
 
           {/* Save button */}
-          <button type="submit" className="profileSaveBtn">
+          <button type="button" className="profileSaveBtn">
             SAVE AN CONTINUE
           </button>
         </form>
