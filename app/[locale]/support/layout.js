@@ -1,6 +1,5 @@
 "use client";
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
+
 import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
 import Link from "next/link";
 import "./support.scss";
@@ -9,7 +8,6 @@ import SupportPageLeftLinks from "@/components/SupportPaegs/SupportPageLeftLinks
 const SupportPage = ({ children }) => {
   return (
     <>
-      <Header />
       <div className="productPageBackground">
         <div className="supportPages">
           <div className="supportPageHero">
@@ -31,8 +29,6 @@ const SupportPage = ({ children }) => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 };

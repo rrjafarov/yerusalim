@@ -1,6 +1,4 @@
 import BlogsDetailHero from "@/components/BlogsDetailPage/BlogsDetailHero";
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
 import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
 import React from "react";
 import "../blogs.scss";
@@ -13,7 +11,6 @@ import BlogGallery from "@/components/BlogsDetailPage/BlogGallery";
 const page = () => {
   return (
     <div>
-      <Header />
       <div className="productPageBackground">
         <Breadcrumbs />
         <BlogsDetailHero />
@@ -21,12 +18,10 @@ const page = () => {
       <BlogDetailDescription />
 
       <div className="blogDpColor">
-        {/* <PhotoGallery /> */}
         <BlogGallery />
         <BlogDetailVideo />
         <OtherBlogs />
       </div>
-      <Footer />
     </div>
   );
 };

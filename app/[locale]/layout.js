@@ -4,6 +4,8 @@ import GuestUUIDProvider from "@/utils/GuestUUIDProvider";
 import FormValidationProvider from "@/utils/FormValidationProvider"; // client component
 import axiosInstance from "@/lib/axios";
 import { cookies } from "next/headers";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 export const metadata = {
   title: "Yerusalim18",
@@ -40,7 +42,9 @@ export default async function RootLayout({ children }) {
         <StoreProvider>
           <GuestUUIDProvider />
           <FormValidationProvider />
+          <Header />
           {children}
+          <Footer />
         </StoreProvider>
       </body>
     </html>

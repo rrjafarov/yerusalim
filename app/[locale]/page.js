@@ -1,5 +1,4 @@
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
+
 import Advantages from "@/components/HomePage/Advantages";
 import HeroSlider from "@/components/HomePage/HeroSlider";
 import HomePageBlogs from "@/components/HomePage/HomePageBlogs";
@@ -15,7 +14,6 @@ import React from "react";
 const page = () => {
   return (
     <div>
-      <Header />
       <HeroSlider />
       <HomePageCategory />
       <MostPopularProduct />
@@ -27,7 +25,6 @@ const page = () => {
         <HomePageBlogs />
       </div>
       <SeoContent />
-      <Footer />
     </div>
   );
 };

@@ -10,14 +10,12 @@ import BrandsBreadcrumbs from "@/components/BrandsPage/BrandsBreadcrumbs";
 const page = () => {
   return (
     <div>
-      <Header />
       <BrandsHero />
       <div className="productPageBackground">
         {/* <Breadcrumbs /> */}
         <BrandsBreadcrumbs />
         <BrandsPage />
       </div>
-      <Footer />
     </div>
   );
 };
