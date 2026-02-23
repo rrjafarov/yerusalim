@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import HeaderLang from "./HeaderLang";
 
-const HeaderMid = () => {
+const HeaderMid = ({contactData}) => {
   return (
     <div>
       <div className="headerMid">
@@ -31,7 +31,7 @@ const HeaderMid = () => {
               <div className="headerMidTopRightSocials">
                 <ul>
                   <li>
-                    <Link href="#">
+                    <Link href={contactData.facebook} target="_blank">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15"
@@ -47,7 +47,7 @@ const HeaderMid = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="#">
+                    <Link href={contactData.instagram} target="_blank">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15"
@@ -70,7 +70,7 @@ const HeaderMid = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="#">
+                    <Link href={contactData.youtube} target="_blank">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15"
@@ -86,7 +86,7 @@ const HeaderMid = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="#">
+                    <Link href={contactData.linkedin} target="_blank">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15"
@@ -104,9 +104,9 @@ const HeaderMid = () => {
                 </ul>
               </div>
               <div className="headerMidTopRightContact">
-                <Link href="#" className="whatsAppHeader">WhatsApp</Link>
+                <Link href={`https://wa.me/${contactData.wp_number}`} target="_blank" className="whatsAppHeader">WhatsApp</Link>
                 <div className="headerMidTopRightContactLine"></div>
-                <Link href="#">
+                <Link href={`tel:${contactData.phone_number}`} className="phoneHeader">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -119,7 +119,7 @@ const HeaderMid = () => {
                       fill="#291D2D"
                     />
                   </svg>
-                  <p>+994 000 00 00</p>
+                  <p>{contactData.phone_number}</p>
                 </Link>
                 <div className="headerMidTopRightContactLine"></div>
                 <HeaderLang />

@@ -1,9 +1,9 @@
 import React from "react";
 
-const ContactPageHero = () => {
+const ContactPageHero = ({contactData}) => {
   return (
     <div className="contactPageHero">
-      <h1>Contact us</h1>
+      <h1>{contactData.page_name}</h1>
     </div>
   );
 };

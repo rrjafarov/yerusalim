@@ -1,4 +1,3 @@
-
 import Advantages from "@/components/HomePage/Advantages";
 import HeroSlider from "@/components/HomePage/HeroSlider";
 import HomePageBlogs from "@/components/HomePage/HomePageBlogs";
@@ -11,11 +10,36 @@ import ShopCategory from "@/components/HomePage/ShopCategory";
 import ProductCard from "@/components/Mixed/ProductCard";
 import React from "react";
 
-const page = () => {
+import axiosInstance from "@/lib/axios";
+import { cookies } from "next/headers";
+
+async function fetchCategoryPageData() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+
+  try {
+    const { data: about } = await axiosInstance.get(
+      `/page-data/product-categoires`,
+      {
+        headers: { Lang: lang.value },
+        cache: "no-store",
+      },
+    );
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
+
+const page = async () => {
+  const categoryPageData = await fetchCategoryPageData();
+  const categoryData = categoryPageData;
+
+
   return (
     <div>
       <HeroSlider />
-      <HomePageCategory />
+      <HomePageCategory categoryData={categoryData} />
       <MostPopularProduct />
       <Advantages />
       <NewProducts />

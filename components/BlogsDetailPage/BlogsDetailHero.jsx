@@ -1,26 +1,89 @@
+// import Image from "next/image";
+// import Link from "next/link";
+// import React from "react";
+
+// const BlogsDetailHero = ({ blogData }) => {
+//   return (
+//     <div className="blogsDetailHero">
+//       <div className="container">
+//         <div className="blogsDetailHeroItem">
+//           <Image
+//             // src="/img/blogsHero.png"
+//             src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${blogData.main_image}`}
+//             alt="banner"
+//             width={1260}
+//             height={650}
+//           />
+//           <div className="blogsDetailHeroItemTitle">
+//             <span>{blogData.published_date}</span>
+//             <h1>{blogData.title}</h1>
+//           </div>
+//           <div className="blogsDetailHeroItemHashtag">
+//             {blogData?.hastags &&
+//               Object.values(blogData.hastags).map((hashtag, index) => (
+//                 <Link key={index} href="#">
+//                   #{hashtag.name}
+//                 </Link>
+//               ))}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default BlogsDetailHero;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const BlogsDetailHero = () => {
+const BlogsDetailHero = ({ blogData }) => {
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    return new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }).format(date);
+  };
+
   return (
     <div className="blogsDetailHero">
       <div className="container">
         <div className="blogsDetailHeroItem">
           <Image
-            src="/img/blogsHero.png"
+            src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${blogData.main_image}`}
             alt="banner"
             width={1260}
             height={650}
           />
           <div className="blogsDetailHeroItemTitle">
-            <span>Oct 1,2026</span>
-            <h1>How to Choose the Right Scent for Every Room..</h1>
+            <span>{formatDate(blogData.published_date)}</span>
+            <h1>{blogData.title}</h1>
           </div>
           <div className="blogsDetailHeroItemHashtag">
-            <Link href="#">Blog</Link>
-            <Link href="#">Candle</Link>
-            <Link href="#">Candycare</Link>
+            {blogData?.hastags &&
+              Object.values(blogData.hastags).map((hashtag, index) => (
+                <Link key={index} href="#">
+                  #{hashtag.name}
+                </Link>
+              ))}
           </div>
         </div>
       </div>

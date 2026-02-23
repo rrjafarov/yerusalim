@@ -227,6 +227,16 @@
       text-decoration-thickness: auto;
       text-underline-offset: 0.1rem;
       text-underline-position: from-font;
+
+      padding-left: 1.5rem;
+      text-decoration: underline;
+      color: #3a3a3a;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 100%;
+      letter-spacing: -0.014rem;
+      text-underline-offset: 0.1rem;
     }
   }
 }
@@ -625,4 +635,93 @@
       text-underline-offset: 0.1rem;
     }
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// !form validation error mesajları
+
+
+
+/* ===== Validation ===== */
+
+.inputError input {
+  border-color: #ec1f27 !important;
+}
+
+.validationMessage {
+  color: #ec1f27;
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+
+/* ===== Password Eye Icon ===== */
+
+.floatingInputPassword {
+  position: relative;
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 2rem;
+  color: #777;
+}
+
+/* Form group relative olsun */
+.signupFormGroup {
+  position: relative;
+}
+
+/* Validation mesaj */
+.validationMessage {
+  position: absolute;
+  top: -1.8rem;
+  left: 0;
+
+  color: #ec1f27;
+  font-size: 1.2rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+
+/* Error border */
+.inputError input {
+  border-color: #ec1f27 !important;
+}
+
+
+/* Password icon */
+.floatingInputPassword {
+  position: relative;
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 2rem;
+  color: #777;
 }

@@ -7,8 +7,10 @@ import SearchResults from "@/components/Mixed/SearchResults";
 import MobileSearch from "@/components/Mixed/MobileSearch";
 import ProductDropdownMenu from "@/components/Mixed/ProductDropdownMenu";
 import MobileMenuHamburger from "../Mixed/MobileMenuHamburger";
+import { useGetUserInfoQuery } from "@/redux/userService";
+import Cookies from "js-cookie";
 
-const HeaderMain = () => {
+const HeaderMain = ({ categoryData, contactData }) => {
   const [text, setText] = useState("");
   const [mode, setMode] = useState("typing");
   const [idx, setIdx] = useState(0);
@@ -21,6 +23,11 @@ const HeaderMain = () => {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
   const productButtonRef = useRef(null);
+
+  const token = Cookies.get("token");
+  const { data: userData, isSuccess } = useGetUserInfoQuery(undefined, {
+    skip: !token, // token yoxdursa query işləməsin
+  });
 
   const placeholders = [
     "Search products, brands, anything ..",
@@ -85,7 +92,7 @@ const HeaderMain = () => {
 
           <div className="mobileNavbarIcons">
             <div className="mobileNavbarIcon">
-              <Link href="/login">
+              <Link href={token && isSuccess ? "/account/profile" : "/login"}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
@@ -200,6 +207,7 @@ const HeaderMain = () => {
                   }}
                 >
                   <ProductDropdownMenu
+                    categoryData={categoryData}
                     onClose={() => setIsProductMenuOpen(false)}
                   />
                 </div>
@@ -244,7 +252,7 @@ const HeaderMain = () => {
               </Link>
             </div>
             <div className="headerMainLinks">
-              <Link href="/login">
+              <Link href={token && isSuccess ? "/account/profile" : "/login"} >
                 <div className="userProfile">
                   <span>
                     <svg
@@ -261,7 +269,7 @@ const HeaderMain = () => {
                       />
                     </svg>
                   </span>
-                  <p>Login/Sign Up</p>
+                  <p>{token && isSuccess ? "My Account" : "Login/Sign Up"}</p>
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -339,8 +347,11 @@ const HeaderMain = () => {
 
       {/* Mobile Menu Hamburger */}
       <MobileMenuHamburger
+        contactData={contactData}
         isOpen={mobileHamburgerOpen}
         onClose={() => setMobileHamburgerOpen(false)}
+        token={token} // ✅ əlavə etdik
+        isSuccess={isSuccess} // ✅ əlavə etdi
       />
 
       <MobileSearch

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Breadcrumbs = ({selectedCategory}) => {
+const SupportBreadcrumbs = () => {
   return (
     <div className="container">
       <nav className="breadcrumbs">
@@ -10,14 +10,20 @@ const Breadcrumbs = ({selectedCategory}) => {
             <Link href="/">Home</Link>
           </li>
           <span>/</span>
-          <li>
-            <Link href="/products">Products</Link>
-          </li>
-          <span>/</span>
-          <li>{selectedCategory.name}</li>
+          <li>Support</li>
         </ul>
       </nav>
     </div>
   );
 };
-export default Breadcrumbs;
+export default SupportBreadcrumbs;
+
+
+
+
+
+
+
+
+
+

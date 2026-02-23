@@ -1,11 +1,13 @@
 // "use client";
-// import Image from "next/image";
-// import React, { useState } from "react";
+// import React, { useState, useRef, useEffect } from "react";
 // import VideoPopup from "../ProductDetailPage/VideoPopup";
 // import Link from "next/link";
 
-// const BlogDetailVideo = () => {
+// const BlogDetailVideo = ({ blogData }) => {
 //   const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+//   const [copied, setCopied] = useState(false);
+//   const copyTimeoutRef = useRef(null);
 
 //   const handleOpenVideo = () => {
 //     setIsVideoOpen(true);
@@ -15,25 +17,60 @@
 //     setIsVideoOpen(false);
 //   };
 
+//   const handleCopyLink = () => {
+//     if (typeof window !== "undefined" && navigator?.clipboard) {
+//       navigator.clipboard.writeText(window.location.href).catch(() => {});
+//     }
+
+//     setCopied(true);
+
+//     if (copyTimeoutRef.current) {
+//       clearTimeout(copyTimeoutRef.current);
+//     }
+
+//     copyTimeoutRef.current = setTimeout(() => {
+//       setCopied(false);
+//     }, 2000);
+//   };
+
+//   useEffect(() => {
+//     return () => {
+//       if (copyTimeoutRef.current) {
+//         clearTimeout(copyTimeoutRef.current);
+//       }
+//     };
+//   }, []);
+
 //   return (
-//     <div className="blogDetailVideo">
-//       <div className="container">
+//     <div className="container">
+//       <div className="blogDetailVideo">
 //         <div className="blogDetailVideoItems">
 //           <h3>Video</h3>
 
 //           <div className="blogDetailVideoCover" onClick={handleOpenVideo}>
-//             <Image
-//               src="/img/blogVideoCover.png"
-//               alt="videoCover"
-//               width={1000}
-//               height={500}
+//             {/* <iframe
+//               width="100%"
+//               height="100%"
+//               // src="https://www.youtube-nocookie.com/embed/V9Cn2lsXzO4?rel=0&modestbranding=1"
+//               src={blogData.youtube_url}
+//               title="YouTube video player"
+//               frameBorder="0"
+//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+//               allowFullScreen
+//             ></iframe> */}
+
+//             <iframe
+//               width="100%"
+//               height="100%"
+//               src={getEmbedUrl(blogData.youtube_url)}
+//               title="YouTube video player"
+//               frameBorder="0"
+//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+//               allowFullScreen
 //             />
-//             <span>
-//               <img src="/img/videoPlay.png" alt="play" />
-//             </span>
 //           </div>
 
-//           {isVideoOpen && <VideoPopup onClose={handleCloseVideo} />}
+//           {/* {isVideoOpen && <VideoPopup onClose={handleCloseVideo} />} */}
 //         </div>
 
 //         <div className="blogShareLinks">
@@ -81,7 +118,7 @@
 //                     viewBox="0 0 20 20"
 //                     fill="none"
 //                   >
-//                     <g clip-path="url(#clip0_151_12010)">
+//                     <g clipPath="url(#clip0_151_12010)">
 //                       <path
 //                         d="M11.5616 11.1475H13.6262L14.452 7.84416H11.5616V6.19249C11.5616 5.34188 11.5616 4.54082 13.2133 4.54082H14.452V1.76601C14.1828 1.7305 13.1662 1.65039 12.0926 1.65039C9.85048 1.65039 8.25827 3.0188 8.25827 5.53182V7.84416H5.78076V11.1475H8.25827V18.1671H11.5616V11.1475Z"
 //                         fill="black"
@@ -122,7 +159,7 @@
 //                     viewBox="0 0 19 19"
 //                     fill="none"
 //                   >
-//                     <g clip-path="url(#clip0_151_12016)">
+//                     <g clipPath="url(#clip0_151_12016)">
 //                       <path
 //                         d="M10.1114 6.27827L11.207 7.37379C11.7103 7.87705 12.1095 8.47452 12.3819 9.13209C12.6543 9.78965 12.7945 10.4944 12.7945 11.2062C12.7945 11.9179 12.6543 12.6227 12.3819 13.2803C12.1095 13.9379 11.7103 14.5353 11.207 15.0386L10.9329 15.3119C9.91647 16.3283 8.53792 16.8993 7.10049 16.8993C5.66306 16.8993 4.28451 16.3283 3.26809 15.3119C2.25168 14.2955 1.68066 12.9169 1.68066 11.4795C1.68066 10.0421 2.25168 8.66351 3.26809 7.64709L4.36362 8.74261C4.00157 9.10151 3.71397 9.52838 3.51734 9.99871C3.32071 10.4691 3.21891 10.9736 3.21779 11.4834C3.21668 11.9932 3.31626 12.4982 3.51083 12.9694C3.7054 13.4406 3.99113 13.8687 4.3516 14.2291C4.71208 14.5896 5.1402 14.8753 5.6114 15.0699C6.08259 15.2645 6.58758 15.3641 7.09737 15.363C7.60715 15.3618 8.1117 15.26 8.58204 15.0634C9.05238 14.8668 9.47925 14.5792 9.83814 14.2171L10.1122 13.9431C10.8379 13.2171 11.2456 12.2327 11.2456 11.2062C11.2456 10.1797 10.8379 9.19525 10.1122 8.46931L9.01669 7.37379L10.1122 6.27904L10.1114 6.27827ZM15.3127 10.9321L14.2179 9.83736C14.58 9.47847 14.8676 9.0516 15.0642 8.58126C15.2608 8.11092 15.3626 7.60638 15.3637 7.09659C15.3649 6.58681 15.2653 6.08182 15.0707 5.61062C14.8761 5.13943 14.5904 4.7113 14.2299 4.35083C13.8694 3.99036 13.4413 3.70463 12.9701 3.51006C12.4989 3.31549 11.9939 3.2159 11.4842 3.21702C10.9744 3.21813 10.4698 3.31993 9.99949 3.51656C9.52915 3.7132 9.10228 4.00079 8.74339 4.36284L8.46931 4.63692C7.74359 5.36286 7.33591 6.34731 7.33591 7.37379C7.33591 8.40027 7.74359 9.38472 8.46931 10.1107L9.56484 11.2062L8.46931 12.3009L7.37456 11.2062C6.87125 10.7029 6.472 10.1055 6.19961 9.44789C5.92722 8.79033 5.78702 8.08554 5.78702 7.37379C5.78702 6.66204 5.92722 5.95726 6.19961 5.29969C6.472 4.64213 6.87125 4.04465 7.37456 3.54139L7.64864 3.26809C8.66505 2.25168 10.0436 1.68066 11.481 1.68066C12.9185 1.68066 14.297 2.25168 15.3134 3.26809C16.3298 4.28451 16.9009 5.66306 16.9009 7.10049C16.9009 8.53792 16.3298 9.91647 15.3134 10.9329L15.3127 10.9321Z"
 //                         fill="black"
@@ -148,6 +185,18 @@
 //               </span>
 //             </ul>
 //           </div>
+
+//           <div className="blogShareLinksRight">
+//             <span>{blogData.author}</span>
+//             <ul>
+//               {blogData?.hastags &&
+//                 Object.values(blogData.hastags).map((hashtag, index) => (
+//                   <li key={index}>
+//                     <Link href="#">#{hashtag.name}</Link>
+//                   </li>
+//                 ))}
+//             </ul>
+//           </div>
 //         </div>
 //       </div>
 //     </div>
@@ -165,51 +214,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// !son versiya
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import VideoPopup from "../ProductDetailPage/VideoPopup";
 import Link from "next/link";
 
-const BlogDetailVideo = () => {
+const BlogDetailVideo = ({ blogData }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-
   const [copied, setCopied] = useState(false);
   const copyTimeoutRef = useRef(null);
 
@@ -245,29 +256,77 @@ const BlogDetailVideo = () => {
     };
   }, []);
 
+  // ---------- getEmbedUrl funksiyası ----------
+  const getEmbedUrl = (url) => {
+    if (!url || typeof url !== "string") return "";
+
+    const trimmed = url.trim();
+
+    // Direkt embed verilmişsə id çıxart
+    const embedMatch = trimmed.match(/\/embed\/([A-Za-z0-9_-]{11})/);
+    if (embedMatch && embedMatch[1]) {
+      return `https://www.youtube-nocookie.com/embed/${embedMatch[1]}?rel=0&modestbranding=1`;
+    }
+
+    // watch?v= url
+    const watchMatch = trimmed.match(/[?&]v=([A-Za-z0-9_-]{11})/);
+    if (watchMatch && watchMatch[1]) {
+      return `https://www.youtube-nocookie.com/embed/${watchMatch[1]}?rel=0&modestbranding=1`;
+    }
+
+    // youtu.be short url
+    const shortMatch = trimmed.match(/youtu\.be\/([A-Za-z0-9_-]{11})/);
+    if (shortMatch && shortMatch[1]) {
+      return `https://www.youtube-nocookie.com/embed/${shortMatch[1]}?rel=0&modestbranding=1`;
+    }
+
+    // Bəzən admin sadəcə id göndərə bilər (11 simvollu)
+    const idOnlyMatch = trimmed.match(/^([A-Za-z0-9_-]{11})$/);
+    if (idOnlyMatch && idOnlyMatch[1]) {
+      return `https://www.youtube-nocookie.com/embed/${idOnlyMatch[1]}?rel=0&modestbranding=1`;
+    }
+
+    // Əgər heç biri tapılmadısa boş qaytar
+    return "";
+  };
+  // --------------------------------------------
+
+  const embedUrl = getEmbedUrl(blogData?.youtube_url);
+
   return (
     <div className="container">
       <div className="blogDetailVideo">
-        <div className="blogDetailVideoItems">
-          <h3>Video</h3>
+        {/* Video yalnız embedUrl varsa göstərilir (başlıq + cover ilə birlikdə) */}
+        {embedUrl && (
+          <div className="blogDetailVideoItems">
+            <h3>Video</h3>
 
-          <div className="blogDetailVideoCover" onClick={handleOpenVideo}>
+            <div
+              className="blogDetailVideoCover"
+              onClick={handleOpenVideo}
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") handleOpenVideo();
+              }}
+            >
+              <iframe
+                width="100%"
+                height="100%"
+                src={embedUrl}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
 
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube-nocookie.com/embed/V9Cn2lsXzO4?rel=0&modestbranding=1"
-              
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+            {/* Popup istəsən buranı aktivləşdir */}
+            {/* {isVideoOpen && <VideoPopup onClose={handleCloseVideo} />} */}
           </div>
+        )}
 
-                      {/* {isVideoOpen && <VideoPopup onClose={handleCloseVideo} />} */}
-        </div>
-
+        {/* Share linklər və hashtag-lar həmişə görünür (video olmasa belə) */}
         <div className="blogShareLinks">
           <div className="productDetailPageShareLiks">
             <span>Share:</span>
@@ -370,7 +429,7 @@ const BlogDetailVideo = () => {
                 <span>Copy link</span>
               </button>
 
-              {/* “Copied” yazısı button-dan kənarda */}
+              {/* “Copied” yazısı */}
               <span
                 className={`productDetailPageShareCopied ${
                   copied ? "visible" : ""
@@ -380,19 +439,16 @@ const BlogDetailVideo = () => {
               </span>
             </ul>
           </div>
-          <div className="blogShareLinksRight">
-            <span>Written by Tamara Mayne / </span>
-            <ul>
-              <li>
-                <Link href="#">#candly</Link>
-              </li>
 
-              <li>
-                <Link href="#">#yerusalim</Link>
-              </li>
-              <li>
-                <Link href="#"></Link>
-              </li>
+          <div className="blogShareLinksRight">
+            <span>{blogData?.author}</span>
+            <ul>
+              {blogData?.hastags &&
+                Object.values(blogData.hastags).map((hashtag, index) => (
+                  <li key={index}>
+                    <Link href="#">#{hashtag.name}</Link>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>

@@ -1,12 +1,12 @@
-
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { Collapse } from "antd";
 
 const { Panel } = Collapse;
 
-const FAQs = () => {
+const FAQs = ({ faqData }) => {
+  const contentRef = useRef(null);
   return (
     <div className="faqS">
       <h3>Frequently asked questions</h3>
@@ -37,31 +37,16 @@ const FAQs = () => {
             </span>
           )}
         >
-          <Panel header="How to pre order products?" key="1">
-            <p className="accordionParagraph">
-              Quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur autQuasi architecto
-              beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-              voluptas sit aspernatur aut
-            </p>
-          </Panel>
-
-
-          <Panel header="How to pre order products?" key="2">
-            <p className="accordionParagraph">
-              Quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur autQuasi architecto
-              beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-              voluptas sit aspernatur aut
-              Quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur autQuasi architecto
-              beatae vitae dicta sunt explicabo. 
-            </p>
-          </Panel>
-          
-
- 
-          
+          {faqData?.map((item, index) => (
+            <Panel header={item?.question} key={index + 2}>
+              {/* <p className="accordionParagraph">{item?.answer}</p> */}
+              <div
+                className="faqAnswer"
+                ref={contentRef}
+                dangerouslySetInnerHTML={{ __html: item?.answer }}
+              />
+            </Panel>
+          ))}
         </Collapse>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const ContactBreadcrumbs = () => {
+const ContactBreadcrumbs = ({contactData}) => {
   return (
     <div className="container">
       <nav className="breadcrumbs">
@@ -10,7 +10,7 @@ const ContactBreadcrumbs = () => {
             <Link href="/">Home</Link>
           </li>
           <span>/</span>
-          <li>Contact us</li>
+          <li>{contactData.page_name}</li>
         </ul>
       </nav>
     </div>

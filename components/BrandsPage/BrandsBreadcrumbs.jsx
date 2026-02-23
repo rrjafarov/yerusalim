@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const BrandsBreadcrumbs = () => {
+const BrandsBreadcrumbs = ({brandsNameData}) => {
   return (
     <div>
       <div className="container">
@@ -11,7 +11,7 @@ const BrandsBreadcrumbs = () => {
               <Link href="/">Home</Link>
             </li>
             <span>/</span>
-            <li>Brands</li>
+            <li>{brandsNameData.data.page_name}</li>
           </ul>
         </nav>
       </div>

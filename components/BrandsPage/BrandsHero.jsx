@@ -1,9 +1,9 @@
 import React from "react";
 
-const BrandsHero = () => {
+const BrandsHero = ({brandsNameData}) => {
   return (
     <div className="brandsPageHero">
-      <h1>Brands</h1>
+      <h1>{brandsNameData.data.page_name}</h1>
     </div>
   );
 };

@@ -1,6 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+#nprogress .bar {
+  height: 0.5rem !important; // default 2px-dir
+  border-radius: 0.3rem;
+  box-shadow:
+    0 0 10px #711111,
+    0 0 5px #711111 !important;
+}
+
+#nprogress .bar {
+  box-shadow:
+    0 0 5px #711111,
+    0 0 5px #711111 !important;
+  background: #711111 !important; // Burada istədiyin rəngi yaz (məs: #08316F, red, green)
+}
+
+#nprogress .peg {
+  box-shadow:
+    0 0 5px #711111,
+    0 0 5px #711111 !important;
+}
+
+/* Spinner varsa, onu da dəyişə bilərsən */
+#nprogress .spinner-icon {
+  border-top-color: #711111;
+  border-left-color: #711111;
+}
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -12,7 +38,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #00004d;
+  background-color: #711111;
 }
 
 ::-webkit-scrollbar-track {
@@ -23,7 +49,6 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  //   font-family: Inter;
   font-family: "Inter", sans-serif !important;
 }
 
@@ -620,7 +645,9 @@ ul {
           gap: 0.5rem;
           align-items: center;
           justify-content: center;
-          transition: background 0.4s ease, border 0.4s ease;
+          transition:
+            background 0.4s ease,
+            border 0.4s ease;
           span {
             svg {
               width: 2.2367rem;
@@ -729,7 +756,7 @@ ul {
           border-radius: 0.7rem;
           border: 1px solid #efe9f0;
           .userProfile {
-            padding: 1.4rem 1.2rem;
+            padding: 1.3rem 1.2rem;
             display: flex;
             gap: 1rem;
             align-items: center;
@@ -741,6 +768,8 @@ ul {
               line-height: normal;
               letter-spacing: -0.013rem;
               opacity: 0.7;
+              width: 8rem;
+              text-align: center;
             }
             strong {
               color: #000;
@@ -1170,7 +1199,9 @@ ul {
   background: #fff;
   transform: translateX(-100%);
   opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
   z-index: 1000;
   &.active {
     transform: translateX(0);
@@ -1291,7 +1322,9 @@ ul {
         .accordionContent {
           max-height: 0;
           overflow: hidden;
-          transition: max-height 0.3s ease, padding 0.3s ease;
+          transition:
+            max-height 0.3s ease,
+            padding 0.3s ease;
           padding: 0;
 
           &.active {
@@ -1631,7 +1664,9 @@ ul {
         background-color: transparent;
 
         /* 🔹 container üçün yumşaq keçid */
-        transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out;
+        transition:
+          background-color 0.4s ease-in-out,
+          border 0.4s ease-in-out;
 
         .homePageCategoryCardTitleItem {
           display: flex;
@@ -2278,7 +2313,7 @@ ul {
       align-items: center;
       flex-direction: column;
       gap: 0.8rem;
-      h2 {
+      p {
         color: #202020;
         text-align: center;
         font-family: "Noto Serif Display";
@@ -2289,7 +2324,7 @@ ul {
         letter-spacing: -0.08rem;
         text-transform: uppercase;
       }
-      p {
+      h2 {
         color: #202020;
         text-align: center;
         font-family: "Noto Serif Display";
@@ -2366,10 +2401,10 @@ ul {
 }
 @media only screen and (max-width: 767.9px) {
   .seoMainItemTop {
-    h2 {
+    p {
       font-size: 3.2rem !important;
     }
-    p {
+    h2 {
       font-size: 1.8rem !important;
     }
   }
@@ -2733,7 +2768,9 @@ ul {
     width: 22.8rem;
     height: 4rem;
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.4s ease-in-out;
+    transition:
+      opacity 0.3s ease,
+      transform 0.4s ease-in-out;
     display: flex;
     gap: 1.5rem;
     align-items: center;
@@ -2851,7 +2888,9 @@ ul {
           font-weight: 400;
           line-height: normal;
           text-transform: uppercase;
-          transition: transform 0.4s ease, color 0.4s ease;
+          transition:
+            transform 0.4s ease,
+            color 0.4s ease;
           position: relative; // alt xətt üçün
 
           &:hover {
@@ -2867,7 +2906,9 @@ ul {
             width: 0;
             height: 0.5px; // xətt qalınlığı
             background-color: #711111; // xətt rəngi
-            transition: width 0.4s ease, left 0.4s ease;
+            transition:
+              width 0.4s ease,
+              left 0.4s ease;
           }
 
           &:hover::after {
@@ -4030,7 +4071,9 @@ ul {
           background: #f5f0f0;
           border-radius: 0.8rem;
           opacity: 0;
-          transition: opacity 150ms ease, transform 150ms ease;
+          transition:
+            opacity 150ms ease,
+            transform 150ms ease;
           z-index: -1;
         }
 
@@ -4077,3 +4120,113 @@ ul {
 }
 
 // ! PRODUCTSmENU
+#noProductFound {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #000;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  #noProductFoundIcon {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+.noBlogFound {
+  margin-top: 7rem;
+}
+// Notfound page
+.notFound {
+  width: 100%;
+  height: 65.2rem;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+    // object-fit: cover;
+  }
+  .notFoundContent {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    #notFoundContent1 {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.4rem;
+    }
+    span {
+      color: #313131;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 2.1rem */
+    }
+    strong {
+      color: #000;
+      font-family: "Noto Serif Display";
+      font-size: 4.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%; /* 4.4rem */
+      letter-spacing: -0.088rem;
+      text-transform: uppercase;
+    }
+    p {
+      color: #313131;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 2.1rem */
+      width: 28.9rem;
+      margin-top: 1rem;
+    }
+    a {
+      width: 24.9rem;
+      height: 5.6rem;
+      border-radius: 0.8rem;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 2.0117rem; /* 143.69% */
+      letter-spacing: 0.014rem;
+      text-transform: uppercase;
+      margin-top: 2.5rem;
+    }
+  }
+}
+@media only screen and (max-width: 767.9px) {
+  .notFound {
+    height: 50rem !important;
+    .notFoundContent {
+      left: 31% !important;
+      span {
+        font-size: 1.2rem !important;
+      }
+      strong {
+        font-size: 3.2rem !important;
+      }
+      p {
+        font-size: 1.2rem !important;
+      }
+    }
+  }
+}
+// Notfound page

@@ -2,28 +2,33 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ContactPageMain = () => {
+const ContactPageMain = ({ contactData }) => {
   return (
     <div className="contactPageMain">
       <div className="container">
         <div className="contactPageMainItems">
-          <h2>Get in touch with our team anytime</h2>
+          {/* <h2>Get in touch with our team anytime</h2> */}
+          <h2>{contactData.title}</h2>
 
           <div className="contactPageMainItemsContent">
             <div className="contactPageMainItemsContentLeft">
               <div className="contactPageMainItemsContentLeftTop">
                 <span>Costomer care</span>
-                <p>
+                {/* <p>
                   If you need a hand with your order or have any P.F.-related
                   questions, were happy to help. Our team is available Monday
                   through Friday only.
-                </p>
+                </p> */}
+                <div
+                  className="blogContentApiDescriptionItems"
+                  dangerouslySetInnerHTML={{ __html: contactData.description }}
+                />
               </div>
               <div className="contactPageMainItemsContentLeftBottom">
                 <div className="contactPageMainItemsContentLeftBottomSocials">
                   <ul>
                     <li>
-                      <Link href="#">
+                      <Link href={contactData.facebook} target="_blank">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="17"
@@ -50,7 +55,7 @@ const ContactPageMain = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link href="#">
+                      <Link href={contactData.instagram} target="_blank">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="17"
@@ -66,7 +71,7 @@ const ContactPageMain = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link href="#">
+                      <Link href={contactData.youtube} target="_blank">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="17"
@@ -93,7 +98,7 @@ const ContactPageMain = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link href="#">
+                      <Link href={contactData.linkedin} target="_blank">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="17"
@@ -119,7 +124,7 @@ const ContactPageMain = () => {
             </div>
             <div className="contactPageMainItemsContentMiddle">
               <Image
-                src="/img/contact.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${contactData.image}`}
                 alt="contact"
                 width={1200}
                 height={600}
@@ -129,7 +134,7 @@ const ContactPageMain = () => {
               <div className="contactPageMainItemsContentRightCards">
                 <div className="contactPageMainItemsContentRightCard">
                   <span>Email - send your inquiry</span>
-                  <Link href="#">hello@yerusalim.com</Link>
+                  <Link href={`mailto:${contactData.email}`}>{contactData.email}</Link>
                   <p>
                     and well respond as quickly as possible. Weekend messages
                     will receive a response the following Monday or Tuesday.
@@ -137,7 +142,9 @@ const ContactPageMain = () => {
                 </div>
                 <div className="contactPageMainItemsContentRightCard">
                   <span>Phone - please call</span>
-                  <Link href="#">+994 00 000 00 00</Link>
+                  <Link href={`tel:${contactData.phone_number}`}>
+                    {contactData.phone_number}
+                  </Link>
                   <p>
                     and well respond as quickly as possible. Weekend messages
                     will receive a response the following Monday or Tuesday.
@@ -145,7 +152,7 @@ const ContactPageMain = () => {
                 </div>
                 <div className="contactPageMainItemsContentRightCard">
                   <span>Location - find us</span>
-                  <Link href="#">Baku,azerbaijan Nizami st 12A m 172</Link>
+                  <Link href="#">{contactData.address}</Link>
                   <p>
                     Open Sunday - Thursday, 11am-6pm Open Fri & Sat, 11am-7pm
                   </p>

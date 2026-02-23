@@ -1,27 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   /* config options here */
-// };
-
-// export default nextConfig;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -37,7 +13,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "admin.adentta.az",
+        // hostname: "admin.adentta.az",
+        hostname: "yerusalim-admin.void.az",
+
         pathname: "/**",
       },
     ],

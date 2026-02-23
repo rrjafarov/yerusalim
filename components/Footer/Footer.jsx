@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React from "react";
 
-const Footer = () => {
+const Footer = ({contactData}) => {
+  const currentYear = new Date().getFullYear();
   return (
     <div className="footer">
       <div className="footerItem">
@@ -119,7 +120,7 @@ const Footer = () => {
                   </span>
                   <ul className="followUS">
                     <li>
-                      <Link href="/">
+                      <Link href={contactData.facebook} target="_blank">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="15"
@@ -142,7 +143,7 @@ const Footer = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/">
+                      <Link href={contactData.instagram} target="_blank">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="15"
@@ -158,7 +159,7 @@ const Footer = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/">
+                      <Link href={contactData.youtube} target="_blank">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="15"
@@ -174,7 +175,7 @@ const Footer = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/">
+                      <Link href={contactData.linkedin} target="_blank">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="15"
@@ -292,12 +293,11 @@ const Footer = () => {
           <div className="footerBottomItems">
             <div className="footerBottomItemLeft">
               <p>
-                Copyright © 2025. <strong>Yerusalim 18</strong>. All rights
-                reserved.
+                Copyright © {currentYear}. <strong>Yerusalim 18</strong>. All rights reserved.
               </p>
             </div>
             <div className="footerBottomItemMiddle">
-              <p>Tax ID (VOEN): 1401234561</p>
+              <p>Tax ID (VOEN): {contactData.voen}</p>
             </div>
             <div className="footerBottomItemRight">
               <Link href="https://one.az" target="_blank">

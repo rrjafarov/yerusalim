@@ -1,14 +1,13 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ProductCard = () => {
+const ProductCard = ({ id, name, price, oldPrice, image, slug }) => {
   return (
-    <div className="productCard">
-      <Link href="/products/id">
+    <div className="productCard" key={id}>
+      <Link href={`/products/${slug}-${id}`}>
         <Image
-          src="/img/productCard.png"
+          src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${image}`}
           alt="product"
           width={1000}
           height={1000}
@@ -17,7 +16,7 @@ const ProductCard = () => {
       <div className="productCardContent">
         <div className="productCardPrices">
           <div className="productCardNewPrice">
-            <span>24</span>
+            <span>{price}</span>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +35,7 @@ const ProductCard = () => {
             </p>
           </div>
           <div className="productCardOldPrice">
-            <span>35</span>
+            <span>{oldPrice}</span>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +53,7 @@ const ProductCard = () => {
           </div>
         </div>
         <div className="productCardTitle">
-          <p>Premium Handcrafted Scented Candle with Natural Wax</p>
+          <p>{name}</p>
         </div>
       </div>
       <button className="productCardButton">
@@ -74,7 +73,9 @@ const ProductCard = () => {
         </p>
         <span>ADD TO BASKET</span>
       </button>
-      <div className="productCardBestSeller"><span>BEST SELLER</span></div>
+      <div className="productCardBestSeller">
+        <span>BEST SELLER</span>
+      </div>
     </div>
   );
 };

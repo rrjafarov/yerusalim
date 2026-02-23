@@ -435,7 +435,7 @@ import RangeSlider from "../RangeSlider";
 
 const { Panel } = Collapse;
 
-const FilterAccordion = () => {
+const FilterAccordion = ({selectedCategory}) => {
   // 🔹 Accordion scroll ref və thumb state-ləri
   const scrollRefCategories = useRef(null);
   const [thumbStyleCategories, setThumbStyleCategories] = useState({
@@ -514,7 +514,7 @@ const FilterAccordion = () => {
         )}
       >
         {/* 1-ci accordion */}
-        <Panel header="Categories" key="1">
+        <Panel header={selectedCategory.name} key="1">
           <div className="filterAccordionContent">
             <div
               className="filterAccordionScroll"
@@ -556,6 +556,9 @@ const FilterAccordion = () => {
           </div>
         </Panel>
         <div className="filterAccordionLine"></div>
+
+
+
 
         {/* 2-ci accordion */}
         <Panel header="Fragrance" key="2">
@@ -649,6 +652,10 @@ const FilterAccordion = () => {
         </Panel>
         <div className="filterAccordionLine"></div>
 
+
+
+
+
         {/* Price accordion */}
         <Panel header="Price" key="4">
           <div className="filterAccordionContentPrices">
@@ -666,6 +673,10 @@ const FilterAccordion = () => {
           </div>
         </Panel>
         <div className="filterAccordionLine"></div>
+
+
+
+
 
         {/* 3-ci accordion */}
         <Panel header="Burn time / Product life" key="3">
