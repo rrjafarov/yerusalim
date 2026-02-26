@@ -5,7 +5,7 @@ import ProductDetailPageSetting from "@/components/ProductDetailPage/ProductDeta
 import ProductDetailPageAccordion from "./ProductDetailPageAccordion";
 import Link from "next/link";
 
-const ProductDetailPage = () => {
+const ProductDetailPage = ({productDetail}) => {
   const [copied, setCopied] = useState(false);
   const copyTimeoutRef = useRef(null);
 
@@ -39,23 +39,22 @@ const ProductDetailPage = () => {
         <div className="row">
           <div className="xl-7 lg-7 md-7 sm-12">
             <div className="productDetailPageLeft">
-              <ProductDetailPageImages />
+              <ProductDetailPageImages  images={productDetail?.image_gallery} />
             </div>
           </div>
 
           <div className="xl-5 lg-5 md-5 sm-12">
             <div className="productDetailPageRight">
               <div className="productDetailPageRightTop">
-                <h1>Cedar & Amber Jar Candle (Double-Wick)</h1>
+                <h1>{productDetail?.name}</h1>
                 <p>
-                  A calm, grounded blend of cedarwood and warm amber with a
-                  clean, even burn.
+                  {productDetail?.description}                  
                 </p>
 
                 <div className="productDetailPageRightTopPriceBasket">
                   <div className="productDetailPageRightTopPrice">
                     <div className="productDetailPageRightTopNewPrice">
-                      <span>24</span>
+                      <span>{productDetail?.price}</span>
                       <p>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +73,7 @@ const ProductDetailPage = () => {
                       </p>
                     </div>
                     <div className="productDetailPageRightTopOldPrice">
-                      <span>10</span>
+                      <span>{productDetail?.old_price}</span>
                       <p>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +118,7 @@ const ProductDetailPage = () => {
               </div>
 
               <div className="productDetailPageRightAccordion">
-                <ProductDetailPageAccordion />
+                <ProductDetailPageAccordion productDetail={productDetail} />
               </div>
             </div>
           </div>

@@ -1,4 +1,3 @@
-// components/HeaderMain.jsx
 "use client";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,10 +28,20 @@ const HeaderMain = ({ categoryData, contactData }) => {
     skip: !token, // token yoxdursa query işləməsin
   });
 
-  const placeholders = [
-    "Search products, brands, anything ..",
-    "phone, golden, candle axtar...",
-  ];
+  // const placeholders = [
+  //   "Search products, brands, anything ..",
+  //   "phone, golden, candle axtar...",
+  // ];
+
+  const placeholders = React.useMemo(() => {
+    const categories = categoryData?.data?.data;
+
+    if (!categories || categories.length === 0) {
+      return ["Search products..."];
+    }
+
+    return categories.map((item) => `Search in ${item.name}...`);
+  }, [categoryData]);
 
   useEffect(() => {
     let timeout;
@@ -240,7 +249,10 @@ const HeaderMain = ({ categoryData, contactData }) => {
 
               {searchValue.trim().length > 0 && (
                 <div className="headerSearchResults">
-                  <SearchResults onClose={() => setSearchValue("")} />
+                  <SearchResults
+                    searchText={searchValue}
+                    onClose={() => setSearchValue("")}
+                  />
                 </div>
               )}
             </div>
@@ -252,7 +264,7 @@ const HeaderMain = ({ categoryData, contactData }) => {
               </Link>
             </div>
             <div className="headerMainLinks">
-              <Link href={token && isSuccess ? "/account/profile" : "/login"} >
+              <Link href={token && isSuccess ? "/account/profile" : "/login"}>
                 <div className="userProfile">
                   <span>
                     <svg

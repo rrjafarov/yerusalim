@@ -111,6 +111,7 @@ export async function generateMetadata() {
   };
 }
 
+
 const page = async () => {
   const blogName = await fetchBlogsSeoPageData();
   const blogNameData = blogName;

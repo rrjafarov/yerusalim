@@ -10,9 +10,9 @@ import Link from "next/link";
 import Image from "next/image";
 import BlogCard from "../Mixed/BlogCard";
 
-const HomePageBlogs = () => {
+const HomePageBlogs = ({ blogsData }) => {
   return (
-    <div className="homePageBlogs"> 
+    <div className="homePageBlogs">
       <div className="homePageBlogsItem">
         <h2>Blogroom</h2>
         <div className="blogsLogos">
@@ -44,19 +44,33 @@ const HomePageBlogs = () => {
                 },
               }}
             >
-              <SwiperSlide>
-                <BlogCard />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogCard />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogCard />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogCard />
-              </SwiperSlide>
-              
+              {blogsData.map((blogItem) => (
+                <SwiperSlide key={blogItem.id}>
+                  <BlogCard
+                    title={blogItem.title}
+                    image={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${blogItem.main_image}`}
+                    date={blogItem.published_date}
+                    url={blogItem.url_slug}
+                    id={blogItem.id}
+                  />
+                </SwiperSlide>
+              ))}
+
+
+
+
+
+              {/* {filteredBlogs.map((blogItem) => (
+                <div key={blogItem.id} className="xl-6 lg-6 md-6 sm-12">
+                  <BlogCard
+                    title={blogItem.title}
+                    image={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${blogItem.main_image}`}
+                    date={blogItem.published_date}
+                    url={blogItem.url_slug}
+                    id={blogItem.id}
+                  />
+                </div>
+              ))} */}
             </Swiper>
             <div className="allBlogsBttn">
               <Link href="/blogs">

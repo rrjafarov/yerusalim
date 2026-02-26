@@ -13,6 +13,7 @@ import React from "react";
 import axiosInstance from "@/lib/axios";
 import { cookies } from "next/headers";
 
+
 async function fetchCategoryPageData() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE");
@@ -31,10 +32,29 @@ async function fetchCategoryPageData() {
   }
 }
 
+
+async function fetchBlogsHomeData() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: blog } = await axiosInstance.get(`/page-data/blog-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return blog;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+
 const page = async () => {
   const categoryPageData = await fetchCategoryPageData();
   const categoryData = categoryPageData;
 
+  const blogsHomePageData = await fetchBlogsHomeData();
+  const blogsData = blogsHomePageData.data.data;
 
   return (
     <div>
@@ -46,7 +66,7 @@ const page = async () => {
       <ShopCategory />
       <div className="homepageBrandAndBlog">
         <HomePageBrands />
-        <HomePageBlogs />
+        <HomePageBlogs blogsData={blogsData} />
       </div>
       <SeoContent />
     </div>

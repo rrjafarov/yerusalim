@@ -623,6 +623,116 @@ ul {
     }
   }
 }
+
+.mobileSearchDetailsProducts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 3rem;
+  padding-top: 3.5rem;
+  .searchResultsLine {
+    width: 100%;
+    height: 0.1rem;
+    opacity: 0.3;
+    background: #e8e8e8;
+  }
+  .searchResultsProduct {
+    a {
+      display: flex;
+      gap: 1.6rem;
+      align-items: center;
+      img {
+        width: 11.05rem;
+        height: 11.05rem;
+        border-radius: 0.8rem;
+      }
+      .searchResultsProductInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+        align-items: flex-start;
+        p {
+          display: inline-block;
+          color: rgba(32, 32, 32, 0.8);
+          font-size: 1.8rem;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 1.7516rem; /* 125.116% */
+          letter-spacing: 0.014rem;
+        }
+        span {
+          color: rgba(32, 32, 32, 0.8);
+          font-size: 1.8rem;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 1.7516rem; /* 125.116% */
+          letter-spacing: 0.014rem;
+        }
+        .searchResultsProductPrice {
+          display: flex;
+          gap: 1.64rem;
+          .searchNewPrice {
+            span {
+              display: flex;
+              align-items: center;
+              gap: 0.3rem;
+              color: #202020;
+              font-size: 2.2rem;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 1.62rem;
+              letter-spacing: 0.016rem;
+              p {
+                display: flex;
+                align-items: center;
+                svg {
+                  width: 1.62rem;
+                  height: 1.62rem;
+                }
+              }
+            }
+          }
+          .searchOldPrice {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            &::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 0.144rem;
+              background: #8d8a8a;
+              opacity: 1;
+              pointer-events: none;
+            }
+            text-decoration: none !important;
+            span {
+              display: flex;
+              align-items: center;
+              gap: 0.1rem;
+              color: #202020;
+              font-size: 1.6rem;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 1.62rem; /* 135% */
+              letter-spacing: 0.012rem;
+              opacity: 0.5;
+              text-decoration: none !important;
+              p {
+                display: flex;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .headerMain {
   .headerMainItem {
     display: flex;
@@ -819,6 +929,7 @@ ul {
         width: 2rem;
         height: 2rem;
         aspect-ratio: 1/1;
+        cursor: pointer;
       }
       span {
         color: #000;
@@ -942,22 +1053,24 @@ ul {
       display: flex;
       justify-content: center;
       align-items: center;
-      button {
-        border-radius: 0.8rem;
-        border: 1px solid #111;
-        background: #111;
-        display: inline-flex;
-        height: 4rem;
-        padding: 1.2rem 2.4rem;
-        justify-content: center;
-        align-items: center;
-        span {
-          // padding: 1.4rem 2.4rem;
-          color: #fff;
-          font-size: 1.4rem;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 2.4rem;
+      a{
+        button {
+          border-radius: 0.8rem;
+          border: 1px solid #111;
+          background: #111;
+          display: inline-flex;
+          height: 4rem;
+          padding: 1.2rem 2.4rem;
+          justify-content: center;
+          align-items: center;
+          span {
+            // padding: 1.4rem 2.4rem;
+            color: #fff;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 2.4rem;
+          }
         }
       }
     }

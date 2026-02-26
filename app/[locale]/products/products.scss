@@ -778,7 +778,7 @@
         text-transform: uppercase;
       }
       p {
-        width: 75%;
+        width: 90%;
         color: #222;
         font-size: 1.6rem;
         font-style: normal;
@@ -1218,8 +1218,10 @@
       position: relative;
       img {
         cursor: pointer;
+        border-radius: 0.8rem;
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
       .playButton {
         cursor: pointer;
@@ -1270,7 +1272,12 @@
 
 .videoPopupInner {
   width: 100%;
-  height: 100%;
+  height: 100% ;
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
   /* burda videonu ortala, istəsən flex ilə, və s. */
 }
 

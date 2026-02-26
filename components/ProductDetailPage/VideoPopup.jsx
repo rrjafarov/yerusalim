@@ -1,11 +1,26 @@
 import React from "react";
 
-const VideoPopup = ({ onClose }) => {
+const VideoPopup = ({ onClose, youtubeUrl }) => {
   const handleOverlayClick = (e) => {
-    // Yalnız overlay-in özünə klik olanda bağlansın, iç kontente klik olanda yox
     if (e.target === e.currentTarget) {
       onClose();
     }
+  };
+
+  // YouTube linkini embed formatına çevir
+  const getEmbedUrl = (url) => {
+    if (!url) return "";
+
+    // watch?v= olan linklər üçün
+    const videoIdMatch = url.match(
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/,
+    );
+
+    const videoId = videoIdMatch ? videoIdMatch[1] : null;
+
+    return videoId
+      ? `https://www.youtube.com/embed/${videoId}?autoplay=1`
+      : url;
   };
 
   return (
@@ -34,9 +49,18 @@ const VideoPopup = ({ onClose }) => {
           </svg>
         </button>
 
-        {/* Buraya videonu əlavə edərsən (iframe, video tag və s.) */}
         <div className="videoPopupInner">
-          {/* Məs: <iframe ... /> və ya <video ... /> */}
+          {youtubeUrl && (
+            <iframe
+              width="100%"
+              height="500"
+              src={getEmbedUrl(youtubeUrl)}
+              title="Product Video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          )}
         </div>
       </div>
     </div>
