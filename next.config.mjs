@@ -13,9 +13,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        // hostname: "admin.adentta.az",
-        hostname: "yerusalim-admin.void.az",
-
+        hostname: "18-admin.onestudio.az",
         pathname: "/**",
       },
     ],
