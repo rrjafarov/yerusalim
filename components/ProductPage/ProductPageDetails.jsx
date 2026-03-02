@@ -240,7 +240,6 @@ const ProductPageDetails = ({ productsData, selectedCategory }) => {
                     )}
                   </div>
                   <div className="productPageLayoutRightCardsPagination">
-                   {/* Paginationa datanı ötürürük */}
                     <Pagination meta={paginationData} />
                   </div>
                 </div>

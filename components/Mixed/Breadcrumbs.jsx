@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Breadcrumbs = ({selectedCategory}) => {
+const Breadcrumbs = ({ selectedCategory }) => {
   return (
     <div className="container">
       <nav className="breadcrumbs">
@@ -13,8 +13,12 @@ const Breadcrumbs = ({selectedCategory}) => {
           <li>
             <Link href="/products">Products</Link>
           </li>
-          <span>/</span>
-          <li>{selectedCategory.name}</li>
+          {selectedCategory?.name && (
+            <>
+              <span>/</span>
+              <li>{selectedCategory.name}</li>
+            </>
+          )}
         </ul>
       </nav>
     </div>

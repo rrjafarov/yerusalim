@@ -2,7 +2,7 @@ import React from 'react'
 const ProductPageHero = ({selectedCategory}) => {
   return (
     <div className='productPageHero'>
-        <h1>{selectedCategory.name}</h1>
+      <h1>{selectedCategory?.name || "Məhsullar"}</h1>
     </div>
   )
 }
