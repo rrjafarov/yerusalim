@@ -89,7 +89,20 @@
 // };
 
 // export default ProductPageDetails;
-// !YUXARIDA OLAN KODDA HECBIR DATA YOXDUR 
+// !YUXARIDA OLAN KODDA HECBIR DATA YOXDUR
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -109,12 +122,12 @@ import Pagination from "@/components/Mixed/Pagination";
 import FilterAccordion from "@/components/ProductPage/FilterAccordion";
 import { GiCandleLight } from "react-icons/gi";
 // 1. Hook-u import edirik
-import { useSearchParams } from "next/navigation"; 
+import { useSearchParams } from "next/navigation";
 
-const ProductPageDetails = ({ productsData, selectedCategory }) => {
+const ProductPageDetails = ({ productsData, selectedCategory, categoriesData }) => {
   const categoryBanner = productsData?.data?.data?.[0]?.category?.[0]?.banner;
   const products = productsData?.data?.data ?? [];
-  const paginationData = productsData?.data; 
+  const paginationData = productsData?.data;
 
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -128,7 +141,7 @@ const ProductPageDetails = ({ productsData, selectedCategory }) => {
     // İlk yüklənişdə də işləməsini istəyirsinizsə, if şərtini çıxara bilərsiniz.
     if (page) {
       const element = document.getElementById("product-section-start");
-      
+
       if (element) {
         // Elementin yerini tapırıq
         const headerOffset = 20; // "Biraz yuxarı" məsafəsi (px ilə) - bunu zövqə görə dəyiş
@@ -136,7 +149,7 @@ const ProductPageDetails = ({ productsData, selectedCategory }) => {
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth"
+          behavior: "smooth",
         });
       }
     }
@@ -145,7 +158,7 @@ const ProductPageDetails = ({ productsData, selectedCategory }) => {
   const openMobileFilter = () => {
     setIsMobileFilterOpen(true);
   };
-  
+
   const closeMobileFilter = () => {
     setIsClosing(true);
     setTimeout(() => {
@@ -163,39 +176,41 @@ const ProductPageDetails = ({ productsData, selectedCategory }) => {
     return () => window.removeEventListener("keydown", handleEsc);
   }, [isMobileFilterOpen]);
 
+  const searchText = searchParams.get("search_text");
+
   return (
     <div className="productPageDetails">
       <div className="container">
         <div id="product-section-start" className="productPageDetailsHeader">
           <div className="productPageDetailsHeaderLeft">
             <span onClick={openMobileFilter}>Filter</span>
-            <p>
-              <strong>{paginationData?.total || 0}</strong> Results
-            </p>
+            {searchText && (
+              <p>
+                <strong>{paginationData?.total || 0}</strong> Search Results{" "}
+                <strong>&quot;{searchText}&quot;</strong>
+              </p>
+            )}
           </div>
           <div className="productPageDetailsHeaderRight">
             <SortBy />
           </div>
         </div>
-        
+
         <div className="productPageLayout">
-             {/* ... qalan kodlar olduğu kimi ... */}
-             <div className="row">
+          {/* ... qalan kodlar olduğu kimi ... */}
+          <div className="row">
             {/* Desktop Filter */}
             <div className="xl-3 lg-4 md-6 sm-0">
               <div className="productPageLayoutLeft">
-                <FilterAccordion selectedCategory={selectedCategory} />
+                <FilterAccordion selectedCategory={selectedCategory} categories={categoriesData?.data?.data || []} />
               </div>
             </div>
             {/* Mobile Filter Overlay */}
             {isMobileFilterOpen && (
-              <div
-                className="mobileFilterOverlay"
-                onClick={closeMobileFilter} 
-              >
+              <div className="mobileFilterOverlay" onClick={closeMobileFilter}>
                 <div
                   className={`mobileFilterContent ${isClosing ? "closing" : "open"}`}
-                  onClick={(e) => e.stopPropagation()} 
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <button
                     className="closeButton"
@@ -204,7 +219,7 @@ const ProductPageDetails = ({ productsData, selectedCategory }) => {
                   >
                     ×
                   </button>
-                  <FilterAccordion />
+                  <FilterAccordion  selectedCategory={selectedCategory} categories={categoriesData?.data?.data || []} />
                 </div>
               </div>
             )}
@@ -221,19 +236,25 @@ const ProductPageDetails = ({ productsData, selectedCategory }) => {
                   </div>
                 )}
                 <div className="productPageLayoutRightCards">
-                  <div className="row">                    
+                  <div className="row">
                     {products.length === 0 ? (
-                      <div className="xl-12 lg-12 md-12 sm-12 " id="noProductFound"><GiCandleLight id="noProductFoundIcon" />No products found</div>
+                      <div
+                        className="xl-12 lg-12 md-12 sm-12 "
+                        id="noProductFound"
+                      >
+                        <GiCandleLight id="noProductFoundIcon" />
+                        No products found
+                      </div>
                     ) : (
                       products.map((item) => (
                         <div className="xl-4 lg-4 md-6 sm-6" key={item.id}>
                           <ProductCard
                             id={item.id}
                             name={item.name}
-                            price={item.price}
-                            oldPrice={item.old_price}
+                            productVariants={item.product_variants} 
                             image={item.image_gallery?.[0]}
                             slug={item.url_slug}
+                            specialBadge={item.special_badge}
                           />
                         </div>
                       ))
@@ -253,4 +274,3 @@ const ProductPageDetails = ({ productsData, selectedCategory }) => {
 };
 
 export default ProductPageDetails;
-

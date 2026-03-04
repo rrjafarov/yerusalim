@@ -84,8 +84,6 @@
 
 
 
-// !  ================= IMPORTS ================= */
-import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
 import ProductDetailPage from "@/components/ProductDetailPage/ProductDetailPage";
 import React from "react";
 import "../products.scss";

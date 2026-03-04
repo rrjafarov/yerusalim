@@ -16,7 +16,7 @@ import Image from "next/image";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
-const ProductDetailPageImages = ({ images }) => {
+const ProductDetailPageImages = ({ images, productDetail }) => {
   useEffect(() => {
     Fancybox.bind('[data-fancybox="product-gallery"]', {
       Thumbs: {
@@ -64,12 +64,17 @@ const ProductDetailPageImages = ({ images }) => {
       ))}
 
       <div className="productDetailPageLeftSliderTopButtons">
-        <div className="productDetailPageLeftSliderTopButtonBestSeller">
-          <button>BEST SELLER</button>
-        </div>
-        <div className="productDetailPageLeftSliderTopButtonLimited">
-          <button>LIMITED EDITION</button>
-        </div>
+        {productDetail?.special_badge?.includes("best_seller") && (
+          <div className="productDetailPageLeftSliderTopButtonBestSeller">
+            <button>BEST SELLER</button>
+          </div>
+        )}
+
+        {productDetail?.special_badge?.includes("limited_edition") && (
+          <div className="productDetailPageLeftSliderTopButtonLimited">
+            <button>LIMITED EDITION</button>
+          </div>
+        )}
       </div>
     </Swiper>
   );

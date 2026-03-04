@@ -334,14 +334,13 @@
 
 
 
-
-
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 import Loading from "@/components/Loading";
+import { GoDash } from "react-icons/go";
 import { useRouter } from "next/navigation";
 
 const SearchResults = ({ searchText, onClose }) => {
@@ -379,15 +378,12 @@ const SearchResults = ({ searchText, onClose }) => {
     return () => clearTimeout(timeoutId);
   }, [searchText]);
 
-
   const handleKeyDown = (e) => {
-  if (e.key === "Enter" && searchText) {
-    router.push(
-      `/products?search_text=${encodeURIComponent(searchText)}`
-    );
-    onClose?.();
-  }
-};
+    if (e.key === "Enter" && searchText) {
+      router.push(`/products?search_text=${encodeURIComponent(searchText)}`);
+      onClose?.();
+    }
+  };
 
   return (
     <div className="searchResults">
@@ -452,25 +448,25 @@ const SearchResults = ({ searchText, onClose }) => {
                       <span>{prod.name}</span>
                       <div className="searchResultsProductPrice">
                         <div className="searchNewPrice">
-                          <span>
-                            {prod.price}
-                            <p>
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="17"
-                                height="17"
-                                viewBox="0 0 17 17"
-                                fill="none"
-                              >
-                                <path
-                                  d="M8.1001 2.56543C8.31485 2.56548 8.52051 2.65088 8.67236 2.80273C8.82422 2.95459 8.90962 3.16025 8.90967 3.375V3.99023C11.9758 4.51786 14.3101 8.00035 14.3101 12.1504C14.31 12.365 14.2245 12.5708 14.0728 12.7227C13.9208 12.8746 13.7143 12.96 13.4995 12.96C13.2848 12.9599 13.0791 12.8745 12.9272 12.7227C12.7754 12.5708 12.69 12.3651 12.6899 12.1504C12.6899 10.4753 12.2547 8.94939 11.5425 7.78711C10.8649 6.68144 9.94222 5.91258 8.90967 5.64453V10.7998C8.90967 11.0146 8.82427 11.2211 8.67236 11.373C8.52053 11.5248 8.31476 11.6103 8.1001 11.6104C7.88527 11.6104 7.67876 11.525 7.52686 11.373C7.37501 11.2212 7.28955 11.0146 7.28955 10.7998V5.64453C6.25753 5.91308 5.33434 6.68593 4.65674 7.79395C3.94436 8.95891 3.51025 10.4855 3.51025 12.1504C3.5102 12.365 3.42462 12.5708 3.27295 12.7227C3.12104 12.8746 2.91453 12.96 2.69971 12.96C2.48496 12.9599 2.2793 12.8745 2.12744 12.7227C1.97559 12.5708 1.89019 12.3651 1.89014 12.1504C1.89014 8.00067 4.2238 4.51926 7.28955 3.99121V3.375C7.2896 3.16038 7.37518 2.95456 7.52686 2.80273C7.67876 2.65083 7.88527 2.56543 8.1001 2.56543Z"
-                                  fill="black"
-                                  stroke="black"
-                                  stroke-width="0.27"
-                                />
-                              </svg>
-                            </p>
-                          </span>
+                          <span>{prod.price}</span>
+                          <GoDash className="searchDash" />
+                          <span>{prod.price}</span>
+                          <p>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="17"
+                              height="17"
+                              viewBox="0 0 17 17"
+                              fill="none"
+                            >
+                              <path
+                                d="M8.1001 2.56543C8.31485 2.56548 8.52051 2.65088 8.67236 2.80273C8.82422 2.95459 8.90962 3.16025 8.90967 3.375V3.99023C11.9758 4.51786 14.3101 8.00035 14.3101 12.1504C14.31 12.365 14.2245 12.5708 14.0728 12.7227C13.9208 12.8746 13.7143 12.96 13.4995 12.96C13.2848 12.9599 13.0791 12.8745 12.9272 12.7227C12.7754 12.5708 12.69 12.3651 12.6899 12.1504C12.6899 10.4753 12.2547 8.94939 11.5425 7.78711C10.8649 6.68144 9.94222 5.91258 8.90967 5.64453V10.7998C8.90967 11.0146 8.82427 11.2211 8.67236 11.373C8.52053 11.5248 8.31476 11.6103 8.1001 11.6104C7.88527 11.6104 7.67876 11.525 7.52686 11.373C7.37501 11.2212 7.28955 11.0146 7.28955 10.7998V5.64453C6.25753 5.91308 5.33434 6.68593 4.65674 7.79395C3.94436 8.95891 3.51025 10.4855 3.51025 12.1504C3.5102 12.365 3.42462 12.5708 3.27295 12.7227C3.12104 12.8746 2.91453 12.96 2.69971 12.96C2.48496 12.9599 2.2793 12.8745 2.12744 12.7227C1.97559 12.5708 1.89019 12.3651 1.89014 12.1504C1.89014 8.00067 4.2238 4.51926 7.28955 3.99121V3.375C7.2896 3.16038 7.37518 2.95456 7.52686 2.80273C7.67876 2.65083 7.88527 2.56543 8.1001 2.56543Z"
+                                fill="black"
+                                stroke="black"
+                                stroke-width="0.27"
+                              />
+                            </svg>
+                          </p>
                         </div>
                         <div className="searchOldPrice">
                           <span>
@@ -499,7 +495,9 @@ const SearchResults = ({ searchText, onClose }) => {
               </>
             ))}
           <div className="searchAllButton">
-            <Link href={`/products?search_text=${encodeURIComponent(searchText)}`}>
+            <Link
+              href={`/products?search_text=${encodeURIComponent(searchText)}`}
+            >
               <button>
                 <span>See All Results</span>
               </button>

@@ -339,12 +339,12 @@ const SignUp = () => {
             </div>
 
             {/* Robot */}
-            <div className="signupFormCheckbox">
+            {/* <div className="signupFormCheckbox">
               <label>
                 <input type="checkbox" />
                 <span>I’m not robot</span>
               </label>
-            </div>
+            </div> */}
 
             {/* Button */}
             <button

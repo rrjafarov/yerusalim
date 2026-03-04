@@ -174,12 +174,12 @@ const Login = () => {
             </div>
 
             {/* I'm not robot */}
-            <div className="loginFormCheckbox">
+            {/* <div className="loginFormCheckbox">
               <label>
                 <input type="checkbox" name="notRobot" />
                 <span>I’m not robot</span>
               </label>
-            </div>
+            </div> */}
 
             {/* Submit button */}
             <button

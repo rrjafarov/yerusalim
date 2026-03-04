@@ -39,7 +39,7 @@ const ProductDetailPage = ({productDetail}) => {
         <div className="row">
           <div className="xl-7 lg-7 md-7 sm-12">
             <div className="productDetailPageLeft">
-              <ProductDetailPageImages  images={productDetail?.image_gallery} />
+              <ProductDetailPageImages  images={productDetail?.image_gallery} productDetail={productDetail}  />
             </div>
           </div>
 

@@ -1,8 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { GoDash } from "react-icons/go";
 
-const ProductCard = ({ id, name, price, oldPrice, image, slug }) => {
+const ProductCard = ({
+  id,
+  name,
+  price,
+  oldPrice,
+  image,
+  slug,
+  specialBadge,
+  productVariants
+}) => {
+
+    // 🔹 Variantlardan price və oldPrice diapazonu çıxarılır
+  const variants = Object.values(productVariants || {}).flat();
+  const prices = variants.map(v => parseFloat(v.price));
+  const oldPrices = variants
+    .map(v => parseFloat(v.old_price))
+    .filter(v => !isNaN(v));
+
+  const minPrice = Math.min(...prices);
+  const maxPrice = Math.max(...prices);
+
+  const minOldPrice = oldPrices.length ? Math.min(...oldPrices) : null;
+  const maxOldPrice = oldPrices.length ? Math.max(...oldPrices) : null;
+
+  const displayPrice = minPrice === maxPrice ? `${minPrice}` : `${minPrice} - ${maxPrice}`;
+  const displayOldPrice =
+    minOldPrice === maxOldPrice
+      ? minOldPrice
+      : minOldPrice && maxOldPrice
+      ? `${minOldPrice} - ${maxOldPrice}`
+      : null;
+
+
+
+
   return (
     <div className="productCard" key={id}>
       <Link href={`/products/${slug}-${id}`}>
@@ -15,8 +50,10 @@ const ProductCard = ({ id, name, price, oldPrice, image, slug }) => {
       </Link>
       <div className="productCardContent">
         <div className="productCardPrices">
+
+          
           <div className="productCardNewPrice">
-            <span>{price}</span>
+            <span>{displayPrice}</span>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +72,7 @@ const ProductCard = ({ id, name, price, oldPrice, image, slug }) => {
             </p>
           </div>
           <div className="productCardOldPrice">
-            <span>{oldPrice}</span>
+            <span>{displayOldPrice}</span>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,6 +88,8 @@ const ProductCard = ({ id, name, price, oldPrice, image, slug }) => {
               </svg>
             </p>
           </div>
+
+
         </div>
         <div className="productCardTitle">
           <p>{name}</p>
@@ -73,9 +112,11 @@ const ProductCard = ({ id, name, price, oldPrice, image, slug }) => {
         </p>
         <span>ADD TO BASKET</span>
       </button>
-      <div className="productCardBestSeller">
-        <span>BEST SELLER</span>
-      </div>
+      {specialBadge?.includes("best_seller") && (
+        <div className="productCardBestSeller">
+          <span>BEST SELLER</span>
+        </div>
+      )}
     </div>
   );
 };
