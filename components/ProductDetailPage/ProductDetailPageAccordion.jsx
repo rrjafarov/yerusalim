@@ -121,12 +121,12 @@ const ProductDetailPageAccordion = ({ productDetail }) => {
                 />
               </div>
             </Panel>
-            <div className="acordionLineDP"></div>
           </>
         )}
 
         {productDetail?.youtube_url && (
           <>
+            <div className="acordionLineDP"></div>
             <Panel header="Video" key="1">
               <div className="productDetailPageAccordionContent">
                 <div

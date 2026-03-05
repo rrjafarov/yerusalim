@@ -5,8 +5,8 @@ import ProductDetailPageSetting from "@/components/ProductDetailPage/ProductDeta
 import ProductDetailPageAccordion from "./ProductDetailPageAccordion";
 import Link from "next/link";
 
-const ProductDetailPage = ({productDetail}) => {
-  const [copied, setCopied] = useState(false);
+const ProductDetailPage = ({ productDetail }) => {
+  // const [copied, setCopied] = useState(false);
   const copyTimeoutRef = useRef(null);
 
   const handleCopyLink = () => {
@@ -33,13 +33,21 @@ const ProductDetailPage = ({productDetail}) => {
     };
   }, []);
 
+  const variants = Object.values(productDetail?.product_variants || {});
+  const [selectedVariant, setSelectedVariant] = useState(variants[0]);
+
+  const [copied, setCopied] = useState(false);
+
   return (
     <div className="productDetailPage">
       <div className="container">
         <div className="row">
           <div className="xl-7 lg-7 md-7 sm-12">
             <div className="productDetailPageLeft">
-              <ProductDetailPageImages  images={productDetail?.image_gallery} productDetail={productDetail}  />
+              <ProductDetailPageImages
+                images={productDetail?.image_gallery}
+                productDetail={productDetail}
+              />
             </div>
           </div>
 
@@ -47,14 +55,12 @@ const ProductDetailPage = ({productDetail}) => {
             <div className="productDetailPageRight">
               <div className="productDetailPageRightTop">
                 <h1>{productDetail?.name}</h1>
-                <p>
-                  {productDetail?.description}                  
-                </p>
+                <p>{productDetail?.description}</p>
 
                 <div className="productDetailPageRightTopPriceBasket">
                   <div className="productDetailPageRightTopPrice">
                     <div className="productDetailPageRightTopNewPrice">
-                      <span>{productDetail?.price}</span>
+                      <span>{selectedVariant?.price}</span>
                       <p>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +79,7 @@ const ProductDetailPage = ({productDetail}) => {
                       </p>
                     </div>
                     <div className="productDetailPageRightTopOldPrice">
-                      <span>{productDetail?.old_price}</span>
+                      <span>{selectedVariant?.old_price}</span>
                       <p>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +120,11 @@ const ProductDetailPage = ({productDetail}) => {
               </div>
 
               <div className="productDetailPageRightSetting">
-                <ProductDetailPageSetting />
+                <ProductDetailPageSetting
+                  variants={variants}
+                  selectedVariant={selectedVariant}
+                  setSelectedVariant={setSelectedVariant}
+                />
               </div>
 
               <div className="productDetailPageRightAccordion">

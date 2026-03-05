@@ -9,7 +9,6 @@ import SeoContent from "@/components/HomePage/SeoContent";
 import ShopCategory from "@/components/HomePage/ShopCategory";
 import ProductCard from "@/components/Mixed/ProductCard";
 import React from "react";
-
 import axiosInstance from "@/lib/axios";
 import { cookies } from "next/headers";
 

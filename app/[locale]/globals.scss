@@ -702,12 +702,12 @@ ul {
             &::after {
               content: "";
               position: absolute;
-              left: 0;
-              right: 0;
+              left: -5%;
+              right: -5%;
               top: 50%;
-              transform: translateY(-50%);
+              transform: translateY(-50%) rotate(-15deg);
               height: 0.144rem;
-              background: #8d8a8a;
+              background: #711111;
               opacity: 1;
               pointer-events: none;
             }
@@ -1024,12 +1024,12 @@ ul {
                 &::after {
                   content: "";
                   position: absolute;
-                  left: 0;
-                  right: 0;
+                  left: -5%;
+                  right: -5%;
                   top: 50%;
-                  transform: translateY(-50%);
+                  transform: translateY(-50%) rotate(-15deg);
                   height: 0.144rem;
-                  background: #ab1d1d;
+                  background: #711111;
                   opacity: 1;
                   pointer-events: none;
                 }
@@ -1245,10 +1245,10 @@ ul {
               &::after {
                 content: "";
                 position: absolute;
-                left: 0;
-                right: 0;
+                left: -5%;
+                right: -5%;
                 top: 50%;
-                transform: translateY(-50%);
+                transform: translateY(-50%) rotate(-15deg);
                 height: 0.144rem;
                 background: #8d8a8a;
                 opacity: 1;

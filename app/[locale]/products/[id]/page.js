@@ -1,89 +1,3 @@
-
-// import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
-// import ProductDetailPage from "@/components/ProductDetailPage/ProductDetailPage";
-// import React from "react";
-// import "../products.scss";
-// import Advantages from "@/components/HomePage/Advantages";
-// import ProductDetailPageSimilars from "@/components/ProductDetailPage/ProductDetailPageSimilars";
-// import axiosInstance from "@/lib/axios";
-// import { cookies } from "next/headers";
-
-
-// async function fetchProductById(id) {
-//   const cookieStore = await cookies();
-//   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
-//   try {
-//     const { data } = await axiosInstance.get(`/first-page-data/${id}`, {
-//       headers: { Lang: lang },
-//       cache: "no-store",
-//     });
-//     return data?.data || data;
-//   } catch (error) {
-//     console.error("Product fetch error:", error);
-//     return null;
-//   }
-// }
-
-
-// export async function generateMetadata({ params }) {
-//   const { id: slug } = await params;
-//   const id = slug.split("-").pop();
-//   const product = await fetchProductById(id);
-//   if (!product) {
-//     return { title: "Yerusalim18", description: "Product not found." };
-//   }
-//   const imageUrl = product.cover_image || product.main_image || "";
-//   const baseUrl = "https://yerusalim.az";
-//   const cookieStore = await cookies();
-//   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
-//   const canonicalUrl = `${baseUrl}/${lang}/blogs/${slug}`;
-//   return {
-//     title: blog.meta_title || blog.title,
-//     description: blog.meta_description || blog.content?.replace(/<[^>]*>/g, '').substring(0, 160),
-//     openGraph: {
-//       title: blog.meta_title || blog.title,
-//       description: blog.meta_description,
-//       url: canonicalUrl,
-//       images: [
-//         {
-//           url: `https://admin.yerusalim.az/storage${imageUrl}`,
-//           width: 1200,
-//           height: 630,
-//         },
-//       ],
-//       type: "article",
-//     },
-//     alternates: {
-//       canonical: canonicalUrl,
-//     },
-//   };
-// }
-
-
-
-
-// const page = async ({ params }) => {
-//   const { id: slug } = await params;
-//   const id = slug.split("-").pop();
-
-//   return (
-//     <div>
-//       <div className="productPageBackground">
-//         <Breadcrumbs />
-//         <ProductDetailPage />
-//       </div>
-//       <Advantages />
-//       <ProductDetailPageSimilars />
-//     </div>
-//   );
-// };
-
-// export default page;
-
-
-
-
-
 import ProductDetailPage from "@/components/ProductDetailPage/ProductDetailPage";
 import React from "react";
 import "../products.scss";
@@ -111,6 +25,96 @@ async function fetchProductById(id) {
   }
 }
 
+async function fetchSimilarProducts(categoryId, currentProductId) {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+
+  try {
+    const { data } = await axiosInstance.get(
+      `/page-data/product-list?per_page=12&filters[0][key]=category&filters[0][operator]=IN&filters[0][value][]=${categoryId}`,
+      {
+        headers: { Lang: lang },
+        cache: "no-store",
+      },
+    );
+
+    // 🔹 Düzgün array-i götürürük
+    const productsArray = data?.data?.data || [];
+
+    // hazırki məhsulu çıxarırıq
+    const filtered = productsArray.filter(
+      (item) => item.id !== Number(currentProductId),
+    );
+
+    return filtered; // indi array 0 deyil, real məhsullar olacaq
+  } catch (error) {
+    console.error("Similar products fetch error:", error);
+    return [];
+  }
+}
+
+
+
+
+
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const slug = resolvedParams?.id;
+
+  if (!slug) {
+    return {
+      title: "Yerusalim18",
+      description: "Yerusalim18",
+    };
+  }
+
+  const id = slug.split("-").pop();
+  const productDetail = await fetchProductById(id);
+
+  const pageTitle = productDetail?.meta_title || "Yerusalim18";
+  const pageDescription = productDetail?.meta_description || "Yerusalim18";
+  const imageUrl = productDetail?.image_gallery?.[0] || "/favicon.ico";
+  const imageAlt = productDetail?.name || "Yerusalim18";
+  const canonicalUrl = `https://adentta.az/products/${slug}`;
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: canonicalUrl,
+      images: [
+        {
+          url: `https://admin.adentta.az/storage${imageUrl}`,
+          alt: imageAlt,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      site_name: "Yerusalim18",
+      type: "website",
+      locale: "az",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      creator: "@Yerusalim18",
+      site: "@Yerusalim18",
+      images: [`https://admin.adentta.az/storage${imageUrl}`],
+    },
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
+
+
+
+
+
+
 /* ================= PAGE ================= */
 const page = async ({ params }) => {
   const resolvedParams = await params;
@@ -122,8 +126,16 @@ const page = async ({ params }) => {
   const id = slug.split("-").pop();
   const productDetail = await fetchProductById(id);
 
+  const categoryId = productDetail?.category?.[0]?.id;
+  const similarProducts = categoryId
+    ? await fetchSimilarProducts(categoryId, id)
+    : [];
+
   console.log("========== PRODUCT DETAIL ==========");
   console.log(productDetail);
+
+  console.log("========== SIMILAR PRODUCTS ==========");
+  console.log(similarProducts);
 
   return (
     <div>
@@ -134,9 +146,169 @@ const page = async ({ params }) => {
 
       <Advantages />
 
-      <ProductDetailPageSimilars />
+      <ProductDetailPageSimilars products={similarProducts} />
     </div>
   );
 };
 
 export default page;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import ProductDetailPage from "@/components/ProductDetailPage/ProductDetailPage";
+// import React from "react";
+// import "../products.scss";
+// import Advantages from "@/components/HomePage/Advantages";
+// import ProductDetailPageSimilars from "@/components/ProductDetailPage/ProductDetailPageSimilars";
+// import axiosInstance from "@/lib/axios";
+// import { cookies } from "next/headers";
+// import ProductDetailPageBreadcrumbs from "@/components/ProductDetailPage/ProductDetailPageBreadcrumbs";
+
+// /* ================= FETCH ================= */
+// async function fetchProductById(id) {
+//   const cookieStore = await cookies();
+//   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+
+//   try {
+//     const { data } = await axiosInstance.get(`/first-page-data/${id}`, {
+//       headers: { Lang: lang },
+//       cache: "no-store",
+//     });
+
+//     return data?.data || data;
+//   } catch (error) {
+//     console.error("Product fetch error:", error);
+//     return null;
+//   }
+// }
+
+// async function fetchSimilarProducts(categoryId, currentProductId) {
+//   const cookieStore = await cookies();
+//   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+
+//   try {
+//     const { data } = await axiosInstance.get(
+//       `/page-data/product-list?per_page=12&filters[0][key]=category&filters[0][operator]=IN&filters[0][value][]=${categoryId}`,
+//       {
+//         headers: { Lang: lang },
+//         cache: "no-store",
+//       },
+//     );
+
+//     const productsArray = data?.data?.data || [];
+
+//     const filtered = productsArray.filter(
+//       (item) => item.id !== Number(currentProductId),
+//     );
+
+//     return filtered;
+//   } catch (error) {
+//     console.error("Similar products fetch error:", error);
+//     return [];
+//   }
+// }
+
+// /* ================= METADATA ================= */
+// export async function generateMetadata({ params }) {
+//   const resolvedParams = await params;
+//   const slug = resolvedParams?.id;
+
+//   if (!slug) {
+//     return {
+//       title: "Yerusalim18",
+//       description: "Yerusalim18",
+//     };
+//   }
+
+//   const id = slug.split("-").pop();
+//   const productDetail = await fetchProductById(id);
+
+//   const pageTitle = productDetail?.meta_title || "Yerusalim18";
+//   const pageDescription = productDetail?.meta_description || "Yerusalim18";
+//   const imageUrl = productDetail?.image_gallery?.[0] || "/favicon.ico";
+//   const imageAlt = productDetail?.name || "Yerusalim18";
+//   const canonicalUrl = `https://adentta.az/products/${slug}`;
+
+//   return {
+//     title: pageTitle,
+//     description: pageDescription,
+//     openGraph: {
+//       title: pageTitle,
+//       description: pageDescription,
+//       url: canonicalUrl,
+//       images: [
+//         {
+//           url: `https://admin.adentta.az/storage${imageUrl}`,
+//           alt: imageAlt,
+//           width: 1200,
+//           height: 630,
+//         },
+//       ],
+//       site_name: "Yerusalim18",
+//       type: "website",
+//       locale: "az",
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: pageTitle,
+//       description: pageDescription,
+//       creator: "@Yerusalim18",
+//       site: "@Yerusalim18",
+//       images: [`https://admin.adentta.az/storage${imageUrl}`],
+//     },
+//     alternates: {
+//       canonical: canonicalUrl,
+//     },
+//   };
+// }
+
+// /* ================= PAGE ================= */
+// const page = async ({ params }) => {
+//   const resolvedParams = await params;
+//   const slug = resolvedParams?.id;
+
+//   if (!slug) {
+//     return <div>Product not found</div>;
+//   }
+//   const id = slug.split("-").pop();
+//   const productDetail = await fetchProductById(id);
+
+//   const categoryId = productDetail?.category?.[0]?.id;
+//   const similarProducts = categoryId
+//     ? await fetchSimilarProducts(categoryId, id)
+//     : [];
+
+//   console.log("========== PRODUCT DETAIL ==========");
+//   console.log(productDetail);
+
+//   console.log("========== SIMILAR PRODUCTS ==========");
+//   console.log(similarProducts);
+
+//   return (
+//     <div>
+//       <div className="productPageBackground">
+//         <ProductDetailPageBreadcrumbs productDetail={productDetail} />
+//         <ProductDetailPage productDetail={productDetail} />
+//       </div>
+
+//       <Advantages />
+
+//       <ProductDetailPageSimilars products={similarProducts} />
+//     </div>
+//   );
+// };
+
+// export default page;

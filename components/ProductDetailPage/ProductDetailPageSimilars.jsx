@@ -9,11 +9,11 @@ import Link from "next/link";
 import Image from "next/image";
 import ProductCard from "../Mixed/ProductCard";
 
-const ProductDetailPageSimilars = () => {
+const ProductDetailPageSimilars = ({ products }) => {
   return (
     <div className="mostPopularProduct">
       <div className="container">
-        <div className="mostPopularProductItem newProductsItem">
+        {/* <div className="mostPopularProductItem newProductsItem">
           <span className="titleSpan">Similar Products</span>
           <div className="mostPopularProductSlider">
             <Swiper
@@ -76,7 +76,46 @@ const ProductDetailPageSimilars = () => {
               
             </Swiper>
           </div>
-        </div>
+        </div> */}
+
+        {products && products.length > 0 && (
+          <div className="mostPopularProductItem newProductsItem">
+            <span className="titleSpan">Similar Products</span>
+            <div className="mostPopularProductSlider">
+              <Swiper
+                navigation
+                loop
+                modules={[Navigation, Autoplay]}
+                className="mySwiper productSliderSwiper"
+                spaceBetween={20}
+                speed={900}
+                slidesPerView={4}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                breakpoints={{
+                  0: { slidesPerView: 1.4, spaceBetween: 16 },
+                  480: { slidesPerView: 2, spaceBetween: 16 },
+                  640: { slidesPerView: 3, spaceBetween: 18 },
+                  1024: { slidesPerView: 4, spaceBetween: 20 },
+                }}
+              >
+                {products.map((item) => (
+                  <SwiperSlide key={item.id}>
+                    <div className="mostPopularProductSlide">
+                      <ProductCard
+                        id={item.id}
+                        name={item.name}
+                        productVariants={item.product_variants}
+                        image={item.image_gallery?.[0]}
+                        slug={item.url_slug}
+                        specialBadge={item.special_badge}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
