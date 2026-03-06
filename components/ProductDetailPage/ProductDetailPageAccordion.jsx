@@ -6,7 +6,7 @@ import VideoPopup from "./VideoPopup";
 
 const { Panel } = Collapse;
 
-const ProductDetailPageAccordion = ({ productDetail }) => {
+const ProductDetailPageAccordion = ({ productDetail, attributes }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const handleOpenVideo = () => {
@@ -73,45 +73,33 @@ const ProductDetailPageAccordion = ({ productDetail }) => {
           </>
         )}
 
-        <div className="acordionLineDP"></div>
-        <Panel header="Specs" key="1">
-          <div className="productDetailPageAccordionContent">
-            <div className="productDetailPageAccordionContentSpesifications">
-              <ul>
-                <li>
-                  <span>Wax:</span>
-                  <p>Soy–coconut blend</p>
-                </li>
-                <li>
-                  <span>Wick: </span>
-                  <p>100% cotton, zinc-free</p>
-                </li>
-                <li>
-                  <span>Wax:</span>
-                  <p>Soy–coconut blend</p>
-                </li>
-                <li>
-                  <span>Net weight: </span>
-                  <p>1100g</p>
-                </li>
-                <li>
-                  <span>Wax:</span>
-                  <p>Soy–coconut blend</p>
-                </li>
-                <li>
-                  <span>Made in: </span>
-                  <p>Baku</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </Panel>
-
-        <div className="acordionLineDP"></div>
+        {attributes && attributes.length > 0 && (
+          <>
+            <div className="acordionLineDP"></div>
+            <Panel header="Specs" key="2">
+              <div className="productDetailPageAccordionContent">
+                <div className="productDetailPageAccordionContentSpesifications">
+                  <ul>
+                    {attributes.map((attr) => {
+                      const topAttr = attr?.top_attributes?.[0];
+                      return (
+                        <li key={attr.id}>
+                          <span>{topAttr?.name}:</span>
+                          <p>{attr?.name}</p>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </Panel>
+          </>
+        )}
 
         {productDetail?.safety_info && (
           <>
-            <Panel header="Safety info" key="1">
+            <div className="acordionLineDP"></div>
+            <Panel header="Safety info" key="3">
               <div className="productDetailPageAccordionContent">
                 <div
                   className="blogContentApiDescriptionItems"
@@ -127,7 +115,7 @@ const ProductDetailPageAccordion = ({ productDetail }) => {
         {productDetail?.youtube_url && (
           <>
             <div className="acordionLineDP"></div>
-            <Panel header="Video" key="1">
+            <Panel header="Video" key="4">
               <div className="productDetailPageAccordionContent">
                 <div
                   className="productDetailPageAccordionContentVideo"
@@ -157,7 +145,7 @@ const ProductDetailPageAccordion = ({ productDetail }) => {
         {productDetail?.delivery_content && (
           <>
             <div className="acordionLineDP"></div>
-            <Panel header="Delivery" key="1">
+            <Panel header="Delivery" key="5">
               <div className="productDetailPageAccordionContent">
                 <div className="productDetailPageAccordionContentDelivery">
                   {/* <ul>
@@ -182,7 +170,12 @@ const ProductDetailPageAccordion = ({ productDetail }) => {
         )}
       </Collapse>
 
-      {isVideoOpen && <VideoPopup onClose={handleCloseVideo} youtubeUrl={productDetail?.youtube_url} />}
+      {isVideoOpen && (
+        <VideoPopup
+          onClose={handleCloseVideo}
+          youtubeUrl={productDetail?.youtube_url}
+        />
+      )}
     </div>
   );
 };

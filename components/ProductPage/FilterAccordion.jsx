@@ -518,7 +518,7 @@ const FilterAccordion = ({selectedCategory}) => {
         )}
       >
         {/* 1-ci accordion */}
-        <Panel header={selectedCategory?.name || "Kategoriyalar"} key="1">
+        <Panel header={selectedCategory?.namea || "Kategoriyalar"} key="1">
           <div className="filterAccordionContent">
             <div
               className="filterAccordionScroll"

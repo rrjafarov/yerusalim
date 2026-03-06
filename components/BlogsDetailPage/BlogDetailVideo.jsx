@@ -1,11 +1,10 @@
+// // !son versiya
 // "use client";
 // import React, { useState, useRef, useEffect } from "react";
-// import VideoPopup from "../ProductDetailPage/VideoPopup";
 // import Link from "next/link";
 
 // const BlogDetailVideo = ({ blogData }) => {
 //   const [isVideoOpen, setIsVideoOpen] = useState(false);
-
 //   const [copied, setCopied] = useState(false);
 //   const copyTimeoutRef = useRef(null);
 
@@ -41,38 +40,77 @@
 //     };
 //   }, []);
 
+//   // ---------- getEmbedUrl funksiyası ----------
+//   const getEmbedUrl = (url) => {
+//     if (!url || typeof url !== "string") return "";
+
+//     const trimmed = url.trim();
+
+//     // Direkt embed verilmişsə id çıxart
+//     const embedMatch = trimmed.match(/\/embed\/([A-Za-z0-9_-]{11})/);
+//     if (embedMatch && embedMatch[1]) {
+//       return `https://www.youtube-nocookie.com/embed/${embedMatch[1]}?rel=0&modestbranding=1`;
+//     }
+
+//     // watch?v= url
+//     const watchMatch = trimmed.match(/[?&]v=([A-Za-z0-9_-]{11})/);
+//     if (watchMatch && watchMatch[1]) {
+//       return `https://www.youtube-nocookie.com/embed/${watchMatch[1]}?rel=0&modestbranding=1`;
+//     }
+
+//     // youtu.be short url
+//     const shortMatch = trimmed.match(/youtu\.be\/([A-Za-z0-9_-]{11})/);
+//     if (shortMatch && shortMatch[1]) {
+//       return `https://www.youtube-nocookie.com/embed/${shortMatch[1]}?rel=0&modestbranding=1`;
+//     }
+
+//     // Bəzən admin sadəcə id göndərə bilər (11 simvollu)
+//     const idOnlyMatch = trimmed.match(/^([A-Za-z0-9_-]{11})$/);
+//     if (idOnlyMatch && idOnlyMatch[1]) {
+//       return `https://www.youtube-nocookie.com/embed/${idOnlyMatch[1]}?rel=0&modestbranding=1`;
+//     }
+
+//     // Əgər heç biri tapılmadısa boş qaytar
+//     return "";
+//   };
+//   // --------------------------------------------
+
+//   const embedUrl = getEmbedUrl(blogData?.youtube_url);
+
 //   return (
 //     <div className="container">
 //       <div className="blogDetailVideo">
-//         <div className="blogDetailVideoItems">
-//           <h3>Video</h3>
+//         {/* Video yalnız embedUrl varsa göstərilir (başlıq + cover ilə birlikdə) */}
+//         {embedUrl && (
+//           <div className="blogDetailVideoItems">
+//             <h3>Video</h3>
 
-//           <div className="blogDetailVideoCover" onClick={handleOpenVideo}>
-//             {/* <iframe
-//               width="100%"
-//               height="100%"
-//               // src="https://www.youtube-nocookie.com/embed/V9Cn2lsXzO4?rel=0&modestbranding=1"
-//               src={blogData.youtube_url}
-//               title="YouTube video player"
-//               frameBorder="0"
-//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-//               allowFullScreen
-//             ></iframe> */}
+//             <div
+//               className="blogDetailVideoCover"
+//               onClick={handleOpenVideo}
+//               role="button"
+//               tabIndex={0}
+//               onKeyPress={(e) => {
+//                 if (e.key === "Enter") handleOpenVideo();
+//               }}
+//             >
+//               <iframe
+//                 width="100%"
+//                 height="100%"
+//                 src={embedUrl}
+//                 title="YouTube video player"
+//                 frameBorder="0"
+//                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+//                 allowFullScreen
+//               />
+//             </div>
 
-//             <iframe
-//               width="100%"
-//               height="100%"
-//               src={getEmbedUrl(blogData.youtube_url)}
-//               title="YouTube video player"
-//               frameBorder="0"
-//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-//               allowFullScreen
-//             />
+//             {/* Popup istəsən buranı aktivləşdir */}
+//             {/* {isVideoOpen && <VideoPopup onClose={handleCloseVideo} />} */}
 //           </div>
+//         )}
 
-//           {/* {isVideoOpen && <VideoPopup onClose={handleCloseVideo} />} */}
-//         </div>
-
+//         {/* Share linklər və hashtag-lar həmişə görünür (video olmasa belə) */}
 //         <div className="blogShareLinks">
 //           <div className="productDetailPageShareLiks">
 //             <span>Share:</span>
@@ -175,7 +213,7 @@
 //                 <span>Copy link</span>
 //               </button>
 
-//               {/* “Copied” yazısı button-dan kənarda */}
+//               {/* “Copied” yazısı */}
 //               <span
 //                 className={`productDetailPageShareCopied ${
 //                   copied ? "visible" : ""
@@ -187,7 +225,7 @@
 //           </div>
 
 //           <div className="blogShareLinksRight">
-//             <span>{blogData.author}</span>
+//             <span>{blogData?.author}</span>
 //             <ul>
 //               {blogData?.hastags &&
 //                 Object.values(blogData.hastags).map((hashtag, index) => (
@@ -214,6 +252,12 @@
 
 
 
+
+
+// ! sHARE LINK
+
+
+
 // !son versiya
 "use client";
 import React, { useState, useRef, useEffect } from "react";
@@ -230,6 +274,38 @@ const BlogDetailVideo = ({ blogData }) => {
 
   const handleCloseVideo = () => {
     setIsVideoOpen(false);
+  };
+
+  const getShareUrl = () => {
+    if (typeof window !== "undefined") {
+      return window.location.href;
+    }
+    return "";
+  };
+
+  const handleTelegramShare = (e) => {
+    e.preventDefault();
+    const url = encodeURIComponent(getShareUrl());
+    const text = encodeURIComponent(blogData?.title || "");
+    window.open(`https://t.me/share/url?url=${url}&text=${text}`, "_blank");
+  };
+
+  const handleTiktokShare = (e) => {
+    e.preventDefault();
+    window.open(`https://www.tiktok.com/`, "_blank");
+  };
+
+  const handleFacebookShare = (e) => {
+    e.preventDefault();
+    const url = encodeURIComponent(getShareUrl());
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
+  };
+
+  const handleTwitterShare = (e) => {
+    e.preventDefault();
+    const url = encodeURIComponent(getShareUrl());
+    const text = encodeURIComponent(blogData?.title || "");
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, "_blank");
   };
 
   const handleCopyLink = () => {
@@ -332,7 +408,7 @@ const BlogDetailVideo = ({ blogData }) => {
             <span>Share:</span>
             <ul>
               <li>
-                <Link href="#">
+                <Link href="#" onClick={handleTelegramShare}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="22"
@@ -348,7 +424,7 @@ const BlogDetailVideo = ({ blogData }) => {
                 </Link>
               </li>
               <li>
-                <Link href="#">
+                <Link href="#" onClick={handleTiktokShare}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -364,7 +440,7 @@ const BlogDetailVideo = ({ blogData }) => {
                 </Link>
               </li>
               <li>
-                <Link href="#">
+                <Link href="#" onClick={handleFacebookShare}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -387,7 +463,7 @@ const BlogDetailVideo = ({ blogData }) => {
                 </Link>
               </li>
               <li>
-                <Link href="#">
+                <Link href="#" onClick={handleTwitterShare}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -429,7 +505,7 @@ const BlogDetailVideo = ({ blogData }) => {
                 <span>Copy link</span>
               </button>
 
-              {/* “Copied” yazısı */}
+              {/* "Copied" yazısı */}
               <span
                 className={`productDetailPageShareCopied ${
                   copied ? "visible" : ""

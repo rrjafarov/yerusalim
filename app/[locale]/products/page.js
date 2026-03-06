@@ -347,6 +347,22 @@ async function fetchProductsPageInfo() {
   }
 }
 
+async function fetchAttributesData() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+
+  try {
+    const { data } = await axiosInstance.get(`/page-data/attributes`, {
+      headers: { Lang: lang?.value || "az" },
+      cache: "no-store",
+    });
+
+    return data?.data || null;
+  } catch (error) {
+    console.error("Page info fetch error:", error);
+    return null;
+  }
+}
 
 
 // ❗ BURAYA TOXUNMURUQ (generateMetadata olduğu kimi qalır)
@@ -421,7 +437,6 @@ export async function generateMetadata({ searchParams }) {
 }
 
 
-
 // ==========================
 // ✅ PAGE COMPONENT
 // ==========================
@@ -446,6 +461,8 @@ const page = async ({ searchParams }) => {
   );
 
   const categoriesData = await fetchCategoryPageData();
+
+  const attributeData = await fetchAttributesData();
 
   let selectedCategory = null;
 

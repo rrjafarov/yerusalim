@@ -6,8 +6,39 @@ import ProductDetailPageAccordion from "./ProductDetailPageAccordion";
 import Link from "next/link";
 
 const ProductDetailPage = ({ productDetail }) => {
-  // const [copied, setCopied] = useState(false);
   const copyTimeoutRef = useRef(null);
+
+  const getShareUrl = () => {
+    if (typeof window !== "undefined") {
+      return window.location.href;
+    }
+    return "";
+  };
+
+  const handleTelegramShare = (e) => {
+    e.preventDefault();
+    const url = encodeURIComponent(getShareUrl());
+    const text = encodeURIComponent(productDetail?.name || "");
+    window.open(`https://t.me/share/url?url=${url}&text=${text}`, "_blank");
+  };
+
+  const handleTiktokShare = (e) => {
+    e.preventDefault();
+    window.open(`https://www.tiktok.com/`, "_blank");
+  };
+
+  const handleFacebookShare = (e) => {
+    e.preventDefault();
+    const url = encodeURIComponent(getShareUrl());
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
+  };
+
+  const handleTwitterShare = (e) => {
+    e.preventDefault();
+    const url = encodeURIComponent(getShareUrl());
+    const text = encodeURIComponent(productDetail?.name || "");
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, "_blank");
+  };
 
   const handleCopyLink = () => {
     if (typeof window !== "undefined" && navigator?.clipboard) {
@@ -32,11 +63,20 @@ const ProductDetailPage = ({ productDetail }) => {
       }
     };
   }, []);
-
   const variants = Object.values(productDetail?.product_variants || {});
   const [selectedVariant, setSelectedVariant] = useState(variants[0]);
-
   const [copied, setCopied] = useState(false);
+  const attributes = (productDetail?.attributes || []).filter((attr) =>
+    attr?.top_attributes?.some((top) =>
+      top?.special_attribute?.includes("yes"),
+    ),
+  );
+  const normalAttributes = (productDetail?.attributes || []).filter(
+    (attr) =>
+      !attr?.top_attributes?.some((top) =>
+        top?.special_attribute?.includes("yes"),
+      ),
+  );
 
   return (
     <div className="productDetailPage">
@@ -121,6 +161,7 @@ const ProductDetailPage = ({ productDetail }) => {
 
               <div className="productDetailPageRightSetting">
                 <ProductDetailPageSetting
+                  attributes={attributes}
                   variants={variants}
                   selectedVariant={selectedVariant}
                   setSelectedVariant={setSelectedVariant}
@@ -128,7 +169,7 @@ const ProductDetailPage = ({ productDetail }) => {
               </div>
 
               <div className="productDetailPageRightAccordion">
-                <ProductDetailPageAccordion productDetail={productDetail} />
+                <ProductDetailPageAccordion productDetail={productDetail} attributes={normalAttributes}  />
               </div>
             </div>
           </div>
@@ -138,7 +179,7 @@ const ProductDetailPage = ({ productDetail }) => {
           <span>Share:</span>
           <ul>
             <li>
-              <Link href="#">
+              <Link href="#" onClick={handleTelegramShare}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
@@ -154,7 +195,7 @@ const ProductDetailPage = ({ productDetail }) => {
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link href="#" onClick={handleTiktokShare}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -170,7 +211,7 @@ const ProductDetailPage = ({ productDetail }) => {
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link href="#" onClick={handleFacebookShare}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -193,7 +234,7 @@ const ProductDetailPage = ({ productDetail }) => {
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link href="#" onClick={handleTwitterShare}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -235,7 +276,7 @@ const ProductDetailPage = ({ productDetail }) => {
               <span>Copy link</span>
             </button>
 
-            {/* “Copied” yazısı button-dan kənarda */}
+            {/* "Copied" yazısı button-dan kənarda */}
             <span
               className={`productDetailPageShareCopied ${
                 copied ? "visible" : ""
