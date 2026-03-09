@@ -95,24 +95,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 import React, { useState, useEffect } from "react";
 import SortBy from "./SortBy";
@@ -120,40 +102,64 @@ import Image from "next/image";
 import ProductCard from "@/components/Mixed/ProductCard";
 import Pagination from "@/components/Mixed/Pagination";
 import FilterAccordion from "@/components/ProductPage/FilterAccordion";
+import Loading from "@/components/Loading";
 import { GiCandleLight } from "react-icons/gi";
-// 1. Hook-u import edirik
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 
-const ProductPageDetails = ({ productsData, selectedCategory, categoriesData }) => {
-  const categoryBanner = productsData?.data?.data?.[0]?.category?.[0]?.banner;
+const ProductPageDetails = ({
+  productsData,
+  selectedCategory,
+  categoriesData,
+  filterAttributes,
+}) => {
+
+  const categoryBanner =
+    productsData?.data?.data?.[0]?.category?.[0]?.banner;
+
   const products = productsData?.data?.data ?? [];
   const paginationData = productsData?.data;
 
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  // 2. Search params-ı çağırırıq
+  const [loading, setLoading] = useState(false);
+
   const searchParams = useSearchParams();
-  // 3. Sürüşdürmə effekti üçün useEffect
+  const pathname = usePathname();
+
+  // scroll effect
   useEffect(() => {
-    // URL-dən page parametrini yoxlayırıq
     const page = searchParams.get("page");
-    // Əgər page parametri varsa (yəni səhifə dəyişibsə) işə düşsün.
-    // İlk yüklənişdə də işləməsini istəyirsinizsə, if şərtini çıxara bilərsiniz.
+
     if (page) {
       const element = document.getElementById("product-section-start");
 
       if (element) {
-        // Elementin yerini tapırıq
-        const headerOffset = 20; // "Biraz yuxarı" məsafəsi (px ilə) - bunu zövqə görə dəyiş
+        const headerOffset = 20;
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+        const offsetPosition =
+          elementPosition + window.scrollY - headerOffset;
+
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
         });
       }
     }
-  }, [searchParams]); // Hər dəfə URL (searchParams) dəyişəndə işləyəcək
+  }, [searchParams]);
+
+  // loading trigger (filter / pagination change)
+
+
+  useEffect(() => {
+    setLoading(true);
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [searchParams, pathname]);
+
 
   const openMobileFilter = () => {
     setIsMobileFilterOpen(true);
@@ -161,18 +167,22 @@ const ProductPageDetails = ({ productsData, selectedCategory, categoriesData }) 
 
   const closeMobileFilter = () => {
     setIsClosing(true);
+
     setTimeout(() => {
       setIsMobileFilterOpen(false);
       setIsClosing(false);
     }, 300);
   };
+
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape" && isMobileFilterOpen) {
         closeMobileFilter();
       }
     };
+
     window.addEventListener("keydown", handleEsc);
+
     return () => window.removeEventListener("keydown", handleEsc);
   }, [isMobileFilterOpen]);
 
@@ -181,9 +191,11 @@ const ProductPageDetails = ({ productsData, selectedCategory, categoriesData }) 
   return (
     <div className="productPageDetails">
       <div className="container">
+
         <div id="product-section-start" className="productPageDetailsHeader">
           <div className="productPageDetailsHeaderLeft">
             <span onClick={openMobileFilter}>Filter</span>
+
             {searchText && (
               <p>
                 <strong>{paginationData?.total || 0}</strong> Search Results{" "}
@@ -191,25 +203,36 @@ const ProductPageDetails = ({ productsData, selectedCategory, categoriesData }) 
               </p>
             )}
           </div>
+
           <div className="productPageDetailsHeaderRight">
             <SortBy />
           </div>
         </div>
 
         <div className="productPageLayout">
-          {/* ... qalan kodlar olduğu kimi ... */}
           <div className="row">
+
             {/* Desktop Filter */}
             <div className="xl-3 lg-4 md-6 sm-0">
               <div className="productPageLayoutLeft">
-                <FilterAccordion selectedCategory={selectedCategory} categories={categoriesData?.data?.data || []} />
+                <FilterAccordion
+                  filterAttributes={filterAttributes}
+                  selectedCategory={selectedCategory}
+                  categories={categoriesData?.data?.data || []}
+                />
               </div>
             </div>
-            {/* Mobile Filter Overlay */}
+
+            {/* Mobile Filter */}
             {isMobileFilterOpen && (
-              <div className="mobileFilterOverlay" onClick={closeMobileFilter}>
+              <div
+                className="mobileFilterOverlay"
+                onClick={closeMobileFilter}
+              >
                 <div
-                  className={`mobileFilterContent ${isClosing ? "closing" : "open"}`}
+                  className={`mobileFilterContent ${
+                    isClosing ? "closing" : "open"
+                  }`}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
@@ -219,10 +242,16 @@ const ProductPageDetails = ({ productsData, selectedCategory, categoriesData }) 
                   >
                     ×
                   </button>
-                  <FilterAccordion  selectedCategory={selectedCategory} categories={categoriesData?.data?.data || []} />
+                  <FilterAccordion
+                    filterAttributes={filterAttributes}
+                    selectedCategory={selectedCategory}
+                    categories={categoriesData?.data?.data || []}
+                  />
                 </div>
               </div>
             )}
+
+            {/* Products */}
             <div className="xl-9 lg-8 md-6 sm-12">
               <div className="productPageLayoutRight">
                 {categoryBanner && (
@@ -235,42 +264,79 @@ const ProductPageDetails = ({ productsData, selectedCategory, categoriesData }) 
                     />
                   </div>
                 )}
+
                 <div className="productPageLayoutRightCards">
-                  <div className="row">
-                    {products.length === 0 ? (
-                      <div
-                        className="xl-12 lg-12 md-12 sm-12 "
-                        id="noProductFound"
-                      >
-                        <GiCandleLight id="noProductFoundIcon" />
-                        No products found
+                  {loading ? (
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "flex-start",
+                        width: "100%",
+                        minHeight: "400px",
+                      }}
+                    >
+                      <Loading />
+                    </div>
+                  ) : (
+                    <>
+                      <div className="row">
+                        {products.length === 0 ? (
+                          <div
+                            className="xl-12 lg-12 md-12 sm-12"
+                            id="noProductFound"
+                          >
+                            <GiCandleLight id="noProductFoundIcon" />
+                            No products found
+                          </div>
+                        ) : (
+                          products.map((item) => (
+                            <div
+                              className="xl-4 lg-4 md-6 sm-6"
+                              key={item.id}
+                            >
+                              <ProductCard
+                                id={item.id}
+                                name={item.name}
+                                productVariants={item.product_variants}
+                                image={item.image_gallery?.[0]}
+                                slug={item.url_slug}
+                                specialBadge={item.special_badge}
+                              />
+                            </div>
+                          ))
+                        )}
+
                       </div>
-                    ) : (
-                      products.map((item) => (
-                        <div className="xl-4 lg-4 md-6 sm-6" key={item.id}>
-                          <ProductCard
-                            id={item.id}
-                            name={item.name}
-                            productVariants={item.product_variants} 
-                            image={item.image_gallery?.[0]}
-                            slug={item.url_slug}
-                            specialBadge={item.special_badge}
-                          />
-                        </div>
-                      ))
-                    )}
-                  </div>
-                  <div className="productPageLayoutRightCardsPagination">
-                    <Pagination meta={paginationData} />
-                  </div>
+
+                      <div className="productPageLayoutRightCardsPagination">
+                        <Pagination meta={paginationData} />
+                      </div>
+                    </>
+                  )}
+
                 </div>
               </div>
             </div>
+
           </div>
         </div>
+
       </div>
     </div>
   );
 };
 
 export default ProductPageDetails;
+
+
+
+
+
+
+
+
+
+
+
+

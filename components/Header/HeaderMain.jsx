@@ -364,6 +364,7 @@ const HeaderMain = ({ categoryData, contactData }) => {
         onClose={() => setMobileHamburgerOpen(false)}
         token={token} // ✅ əlavə etdik
         isSuccess={isSuccess} // ✅ əlavə etdi
+        categoryData={categoryData}
       />
 
       <MobileSearch

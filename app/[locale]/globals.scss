@@ -1408,6 +1408,21 @@ ul {
         display: flex;
         flex-direction: column; // span altındakı content alt-açılacaq
         gap: 1rem;
+        a {
+          color: #3f3f3f;
+          font-size: 1.874rem;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          letter-spacing: 0.0562rem;
+          text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          span {
+            padding: 1rem 0;
+          }
+        }
 
         .accordionHeader {
           display: flex;
@@ -1448,10 +1463,45 @@ ul {
             max-height 0.3s ease,
             padding 0.3s ease;
           padding: 0;
-
           &.active {
             max-height: 500px;
-            padding: 1rem 0;
+            padding: 1rem 0 1rem 2rem;
+          }
+          
+
+          .accordionContentMenuTopCategory {
+            li {
+              a {
+                color: #3f3f3f;
+                font-size: 1.774rem;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                letter-spacing: 0.0562rem;
+                text-transform: uppercase !important;
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+              }
+            }
+          }
+          .accordionContentMenuSubCategory {
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            li {
+              a {
+                color: #3f3f3f;
+                font-size: 1.474rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: 0.0562rem;
+                text-transform: none;
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+              }
+            }
           }
         }
       }
@@ -1561,74 +1611,6 @@ ul {
 // ? Header CSS end
 
 // * HeroSlider CSS start
-// .heroSlider {
-//   width: 100%;
-//   height: 67.3rem;
-//   position: relative;
-//   img {
-//     width: 100%;
-//     height: 100%;
-//   }
-//   .heroSliderContent {
-//     position: absolute;
-//     z-index: 2;
-//     top: 50%;
-//     left: 30%;
-//     transform: translate(-50%, -50%);
-//     display: flex;
-//     flex-direction: column;
-//     gap: 3rem;
-//     h1 {
-//       width: 47.3rem;
-//       color: #fff;
-//       font-family: "Noto Serif Display";
-//       font-size: 4.4rem;
-//       font-style: normal;
-//       font-weight: 600;
-//       line-height: 120%;
-//     }
-//     p {
-//       color: #fff;
-//       opacity: 0.5;
-//       width: 52.2rem;
-//       font-size: 1.8rem;
-//       font-style: normal;
-//       font-weight: 400;
-//       line-height: 150%;
-//     }
-//     a {
-//       display: inline-flex;
-//       border-radius: 0.8rem;
-//       border: 1px solid #111;
-//       background: #111;
-//       margin-top: 4rem;
-//       width: fit-content;
-//       span {
-//         display: flex;
-//         padding: 1.2rem 2.4rem;
-//         justify-content: center;
-//         align-items: center;
-//         gap: 0.8rem;
-//         color: #fff;
-//         font-size: 1.6rem;
-//         font-style: normal;
-//         font-weight: 500;
-//         line-height: 2.4rem;
-//       }
-//       transition: all 0.5s ease-in-out;
-//       &:hover {
-//         background: #711111;
-//         border: 1px solid #711111;
-//         transition: all 0.5s ease-in-out;
-//         span {
-//           color: #fff;
-//           transform: scaleX(1.02);
-//           transition: all 0.5s ease-in-out;
-//         }
-//       }
-//     }
-//   }
-// }
 .heroSliderSwiper {
   background-color: #5f1915;
   .swiper-button-next,
@@ -1637,7 +1619,6 @@ ul {
     color: #fff;
     width: 5.3rem;
     height: 5.3rem;
-    // background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);

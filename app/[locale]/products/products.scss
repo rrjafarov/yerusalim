@@ -574,8 +574,9 @@
 
 .filterAccordionContent {
   position: relative;
-  height: 30rem;
+  // height: 30rem;
   .filterAccordionScroll {
+    max-height: 30rem;
     height: 100%;
     overflow-y: auto;
     padding-right: 0.8rem;
@@ -1272,7 +1273,7 @@
 
 .videoPopupInner {
   width: 100%;
-  height: 100% ;
+  height: 100%;
   iframe {
     width: 100%;
     height: 100%;
@@ -1296,4 +1297,40 @@
       border-radius: 0.8rem;
     }
   }
+}
+
+.selectedFilters {
+  display: flex;
+  gap: 0.8rem;
+  margin: 2rem 0;
+  width: 100%;
+  flex-wrap: wrap;
+  .selectedFilter {
+    background-color: #711111;
+    // height: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.3rem;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-family: "Inter", sans-serif !important;
+      p{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.closeSelectFilter{
+  width: 2rem;
+  height: 2rem;
 }
