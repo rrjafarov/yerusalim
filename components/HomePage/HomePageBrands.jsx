@@ -1,25 +1,26 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
 
-const HomePageBrands = () => {
+const HomePageBrands = ({ brandsData }) => {
   return (
     <div className="homePageBrands">
       <div className="homePageBrandsItem">
         <h2>Our brands</h2>
+
         <div className="brandsLogos">
           <div className="container">
             <Swiper
               navigation={true}
               loop
-              modules={[Autoplay]}
+              modules={[Autoplay, Navigation]}
               className="mySwiper"
               spaceBetween={20}
               speed={900}
@@ -29,63 +30,35 @@ const HomePageBrands = () => {
                 disableOnInteraction: false,
               }}
               breakpoints={{
-              0: {
-                slidesPerView: 2.2,
-                centeredSlides: true,
-                spaceBetween: 16,
-              },
-              640: {
-                slidesPerView: 3.5,
-                spaceBetween: 18,
-              },
-              1024: {
-                slidesPerView: 5,
-                spaceBetween: 20,
-              },
-            }}
+                0: {
+                  slidesPerView: 2.2,
+                  centeredSlides: true,
+                  spaceBetween: 16,
+                },
+                640: {
+                  slidesPerView: 3.5,
+                  spaceBetween: 18,
+                },
+                1024: {
+                  slidesPerView: 5,
+                  spaceBetween: 20,
+                },
+              }}
             >
-              <SwiperSlide>
-                <div className="brandsLogo">
-                  <Link href="#">
-                    <span>Logotype</span>
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="brandsLogo">
-                  <Link href="#">
-                    <span>Logotype</span>
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="brandsLogo">
-                  <Link href="#">
-                    <span>Logotype</span>
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="brandsLogo">
-                  <Link href="#">
-                    <span>Logotype</span>
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="brandsLogo">
-                  <Link href="#">
-                    <span>Logotype</span>
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="brandsLogo">
-                  <Link href="#">
-                    <span>Logotype</span>
-                  </Link>
-                </div>
-              </SwiperSlide>
+              {brandsData?.map((data) => (
+                <SwiperSlide key={data.id}>
+                  <div className="brandsLogo">
+                    <Link href="#">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${data.logo}`}
+                        alt={data.name || "brand"}
+                        width={230}
+                        height={80}
+                      />
+                    </Link>
+                  </div>
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>

@@ -95,6 +95,7 @@
 
 
 
+
 "use client";
 import React, { useState, useEffect } from "react";
 import SortBy from "./SortBy";
@@ -111,11 +112,18 @@ const ProductPageDetails = ({
   selectedCategory,
   categoriesData,
   filterAttributes,
+  productsPageInfo,
 }) => {
+  // const categoryBanner =
+  //   productsData?.data?.data?.[0]?.category?.[0]?.banner;
 
-  const categoryBanner =
-    productsData?.data?.data?.[0]?.category?.[0]?.banner;
+  const categoryBanner = selectedCategory
+    ? productsData?.data?.data?.[0]?.category?.[0]?.banner
+    : productsPageInfo?.banner;
 
+
+
+    
   const products = productsData?.data?.data ?? [];
   const paginationData = productsData?.data;
 
@@ -136,8 +144,7 @@ const ProductPageDetails = ({
       if (element) {
         const headerOffset = 20;
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition =
-          elementPosition + window.scrollY - headerOffset;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
         window.scrollTo({
           top: offsetPosition,
@@ -149,7 +156,6 @@ const ProductPageDetails = ({
 
   // loading trigger (filter / pagination change)
 
-
   useEffect(() => {
     setLoading(true);
 
@@ -159,7 +165,6 @@ const ProductPageDetails = ({
 
     return () => clearTimeout(timer);
   }, [searchParams, pathname]);
-
 
   const openMobileFilter = () => {
     setIsMobileFilterOpen(true);
@@ -191,7 +196,6 @@ const ProductPageDetails = ({
   return (
     <div className="productPageDetails">
       <div className="container">
-
         <div id="product-section-start" className="productPageDetailsHeader">
           <div className="productPageDetailsHeaderLeft">
             <span onClick={openMobileFilter}>Filter</span>
@@ -211,7 +215,6 @@ const ProductPageDetails = ({
 
         <div className="productPageLayout">
           <div className="row">
-
             {/* Desktop Filter */}
             <div className="xl-3 lg-4 md-6 sm-0">
               <div className="productPageLayoutLeft">
@@ -225,10 +228,7 @@ const ProductPageDetails = ({
 
             {/* Mobile Filter */}
             {isMobileFilterOpen && (
-              <div
-                className="mobileFilterOverlay"
-                onClick={closeMobileFilter}
-              >
+              <div className="mobileFilterOverlay" onClick={closeMobileFilter}>
                 <div
                   className={`mobileFilterContent ${
                     isClosing ? "closing" : "open"
@@ -291,10 +291,7 @@ const ProductPageDetails = ({
                           </div>
                         ) : (
                           products.map((item) => (
-                            <div
-                              className="xl-4 lg-4 md-6 sm-6"
-                              key={item.id}
-                            >
+                            <div className="xl-4 lg-4 md-6 sm-6" key={item.id}>
                               <ProductCard
                                 id={item.id}
                                 name={item.name}
@@ -306,7 +303,6 @@ const ProductPageDetails = ({
                             </div>
                           ))
                         )}
-
                       </div>
 
                       <div className="productPageLayoutRightCardsPagination">
@@ -314,29 +310,14 @@ const ProductPageDetails = ({
                       </div>
                     </>
                   )}
-
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   );
 };
 
 export default ProductPageDetails;
-
-
-
-
-
-
-
-
-
-
-
-

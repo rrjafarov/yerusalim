@@ -189,27 +189,19 @@ const MobileMenuHamburger = ({
                   })}
               </ul>
             </div>
-
-            {/* <div
-              className={`accordionContent ${
-                activeIndex === 2 ? "active" : ""
-              }`}
-            >
-
-
-              
-
-            </div> */}
           </li>
 
           <li>
-            <Link href="#" className="accordionHeader">
+            <Link
+              href="/products?status=is_bestseller"
+              className="accordionHeader"
+            >
               <span>Best Seller</span>
             </Link>
           </li>
 
           <li>
-            <Link href="#" className="accordionHeader">
+            <Link href="/products?status=is_new" className="accordionHeader">
               <span>New Products</span>
             </Link>
           </li>
