@@ -235,6 +235,7 @@ const ProductPageDetails = ({
                   }`}
                   onClick={(e) => e.stopPropagation()}
                 >
+                  <span className="filterOverlayTitle">Filter</span>
                   <button
                     className="closeButton"
                     onClick={closeMobileFilter}

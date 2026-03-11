@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 // Import Swiper React components
@@ -14,7 +13,7 @@ import Image from "next/image";
 
 import MobileHeroSlider from "./MobileHeroSlider";
 
-const HeroSlider = () => {
+const HeroSlider = ({ homeBannerData }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   // ✅ Ekran ölçüsünə görə mobil / desktop ayrımı
@@ -35,7 +34,7 @@ const HeroSlider = () => {
     <div>
       {isMobile ? (
         // ✅ 768-dən kiçik ekranlarda bu komponent görsənəcək
-        <MobileHeroSlider />
+        <MobileHeroSlider homeBannerData={homeBannerData} />
       ) : (
         // ✅ 768 və daha böyük ekranlarda bu Swiper işləyəcək
         <Swiper
@@ -50,50 +49,29 @@ const HeroSlider = () => {
             disableOnInteraction: false,
           }}
         >
-          <SwiperSlide>
-            <div className="heroSlider">
-              <Image
-                src="/img/banner.png"
-                alt="banner"
-                width={1440}
-                height={670}
-              />
-              <div className="container">
-                <div className="heroSliderContent">
-                  <h1>Bring Autumn’s Golden Glow Home with Yerusalim</h1>
-                  <p>
-                    Cozy spice, apple, and warm wood notes crafted to soften
-                    evenings and lift the mood.
-                  </p>
-                  <Link href="/products">
-                    <span>Shop All Products</span>
-                  </Link>
+          {homeBannerData.map((data) => (
+            <SwiperSlide key={data.id}>
+              <div className="heroSlider">
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${data.banner_image}`}
+                  alt={data.title}
+                  width={1440}
+                  height={670}
+                />
+
+                <div className="container">
+                  <div className="heroSliderContent">
+                    <h1>{data.title}</h1>
+                    <p>{data.description}</p>
+
+                    <Link href={data.button_url}>
+                      <span>{data.button_name}</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="heroSlider">
-              <Image
-                src="/img/banner.png"
-                alt="banner"
-                width={1440}
-                height={670}
-              />
-              <div className="container">
-                <div className="heroSliderContent">
-                  <h1>Bring Autumn’s Golden Glow Home with Yerusalim</h1>
-                  <p>
-                    Cozy spice, apple, and warm wood notes crafted to soften
-                    evenings and lift the mood.
-                  </p>
-                  <Link href="/">
-                    <span>Shop All Products</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
       )}
     </div>

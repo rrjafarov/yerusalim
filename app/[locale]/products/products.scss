@@ -182,11 +182,16 @@
     &.open {
       animation: slideIn 0.3s forwards;
     }
-
     &.closing {
       animation: slideOut 0.3s forwards;
     }
-
+    .filterOverlayTitle{
+      position: absolute;
+      color: #000;
+      top: 2.5rem;
+      left: 3rem;
+      font-size: 3.6rem;
+    }
     .closeButton {
       position: absolute;
       color: #000;

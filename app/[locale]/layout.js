@@ -1,7 +1,7 @@
 import "./globals.scss";
 import StoreProvider from "@/redux/StoreProvider";
 import GuestUUIDProvider from "@/utils/GuestUUIDProvider";
-import FormValidationProvider from "@/utils/FormValidationProvider"; // client component
+import FormValidationProvider from "@/utils/FormValidationProvider";
 import axiosInstance from "@/lib/axios";
 import { cookies } from "next/headers";
 import Header from "@/components/Header/Header";
@@ -23,16 +23,18 @@ async function fetchCategoryPageData() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE");
   try {
-    const { data: about } = await axiosInstance.get(`/page-data/product-categoires`, {
-      headers: { Lang: lang.value },
-      cache: "no-store",
-    });
+    const { data: about } = await axiosInstance.get(
+      `/page-data/product-categoires`,
+      {
+        headers: { Lang: lang.value },
+        cache: "no-store",
+      },
+    );
     return about;
   } catch (error) {
     throw error;
   }
 }
-
 
 async function fetchContactPageData() {
   const cookieStore = await cookies();
@@ -48,17 +50,30 @@ async function fetchContactPageData() {
   }
 }
 
-
+async function fetchSupportData() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE")?.value || "en";
+  try {
+    const { data } = await axiosInstance.get(`/page-data/support-list`, {
+      headers: { Lang: lang },
+      cache: "no-store",
+    });
+    return data;
+  } catch (err) {
+    console.error(err);
+    return { data: { data: [] } };
+  }
+}
 
 export default async function RootLayout({ children }) {
   // const t = await getTranslations();
   const categoryPageData = await fetchCategoryPageData();
   const categoryData = categoryPageData;
 
-
   const contactPageData = await fetchContactPageData();
   const contactData = contactPageData.data;
-  
+
+  const supportData = await fetchSupportData();
 
   return (
     <html lang="en">
@@ -69,7 +84,11 @@ export default async function RootLayout({ children }) {
           <NavigationProgress />
           <Header contactData={contactData} categoryData={categoryData} />
           {children}
-          <Footer contactData={contactData}/>
+          <Footer
+            contactData={contactData}
+            categoryData={categoryData}
+            supportData={supportData}
+          />
         </StoreProvider>
       </body>
     </html>

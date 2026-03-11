@@ -146,11 +146,6 @@
 //         </Panel>
 //         <div className="filterAccordionLine"></div>
 
-
-
-
-
-
 //         {/* 2-ci accordion */}
 //         <Panel header="Fragrance" key="3">
 //           <div className="filterAccordionContent filterAccordionContentSearch">
@@ -259,14 +254,6 @@
 
 
 
-
-
-
-
-
-
-
-
 "use client";
 import FilterPriceRange from "./FilterPriceRange";
 import React, { useRef, useState, useEffect } from "react";
@@ -277,7 +264,11 @@ import { IoIosClose } from "react-icons/io";
 
 const { Panel } = Collapse;
 
-const FilterAccordion = ({ selectedCategory, filterAttributes }) => {
+const FilterAccordion = ({
+  selectedCategory,
+  filterAttributes,
+  categories,
+}) => {
   const scrollRefs = useRef({});
   const [thumbStyles, setThumbStyles] = useState({});
   const [priceRange, setPriceRange] = useState([0, 999]);
@@ -287,8 +278,8 @@ const FilterAccordion = ({ selectedCategory, filterAttributes }) => {
   const searchParams = useSearchParams();
 
   // Local state — checkbox dərhal aktiv olsun
-  const [selectedAttributes, setSelectedAttributes] = useState(
-    () => searchParams.getAll("attribute")
+  const [selectedAttributes, setSelectedAttributes] = useState(() =>
+    searchParams.getAll("attribute"),
   );
 
   // Bütün attr-ları düz map et: id → name (axtarmaq üçün)
@@ -325,7 +316,10 @@ const FilterAccordion = ({ selectedCategory, filterAttributes }) => {
     const { scrollTop, scrollHeight, clientHeight } = el;
 
     if (scrollHeight <= clientHeight) {
-      setThumbStyles((prev) => ({ ...prev, [key]: { height: "0%", translateY: 0 } }));
+      setThumbStyles((prev) => ({
+        ...prev,
+        [key]: { height: "0%", translateY: 0 },
+      }));
       return;
     }
 
@@ -334,7 +328,10 @@ const FilterAccordion = ({ selectedCategory, filterAttributes }) => {
     const maxOffset = clientHeight - visibleRatio * clientHeight;
     const translateY = (scrollTop / (scrollHeight - clientHeight)) * maxOffset;
 
-    setThumbStyles((prev) => ({ ...prev, [key]: { height: `${thumbHeight}%`, translateY } }));
+    setThumbStyles((prev) => ({
+      ...prev,
+      [key]: { height: `${thumbHeight}%`, translateY },
+    }));
   };
 
   useEffect(() => {
@@ -363,7 +360,6 @@ const FilterAccordion = ({ selectedCategory, filterAttributes }) => {
 
   return (
     <div className="filterAccordion">
-
       {/* Seçilmiş filterlər — yalnız seçim varsa göstər */}
       {selectedAttributes.length > 0 && (
         <div className="selectedFilters">
@@ -409,17 +405,75 @@ const FilterAccordion = ({ selectedCategory, filterAttributes }) => {
         )}
       >
         {/* 1-ci accordion */}
-        <Panel header={selectedCategory?.namea || "Kategoriyalar"} key="1">
+        {/* 1-ci accordion */}
+        <Panel
+          header={
+            selectedCategory &&
+            (!selectedCategory.top_category ||
+              selectedCategory.top_category.length === 0)
+              ? selectedCategory.name
+              : "Kategoriyalar"
+          }
+          key="1"
+        >
           <div className="filterAccordionContent">
             <div
               className="filterAccordionScroll"
               ref={(el) => (scrollRefs.current["categories"] = el)}
-              onScroll={() => updateThumb(scrollRefs.current["categories"], "categories")}
+              onScroll={() =>
+                updateThumb(scrollRefs.current["categories"], "categories")
+              }
             >
               <ul>
-                <li>Jar Candels</li>
-                <li>Festive</li>
-                <li>Floral</li>
+                {(() => {
+                  const isTopCategory =
+                    selectedCategory &&
+                    (!selectedCategory.top_category ||
+                      selectedCategory.top_category.length === 0);
+
+                  if (isTopCategory) {
+                    const subCategories = categories.filter(
+                      (cat) =>
+                        Array.isArray(cat.top_category) &&
+                        cat.top_category.some(
+                          (tc) => tc.id === selectedCategory.id,
+                        ),
+                    );
+                    return subCategories.map((cat) => (
+                      <li
+                        key={cat.id}
+                        onClick={() =>
+                          router.push(
+                            `/products?category=${cat.url_slug}-${cat.id}`,
+                          )
+                        }
+                        style={{ cursor: "pointer" }}
+                      >
+                        {cat.name}
+                      </li>
+                    ));
+                  } else {
+                    return categories.map((cat) => (
+                      <li
+                        key={cat.id}
+                        onClick={() =>
+                          router.push(
+                            `/products?category=${cat.url_slug}-${cat.id}`,
+                          )
+                        }
+                        style={{
+                          cursor: "pointer",
+                          fontWeight:
+                            selectedCategory && cat.id === selectedCategory.id
+                              ? "900"
+                              : "400",
+                        }}
+                      >
+                        {cat.name}
+                      </li>
+                    ));
+                  }
+                })()}
               </ul>
             </div>
             <div className="filterAccordionCustomScrollbar">
@@ -460,7 +514,9 @@ const FilterAccordion = ({ selectedCategory, filterAttributes }) => {
                 <div
                   className="filterAccordionScroll"
                   ref={(el) => (scrollRefs.current[topAttr.id] = el)}
-                  onScroll={() => updateThumb(scrollRefs.current[topAttr.id], topAttr.id)}
+                  onScroll={() =>
+                    updateThumb(scrollRefs.current[topAttr.id], topAttr.id)
+                  }
                 >
                   <ul className="searchUL">
                     {values.map((val) => (

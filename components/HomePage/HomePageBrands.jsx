@@ -3,7 +3,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css/navigation";
+// import "swiper/css/navigation";
 
 import { Autoplay, Navigation } from "swiper/modules";
 import Link from "next/link";
@@ -18,7 +18,7 @@ const HomePageBrands = ({ brandsData }) => {
         <div className="brandsLogos">
           <div className="container">
             <Swiper
-              navigation={true}
+              // navigation={true}
               loop
               modules={[Autoplay, Navigation]}
               className="mySwiper"

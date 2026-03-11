@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-const Footer = ({contactData}) => {
+const Footer = ({ contactData, categoryData, supportData }) => {
   const currentYear = new Date().getFullYear();
+  const supports = supportData?.data?.data || [];
   return (
     <div className="footer">
       <div className="footerItem">
@@ -13,24 +14,21 @@ const Footer = ({contactData}) => {
                 <div className="footerLink">
                   <span>SHOP</span>
                   <ul>
-                    <li>
-                      <Link href="/">All Products</Link>
-                    </li>
-                    <li>
-                      <Link href="/">All Candels</Link>
-                    </li>
-                    <li>
-                      <Link href="/">All Gift boxes</Link>
-                    </li>
-                    <li>
-                      <Link href="/">All Categories</Link>
-                    </li>
-                    <li>
-                      <Link href="/">All Seasons</Link>
-                    </li>
-                    <li>
-                      <Link href="/">All Fragrance</Link>
-                    </li>
+                    {categoryData?.data?.data
+                      ?.filter(
+                        (cat) =>
+                          !cat.top_category || !Array.isArray(cat.top_category),
+                      )
+                      .slice(0, 5)
+                      .map((cat) => (
+                        <li key={cat.id}>
+                          <Link
+                            href={`/products?category=${cat.url_slug}-${cat.id}`}
+                          >
+                            {cat.name}
+                          </Link>
+                        </li>
+                      ))}
                     <Link className="andMore" href="/">
                       and more
                     </Link>
@@ -48,9 +46,6 @@ const Footer = ({contactData}) => {
                     </li>
                     <li>
                       <Link href="/brands">Explore Our Brands</Link>
-                    </li>
-                    <li>
-                      <Link href="#">Our Stores</Link>
                     </li>
                   </ul>
                 </div>
@@ -78,20 +73,13 @@ const Footer = ({contactData}) => {
                     <li>
                       <Link href="/support/faq">FAQs</Link>
                     </li>
-                    <li>
-                      <Link href="/support/payment-support">About payment</Link>
-                    </li>
-                    <li>
-                      <Link href="/support/delivery-terms">
-                        Delivery Terms{" "}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/privacy">Privacy</Link>
-                    </li>
-                    <li>
-                      <Link href="/">Terms of use</Link>
-                    </li>
+                    {supports.map((item) => (
+                      <li key={item.id}>
+                        <Link href={`/support/${item.url_slug}-${item.id}`}>
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -102,22 +90,36 @@ const Footer = ({contactData}) => {
                   </span>
                   <ul>
                     <li>
-                      <Link href="/">+ 994 000 000</Link>
+                      {contactData.phone_number && (
+                        <Link href={`tel:${contactData.phone_number}`}>
+                          {contactData.phone_number}
+                        </Link>
+                      )}
                     </li>
                     <li>
-                      <Link href="/">+ 994 000 000</Link>
+                      {contactData.wp_number && (
+                        <Link
+                          href={`https://wa.me/${contactData.wp_number.replace(/\D/g, "")}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {contactData.wp_number}
+                        </Link>
+                      )}
                     </li>
                     <li>
-                      <Link href="/">info@company.az</Link>
+                      {contactData.email && (
+                        <Link href={`mailto:${contactData.email}`}>
+                          {contactData.email}
+                        </Link>
+                      )}
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
-                  <span>
-                    FOLLOW US
-                  </span>
+                  <span>FOLLOW US</span>
                   <ul className="followUS">
                     <li>
                       <Link href={contactData.facebook} target="_blank">
@@ -293,7 +295,8 @@ const Footer = ({contactData}) => {
           <div className="footerBottomItems">
             <div className="footerBottomItemLeft">
               <p>
-                Copyright © {currentYear}. <strong>Yerusalim 18</strong>. All rights reserved.
+                Copyright © {currentYear}. <strong>Yerusalim 18</strong>. All
+                rights reserved.
               </p>
             </div>
             <div className="footerBottomItemMiddle">
