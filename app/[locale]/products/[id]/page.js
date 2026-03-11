@@ -106,6 +106,24 @@ export async function generateMetadata({ params }) {
   };
 }
 
+async function fetchCraftPageData() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(
+      `/page-data/benefit-craft`,
+      {
+        headers: { Lang: lang.value },
+        cache: "no-store",
+      },
+    );
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
 /* ================= PAGE ================= */
 const page = async ({ params }) => {
   const resolvedParams = await params;
@@ -128,6 +146,10 @@ const page = async ({ params }) => {
   console.log("========== SIMILAR PRODUCTS ==========");
   console.log(similarProducts);
 
+  const benefit = await fetchCraftPageData();
+  const benefitData =
+  benefit?.data?.data?.filter((item) => item.page_section === "benefit") || [];
+
   return (
     <div>
       <div className="productPageBackground">
@@ -135,7 +157,7 @@ const page = async ({ params }) => {
         <ProductDetailPage productDetail={productDetail} />
       </div>
 
-      <Advantages />
+      <Advantages benefitData={benefitData} />
 
       <ProductDetailPageSimilars products={similarProducts} />
     </div>
@@ -143,4 +165,3 @@ const page = async ({ params }) => {
 };
 
 export default page;
-

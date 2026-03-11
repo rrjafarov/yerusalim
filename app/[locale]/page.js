@@ -132,12 +132,14 @@
 
 // export default page;
 
+
+
+
+
+
+
+
 // !  1 funksiyada endpointler
-
-
-
-
-
 import Advantages from "@/components/HomePage/Advantages";
 import HeroSlider from "@/components/HomePage/HeroSlider";
 import HomePageBlogs from "@/components/HomePage/HomePageBlogs";
@@ -241,6 +243,12 @@ const page = async () => {
   const brands = await fetchPageData(`/page-data/brand-list`);
   const brandsData = brands.data.data;
 
+  const benefit = await fetchPageData(`/page-data/benefit-craft`);
+
+  const benefitData =
+    benefit?.data?.data?.filter((item) => item.page_section === "benefit") || [];
+
+
   return (
     <div>
       <HeroSlider homeBannerData={homeBannerData} />
@@ -251,14 +259,13 @@ const page = async () => {
           categoryData={categoryData}
         />
       )}
-      <Advantages />
+      <Advantages benefitData={benefitData} />
       {newProductsData?.length > 0 && (
         <NewProducts newProductsData={newProductsData} />
       )}
       <ShopCategory />
       <div className="homepageBrandAndBlog">
         {brandsData?.length > 0 && <HomePageBrands brandsData={brandsData} />}
-
         {blogsData?.length > 0 && <HomePageBlogs blogsData={blogsData} />}
       </div>
 

@@ -40,6 +40,23 @@ async function fetchBrandsPageData() {
   }
 }
 
+async function fetchCraftPageData() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(
+      `/page-data/benefit-craft`,
+      {
+        headers: { Lang: lang.value },
+        cache: "no-store",
+      },
+    );
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function generateMetadata() {
   const aboutInfo = await fetchAboutPageData();
   const cookieStore = await cookies();
@@ -104,6 +121,14 @@ const page = async () => {
   const brandsData = brandsPageData.data.data;
 
 
+  const craftPageData = await fetchCraftPageData();
+  const craftData =
+    craftPageData?.data?.data?.filter(
+      (item) => item.page_section === "craft",
+    ) || [];
+
+
+    
   return (
     <div>
       <AboutPageHero aboutData={aboutData} />
@@ -111,7 +136,7 @@ const page = async () => {
         <AboutBreadcrumbs aboutData={aboutData} />
         <AboutHeroUnderContent aboutData={aboutData} />
         <AboutPageOurHistory aboutData={aboutData} />
-        <AboutPageOurCraft />
+        <AboutPageOurCraft craftData={craftData} />
         <AboutMisionVision aboutData={aboutData} />
         <PhotoGallery aboutData={aboutData} />
       </div>
