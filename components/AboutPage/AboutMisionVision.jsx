@@ -1,6 +1,6 @@
 import React from "react";
 
-const AboutMisionVision = () => {
+const AboutMisionVision = ({ aboutData }) => {
   return (
     <div className="aboutMisionVision">
       <div className="container">
@@ -9,37 +9,37 @@ const AboutMisionVision = () => {
             <div className="xl-4 lg-4 md-6 sm-12">
               <div className="aboutMisionVisionItem">
                 <span>01</span>
-                <h3>Mision</h3>
-                <p>
-                  We craft design-led candles with clean, even burns and
-                  balanced fragrance notes. Made in small batches, each piece is
-                  hand-poured, quality-tested, and ready to bring quiet luxury
-                  to everyday rituals.
-                </p>
+                <h3>{aboutData.mission_title}</h3>
+                <div
+                  className="blogContentApiDescriptionItems"
+                  dangerouslySetInnerHTML={{
+                    __html: aboutData.mission_desc,
+                  }}
+                />
               </div>
             </div>
             <div className="xl-4 lg-4 md-6 sm-12">
               <div className="aboutMisionVisionItem">
                 <span>03</span>
-                <h3>Vision</h3>
-                <p>
-                  We craft design-led candles with clean, even burns and
-                  balanced fragrance notes. Made in small batches, each piece is
-                  hand-poured, quality-tested, and ready to bring quiet luxury
-                  to everyday rituals.
-                </p>
+                <h3>{aboutData.vision_title}</h3>
+                <div
+                  className="blogContentApiDescriptionItems"
+                  dangerouslySetInnerHTML={{
+                    __html: aboutData.vision_desc,
+                  }}
+                />
               </div>
             </div>
             <div className="xl-4 lg-4 md-6 sm-12">
               <div className="aboutMisionVisionItem">
                 <span>03</span>
-                <h3>Future Goals</h3>
-                <p>
-                  We craft design-led candles with clean, even burns and
-                  balanced fragrance notes. Made in small batches, each piece is
-                  hand-poured, quality-tested, and ready to bring quiet luxury
-                  to everyday rituals.
-                </p>
+                <h3>{aboutData.future_goals_title}</h3>
+                <div
+                  className="blogContentApiDescriptionItems"
+                  dangerouslySetInnerHTML={{
+                    __html: aboutData.future_goals_desc,
+                  }}
+                />
               </div>
             </div>
           </div>

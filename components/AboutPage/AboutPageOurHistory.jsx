@@ -1,13 +1,13 @@
 import Image from "next/image";
 import React from "react";
 
-const AboutPageOurHistory = () => {
+const AboutPageOurHistory = ({ aboutData }) => {
   return (
     <div className="aboutPageOurHistory">
       <div className="aboutPageOurHistoryItems">
         <div className="aboutPageOurHistoryLeft">
           <Image
-            src="/img/aboutOurHistory01.png"
+            src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${aboutData.story_image_1}`}
             alt="ourHistory"
             width={1000}
             height={700}
@@ -15,7 +15,7 @@ const AboutPageOurHistory = () => {
         </div>
         <div className="aboutPageOurHistoryRight">
           <Image
-            src="/img/aboutOurHistory02.png"
+            src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${aboutData.story_image_2}`}
             alt="ourHistory"
             width={1000}
             height={700}
@@ -23,13 +23,11 @@ const AboutPageOurHistory = () => {
         </div>
 
         <div className="aboutPageOurHistoryItemsContent">
-          <h2>Our Story</h2>
-          <p>
-            We started with a simple idea: the right light can change how a
-            space feels. <br /> <br /> From our studio, we hand-pour small batches with
-            meticulous attention to detail—so every candle you bring home glows
-            beautifully, night after night.
-          </p>
+          <h2>{aboutData.story_title}</h2>
+          <div
+            className="blogContentApiDescriptionItems"
+            dangerouslySetInnerHTML={{ __html: aboutData.story_description }}
+          />
         </div>
       </div>
     </div>
