@@ -163,6 +163,7 @@
     }
   }
 }
+
 .aboutMisionVision {
   border-bottom: 1px solid #eeeae0;
 
@@ -177,9 +178,15 @@
       border-radius: 1.2rem;
       background: #f1ede4;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       height: 41.8rem;
-      padding: 0 5.2rem;
+      padding: 7.8rem 5.2rem 0;
+      .titleBlock {
+        display: flex; /* span + h3 eyni sətrdə */
+        align-items: flex-start; /* vertikal mərkəzləşdirmə */
+        flex-direction: column;
+        gap: 3rem; /* span və h3 arası məsafə */
+      }
       span {
         color: #000;
         font-size: 1.6rem;
@@ -207,6 +214,7 @@
     }
   }
 }
+
 .aboutPageBrands {
   padding-top: 8.5rem;
   padding-bottom: 6.7rem;
@@ -236,9 +244,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+         img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          padding: 1rem;
+        }
         span {
           color: #545454;
-          // font-family: Inter;
           font-size: 1.4rem;
           font-style: normal;
           font-weight: 400;

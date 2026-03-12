@@ -8,8 +8,10 @@ const AboutMisionVision = ({ aboutData }) => {
           <div className="row">
             <div className="xl-4 lg-4 md-6 sm-12">
               <div className="aboutMisionVisionItem">
-                <span>01</span>
-                <h3>{aboutData.mission_title}</h3>
+                <div className="titleBlock">
+                  <span>01</span>
+                  <h3>{aboutData.mission_title}</h3>
+                </div>
                 <div
                   className="blogContentApiDescriptionItems"
                   dangerouslySetInnerHTML={{
@@ -20,8 +22,10 @@ const AboutMisionVision = ({ aboutData }) => {
             </div>
             <div className="xl-4 lg-4 md-6 sm-12">
               <div className="aboutMisionVisionItem">
-                <span>03</span>
-                <h3>{aboutData.vision_title}</h3>
+                <div className="titleBlock">
+                  <span>02</span>
+                  <h3>{aboutData.vision_title}</h3>
+                </div>
                 <div
                   className="blogContentApiDescriptionItems"
                   dangerouslySetInnerHTML={{
@@ -32,8 +36,11 @@ const AboutMisionVision = ({ aboutData }) => {
             </div>
             <div className="xl-4 lg-4 md-6 sm-12">
               <div className="aboutMisionVisionItem">
-                <span>03</span>
-                <h3>{aboutData.future_goals_title}</h3>
+                <div className="titleBlock">
+                  <span>03</span>
+                  <h3>{aboutData.future_goals_title}</h3>
+                </div>
+
                 <div
                   className="blogContentApiDescriptionItems"
                   dangerouslySetInnerHTML={{

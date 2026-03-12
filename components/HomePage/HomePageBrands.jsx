@@ -52,8 +52,8 @@ const HomePageBrands = ({ brandsData }) => {
                       <Image
                         src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${data.logo}`}
                         alt={data.name || "brand"}
-                        width={230}
-                        height={80}
+                        width={1000}
+                        height={1000}
                       />
                     </Link>
                   </div>
