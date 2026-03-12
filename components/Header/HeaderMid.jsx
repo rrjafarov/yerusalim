@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import HeaderLang from "./HeaderLang";
 
-const HeaderMid = ({contactData}) => {
+const HeaderMid = ({contactData, t}) => {
   return (
     <div>
       <div className="headerMid">
@@ -11,19 +11,19 @@ const HeaderMid = ({contactData}) => {
             <div className="headerMidTopLeft">
               <ul>
                 <li>
-                  <Link href="/about">About</Link>
+                  <Link href="/about">{t?.about}</Link>
                 </li>
                 <li>
-                  <Link href="/brands">Brands</Link>
+                  <Link href="/brands">{t?.brands}</Link>
                 </li>
                 <li>
-                  <Link href="/blogs">Blogs</Link>
+                  <Link href="/blogs">{t?.blogs}</Link>
                 </li>
                 <li>
-                  <Link href="/support/faq">Support</Link>
+                  <Link href="/support/faq">{t?.support}</Link>
                 </li>
                 <li>
-                  <Link href="/contact">Contac us</Link>
+                  <Link href="/contact">{t?.contact}</Link>
                 </li>
               </ul>
             </div>

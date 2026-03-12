@@ -217,7 +217,7 @@ async function fetchPageData(endpoint) {
 
 const page = async () => {
   const categoryPageData = await fetchPageData(
-    `/page-data/product-categoires?per-page=999`,
+    `/page-data/product-categoires?per_page=999`,
   );
   const categoryData = categoryPageData;
 

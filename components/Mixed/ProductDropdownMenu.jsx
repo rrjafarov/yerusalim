@@ -12,6 +12,7 @@ const ProductDropdownMenu = ({ categoryData, onClose }) => {
     // əsas kateqoriyalar
     const parents = data.filter(item => !item.top_category);
 
+
     // alt kateqoriyalar
     const children = data.filter(item => item.top_category?.length);
 

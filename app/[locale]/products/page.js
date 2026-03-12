@@ -320,7 +320,7 @@ async function fetchCategoryPageData() {
   const lang = cookieStore.get("NEXT_LOCALE");
 
   const { data } = await axiosInstance.get(
-    `/page-data/product-categoires?per-page=999`,
+    `/page-data/product-categoires?per_page=999`,
     {
       headers: { Lang: lang?.value || "az" },
       cache: "no-store",

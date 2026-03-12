@@ -9,7 +9,7 @@ import MobileMenuHamburger from "../Mixed/MobileMenuHamburger";
 import { useGetUserInfoQuery } from "@/redux/userService";
 import Cookies from "js-cookie";
 
-const HeaderMain = ({ categoryData, contactData }) => {
+const HeaderMain = ({ categoryData, contactData, t }) => {
   const [text, setText] = useState("");
   const [mode, setMode] = useState("typing");
   const [idx, setIdx] = useState(0);
@@ -28,11 +28,6 @@ const HeaderMain = ({ categoryData, contactData }) => {
     skip: !token, // token yoxdursa query işləməsin
   });
 
-  // const placeholders = [
-  //   "Search products, brands, anything ..",
-  //   "phone, golden, candle axtar...",
-  // ];
-
   const placeholders = React.useMemo(() => {
     const categories = categoryData?.data?.data;
 
@@ -40,8 +35,8 @@ const HeaderMain = ({ categoryData, contactData }) => {
       return ["Search products..."];
     }
 
-    return categories.map((item) => `Search in ${item.name}...`);
-  }, [categoryData]);
+    return categories.map((item) => `${t?.search}  ${item.name}...`);
+  }, [categoryData, t]);
 
   useEffect(() => {
     let timeout;
@@ -202,7 +197,7 @@ const HeaderMain = ({ categoryData, contactData }) => {
                     </svg>
                   )}
                 </span>
-                <p>Products</p>
+                <p>{t?.products}</p>
               </button>
 
               {/* ✅ YENİ: ProductDropdownMenu - Buttonun altında 2rem məsafədə */}
@@ -260,7 +255,7 @@ const HeaderMain = ({ categoryData, contactData }) => {
             <div className="salesOff">
               <Link href="#">
                 <img src="/icons/sales.svg" alt="sales" />
-                <span>Sales Off</span>
+                <span>{t?.sale}</span>
               </Link>
             </div>
             <div className="headerMainLinks">
@@ -328,7 +323,7 @@ const HeaderMain = ({ categoryData, contactData }) => {
                     </svg>
                   </span>
                   <p>
-                    Basket <strong>(2)</strong>
+                    {t?.basket} <strong>(2)</strong>
                   </p>
                   <span>
                     <svg

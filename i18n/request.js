@@ -1,5 +1,5 @@
 import { getRequestConfig } from "next-intl/server";
-import axiosInstance from "@/api/axios";
+import axiosInstance from "@/lib/axios";
 import { routing } from "./routing";
 import { cookies } from "next/headers";
 

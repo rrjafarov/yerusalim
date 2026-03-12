@@ -3,12 +3,12 @@ import HeaderTop from '@/components/Header/HeaderTop.jsx'
 import HeaderMid from '@/components/Header/HeaderMid.jsx'
 import HeaderMain from '@/components/Header/HeaderMain.jsx'
 
-const Header = ({categoryData, contactData}) => {
+const Header = ({categoryData, contactData,t}) => {
   return (
     <div>
-        <HeaderTop contactData={contactData} />
-        <HeaderMid contactData={contactData} />
-        <HeaderMain contactData={contactData} categoryData={categoryData} />
+        <HeaderTop contactData={contactData} t={t} />
+        <HeaderMid contactData={contactData} t={t} />
+        <HeaderMain contactData={contactData} t={t} categoryData={categoryData} />
     </div>
   )
 }

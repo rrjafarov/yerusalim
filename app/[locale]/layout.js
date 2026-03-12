@@ -1,17 +1,19 @@
 import "./globals.scss";
 import StoreProvider from "@/redux/StoreProvider";
 import GuestUUIDProvider from "@/utils/GuestUUIDProvider";
+import { NextIntlClientProvider } from "next-intl";
 import FormValidationProvider from "@/utils/FormValidationProvider";
 import axiosInstance from "@/lib/axios";
 import { cookies } from "next/headers";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import NavigationProgress from "@/components/NavigationProgress";
+import { getMessages } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
 export const metadata = {
   title: "Yerusalim18",
   description: "Yerusalim18",
-  icons: "/favicon.png",
 };
 export const viewport = {
   width: "device-width",
@@ -24,7 +26,7 @@ async function fetchCategoryPageData() {
   const lang = cookieStore.get("NEXT_LOCALE");
   try {
     const { data: about } = await axiosInstance.get(
-      `/page-data/product-categoires`,
+      `/page-data/product-categoires?per_page=999`,
       {
         headers: { Lang: lang.value },
         cache: "no-store",
@@ -50,6 +52,20 @@ async function fetchContactPageData() {
   }
 }
 
+async function getTranslations() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/translation-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function fetchSupportData() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "en";
@@ -65,8 +81,9 @@ async function fetchSupportData() {
   }
 }
 
-export default async function RootLayout({ children }) {
-  // const t = await getTranslations();
+export default async function RootLayout({ children,params }) {
+  const t = await getTranslations();
+
   const categoryPageData = await fetchCategoryPageData();
   const categoryData = categoryPageData;
 
@@ -75,20 +92,33 @@ export default async function RootLayout({ children }) {
 
   const supportData = await fetchSupportData();
 
+  const { locale } = await params;
+  if (!routing.locales.includes(locale)) {
+    notFound();
+  }
+  const messages = await getMessages();
+
   return (
     <html lang="en">
       <body suppressHydrationWarning>
         <StoreProvider>
           <GuestUUIDProvider />
-          <FormValidationProvider />
-          <NavigationProgress />
-          <Header contactData={contactData} categoryData={categoryData} />
-          {children}
-          <Footer
-            contactData={contactData}
-            categoryData={categoryData}
-            supportData={supportData}
-          />
+          <NextIntlClientProvider messages={messages} locale={locale}>
+            <FormValidationProvider />
+            <NavigationProgress />
+            <Header
+              t={t}
+              contactData={contactData}
+              categoryData={categoryData}
+            />
+            {children}
+            <Footer
+              t={t}
+              contactData={contactData}
+              categoryData={categoryData}
+              supportData={supportData}
+            />
+          </NextIntlClientProvider>
         </StoreProvider>
       </body>
     </html>
