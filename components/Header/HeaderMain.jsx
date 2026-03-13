@@ -8,6 +8,7 @@ import ProductDropdownMenu from "@/components/Mixed/ProductDropdownMenu";
 import MobileMenuHamburger from "../Mixed/MobileMenuHamburger";
 import { useGetUserInfoQuery } from "@/redux/userService";
 import Cookies from "js-cookie";
+import { useGetCartQuery } from "@/redux/cartService";
 
 const HeaderMain = ({ categoryData, contactData, t }) => {
   const [text, setText] = useState("");
@@ -22,6 +23,9 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
   const productButtonRef = useRef(null);
+
+  const { data: cartData } = useGetCartQuery();
+  const cartCount = cartData?.cart?.count ?? 0;
 
   const token = Cookies.get("token");
   const { data: userData, isSuccess } = useGetUserInfoQuery(undefined, {
@@ -323,7 +327,7 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
                     </svg>
                   </span>
                   <p>
-                    {t?.basket} <strong>(2)</strong>
+                    {t?.basket} <strong>({cartCount})</strong>
                   </p>
                   <span>
                     <svg

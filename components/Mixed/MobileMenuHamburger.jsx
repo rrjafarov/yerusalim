@@ -3,6 +3,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import HeaderLang from "../Header/HeaderLang";
 import Image from "next/image";
+import { useGetCartQuery } from "@/redux/cartService";
+
 
 const MobileMenuHamburger = ({
   isOpen,
@@ -22,6 +24,9 @@ const MobileMenuHamburger = ({
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
+  const { data: cartData } = useGetCartQuery();
+    const cartCount = cartData?.cart?.count ?? 0;
 
   return (
     <div className={`mobileMenuHamburger ${active ? "active" : ""}`}>
@@ -105,7 +110,7 @@ const MobileMenuHamburger = ({
                 />
               </svg>
             </p>
-            <span>Basket</span>
+            <span>Basket <span>({cartCount})</span></span>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
