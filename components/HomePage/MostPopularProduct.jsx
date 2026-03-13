@@ -14,8 +14,15 @@ const MostPopularProduct = ({ categoryData, bestSellerData }) => {
   const [products, setProducts] = useState(bestSellerData || []);
   const [loading, setLoading] = useState(false);
 
+  // const topCategories =
+  //   categoryData?.data?.data?.filter((item) => !item.fk_id_page) || [];
+
+
+
   const topCategories =
-    categoryData?.data?.data?.filter((item) => !item.fk_id_page) || [];
+  categoryData?.data?.data?.filter(
+    (item) => !item.fk_id_page && !item.top_category
+  ) || [];
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -48,7 +55,7 @@ const MostPopularProduct = ({ categoryData, bestSellerData }) => {
         <div className="mostPopularProductItem">
           <h2>Most Popular</h2>
 
-          {topCategories.length > 0 && (
+          {/* {topCategories.length > 0 && (
             <div className="mostPopularCategory">
               <ul>
                 <li
@@ -68,7 +75,64 @@ const MostPopularProduct = ({ categoryData, bestSellerData }) => {
                 ))}
               </ul>
             </div>
-          )}
+          )} */}
+
+
+
+
+          {topCategories.length > 0 && (
+  <div className="mostPopularCategory">
+    <ul style={{ display: "flex", alignItems: "center" }}>
+      
+      {/* SABİT - All categories */}
+      <li
+        className={activeCategory === "All categories" ? "activeCategory" : ""}
+        onClick={() => setActiveCategory("All categories")}
+        style={{ flexShrink: 0, marginRight: "8px" }}
+      >
+        All categories
+      </li>
+
+      {/* SLIDER - digər kateqoriyalar */}
+      <div style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
+        <Swiper
+          modules={[Autoplay]}
+          slidesPerView="auto"
+          spaceBetween={10}
+          loop={true}
+          loopAdditionalSlides={topCategories.length}
+          speed={3000}
+          autoplay={{
+            delay: 100,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+            waitForTransition: false,
+          }}
+        >
+          {topCategories.map((category) => (
+            <SwiperSlide key={category.id} style={{ width: "auto", paddingRight: "8px" }}>
+              <li
+                className={activeCategory === category.id ? "activeCategory" : ""}
+                onClick={() => setActiveCategory(category.id)}
+              >
+                {category.name}
+              </li>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+    </ul>
+  </div>
+)}
+
+
+
+
+
+
+
+
 
           {loading ? (
             <div style={{ padding: "3rem 0" }}>
