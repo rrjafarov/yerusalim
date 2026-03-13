@@ -244,16 +244,6 @@
 
 // export default FilterAccordion;
 
-
-
-
-
-
-
-
-
-
-
 "use client";
 import FilterPriceRange from "./FilterPriceRange";
 import React, { useRef, useState, useEffect } from "react";
@@ -453,26 +443,54 @@ const FilterAccordion = ({
                       </li>
                     ));
                   } else {
-                    return categories.map((cat) => (
-                      <li
-                        key={cat.id}
-                        onClick={() =>
-                          router.push(
-                            `/products?category=${cat.url_slug}-${cat.id}`,
-                          )
-                        }
-                        style={{
-                          cursor: "pointer",
-                          fontWeight:
-                            selectedCategory && cat.id === selectedCategory.id
-                              ? "900"
-                              : "400",
-                        }}
-                      >
-                        {cat.name}
-                      </li>
-                    ));
+                    // 🔹 DEYİŞDİRİLDİ: yalnız top kateqoriyalar göstərilir
+                    return categories
+                      .filter(
+                        (cat) =>
+                          !cat.top_category || cat.top_category.length === 0,
+                      )
+                      .map((cat) => (
+                        <li
+                          key={cat.id}
+                          onClick={() =>
+                            router.push(
+                              `/products?category=${cat.url_slug}-${cat.id}`,
+                            )
+                          }
+                          style={{
+                            cursor: "pointer",
+                            fontWeight:
+                              selectedCategory && cat.id === selectedCategory.id
+                                ? "900"
+                                : "400",
+                          }}
+                        >
+                          {cat.name}
+                        </li>
+                      ));
                   }
+
+                  // else {
+                  //   return categories.map((cat) => (
+                  //     <li
+                  //       key={cat.id}
+                  //       onClick={() =>
+                  //         router.push(
+                  //           `/products?category=${cat.url_slug}-${cat.id}`,
+                  //         )
+                  //       }
+                  //       style={{
+                  //         cursor: "pointer",
+                  //         fontWeight:
+                  //           selectedCategory && cat.id === selectedCategory.id
+                  //             ? "900"
+                  //             : "400",
+                  //       }}
+                  //     >
+                  //       {cat.name}
+                  //     </li>
+                  //   ));
+                  // }
                 })()}
               </ul>
             </div>
