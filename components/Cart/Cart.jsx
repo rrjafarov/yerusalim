@@ -519,9 +519,9 @@ const Cart = () => {
                 })}
               </div>
 
-              {/* <div className="getUserAddressSection">
+              <div className="getUserAddressSection">
                 <Address />
-              </div> */}
+              </div>
 
               <p className="paymentTitle">Payment options</p>
               <div className="paymentMethods">
