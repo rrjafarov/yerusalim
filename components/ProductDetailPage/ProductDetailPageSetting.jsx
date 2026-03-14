@@ -7,11 +7,13 @@ const ProductDetailPageSetting = ({
   variants,
   selectedVariant,
   setSelectedVariant,
+  selectedVariantIndex,
+  setSelectedVariantIndex,
 }) => {
   return (
     <div className="productDetailPageRightSettingItems">
       <ul>
-         {/* SPECIAL ATTRIBUTES */}
+        {/* SPECIAL ATTRIBUTES */}
         {attributes?.map((attr) => {
           const topAttr = attr?.top_attributes?.[0];
 
@@ -22,26 +24,27 @@ const ProductDetailPageSetting = ({
               </span>
 
               <p className="productDpValue">
-                <Link href="#">
-                  {attr?.name}
-                </Link>
+                <Link href="#">{attr?.name}</Link>
               </p>
             </li>
           );
         })}
-
-
-
 
         {/* SIZE VARIANTS */}
         <li>
           <span className="productDpTitle">SIZE:</span>
 
           <div className="productDpValueSize">
-            {variants?.map((variant) => (
+            {variants?.map((variant, index) => (
               <button
+                // key={variant.product_code}
+                // onClick={() => setSelectedVariant(variant)}
+
                 key={variant.product_code}
-                onClick={() => setSelectedVariant(variant)}
+                onClick={() => {
+                  setSelectedVariant(variant);
+                  setSelectedVariantIndex(index);
+                }}
                 style={
                   selectedVariant?.product_code === variant.product_code
                     ? { backgroundColor: "#F2EEE7" }

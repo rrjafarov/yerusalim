@@ -28,14 +28,34 @@ export const cartService = createApi({
       query: () => ({ url: "/cart/list", method: "GET" }),
       providesTags: ["Cart"],
     }),
+
+    // addToCart: builder.mutation({
+    //   query: ({ productId, quantity }) => ({
+    //     url: `/cart/add/${productId}`,
+    //     method: "POST",
+    //     body: { quantity },
+    //   }),
+    //   invalidatesTags: ["Cart"],
+    // }),
+
     addToCart: builder.mutation({
-      query: ({ productId, quantity }) => ({
-        url: `/cart/add/${productId}`,
-        method: "POST",
-        body: { quantity },
-      }),
+      query: ({ productId, quantity = 1, selectedVariantIndex = 0 }) => {
+        const formData = new FormData();
+        formData.append(
+          "product_variant",
+          `product_variants[${selectedVariantIndex + 1}]`,
+        );
+        formData.append("qty", String(quantity));
+
+        return {
+          url: `/cart/add/${productId}`,
+          method: "POST",
+          body: formData,
+        };
+      },
       invalidatesTags: ["Cart"],
     }),
+
     removeFromCart: builder.mutation({
       query: (productId) => ({
         url: `/cart/delete/${productId}`,

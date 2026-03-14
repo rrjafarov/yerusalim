@@ -410,7 +410,6 @@ const Cart = () => {
                   </button>
                 </div>
               </div>
-
               <div className="guesUserFormSection">
                 <GuestUserForm />
               </div>
@@ -419,9 +418,9 @@ const Cart = () => {
                 {cartProducts.map((item, index) => {
                   const product = item.product;
                   const image = product?.image_gallery?.[0];
-                  const variant = product?.product_variants?.[0];
-                  const price = variant?.price ?? item.price;
-                  const oldPrice = variant?.old_price;
+                  const size = item?.size;
+                  const price = item?.price;
+
 
                   return (
                     <React.Fragment key={item.id}>
@@ -440,7 +439,7 @@ const Cart = () => {
                               />
                             ) : (
                               <Image
-                                src="/img/cartPro.png"
+                                src="/img/cartProo.png"
                                 alt="product"
                                 width={110}
                                 height={110}
@@ -450,7 +449,7 @@ const Cart = () => {
                           <div className="cartPageLeftItemsProductsLeftTitle">
                             <span>{product?.name}</span>
                             <p>
-                              Size: <span>{product?.variant}</span>
+                              Size: <span>{size}</span>
                             </p>
                             <div className="cartPageLeftItemsProductsLeftTitleCountUp">
                               <button
@@ -475,7 +474,7 @@ const Cart = () => {
                             <Link href={`/products/${product?.url_slug}-${product?.id}`}>
                               <span>show product</span>
                             </Link>
-                            {oldPrice && (
+                            {/* {oldPrice && (
                               <div className="cartPageLeftItemsProductsRightOldPrice">
                                 <span>{oldPrice}</span>
                                 <p>
@@ -484,15 +483,15 @@ const Cart = () => {
                                   </svg>
                                 </p>
                               </div>
-                            )}
+                            )} */}
                             <div className="cartPageLeftItemsProductsRightNewPrice">
-                              {oldPrice && (
+                              {/* {oldPrice && (
                                 <div className="cartPageLeftItemsProductsRightDiscount">
                                   <span>
                                     - {Math.round((1 - price / oldPrice) * 100)}% Discount
                                   </span>
                                 </div>
-                              )}
+                              )} */}
                               <span>{price}</span>
                               <p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

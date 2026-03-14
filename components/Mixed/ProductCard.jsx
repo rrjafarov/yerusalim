@@ -139,6 +139,7 @@ import React, { useState } from "react";
 import { GoDash } from "react-icons/go";
 import { useAddToCartMutation } from "@/redux/cartService";
 import CartToast from "@/components/CartToast";
+import { useRouter } from "next/navigation";
 
 const ProductCard = ({
   id,
@@ -152,22 +153,68 @@ const ProductCard = ({
 }) => {
   const [addToCart, { isLoading }] = useAddToCartMutation();
   const [isAdded, setIsAdded] = useState(false);
+  const router = useRouter();
+
+
+  // const handleAddToCart = async () => {
+  //   try {
+  //     await addToCart({
+  //       productId: id,
+  //       quantity: 1,
+  //     }).unwrap();
+
+  //     setIsAdded(true);
+  //     setTimeout(() => {
+  //       setIsAdded(false);
+  //     }, 5000);
+  //   } catch (error) {
+  //     console.log("Cart error:", error);
+  //   }
+  // };
+
+
+
+
 
   const handleAddToCart = async () => {
+    // ← DEYİŞİLDİ: variant sayına görə fərqli davranış
+    if (variants.length > 1) {
+      // Variant 1-dən çoxdursa → detail page-ə apar
+      router.push(`/products/${slug}-${id}`);
+      return;
+    }
+
+    // Variant 1 ədəddirsə → birbaşa basketə əlavə et
     try {
       await addToCart({
         productId: id,
         quantity: 1,
+        selectedVariantIndex: 0, // ← YENİ ƏLAVƏ: default 1ci variant
       }).unwrap();
 
       setIsAdded(true);
-      setTimeout(() => {
-        setIsAdded(false);
-      }, 5000);
+      setTimeout(() => setIsAdded(false), 5000);
     } catch (error) {
       console.log("Cart error:", error);
     }
   };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const variants = Object.values(productVariants || {}).flat();
   const prices = variants.map((v) => parseFloat(v.price));
