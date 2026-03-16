@@ -19,6 +19,19 @@ async function fetchBrandsPageData() {
     throw error;
   }
 }
+async function getTranslations() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/translation-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
 async function fetchBrandsSeoPageData() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE");
@@ -99,12 +112,14 @@ const page = async () => {
   const brandsNameData = brandsName;
   const brandsPageData = await fetchBrandsPageData();
   const brandsData = brandsPageData;
+  const t = await getTranslations();
+
   return (
     <div>
       <BrandsHero brandsNameData={brandsNameData} />
       <div className="productPageBackground">
-        <BrandsBreadcrumbs brandsNameData={brandsNameData} />
-        <BrandsPage brandsData={brandsData} />
+        <BrandsBreadcrumbs t={t} brandsNameData={brandsNameData} />
+        <BrandsPage t={t} brandsData={brandsData} />
       </div>
     </div>
   );

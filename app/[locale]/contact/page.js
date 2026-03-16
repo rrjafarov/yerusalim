@@ -20,6 +20,19 @@ async function fetchContactPageData() {
     throw error;
   }
 }
+async function getTranslations() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/translation-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
 export async function generateMetadata() {
   const contactPageData = await fetchContactPageData();
   const contactData = contactPageData.data;
@@ -79,13 +92,15 @@ export async function generateMetadata() {
 const page = async () => {
   const contactPageData = await fetchContactPageData();
   const contactData = contactPageData.data;
+  const t = await getTranslations();
+
   return (
     <div>
       <ContactPageHero contactData={contactData} />
       <div className="productPageBackground">
-        <ContactBreadcrumbs contactData={contactData} />
-        <ContactPageMain contactData={contactData} />
-        <ContactMap contactData={contactData} />
+        <ContactBreadcrumbs t={t} contactData={contactData} />
+        <ContactPageMain t={t} contactData={contactData} />
+        <ContactMap t={t} contactData={contactData} />
       </div>
     </div>
   );

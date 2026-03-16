@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ProductCard from "../Mixed/ProductCard";
 
-const ProductDetailPageSimilars = ({ products }) => {
+const ProductDetailPageSimilars = ({ products, t }) => {
   return (
     <div className="mostPopularProduct">
       <div className="container">
@@ -80,7 +80,7 @@ const ProductDetailPageSimilars = ({ products }) => {
 
         {products && products.length > 0 && (
           <div className="mostPopularProductItem newProductsItem">
-            <span className="titleSpan">Similar Products</span>
+            <span className="titleSpan">{t?.similarProducts}</span>
             <div className="mostPopularProductSlider">
               <Swiper
                 navigation
@@ -102,6 +102,7 @@ const ProductDetailPageSimilars = ({ products }) => {
                   <SwiperSlide key={item.id}>
                     <div className="mostPopularProductSlide">
                       <ProductCard
+                        t={t}
                         id={item.id}
                         name={item.name}
                         productVariants={item.product_variants}

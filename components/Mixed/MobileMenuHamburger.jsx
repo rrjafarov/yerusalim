@@ -13,6 +13,7 @@ const MobileMenuHamburger = ({
   token,
   isSuccess,
   categoryData,
+  t
 }) => {
   const [active, setActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -66,7 +67,7 @@ const MobileMenuHamburger = ({
                 />
               </svg>
             </p>
-            <span>{token && isSuccess ? "My Account" : "Login/Sign Up"}</span>
+            <span>{token && isSuccess ? t?.myAccount : t?.loginSignUp}</span>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +111,7 @@ const MobileMenuHamburger = ({
                 />
               </svg>
             </p>
-            <span>Basket <span>({cartCount})</span></span>
+            <span>{t?.basket} <span>({cartCount})</span></span>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +139,7 @@ const MobileMenuHamburger = ({
               className={`accordionHeader ${activeIndex === 2 ? "active" : ""}`}
               onClick={() => toggleAccordion(2)}
             >
-              <span>Categories</span>
+              <span>{t?.categories}</span>
               <p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -201,19 +202,19 @@ const MobileMenuHamburger = ({
               href="/products?status=is_bestseller"
               className="accordionHeader"
             >
-              <span>Best Seller</span>
+              <span>{t?.bestSeller}</span>
             </Link>
           </li>
 
           <li>
             <Link href="/products?status=is_new" className="accordionHeader">
-              <span>New Products</span>
+              <span>{t?.newProducts}</span>
             </Link>
           </li>
 
           <li>
             <Link href="#" className="accordionHeader">
-              <span>Sale of</span>
+              <span>{t?.sale}</span>
             </Link>
           </li>
         </ul>
@@ -225,13 +226,13 @@ const MobileMenuHamburger = ({
             <div className="mobileMenuHamburgerMenuLinksLeft">
               <ul>
                 <li>
-                  <Link href="/about">About</Link>
+                  <Link href="/about">{t?.about}</Link>
                 </li>
                 <li>
-                  <Link href="/blogs">Blogs</Link>
+                  <Link href="/blogs">{t?.blogs}</Link>
                 </li>
                 <li>
-                  <Link href="/contact">Contact us</Link>
+                  <Link href="/contact">{t?.contact}</Link>
                 </li>
               </ul>
             </div>
@@ -240,7 +241,7 @@ const MobileMenuHamburger = ({
             <div className="mobileMenuHamburgerMenuLinksLeft">
               <ul>
                 <li>
-                  <Link href="/support/faq">Support</Link>
+                  <Link href="/support/faq">{t?.support}</Link>
                 </li>
               </ul>
             </div>

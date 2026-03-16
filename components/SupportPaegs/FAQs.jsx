@@ -5,11 +5,11 @@ import { Collapse } from "antd";
 
 const { Panel } = Collapse;
 
-const FAQs = ({ faqData }) => {
+const FAQs = ({ faqData,t }) => {
   const contentRef = useRef(null);
   return (
     <div className="faqS">
-      <h3>Frequently asked questions</h3>
+      <h3>{t?.faq}</h3>
 
       <div className="faqSaccordion">
         <Collapse

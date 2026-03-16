@@ -12,14 +12,6 @@ const AboutPageDirector = ({ aboutData }) => {
                 <div className="aboutPageDirectorItemsContentTopContent">
                   <img src="/img/rename.png" alt="#" />
                   <h3>{aboutData.dm_title}</h3>
-                  {/* <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. enim ad minimnostrud Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. enim ad
-                    minimnostrud Lorem ipsum dolor sit amet, consectetu
-                  </span> */}
                   <div
                     className="blogContentApiDescriptionItems"
                     dangerouslySetInnerHTML={{

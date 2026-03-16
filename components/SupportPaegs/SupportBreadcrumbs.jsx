@@ -1,16 +1,16 @@
 import React from "react";
 import Link from "next/link";
 
-const SupportBreadcrumbs = () => {
+const SupportBreadcrumbs = ({t}) => {
   return (
     <div className="container">
       <nav className="breadcrumbs">
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">{t?.breadcrumbs}</Link>
           </li>
           <span>/</span>
-          <li>Support</li>
+          <li>{t?.support}</li>
         </ul>
       </nav>
     </div>

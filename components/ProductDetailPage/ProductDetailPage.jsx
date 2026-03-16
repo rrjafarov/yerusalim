@@ -295,13 +295,6 @@
 
 // export default ProductDetailPage;
 
-
-
-
-
-
-
-
 // ! added basket ----- - --- - - --
 
 "use client";
@@ -313,51 +306,25 @@ import CartToast from "@/components/CartToast";
 import Link from "next/link";
 import { useAddToCartMutation } from "@/redux/cartService";
 
-const ProductDetailPage = ({ productDetail }) => {
+const ProductDetailPage = ({ productDetail, t }) => {
   const copyTimeoutRef = useRef(null);
   const [addToCart, { isLoading }] = useAddToCartMutation();
   const [isAdded, setIsAdded] = useState(false);
 
-  // const handleAddToCart = async () => {
-  //   try {
-  //     await addToCart({
-  //       productId: productDetail?.id,
-  //       quantity: 1,
-  //       selectedIndex: selectedVariantIndex,
-  //       selectedVariant: selectedVariant, // obyekt (server JSON gözləyirsə)
-  //     }).unwrap();
-
-  //     setIsAdded(true);
-  //     setTimeout(() => {
-  //       setIsAdded(false);
-  //     }, 4000);
-  //   } catch (error) {
-  //     console.log("Cart error:", error);
-  //   }
-  // };
-
-
   const handleAddToCart = async () => {
-  try {
-    await addToCart({
-      productId: productDetail?.id,
-      quantity: 1,
-      selectedVariantIndex: selectedVariantIndex, // index göndər
-    }).unwrap();
+    try {
+      await addToCart({
+        productId: productDetail?.id,
+        quantity: 1,
+        selectedVariantIndex: selectedVariantIndex, // index göndər
+      }).unwrap();
 
-    setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 4000);
-  } catch (error) {
-    console.log("Cart error:", error);
-  }
-};
-
-
-
-
-
-
-
+      setIsAdded(true);
+      setTimeout(() => setIsAdded(false), 4000);
+    } catch (error) {
+      console.log("Cart error:", error);
+    }
+  };
 
   const getShareUrl = () => {
     if (typeof window !== "undefined") {
@@ -448,6 +415,7 @@ const ProductDetailPage = ({ productDetail }) => {
           <div className="xl-7 lg-7 md-7 sm-12">
             <div className="productDetailPageLeft">
               <ProductDetailPageImages
+                t={t}
                 images={productDetail?.image_gallery}
                 productDetail={productDetail}
               />
@@ -520,7 +488,7 @@ const ProductDetailPage = ({ productDetail }) => {
                           </svg>
                         )}
                       </strong>
-                      <span>Add to basket</span>
+                      <span>{t?.addToCart}</span>
                     </button>
                   </div>
                 </div>
@@ -528,6 +496,7 @@ const ProductDetailPage = ({ productDetail }) => {
 
               <div className="productDetailPageRightSetting">
                 <ProductDetailPageSetting
+                  t={t}
                   attributes={attributes}
                   variants={variants}
                   selectedVariant={selectedVariant}
@@ -539,6 +508,7 @@ const ProductDetailPage = ({ productDetail }) => {
 
               <div className="productDetailPageRightAccordion">
                 <ProductDetailPageAccordion
+                  t={t}
                   productDetail={productDetail}
                   attributes={normalAttributes}
                 />
@@ -548,7 +518,7 @@ const ProductDetailPage = ({ productDetail }) => {
         </div>
 
         <div className="productDetailPageShareLiks">
-          <span>Share:</span>
+          <span>{t?.share}:</span>
           <ul>
             <li>
               <Link href="#" onClick={handleTelegramShare}>
@@ -644,13 +614,13 @@ const ProductDetailPage = ({ productDetail }) => {
                   </defs>
                 </svg>
               </span>
-              <span>Copy link</span>
+              <span>{t?.copyLink}</span>
             </button>
 
             <span
               className={`productDetailPageShareCopied ${copied ? "visible" : ""}`}
             >
-              Copied
+              {t?.copied}
             </span>
           </ul>
         </div>

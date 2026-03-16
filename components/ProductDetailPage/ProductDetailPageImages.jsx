@@ -9,14 +9,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import Link from "next/link";
 import Image from "next/image";
 
 // Fancybox
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
-const ProductDetailPageImages = ({ images, productDetail }) => {
+const ProductDetailPageImages = ({ images, productDetail, t }) => {
   useEffect(() => {
     Fancybox.bind('[data-fancybox="product-gallery"]', {
       Thumbs: {
@@ -66,13 +65,12 @@ const ProductDetailPageImages = ({ images, productDetail }) => {
       <div className="productDetailPageLeftSliderTopButtons">
         {productDetail?.special_badge?.includes("best_seller") && (
           <div className="productDetailPageLeftSliderTopButtonBestSeller">
-            <button>BEST SELLER</button>
+            <button>{t?.bestSeller}</button>
           </div>
         )}
-
         {productDetail?.special_badge?.includes("limited_edition") && (
           <div className="productDetailPageLeftSliderTopButtonLimited">
-            <button>LIMITED EDITION</button>
+            <button>{t?.limitedEdition}</button>
           </div>
         )}
       </div>

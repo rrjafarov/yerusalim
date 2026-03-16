@@ -7,7 +7,7 @@ import { Autoplay } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
 
-const HomePageCategory = ({ categoryData }) => {
+const HomePageCategory = ({ categoryData,t }) => {
   const categoryDataTopCategories = categoryData?.data?.data?.filter(
     (item) => !item.top_category,
   );
@@ -16,7 +16,7 @@ const HomePageCategory = ({ categoryData }) => {
     <div className="homePageCategory">
       <div className="container">
         <div className="homePageCategoryTop">
-          <h2>Explore More Ways to Save.</h2>
+          <h2>{t?.homePageCategoryTitle}</h2>
         </div>
 
         <div className="homePageCategoryCards">

@@ -9,6 +9,7 @@ const ProductDetailPageSetting = ({
   setSelectedVariant,
   selectedVariantIndex,
   setSelectedVariantIndex,
+  t
 }) => {
   return (
     <div className="productDetailPageRightSettingItems">
@@ -32,7 +33,7 @@ const ProductDetailPageSetting = ({
 
         {/* SIZE VARIANTS */}
         <li>
-          <span className="productDpTitle">SIZE:</span>
+          <span className="productDpTitle">{t?.size}:</span>
 
           <div className="productDpValueSize">
             {variants?.map((variant, index) => (

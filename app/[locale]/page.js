@@ -132,13 +132,6 @@
 
 // export default page;
 
-
-
-
-
-
-
-
 // !  1 funksiyada endpointler
 import Advantages from "@/components/HomePage/Advantages";
 import HeroSlider from "@/components/HomePage/HeroSlider";
@@ -246,30 +239,41 @@ const page = async () => {
   const benefit = await fetchPageData(`/page-data/benefit-craft`);
 
   const benefitData =
-    benefit?.data?.data?.filter((item) => item.page_section === "benefit") || [];
+    benefit?.data?.data?.filter((item) => item.page_section === "benefit") ||
+    [];
 
+  const t = await axiosInstance
+    .get(`/translation-list`, {
+      headers: { Lang: (await cookies()).get("NEXT_LOCALE")?.value },
+      cache: "no-store",
+    })
+    .then((res) => res.data)
+    .catch(() => ({}));
 
   return (
     <div>
       <HeroSlider homeBannerData={homeBannerData} />
-      <HomePageCategory categoryData={categoryData} />
+      <HomePageCategory t={t} categoryData={categoryData} />
       {bestSellerData?.length > 0 && (
         <MostPopularProduct
+          t={t}
           bestSellerData={bestSellerData}
           categoryData={categoryData}
         />
       )}
-      <Advantages benefitData={benefitData} />
+      <Advantages benefitData={benefitData} t={t} />
       {newProductsData?.length > 0 && (
-        <NewProducts newProductsData={newProductsData} />
+        <NewProducts newProductsData={newProductsData} t={t} />
       )}
-      <ShopCategory />
+      <ShopCategory t={t} />
       <div className="homepageBrandAndBlog">
-        {brandsData?.length > 0 && <HomePageBrands brandsData={brandsData} />}
-        {blogsData?.length > 0 && <HomePageBlogs blogsData={blogsData} />}
+        {brandsData?.length > 0 && (
+          <HomePageBrands brandsData={brandsData} t={t} />
+        )}
+        {blogsData?.length > 0 && <HomePageBlogs blogsData={blogsData} t={t} />}
       </div>
 
-      <SeoContent homeData={homeData} />
+      <SeoContent t={t}  homeData={homeData} />
     </div>
   );
 };

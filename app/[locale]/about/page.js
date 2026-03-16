@@ -57,6 +57,20 @@ async function fetchCraftPageData() {
   }
 }
 
+async function getTranslations() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/translation-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function generateMetadata() {
   const aboutInfo = await fetchAboutPageData();
   const cookieStore = await cookies();
@@ -120,6 +134,8 @@ const page = async () => {
   const brandsPageData = await fetchBrandsPageData();
   const brandsData = brandsPageData.data.data;
 
+  const t = await getTranslations();
+
 
   const craftPageData = await fetchCraftPageData();
   const craftData =
@@ -133,15 +149,15 @@ const page = async () => {
     <div>
       <AboutPageHero aboutData={aboutData} />
       <div className="productPageBackground">
-        <AboutBreadcrumbs aboutData={aboutData} />
+        <AboutBreadcrumbs t={t} aboutData={aboutData} />
         <AboutHeroUnderContent aboutData={aboutData} />
         <AboutPageOurHistory aboutData={aboutData} />
-        <AboutPageOurCraft craftData={craftData} />
-        <AboutMisionVision aboutData={aboutData} />
-        <PhotoGallery aboutData={aboutData} />
+        <AboutPageOurCraft t={t} craftData={craftData} />
+        <AboutMisionVision t={t} aboutData={aboutData} />
+        <PhotoGallery t={t} aboutData={aboutData} />
       </div>
-      <AboutOurBrands brandsData={brandsData} />
-      <AboutPageDirector aboutData={aboutData} />
+      <AboutOurBrands t={t} brandsData={brandsData} />
+      <AboutPageDirector t={t} aboutData={aboutData} />
     </div>
   );
 };

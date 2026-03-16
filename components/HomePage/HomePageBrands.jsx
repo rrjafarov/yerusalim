@@ -9,11 +9,11 @@ import { Autoplay, Navigation } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
 
-const HomePageBrands = ({ brandsData }) => {
+const HomePageBrands = ({ brandsData,t }) => {
   return (
     <div className="homePageBrands">
       <div className="homePageBrandsItem">
-        <h2>Our brands</h2>
+        <h2>{t?.brands}</h2>
 
         <div className="brandsLogos">
           <div className="container">

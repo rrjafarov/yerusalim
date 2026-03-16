@@ -6,7 +6,7 @@ import axios from "axios";
 import Loading from "@/components/Loading";
 import { useRouter } from "next/navigation";
 
-const SearchResults = ({ searchText, onClose }) => {
+const SearchResults = ({ searchText, onClose, t }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -52,7 +52,7 @@ const SearchResults = ({ searchText, onClose }) => {
     <div className="searchResults">
       <div className="searchResultsItem">
         <div className="searchResultsTop">
-          <span>Search Results</span>
+          <span>{t?.searchResults}</span>
           <p onClick={onClose}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +199,7 @@ const SearchResults = ({ searchText, onClose }) => {
               href={`/products?search_text=${encodeURIComponent(searchText)}`}
             >
               <button>
-                <span>See All Results</span>
+                <span>{t?.seeAllResults}</span>
               </button>
             </Link>
           </div>

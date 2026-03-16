@@ -228,17 +228,7 @@
 
 // export default page;
 
-
-
-
-
-
-
-
-
-
-
-
+// !poolitano mateo
 import ProductPageHero from "@/components/ProductPage/ProductPageHero";
 import "./products.scss";
 import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
@@ -254,12 +244,17 @@ async function fetchProducts(
   searchText = null,
   attributeParam = null,
   statusParam = null, // YENİ
+  sortBy = null,
+  sortOrder = null,
 ) {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE");
 
   try {
     let url = `/page-data/product-list?page=${page}&per_page=${perPage}`;
+    if (sortBy && sortOrder) {
+      url += `&sort_by=${sortBy}&sort_order=${sortOrder}`;
+    }
 
     if (searchText) {
       url += `&search_text=${encodeURIComponent(searchText)}`;
@@ -354,6 +349,20 @@ async function fetchAttributesData() {
   return data?.data || null;
 }
 
+async function getTranslations() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/translation-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function generateMetadata({ searchParams }) {
   const params = await searchParams;
 
@@ -389,11 +398,12 @@ export async function generateMetadata({ searchParams }) {
 
 const page = async ({ searchParams }) => {
   const params = await searchParams;
-
   const categoryParam = params?.category;
   const searchText = params?.search_text || null;
   const attributeParam = params?.attribute || null;
   const statusParam = params?.status || null;
+  const sortBy = params?.sort_by || null;
+  const sortOrder = params?.sort_order || null;
 
   const categoryId = categoryParam
     ? parseInt(categoryParam.split("-").pop())
@@ -408,6 +418,8 @@ const page = async ({ searchParams }) => {
     searchText,
     attributeParam,
     statusParam, // YENİ
+    sortBy,
+    sortOrder,
   );
 
   const categoriesData = await fetchCategoryPageData();
@@ -426,6 +438,7 @@ const page = async ({ searchParams }) => {
   if (!selectedCategory) {
     productsPageInfo = await fetchProductsPageInfo();
   }
+  const t = await getTranslations();
 
   return (
     <div>
@@ -433,11 +446,10 @@ const page = async ({ searchParams }) => {
         productsData={productsData}
         selectedCategory={selectedCategory}
       />
-
       <div className="productPageBackground">
-        <Breadcrumbs selectedCategory={selectedCategory} />
-
+        <Breadcrumbs t={t} selectedCategory={selectedCategory} />
         <ProductPageDetails
+          t={t}
           selectedCategory={selectedCategory}
           productsData={productsData}
           categoriesData={categoriesData}
@@ -445,8 +457,8 @@ const page = async ({ searchParams }) => {
           productsPageInfo={productsPageInfo}
         />
       </div>
-
       <SeoContent
+        t={t}
         selectedCategory={selectedCategory}
         productsPageInfo={productsPageInfo}
       />

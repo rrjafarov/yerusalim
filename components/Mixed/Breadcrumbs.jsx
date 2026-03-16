@@ -1,17 +1,17 @@
 import React from "react";
 import Link from "next/link";
 
-const Breadcrumbs = ({ selectedCategory }) => {
+const Breadcrumbs = ({ selectedCategory,t }) => {
   return (
     <div className="container">
       <nav className="breadcrumbs">
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">{t?.breadcrumbs}</Link>
           </li>
           <span>/</span>
           <li>
-            <Link href="/products">Products</Link>
+            <Link href="/products">{t?.products}</Link>
           </li>
           {selectedCategory?.name && (
             <>

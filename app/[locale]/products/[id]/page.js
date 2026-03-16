@@ -123,11 +123,25 @@ async function fetchCraftPageData() {
   }
 }
 
+async function getTranslations() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/translation-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
 
 /* ================= PAGE ================= */
 const page = async ({ params }) => {
   const resolvedParams = await params;
   const slug = resolvedParams?.id;
+  const t = await getTranslations();
 
   if (!slug) {
     return <div>Product not found</div>;
@@ -140,26 +154,21 @@ const page = async ({ params }) => {
     ? await fetchSimilarProducts(categoryId, id)
     : [];
 
-  console.log("========== PRODUCT DETAIL ==========");
-  console.log(productDetail);
-
-  console.log("========== SIMILAR PRODUCTS ==========");
-  console.log(similarProducts);
-
   const benefit = await fetchCraftPageData();
   const benefitData =
-  benefit?.data?.data?.filter((item) => item.page_section === "benefit") || [];
+    benefit?.data?.data?.filter((item) => item.page_section === "benefit") ||
+    [];
 
   return (
     <div>
       <div className="productPageBackground">
-        <ProductDetailPageBreadcrumbs productDetail={productDetail} />
-        <ProductDetailPage productDetail={productDetail} />
+        <ProductDetailPageBreadcrumbs t={t} productDetail={productDetail} />
+        <ProductDetailPage t={t} productDetail={productDetail} />
       </div>
 
-      <Advantages benefitData={benefitData} />
+      <Advantages t={t} benefitData={benefitData} />
 
-      <ProductDetailPageSimilars products={similarProducts} />
+      <ProductDetailPageSimilars t={t} products={similarProducts} />
     </div>
   );
 };

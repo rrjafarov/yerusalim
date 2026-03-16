@@ -8,7 +8,8 @@ import OtherBlogs from "@/components/BlogsDetailPage/OtherBlogs";
 import BlogGallery from "@/components/BlogsDetailPage/BlogGallery";
 import BlogDetailPageBreadcrumbs from "@/components/BlogsDetailPage/BlogDetailPageBreadcrumbs";
 import "../blogs.scss";
-/* ================= BLOG FETCH ================= */
+
+
 async function fetchBlogById(id) {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
@@ -23,6 +24,7 @@ async function fetchBlogById(id) {
     return null;
   }
 }
+
 async function fetchBlogsPageData() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE");
@@ -36,7 +38,20 @@ async function fetchBlogsPageData() {
     throw error;
   }
 }
-/* ================= METADATA ================= */
+async function getTranslations() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/translation-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function generateMetadata({ params }) {
   const { id: slug } = await params;
   const id = slug.split("-").pop();
@@ -74,33 +89,23 @@ export async function generateMetadata({ params }) {
 const page = async ({ params }) => {
   const { id: slug } = await params;
   const id = slug.split("-").pop();
-  
+  const t = await getTranslations();
   const blogDetail = await fetchBlogById(id);
   const blogsPageData = await fetchBlogsPageData();
-  
-  // if (!blogDetail) {
-  //   return <div className="text-center py-20">Blog not found</div>;
-  // }
-
-  // const allBlogs = Array.isArray(blogsPageData?.data) ? blogsPageData.data : [];
-  // const otherBlogs = allBlogs.filter(blog => blog.id !== blogDetail.id);
-
-
   const allBlogs = Array.isArray(blogsPageData?.data?.data) ? blogsPageData.data.data : [];
   const otherBlogs = allBlogs.filter(blog => blog.id !== blogDetail.id);
   
-
   return (
     <div>
       <div className="productPageBackground">
-        <BlogDetailPageBreadcrumbs blogData={blogDetail} />
+        <BlogDetailPageBreadcrumbs t={t} blogData={blogDetail} />
         <BlogsDetailHero blogData={blogDetail} />
       </div>
       <BlogDetailDescription blogData={blogDetail} />
       <div className="blogDpColor">
-        <BlogGallery blogData={blogDetail} />
-        <BlogDetailVideo blogData={blogDetail} />
-        <OtherBlogs currentId={blogDetail.id} otherBlogs={otherBlogs} />
+        <BlogGallery t={t} blogData={blogDetail} />
+        <BlogDetailVideo t={t} blogData={blogDetail} />
+        <OtherBlogs t={t} currentId={blogDetail.id} otherBlogs={otherBlogs} />
       </div>
     </div>
   );

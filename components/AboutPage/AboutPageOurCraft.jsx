@@ -1,11 +1,11 @@
 import React from "react";
 
-const AboutPageOurCraft = ({craftData}) => {
+const AboutPageOurCraft = ({craftData,t}) => {
   return (
     <div className="aboutPageOurCraft">
       <div className="container">
         <div className="aboutPageOurCraftItems">
-          <h2>Our Craft</h2>
+          <h2>{t?.ourCraft}</h2>
           <div className="aboutPageOurCraftCards">
             <div className="row">
               {craftData?.map((item) => (

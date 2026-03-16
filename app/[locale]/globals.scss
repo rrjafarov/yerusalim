@@ -4066,13 +4066,14 @@ ul {
         }
       }
       .productsMenuShowAllProducts {
-        width: 15rem;
+        min-width: 15rem;
+        max-width: 18rem;
         border-radius: 0.8rem;
         border: 1px solid #111;
         background: #111;
         margin-top: 7rem;
         button {
-          width: 100%;
+          width: 100%;          
           height: 4rem;
           border-radius: 0.8rem;
           border: 1px solid #111;
@@ -4083,6 +4084,7 @@ ul {
             font-style: normal;
             font-weight: 500;
             line-height: 2.4rem;
+            padding: 0 1rem;
           }
         }
         &:hover {

@@ -10,11 +10,11 @@ import Link from "next/link";
 import Image from "next/image";
 import BlogCard from "../Mixed/BlogCard";
 
-const HomePageBlogs = ({ blogsData }) => {
+const HomePageBlogs = ({ blogsData, t }) => {
   return (
     <div className="homePageBlogs">
       <div className="homePageBlogsItem">
-        <h2>Blogroom</h2>
+        <h2>{t?.blogs}</h2>
         <div className="blogsLogos">
           <div className="container">
             <Swiper
@@ -56,10 +56,6 @@ const HomePageBlogs = ({ blogsData }) => {
                 </SwiperSlide>
               ))}
 
-
-
-
-
               {/* {filteredBlogs.map((blogItem) => (
                 <div key={blogItem.id} className="xl-6 lg-6 md-6 sm-12">
                   <BlogCard
@@ -74,7 +70,7 @@ const HomePageBlogs = ({ blogsData }) => {
             </Swiper>
             <div className="allBlogsBttn">
               <Link href="/blogs">
-                <p>Read blogs</p>
+                <p>{t?.blogs}</p>
               </Link>
             </div>
           </div>

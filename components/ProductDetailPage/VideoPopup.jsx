@@ -1,6 +1,6 @@
 import React from "react";
 
-const VideoPopup = ({ onClose, youtubeUrl }) => {
+const VideoPopup = ({ onClose, youtubeUrl,t }) => {
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();

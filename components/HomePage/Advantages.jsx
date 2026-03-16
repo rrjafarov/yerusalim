@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
-const Advantages = ({ benefitData }) => {
+const Advantages = ({ benefitData, t }) => {
   const containerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -27,7 +27,7 @@ const Advantages = ({ benefitData }) => {
         root: null,
         rootMargin: "0px",
         threshold: 0.25,
-      }
+      },
     );
 
     observer.observe(containerRef.current);
@@ -45,7 +45,7 @@ const Advantages = ({ benefitData }) => {
     >
       <div className="container">
         <div className="advantagesItems">
-          <h2>Benefits of shopping with us</h2>
+          <h2>{t?.homePageBenefitTitle}</h2>
 
           <div className="advantagesItemsCards">
             <div className="row">
@@ -53,7 +53,6 @@ const Advantages = ({ benefitData }) => {
                 <div className="xl-3 lg-3 md-6 sm-6" key={item.id}>
                   <div className="advantagesItemsCard">
                     <div className="advantagesItemsCardContent">
-
                       <div className="advantagesItemsCardContentImg">
                         <Image
                           src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${item.icon}`}
@@ -67,14 +66,12 @@ const Advantages = ({ benefitData }) => {
                         <p>{item.title}</p>
                         <span>{item.description}</span>
                       </div>
-
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </div>

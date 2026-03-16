@@ -91,11 +91,6 @@
 // export default ProductPageDetails;
 // !YUXARIDA OLAN KODDA HECBIR DATA YOXDUR
 
-
-
-
-
-
 "use client";
 import React, { useState, useEffect } from "react";
 import SortBy from "./SortBy";
@@ -113,6 +108,7 @@ const ProductPageDetails = ({
   categoriesData,
   filterAttributes,
   productsPageInfo,
+  t,
 }) => {
   // const categoryBanner =
   //   productsData?.data?.data?.[0]?.category?.[0]?.banner;
@@ -121,9 +117,6 @@ const ProductPageDetails = ({
     ? productsData?.data?.data?.[0]?.category?.[0]?.banner
     : productsPageInfo?.banner;
 
-
-
-    
   const products = productsData?.data?.data ?? [];
   const paginationData = productsData?.data;
 
@@ -198,18 +191,18 @@ const ProductPageDetails = ({
       <div className="container">
         <div id="product-section-start" className="productPageDetailsHeader">
           <div className="productPageDetailsHeaderLeft">
-            <span onClick={openMobileFilter}>Filter</span>
+            <span onClick={openMobileFilter}>{t?.filter}</span>
 
             {searchText && (
               <p>
-                <strong>{paginationData?.total || 0}</strong> Search Results{" "}
+                <strong>{paginationData?.total || 0}</strong> {t?.searchResults}{" "}
                 <strong>&quot;{searchText}&quot;</strong>
               </p>
             )}
           </div>
 
           <div className="productPageDetailsHeaderRight">
-            <SortBy />
+            <SortBy t={t} />
           </div>
         </div>
 
@@ -219,6 +212,7 @@ const ProductPageDetails = ({
             <div className="xl-3 lg-4 md-6 sm-0">
               <div className="productPageLayoutLeft">
                 <FilterAccordion
+                  t={t}
                   filterAttributes={filterAttributes}
                   selectedCategory={selectedCategory}
                   categories={categoriesData?.data?.data || []}
@@ -235,7 +229,7 @@ const ProductPageDetails = ({
                   }`}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <span className="filterOverlayTitle">Filter</span>
+                  <span className="filterOverlayTitle">{t?.filter}</span>
                   <button
                     className="closeButton"
                     onClick={closeMobileFilter}
@@ -244,6 +238,7 @@ const ProductPageDetails = ({
                     ×
                   </button>
                   <FilterAccordion
+                    t={t}
                     filterAttributes={filterAttributes}
                     selectedCategory={selectedCategory}
                     categories={categoriesData?.data?.data || []}
@@ -288,12 +283,13 @@ const ProductPageDetails = ({
                             id="noProductFound"
                           >
                             <GiCandleLight id="noProductFoundIcon" />
-                            No products found
+                            {t?.productNotFound}
                           </div>
                         ) : (
                           products.map((item) => (
                             <div className="xl-4 lg-4 md-6 sm-6" key={item.id}>
                               <ProductCard
+                                t={t}
                                 id={item.id}
                                 name={item.name}
                                 productVariants={item.product_variants}

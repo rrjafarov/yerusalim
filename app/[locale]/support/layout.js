@@ -82,11 +82,25 @@ async function fetchSupportPageData() {
   }
 }
 
+async function getTranslations() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/translation-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
 
 const SupportPage = async ({ children }) => {
 
   const supportPagesData = await fetchSupportPageData();
   const supportData = supportPagesData;
+  const t = await getTranslations();
 
 
   return (
@@ -94,14 +108,12 @@ const SupportPage = async ({ children }) => {
       <div className="productPageBackground">
         <div className="supportPages">
           <div className="supportPageHero">
-            <h1>support</h1>
+            <h1>{t?.support}</h1>
           </div>
-
-          <SupportBreadcrumbs />
-          
+          <SupportBreadcrumbs t={t} />
           <div className="container">
             <div className="supportPageTitle">
-              <h2>Support made simple</h2>
+              <h2>{t?.supportMade}</h2>
             </div>
             <div>
               <div className="row">

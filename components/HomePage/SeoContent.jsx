@@ -86,12 +86,11 @@
 
 
 
-
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
 
-const SeoContent = ({ selectedCategory, productsPageInfo, homeData }) => {
+const SeoContent = ({ selectedCategory, productsPageInfo, homeData, t }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [height, setHeight] = useState(200);
 
@@ -140,7 +139,7 @@ const SeoContent = ({ selectedCategory, productsPageInfo, homeData }) => {
               style={{
                 height: height,
                 overflow: "hidden",
-                transition: "height 0.4s ease"
+                transition: "height 0.4s ease",
               }}
             >
               <div
@@ -152,7 +151,7 @@ const SeoContent = ({ selectedCategory, productsPageInfo, homeData }) => {
             {htmlContent && (
               <div className="readMoreSeo">
                 <button onClick={handleToggle}>
-                  <span>{isExpanded ? "Read Less" : "Read More"}</span>
+                  <span>{isExpanded ? t?.readLess : t?.readMore}</span>
                   <p>{isExpanded ? "-" : "+"}</p>
                 </button>
               </div>
@@ -165,20 +164,6 @@ const SeoContent = ({ selectedCategory, productsPageInfo, homeData }) => {
 };
 
 export default SeoContent;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

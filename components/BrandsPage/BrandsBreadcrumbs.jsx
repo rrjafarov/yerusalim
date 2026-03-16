@@ -1,14 +1,14 @@
 import React from "react";
 import Link from "next/link";
 
-const BrandsBreadcrumbs = ({brandsNameData}) => {
+const BrandsBreadcrumbs = ({brandsNameData,t}) => {
   return (
     <div>
       <div className="container">
         <nav className="breadcrumbs">
           <ul>
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">{t?.breadcrumbs}</Link>
             </li>
             <span>/</span>
             <li>{brandsNameData.data.page_name}</li>

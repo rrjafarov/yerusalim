@@ -190,7 +190,7 @@ import Image from "next/image";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
-const PhotoGallery = ({ aboutData }) => {
+const PhotoGallery = ({ aboutData,t }) => {
   useEffect(() => {
     Fancybox.bind('[data-fancybox="photo-gallery"]', {
       Thumbs: {
@@ -209,7 +209,7 @@ const PhotoGallery = ({ aboutData }) => {
     <div className="photoGallery">
       <div className="container">
         <div className="photoGalleryItems">
-          <h3>Photo Gallery</h3>
+          <h3>{t?.photoGallery}</h3>
 
           <div className="photoGalleryItemsSlider">
             <div className="row" id="rowForced">

@@ -110,22 +110,34 @@ export async function generateMetadata() {
     },
   };
 }
-
+async function getTranslations() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/translation-list`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
 
 const page = async () => {
   const blogName = await fetchBlogsSeoPageData();
   const blogNameData = blogName;
   const blogsPageData = await fetchBlogsPageData();
   const blogsData = blogsPageData;
-
+  const t = await getTranslations();
   const blogsCategories = await fetchBlogsCategoriesData();
   const blogsCategoryData = blogsCategories;
   return (
     <div>
       <BlogsPageHero blogNameData={blogNameData} />
       <div className="productPageBackground">
-        <BlogsBreadcrumbs blogNameData={blogNameData} />
-        <BlogsPage blogsCategoryData={blogsCategoryData} blogsData={blogsData} />
+        <BlogsBreadcrumbs t={t} blogNameData={blogNameData} />
+        <BlogsPage t={t} blogsCategoryData={blogsCategoryData} blogsData={blogsData} />
       </div>
     </div>
   );

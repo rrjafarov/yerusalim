@@ -1,7 +1,6 @@
-
 import React from "react";
 
-const ContactMap = ({contactData}) => {
+const ContactMap = ({ contactData, t }) => {
   return (
     <div className="contactMap">
       <div className="container">
@@ -10,8 +9,7 @@ const ContactMap = ({contactData}) => {
             <div className="xl-6 lg-6 md-6 sm-12">
               <div className="contactMapItemsLeft">
                 <iframe
-                src={contactData.location}
-                  // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1120.6018769616646!2d49.8325636162208!3d40.37619777816996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307de69fc9e033%3A0x414a5a4c82342759!2sNizami%20Mall!5e1!3m2!1str!2saz!4v1765309897779!5m2!1str!2saz"
+                  src={contactData.location}
                   width="600"
                   height="450"
                   style={{ border: 0 }}
@@ -25,7 +23,7 @@ const ContactMap = ({contactData}) => {
 
             <div className="xl-6 lg-6 md-6 sm-12">
               <div className="contactMapItemsRight">
-                <span>Send your inquiry </span>
+                <span>{t?.sendYourInquiry}</span>
                 <form className="contactForm">
                   <div className="contactFormNamePhone">
                     <div className="floatingInput">
@@ -36,7 +34,7 @@ const ContactMap = ({contactData}) => {
                         placeholder=""
                         required
                       />
-                      <label htmlFor="contactName">Name Surname</label>
+                      <label htmlFor="contactName">{t?.namesurname}</label>
                     </div>
                     <div className="floatingInput">
                       <input
@@ -46,7 +44,7 @@ const ContactMap = ({contactData}) => {
                         placeholder=" "
                         required
                       />
-                      <label htmlFor="contactName">Phone</label>
+                      <label htmlFor="contactName">{t?.phone}</label>
                     </div>
                   </div>
                   {/* Adınız */}
@@ -60,7 +58,7 @@ const ContactMap = ({contactData}) => {
                       placeholder=" "
                       required
                     />
-                    <label htmlFor="contactEmail">Email</label>
+                    <label htmlFor="contactEmail">{t?.email}</label>
                   </div>
 
                   {/* Mesaj */}
@@ -72,11 +70,11 @@ const ContactMap = ({contactData}) => {
                       rows={4}
                       required
                     />
-                    <label htmlFor="contactMessage">Mesajınız</label>
+                    <label htmlFor="contactMessage">{t?.yourMessage}</label>
                   </div>
 
                   <button type="submit" className="contactFormButton">
-                    Send your message
+                    {t?.sendButton}
                   </button>
                 </form>
               </div>

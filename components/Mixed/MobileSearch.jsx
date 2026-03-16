@@ -209,7 +209,7 @@ import axios from "axios";
 import Loading from "@/components/Loading";
 import { useRouter } from "next/navigation";
 
-const MobileSearch = ({ isOpen, onClose }) => {
+const MobileSearch = ({ isOpen, onClose ,t }) => {
   const [value, setValue] = useState("");
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -264,7 +264,7 @@ const MobileSearch = ({ isOpen, onClose }) => {
         </svg>
       </div>
 
-      <div className="mobileSearchTitle">Search</div>
+      <div className="mobileSearchTitle">{t?.search}</div>
 
       <div className="mobileSearchDetails">
         <div className="mobileSearchDetailsInput">
@@ -280,7 +280,7 @@ const MobileSearch = ({ isOpen, onClose }) => {
 
           <input
             type="search"
-            placeholder="Search some products here.."
+            placeholder={t?.search}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -389,7 +389,7 @@ const MobileSearch = ({ isOpen, onClose }) => {
           <div className="mobileSearchAllButton">
             <Link href={`/products?search_text=${encodeURIComponent(value)}`} onClick={onClose}>
               <button>
-                <span>See All Results</span>
+                <span>{t?.seeAllResults}</span>
               </button>
             </Link>
           </div>

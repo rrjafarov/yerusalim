@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const Footer = ({ contactData, categoryData, supportData }) => {
+const Footer = ({ contactData, categoryData, supportData, t }) => {
   const currentYear = new Date().getFullYear();
   const supports = supportData?.data?.data || [];
   return (
@@ -12,7 +12,7 @@ const Footer = ({ contactData, categoryData, supportData }) => {
             <div className="row">
               <div className="xl-2 lg-2 md-3 sm-6">
                 <div className="footerLink">
-                  <span>SHOP</span>
+                  <span>{t?.shop}</span>
                   <ul>
                     {categoryData?.data?.data
                       ?.filter(
@@ -29,8 +29,8 @@ const Footer = ({ contactData, categoryData, supportData }) => {
                           </Link>
                         </li>
                       ))}
-                    <Link className="andMore" href="/">
-                      and more
+                    <Link className="andMore" href="/products">
+                      {t?.andMore}
                     </Link>
                   </ul>
                 </div>
@@ -38,40 +38,37 @@ const Footer = ({ contactData, categoryData, supportData }) => {
               <div className="xl-2 lg-2 md-3 sm-6">
                 <div className="footerLink">
                   <span>
-                    <Link href="/about">ABOUT</Link>
+                    <Link href="/about">{t?.about}</Link>
                   </span>
                   <ul>
                     <li>
-                      <Link href="/about">Our Story</Link>
+                      <Link href="/about">{t?.about}</Link>
                     </li>
                     <li>
-                      <Link href="/brands">Explore Our Brands</Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
-                <div className="footerLink">
-                  <span>MORE</span>
-                  <ul>
-                    <li>
-                      <Link href="/blogs">Blogroom</Link>
-                    </li>
-                    <li>
-                      <Link href="/login">Login</Link>
-                    </li>
-                    <li>
-                      <Link href="/sign-up">Sign Up</Link>
+                      <Link href="/brands">{t?.brands}</Link>
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
-                  <span>SUPPORT</span>
+                  <span>{t?.more}</span>
                   <ul>
                     <li>
-                      <Link href="/support/faq">FAQs</Link>
+                      <Link href="/blogs">{t?.blogs}</Link>
+                    </li>
+                    <li>
+                      <Link href="/login">{t?.loginSignUp}</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
+                <div className="footerLink">
+                  <span>{t?.support}</span>
+                  <ul>
+                    <li>
+                      <Link href="/support/faq">{t?.faq}</Link>
                     </li>
                     {supports.map((item) => (
                       <li key={item.id}>
@@ -86,7 +83,7 @@ const Footer = ({ contactData, categoryData, supportData }) => {
               <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
                   <span>
-                    <Link href="/contact">CONTACTS</Link>
+                    <Link href="/contact">{t?.contact}</Link>
                   </span>
                   <ul>
                     <li>
@@ -119,7 +116,7 @@ const Footer = ({ contactData, categoryData, supportData }) => {
               </div>
               <div className="xl-2 lg-2 md-3 sm-6" id="mobileGap">
                 <div className="footerLink">
-                  <span>FOLLOW US</span>
+                  <span>{t?.followUS}</span>
                   <ul className="followUS">
                     <li>
                       <Link href={contactData.facebook} target="_blank">
@@ -205,7 +202,7 @@ const Footer = ({ contactData, categoryData, supportData }) => {
             </div>
 
             <div className="footerPaymentMethods">
-              <span>PAYMENT METHODS</span>
+              <span>{t?.payMethods}</span>
               <div className="footerPaymentMethodsItems">
                 <div className="footerPaymentMethodsItem">
                   <span>
@@ -222,7 +219,7 @@ const Footer = ({ contactData, categoryData, supportData }) => {
                       />
                     </svg>
                   </span>
-                  <p>By Card</p>
+                  <p>{t?.card}</p>
                 </div>
                 <div className="footerPaymentMethodsItem">
                   <span>
@@ -258,7 +255,7 @@ const Footer = ({ contactData, categoryData, supportData }) => {
                       </defs>
                     </svg>
                   </span>
-                  <p>By Cash</p>
+                  <p>{t?.cash}</p>
                 </div>
                 <div className="footerPaymentMethodsItem">
                   <span>
@@ -283,7 +280,7 @@ const Footer = ({ contactData, categoryData, supportData }) => {
                       />
                     </svg>
                   </span>
-                  <p>By Terminal</p>
+                  <p>{t?.terminal}</p>
                 </div>
               </div>
             </div>
@@ -295,17 +292,19 @@ const Footer = ({ contactData, categoryData, supportData }) => {
           <div className="footerBottomItems">
             <div className="footerBottomItemLeft">
               <p>
-                Copyright © {currentYear}. <strong>Yerusalim 18</strong>. All
-                rights reserved.
+                © {currentYear}. <strong>Yerusalim 18</strong>.{" "}
+                {t?.allRightsReserved}
               </p>
             </div>
             <div className="footerBottomItemMiddle">
-              <p>Tax ID (VOEN): {contactData.voen}</p>
+              <p>
+                {t?.taxID} {contactData.voen}
+              </p>
             </div>
             <div className="footerBottomItemRight">
               <Link href="https://one.az" target="_blank">
                 <p>
-                  Site by <strong>One Studio</strong>
+                  {t?.site} <strong>One Studio</strong>
                 </p>
               </Link>
             </div>

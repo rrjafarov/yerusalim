@@ -2,23 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ContactPageMain = ({ contactData }) => {
+const ContactPageMain = ({ contactData, t }) => {
   return (
     <div className="contactPageMain">
       <div className="container">
         <div className="contactPageMainItems">
-          {/* <h2>Get in touch with our team anytime</h2> */}
           <h2>{contactData.title}</h2>
 
           <div className="contactPageMainItemsContent">
             <div className="contactPageMainItemsContentLeft">
               <div className="contactPageMainItemsContentLeftTop">
-                <span>Costomer care</span>
-                {/* <p>
-                  If you need a hand with your order or have any P.F.-related
-                  questions, were happy to help. Our team is available Monday
-                  through Friday only.
-                </p> */}
+                <span>{t?.costomerCare}</span>
                 <div
                   className="blogContentApiDescriptionItems"
                   dangerouslySetInnerHTML={{ __html: contactData.description }}
@@ -115,11 +109,8 @@ const ContactPageMain = ({ contactData }) => {
                     </li>
                   </ul>
                 </div>
-                <span>Follow us on socials</span>
-                <p>
-                  Happy to see you here! visit and get informed all our stores
-                  and products news!
-                </p>
+                <span>{t?.followUS}</span>
+                <p>{t?.followUSDesc}</p>
               </div>
             </div>
             <div className="contactPageMainItemsContentMiddle">
@@ -133,29 +124,23 @@ const ContactPageMain = ({ contactData }) => {
             <div className="contactPageMainItemsContentRight">
               <div className="contactPageMainItemsContentRightCards">
                 <div className="contactPageMainItemsContentRightCard">
-                  <span>Email - send your inquiry</span>
-                  <Link href={`mailto:${contactData.email}`}>{contactData.email}</Link>
-                  <p>
-                    and well respond as quickly as possible. Weekend messages
-                    will receive a response the following Monday or Tuesday.
-                  </p>
+                  <span>{t?.email}</span>
+                  <Link href={`mailto:${contactData.email}`}>
+                    {contactData.email}
+                  </Link>
+                  <p>{t?.emailDesc}</p>
                 </div>
                 <div className="contactPageMainItemsContentRightCard">
-                  <span>Phone - please call</span>
+                  <span>{t?.phone}</span>
                   <Link href={`tel:${contactData.phone_number}`}>
                     {contactData.phone_number}
                   </Link>
-                  <p>
-                    and well respond as quickly as possible. Weekend messages
-                    will receive a response the following Monday or Tuesday.
-                  </p>
+                  <p>{t?.phoneDesc}</p>
                 </div>
                 <div className="contactPageMainItemsContentRightCard">
-                  <span>Location - find us</span>
+                  <span>{t?.location}</span>
                   <Link href="#">{contactData.address}</Link>
-                  <p>
-                    Open Sunday - Thursday, 11am-6pm Open Fri & Sat, 11am-7pm
-                  </p>
+                  <p>{t?.openShop}</p>
                 </div>
               </div>
             </div>

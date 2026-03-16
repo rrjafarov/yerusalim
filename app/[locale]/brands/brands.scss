@@ -62,14 +62,15 @@
         opacity: 0.6;
       }
       a {
-        width: 15rem;
+        max-width: 18rem;
         margin-top: 2.4rem;
         button {
+          padding: 0 1rem;
           display: flex;
           height: 4rem;
           justify-content: center;
           align-items: center;
-          width: 15rem;
+          // width: 15rem;
           border-radius: 0.8rem;
           border: 1px solid #111;
           background: #111;

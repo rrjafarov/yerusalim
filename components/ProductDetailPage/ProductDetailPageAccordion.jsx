@@ -6,7 +6,7 @@ import VideoPopup from "./VideoPopup";
 
 const { Panel } = Collapse;
 
-const ProductDetailPageAccordion = ({ productDetail, attributes }) => {
+const ProductDetailPageAccordion = ({ productDetail, attributes ,t}) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const handleOpenVideo = () => {
@@ -62,7 +62,7 @@ const ProductDetailPageAccordion = ({ productDetail, attributes }) => {
         {productDetail?.about && (
           <>
             <div className="acordionLineDP"></div>
-            <Panel header="About Product" key="1">
+            <Panel header={t?.about} key="1">
               <div className="productDetailPageAccordionContent">
                 <div
                   className="blogContentApiDescriptionItems"
@@ -76,7 +76,7 @@ const ProductDetailPageAccordion = ({ productDetail, attributes }) => {
         {attributes && attributes.length > 0 && (
           <>
             <div className="acordionLineDP"></div>
-            <Panel header="Specs" key="2">
+            <Panel header={t?.specification} key="2">
               <div className="productDetailPageAccordionContent">
                 <div className="productDetailPageAccordionContentSpesifications">
                   <ul>
@@ -99,7 +99,7 @@ const ProductDetailPageAccordion = ({ productDetail, attributes }) => {
         {productDetail?.safety_info && (
           <>
             <div className="acordionLineDP"></div>
-            <Panel header="Safety info" key="3">
+            <Panel header={t?.safetyInfo} key="3">
               <div className="productDetailPageAccordionContent">
                 <div
                   className="blogContentApiDescriptionItems"
@@ -115,7 +115,7 @@ const ProductDetailPageAccordion = ({ productDetail, attributes }) => {
         {productDetail?.youtube_url && (
           <>
             <div className="acordionLineDP"></div>
-            <Panel header="Video" key="4">
+            <Panel header={t?.video} key="4">
               <div className="productDetailPageAccordionContent">
                 <div
                   className="productDetailPageAccordionContentVideo"
@@ -145,7 +145,7 @@ const ProductDetailPageAccordion = ({ productDetail, attributes }) => {
         {productDetail?.delivery_content && (
           <>
             <div className="acordionLineDP"></div>
-            <Panel header="Delivery" key="5">
+            <Panel header={t?.delivery} key="5">
               <div className="productDetailPageAccordionContent">
                 <div className="productDetailPageAccordionContentDelivery">
                   {/* <ul>
@@ -172,6 +172,7 @@ const ProductDetailPageAccordion = ({ productDetail, attributes }) => {
 
       {isVideoOpen && (
         <VideoPopup
+          t={t}
           onClose={handleCloseVideo}
           youtubeUrl={productDetail?.youtube_url}
         />

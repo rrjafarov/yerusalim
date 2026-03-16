@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const AboutPageOurHistory = ({ aboutData }) => {
+const AboutPageOurHistory = ({ aboutData,t }) => {
   return (
     <div className="aboutPageOurHistory">
       <div className="aboutPageOurHistoryItems">

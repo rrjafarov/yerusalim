@@ -243,27 +243,14 @@
 
 // export default BlogDetailVideo;
 
-
-
-
-
-
-
-
-
-
-
-
 // ! sHARE LINK
-
-
 
 // !son versiya
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
-const BlogDetailVideo = ({ blogData }) => {
+const BlogDetailVideo = ({ blogData, t }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const copyTimeoutRef = useRef(null);
@@ -298,14 +285,20 @@ const BlogDetailVideo = ({ blogData }) => {
   const handleFacebookShare = (e) => {
     e.preventDefault();
     const url = encodeURIComponent(getShareUrl());
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+      "_blank",
+    );
   };
 
   const handleTwitterShare = (e) => {
     e.preventDefault();
     const url = encodeURIComponent(getShareUrl());
     const text = encodeURIComponent(blogData?.title || "");
-    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, "_blank");
+    window.open(
+      `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
+      "_blank",
+    );
   };
 
   const handleCopyLink = () => {
@@ -375,7 +368,7 @@ const BlogDetailVideo = ({ blogData }) => {
         {/* Video yalnız embedUrl varsa göstərilir (başlıq + cover ilə birlikdə) */}
         {embedUrl && (
           <div className="blogDetailVideoItems">
-            <h3>Video</h3>
+            <h3>{t?.video}</h3>
 
             <div
               className="blogDetailVideoCover"
@@ -396,16 +389,12 @@ const BlogDetailVideo = ({ blogData }) => {
                 allowFullScreen
               />
             </div>
-
-            {/* Popup istəsən buranı aktivləşdir */}
-            {/* {isVideoOpen && <VideoPopup onClose={handleCloseVideo} />} */}
           </div>
         )}
 
-        {/* Share linklər və hashtag-lar həmişə görünür (video olmasa belə) */}
         <div className="blogShareLinks">
           <div className="productDetailPageShareLiks">
-            <span>Share:</span>
+            <span>{t?.share}:</span>
             <ul>
               <li>
                 <Link href="#" onClick={handleTelegramShare}>
@@ -502,7 +491,7 @@ const BlogDetailVideo = ({ blogData }) => {
                     </defs>
                   </svg>
                 </span>
-                <span>Copy link</span>
+                <span>{t?.copyLink}</span>
               </button>
 
               {/* "Copied" yazısı */}
@@ -511,7 +500,7 @@ const BlogDetailVideo = ({ blogData }) => {
                   copied ? "visible" : ""
                 }`}
               >
-                Copied
+                {t?.copied}
               </span>
             </ul>
           </div>

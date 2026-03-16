@@ -73,7 +73,6 @@
 //                 </div>
 //               </SwiperSlide>
 
-              
 //             </Swiper>
 //           </div>
 //           <div className="mostPopularProductButton">
@@ -89,9 +88,6 @@
 
 // export default NewProducts;
 
-
-
-
 // !
 
 "use client";
@@ -103,14 +99,14 @@ import { Navigation, Autoplay } from "swiper/modules";
 import Link from "next/link";
 import ProductCard from "../Mixed/ProductCard";
 
-const NewProducts = ({ newProductsData }) => {
+const NewProducts = ({ newProductsData, t }) => {
   const products = newProductsData || [];
 
   return (
     <div className="mostPopularProduct">
       <div className="container">
         <div className="mostPopularProductItem newProductsItem">
-          <h2>New Products</h2>
+          <h2>{t?.newProducts} </h2>
           <div className="mostPopularProductSlider">
             <Swiper
               navigation={true}
@@ -132,6 +128,7 @@ const NewProducts = ({ newProductsData }) => {
                 <SwiperSlide key={item.id}>
                   <div className="mostPopularProductSlide">
                     <ProductCard
+                      t={t}
                       id={item.id}
                       name={item.name}
                       productVariants={item.product_variants}
@@ -146,7 +143,7 @@ const NewProducts = ({ newProductsData }) => {
           </div>
           <div className="mostPopularProductButton">
             <Link href="/products?status=is_new">
-              <button>Shop All Products</button>
+              <button>{t?.shopAll}</button>
             </Link>
           </div>
         </div>

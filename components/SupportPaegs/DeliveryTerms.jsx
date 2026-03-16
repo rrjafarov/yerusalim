@@ -10,13 +10,7 @@ const DeliveryTerms = ({ supportData }) => {
       <h3>{supportData.name}</h3>
 
       <div className="deliverySupportImages">
-        <div className="deliverySupportImage">
-          {/* <Image
-            src="/img/deliveryTerms.png"
-            alt="payment"
-            width={870}
-            height={340}
-          /> */}
+        <div className="deliverySupportImage">          
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${supportData?.photo_gallery?.[0]}`}
             alt="payment"

@@ -4,7 +4,7 @@ import BlogCard from "@/components/Mixed/BlogCard";
 import Pagination from "@/components/Mixed/Pagination";
 import Loading from "@/components/Loading";
 
-const BlogsPage = ({ blogsData, blogsCategoryData }) => {
+const BlogsPage = ({ blogsData, blogsCategoryData,t }) => {
   const blogsCategories = blogsCategoryData?.data?.data || [];
   const allBlogs = blogsData?.data?.data || [];
 
@@ -38,7 +38,7 @@ const BlogsPage = ({ blogsData, blogsCategoryData }) => {
   return (
     <div className="blogsPage">
       <div className="container">
-        <h2>Discover candle care tips, fragrance guides every day..</h2>
+        <h2>{t?.blogPageTitle}</h2>
 
         <div className="blogsPageCategories">
           <ul>
@@ -46,7 +46,7 @@ const BlogsPage = ({ blogsData, blogsCategoryData }) => {
               className={activeCategory === "All posts" ? "activeCategory" : ""}
               onClick={() => handleCategoryClick("All posts")}
             >
-              All posts
+              {t?.allCategories}
             </li>
 
             {blogsCategories.map((category) => (
@@ -66,7 +66,7 @@ const BlogsPage = ({ blogsData, blogsCategoryData }) => {
         ) : (
           <>
             {filteredBlogs.length === 0 ? (
-              <div className="noBlogFound" id="noProductFound">Blog not found</div>
+              <div className="noBlogFound" id="noProductFound">{t?.blogNotFound}</div>
             ) : (
               <div className="blogsPageCards">
                 <div className="row">

@@ -215,6 +215,7 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
                   }}
                 >
                   <ProductDropdownMenu
+                    t={t}
                     categoryData={categoryData}
                     onClose={() => setIsProductMenuOpen(false)}
                   />
@@ -249,6 +250,7 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
               {searchValue.trim().length > 0 && (
                 <div className="headerSearchResults">
                   <SearchResults
+                    t={t}
                     searchText={searchValue}
                     onClose={() => setSearchValue("")}
                   />
@@ -280,7 +282,7 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
                       />
                     </svg>
                   </span>
-                  <p>{token && isSuccess ? "My Account" : "Login/Sign Up"}</p>
+                  <p>{token && isSuccess ? t?.myAccount : t?.loginSignUp}</p>
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -364,11 +366,13 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
         token={token} // ✅ əlavə etdik
         isSuccess={isSuccess} // ✅ əlavə etdi
         categoryData={categoryData}
+        t={t}
       />
 
       <MobileSearch
         isOpen={mobileSearchOpen}
         onClose={() => setMobileSearchOpen(false)}
+        t={t}
       />
     </div>
   );
