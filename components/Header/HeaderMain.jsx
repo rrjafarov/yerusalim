@@ -282,7 +282,7 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
                       />
                     </svg>
                   </span>
-                  <p>{token && isSuccess ? t?.myAccount : t?.loginSignUp}</p>
+                  <p>{token && isSuccess ? t?.myAccount : t?.login}</p>
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

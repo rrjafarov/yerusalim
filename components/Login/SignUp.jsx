@@ -99,23 +99,6 @@
 
 // ! bismillah ya Allah <><><><><><><><><><><><><><><><><><><><><><><><><>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import React, { useState } from "react";
@@ -442,22 +425,7 @@
 
 // export default SignUp;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ! phone gonderirem 
+// ! phone gonderirem
 
 "use client";
 import React, { useState } from "react";
@@ -466,11 +434,11 @@ import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-const SignUp = () => {
+const SignUp = ({ t }) => {
   const router = useRouter();
 
-  const [phone, setPhone] = useState(""); 
-  const [phoneTouched, setPhoneTouched] = useState(false); 
+  const [phone, setPhone] = useState("");
+  const [phoneTouched, setPhoneTouched] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -486,23 +454,23 @@ const SignUp = () => {
     const newErrors = {};
 
     if (!form.name.value.trim()) {
-      newErrors.name = "Name boş qala bilməz";
+      newErrors.name = t?.formValidationName;
     }
 
     if (!form.email.value.trim()) {
-      newErrors.email = "Email boş qala bilməz";
+      newErrors.email = t?.formValidationEmail;
     }
 
     if (!phone.trim() || phone === "+994") {
-      newErrors.phone = "Phone boş qala bilməz";
+      newErrors.phone = t?.formValidationPhone;
     }
 
     if (!form.password.value.trim()) {
-      newErrors.password = "Password boş qala bilməz";
+      newErrors.password = t?.formValidationPassword;
     }
 
     if (!form.passwordConfirm.value.trim()) {
-      newErrors.passwordConfirm = "Password təkrarı boş qala bilməz";
+      newErrors.passwordConfirm = t?.formValidationPasswordRepeat;
     }
 
     if (
@@ -510,7 +478,7 @@ const SignUp = () => {
       form.passwordConfirm.value &&
       form.password.value !== form.passwordConfirm.value
     ) {
-      newErrors.passwordConfirm = "Passwordlər uyğun deyil";
+      newErrors.passwordConfirm = t?.passwordNotMatch;
     }
 
     setErrors(newErrors);
@@ -533,7 +501,7 @@ const SignUp = () => {
     const formData = {
       name: form.name.value,
       email: form.email.value,
-      phone: rawPhone, // burada state-dən gəlir
+      phone: rawPhone,
       password: form.password.value,
       password_confirmation: form.passwordConfirm.value,
     };
@@ -545,7 +513,7 @@ const SignUp = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
-        }
+        },
       );
 
       const data = await res.json();
@@ -585,8 +553,8 @@ const SignUp = () => {
   return (
     <div className="signup">
       <div className="container">
-        <h1>Sign up</h1>
-        <p>Please fill in the information below:</p>
+        <h1>{t?.signUp}</h1>
+        <p>{t?.signUpSubTitle}</p>
 
         <div className="signupForm">
           <form onSubmit={handleSubmit}>
@@ -595,14 +563,16 @@ const SignUp = () => {
               {errors.name && (
                 <div className="validationMessage">{errors.name}</div>
               )}
-              <div className={`floatingInput ${errors.name ? "inputError" : ""}`}>
+              <div
+                className={`floatingInput ${errors.name ? "inputError" : ""}`}
+              >
                 <input
                   type="text"
                   name="name"
                   placeholder=" "
                   onFocus={() => clearError("name")}
                 />
-                <label>Name surname</label>
+                <label>{t?.namesurname}</label>
               </div>
             </div>
 
@@ -611,14 +581,16 @@ const SignUp = () => {
               {errors.email && (
                 <div className="validationMessage">{errors.email}</div>
               )}
-              <div className={`floatingInput ${errors.email ? "inputError" : ""}`}>
+              <div
+                className={`floatingInput ${errors.email ? "inputError" : ""}`}
+              >
                 <input
                   type="email"
                   name="email"
                   placeholder=" "
                   onFocus={() => clearError("email")}
                 />
-                <label>E-mail</label>
+                <label>{t?.email}</label>
               </div>
             </div>
 
@@ -650,7 +622,7 @@ const SignUp = () => {
                     }
                   }}
                 />
-                <label>Phone</label>
+                <label>{t?.phone}</label>
               </div>
             </div>
 
@@ -670,7 +642,7 @@ const SignUp = () => {
                   placeholder=" "
                   onFocus={() => clearError("password")}
                 />
-                <label>Password</label>
+                <label>{t?.password}</label>
                 <span
                   className="passwordToggleIcon"
                   onClick={() => setShowPassword((p) => !p)}
@@ -683,7 +655,9 @@ const SignUp = () => {
             {/* Confirm Password */}
             <div className="signupFormGroup">
               {errors.passwordConfirm && (
-                <div className="validationMessage">{errors.passwordConfirm}</div>
+                <div className="validationMessage">
+                  {errors.passwordConfirm}
+                </div>
               )}
               <div
                 className={`floatingInput floatingInputPassword ${
@@ -696,12 +670,16 @@ const SignUp = () => {
                   placeholder=" "
                   onFocus={() => clearError("passwordConfirm")}
                 />
-                <label>Retype Password</label>
+                <label>{t?.retypePassword}</label>
                 <span
                   className="passwordToggleIcon"
                   onClick={() => setShowConfirmPassword((p) => !p)}
                 >
-                  {showConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                  {showConfirmPassword ? (
+                    <AiOutlineEyeInvisible />
+                  ) : (
+                    <AiOutlineEye />
+                  )}
                 </span>
               </div>
             </div>
@@ -729,16 +707,16 @@ const SignUp = () => {
                   <Loading />
                 </div>
               ) : (
-                "CREATE ACCOUNT"
+                t?.createAccount
               )}
             </button>
 
             {/* Bottom */}
             <div className="signupFormBottom">
               <p>
-                Do you have an account ?{" "}
+                {t?.haveAccount} {" "}
                 <Link className="signupBottomLink" href="/login">
-                  Login now
+                  {t?.loginNow}
                 </Link>
               </p>
             </div>

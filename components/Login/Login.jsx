@@ -1,83 +1,3 @@
-// import React from "react";
-// import Link from "next/link";
-
-// const Login = () => {
-//   return (
-//     <div className="login">
-//       <div className="container">
-//         <h1>Login</h1>
-//         <p>Enter your email and password to login:</p>
-
-//         <div className="loginForm">
-//           <form>
-//             {/* E-mail */}
-//             <div className="loginFormGroup">
-//               <div className="floatingInput">
-//                 <input
-//                   type="email"
-//                   id="email"
-//                   name="email"
-//                   placeholder=" "
-//                   required
-//                 />
-//                 <label htmlFor="email">E-mail</label>
-//               </div>
-//             </div>
-
-//             {/* Password + Forgot password (inputun içində) */}
-//             <div className="loginFormGroup">
-//               <div className="floatingInput floatingInputPassword">
-//                 <input
-//                   type="password"
-//                   id="password"
-//                   name="password"
-//                   placeholder=" "
-//                   required
-//                 />
-//                 <label htmlFor="password">Password</label>
-
-//                 <Link
-//                   href="/forgot-password"
-//                   className="forgotPasswordInside"
-//                 >
-//                   Forgot your password?
-//                 </Link>
-//               </div>
-//             </div>
-
-//             {/* I'm not robot */}
-//             <div className="loginFormCheckbox">
-//               <label>
-//                 <input type="checkbox" name="notRobot" />
-//                 <span>I’m not robot</span>
-//               </label>
-//             </div>
-
-//             {/* Submit button */}
-//             <button type="submit" className="loginSubmitBtn">
-//               LOGIN NOW
-//             </button>
-
-//             {/* Bottom text */}
-//             <div className="loginFormBottom">
-//               <p>
-//                 Don’t have an account ?{" "}
-//                 <Link href="/sign-up" className="signupLink">
-//                   Sign up
-//                 </Link>
-//               </p>
-//             </div>
-//           </form>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-// ! bismillah ya Allah
-
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
@@ -87,7 +7,7 @@ import Loading from "@/components/Loading";
 import SuccessPopup from "@/components/Login/SuccessPopup";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-const Login = () => {
+const Login = ({t}) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -118,24 +38,17 @@ const Login = () => {
       );
 
       const data = await res.json();
-
-      // ❌ ERROR HANDLE
       if (!res.ok) {
         if (res.status === 401) {
-          setError("Incorrect email or password");
+          setError(t?.incorrectEmailOrPassword);
         } else {
           setError("Something went wrong");
         }
         return;
       }
-      // ✅ SUCCESS
       if (data.token) {
         Cookies.set("token", data.token, { expires: 1 / 24 });
-
-        // popup aç
         setShowSuccess(true);
-
-        // 1 saniyə sonra bağla + redirect
         setTimeout(() => {
           setShowSuccess(false);
           router.push("/");
@@ -151,12 +64,11 @@ const Login = () => {
   return (
     <div className="login">
       <div className="container">
-        <h1>Login</h1>
-        <p>Enter your email and password to login:</p>
+        <h1>{t?.login}</h1>
+        <p>{t?.loginSubTitle}:</p>
 
         <div className="loginForm">
           <form onSubmit={handleSubmit}>
-            {/* E-mail */}
             <div className="loginFormGroup">
               <div className="floatingInput">
                 <input
@@ -166,26 +78,13 @@ const Login = () => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="email">E-mail</label>
+                <label htmlFor="email">{t?.email}</label>
               </div>
             </div>
 
-            {/* Password + Forgot password */}
+
             <div className="loginFormGroup">
               <div className="floatingInput floatingInputPassword">
-                {/* <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder=" "
-                  required
-                />
-                <label htmlFor="password">Password</label>
-
-                <Link href="/forgot-password" className="forgotPasswordInside">
-                  Forgot your password?
-                </Link> */}
-
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
@@ -193,7 +92,7 @@ const Login = () => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">{t?.password}</label>
 
                 <div className="forgotPasswordInside">
                   <span
@@ -207,12 +106,10 @@ const Login = () => {
                     )}
                   </span>
 
-                  <Link href="/forgot-password">Forgot your password?</Link>
+                  <Link href="/forgot-password">{t?.forgotPass}</Link>
                 </div>
               </div>
             </div>
-
-            {/* ERROR MESSAGE */}
             {error && (
               <p
                 style={{
@@ -235,7 +132,6 @@ const Login = () => {
               </label>
             </div> */}
 
-            {/* Submit button */}
             <button
               type="submit"
               className="loginSubmitBtn"
@@ -258,27 +154,23 @@ const Login = () => {
                   <Loading />
                 </div>
               ) : (
-                "LOGIN NOW"
+                t?.login
               )}
             </button>
-
-            {/* Bottom text */}
             <div className="loginFormBottom">
               <p>
-                Don’t have an account ?{" "}
+                {t?.dontHaveAccount} {" "}
                 <Link href="/sign-up" className="signupLink signupBottomLink">
-                  Sign up
+                  {t?.signUp}
                 </Link>
               </p>
             </div>
           </form>
         </div>
       </div>
-      {showSuccess && <SuccessPopup message="Uğurla giriş edildi" />}
+      {showSuccess && <SuccessPopup message={t?.successLogin} />}
     </div>
   );
 };
 
 export default Login;
-
-// ! validation var

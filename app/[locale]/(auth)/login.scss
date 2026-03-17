@@ -116,9 +116,7 @@
       align-items: center;
       justify-content: center;
       gap: 2rem;
-      &:hover {
-        text-decoration: underline;
-      }
+
       span {
         display: flex;
         align-items: center;
@@ -132,6 +130,9 @@
         font-weight: 400;
         line-height: normal;
         opacity: 0.8;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

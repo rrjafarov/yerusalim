@@ -71,28 +71,23 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({t}) => {
   const [isResetStep, setIsResetStep] = useState(false);
 
   const handleButtonClick = (e) => {
     e.preventDefault();
 
     if (!isResetStep) {
-      // Burda normalda API-yə email göndərərsən
-      // Email uğurlu olarsa, növbəti addıma keçirik
       setIsResetStep(true);
     } else {
-      // Burda isə yeni şifrəni yadda saxlamaq üçün API call olar
-      // hələlik yalnız UI mentiqi qururuq
-      console.log("Save new password");
     }
   };
 
   return (
     <div className="forgotPassword">
       <div className="container">
-        <h1>{isResetStep ? "Set new Password" : "Recover Password"}</h1>
-        <p>Enter your email to recover your password:</p>
+        <h1>{isResetStep ? t?.setnewpass : t?.recoverPass}</h1>
+        <p>{t?.forgotPassSubTitle}:</p>
 
         <div className="forgotPasswordForm">
           <form>
@@ -108,7 +103,7 @@ const ForgotPassword = () => {
                     placeholder=" "
                     required
                   />
-                  <label htmlFor="forgotEmail">E-mail</label>
+                  <label htmlFor="forgotEmail">{t?.email}</label>
                 </div>
               </div>
             ) : (
@@ -123,7 +118,7 @@ const ForgotPassword = () => {
                       placeholder=" "
                       required
                     />
-                    <label htmlFor="newPassword">New password</label>
+                    <label htmlFor="newPassword">{t?.newPassword}</label>
                   </div>
                 </div>
 
@@ -137,27 +132,26 @@ const ForgotPassword = () => {
                       placeholder=" "
                       required
                     />
-                    <label htmlFor="retypePassword">Retype password</label>
+                    <label htmlFor="retypePassword">{t?.retypePassword}</label>
                   </div>
                 </div>
               </>
             )}
 
-            {/* Button */}
             <button
               type="button"
               className="forgotPasswordSubmitBtn"
               onClick={handleButtonClick}
             >
-              {isResetStep ? "SAVE" : "RECOVER"}
+              {isResetStep ? t?.save : t?.recoverPass}
             </button>
 
             {/* Bottom text */}
             <div className="forgotPasswordBottom">
               <p>
-                Remember your password?{" "}
+                {t?.rememberPass}{" "}
                 <Link href="/login" className="forgotPasswordBackLink">
-                  Back to login
+                  {t?.login}
                 </Link>
               </p>
             </div>

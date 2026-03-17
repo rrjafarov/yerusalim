@@ -58,7 +58,7 @@ const Footer = ({ contactData, categoryData, supportData, t }) => {
                       <Link href="/blogs">{t?.blogs}</Link>
                     </li>
                     <li>
-                      <Link href="/login">{t?.loginSignUp}</Link>
+                      <Link href="/login">{t?.login}</Link>
                     </li>
                   </ul>
                 </div>
