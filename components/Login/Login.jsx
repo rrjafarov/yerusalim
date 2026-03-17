@@ -78,21 +78,21 @@
 
 // ! bismillah ya Allah
 
-
-
-
-
 "use client";
-
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import Loading from "@/components/Loading";
+import SuccessPopup from "@/components/Login/SuccessPopup";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -118,13 +118,28 @@ const Login = () => {
       );
 
       const data = await res.json();
-      console.log("login response:", res.status, data);
 
-      if (res.ok && data.token) {
-        // Token cookie-də saxlanır
-        Cookies.set("token", data.token, { expires: 1 / 24 }); // 1 saatlıq
-        // Ana səhifəyə yönləndir
-        router.push("/");
+      // ❌ ERROR HANDLE
+      if (!res.ok) {
+        if (res.status === 401) {
+          setError("Incorrect email or password");
+        } else {
+          setError("Something went wrong");
+        }
+        return;
+      }
+      // ✅ SUCCESS
+      if (data.token) {
+        Cookies.set("token", data.token, { expires: 1 / 24 });
+
+        // popup aç
+        setShowSuccess(true);
+
+        // 1 saniyə sonra bağla + redirect
+        setTimeout(() => {
+          setShowSuccess(false);
+          router.push("/");
+        }, 1500);
       }
     } catch (err) {
       console.error("login error:", err);
@@ -158,7 +173,7 @@ const Login = () => {
             {/* Password + Forgot password */}
             <div className="loginFormGroup">
               <div className="floatingInput floatingInputPassword">
-                <input
+                {/* <input
                   type="password"
                   id="password"
                   name="password"
@@ -169,9 +184,48 @@ const Login = () => {
 
                 <Link href="/forgot-password" className="forgotPasswordInside">
                   Forgot your password?
-                </Link>
+                </Link> */}
+
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  placeholder=" "
+                  required
+                />
+                <label htmlFor="password">Password</label>
+
+                <div className="forgotPasswordInside">
+                  <span
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {showPassword ? (
+                      <AiOutlineEye size={20} />
+                    ) : (
+                      <AiOutlineEyeInvisible size={20} />
+                    )}
+                  </span>
+
+                  <Link href="/forgot-password">Forgot your password?</Link>
+                </div>
               </div>
             </div>
+
+            {/* ERROR MESSAGE */}
+            {error && (
+              <p
+                style={{
+                  color: "#ec1f27",
+                  marginBottom: "2.2rem",
+                  fontSize: "1.5rem",
+                  padding: "0",
+                  fontFamily: "",
+                }}
+              >
+                {error}
+              </p>
+            )}
 
             {/* I'm not robot */}
             {/* <div className="loginFormCheckbox">
@@ -220,19 +274,11 @@ const Login = () => {
           </form>
         </div>
       </div>
+      {showSuccess && <SuccessPopup message="Uğurla giriş edildi" />}
     </div>
   );
 };
 
 export default Login;
 
-
-
-
-
-
-
-
-
-// ! validation var 
-
+// ! validation var

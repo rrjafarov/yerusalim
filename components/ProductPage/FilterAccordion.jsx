@@ -157,7 +157,7 @@ const FilterAccordion = ({
             (!selectedCategory.top_category ||
               selectedCategory.top_category.length === 0)
               ? selectedCategory.name
-              : "Kategoriyalar"
+              : t?.categories
           }
           key="1"
         >

@@ -443,6 +443,7 @@ const page = async ({ searchParams }) => {
   return (
     <div>
       <ProductPageHero
+        t={t}
         productsData={productsData}
         selectedCategory={selectedCategory}
       />

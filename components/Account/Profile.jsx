@@ -1,9 +1,10 @@
 "use client";
-
+import { useGetUserInfoQuery } from "@/redux/userService";
 import React, { useRef, useState, useEffect } from "react";
 
 const Profile = () => {
   const [editableField, setEditableField] = useState(null);
+  const { data: user, isLoading, isError } = useGetUserInfoQuery();
 
   const fullNameRef = useRef(null);
   const emailRef = useRef(null);

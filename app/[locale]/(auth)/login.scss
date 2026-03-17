@@ -55,7 +55,7 @@
       background: transparent;
       padding: 1.6rem 1.2rem 0.8rem;
       font-size: 1.4rem;
-      outline: none;  
+      outline: none;
 
       &::placeholder {
         color: transparent; // floating label üçün
@@ -112,8 +112,26 @@
       line-height: normal;
       white-space: nowrap;
       opacity: 0.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
       &:hover {
         text-decoration: underline;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      a {
+        color: #000;
+        font-family: "Noto Serif Display";
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        opacity: 0.8;
       }
     }
   }
@@ -241,9 +259,8 @@
   }
 }
 
-
 @media screen and (max-width: 767.9px) {
- .floatingInput {
+  .floatingInput {
     input {
       font-size: 1.7rem !important;
     }
@@ -279,7 +296,6 @@
     font-size: 1.8rem !important;
   }
 }
-
 
 // !forgotPassword<><><><><><><<><<<><>
 
@@ -637,26 +653,7 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // !form validation error mesajları
-
-
 
 /* ===== Validation ===== */
 
@@ -669,7 +666,6 @@
   font-size: 1.3rem;
   margin-bottom: 0.6rem;
 }
-
 
 /* ===== Password Eye Icon ===== */
 
@@ -704,12 +700,10 @@
   white-space: nowrap;
 }
 
-
 /* Error border */
 .inputError input {
   border-color: #ec1f27 !important;
 }
-
 
 /* Password icon */
 .floatingInputPassword {

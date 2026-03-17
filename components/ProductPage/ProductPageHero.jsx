@@ -1,8 +1,8 @@
 import React from 'react'
-const ProductPageHero = ({selectedCategory}) => {
+const ProductPageHero = ({selectedCategory,t}) => {
   return (
     <div className='productPageHero'>
-      <h1>{selectedCategory?.name || "Məhsullar"}</h1>
+      <h1>{selectedCategory?.name || t?.products}</h1>
     </div>
   )
 }
