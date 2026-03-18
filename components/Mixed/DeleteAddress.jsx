@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const DeleteAddress = ({ onClose }) => {
+const DeleteAddress = ({ onClose,t }) => {
   const handleOverlayClick = (e) => {
     // yalnız overlay-in özünə klik olunanda bağlansın
     if (e.target === e.currentTarget && onClose) {
@@ -40,18 +40,18 @@ const DeleteAddress = ({ onClose }) => {
               />
             </svg>
           </div>
-          <span>Want to delete address?</span>
-          <p>If you delete this address ll be deleted we couldnt recovered.</p>
+          <span>{t?.deleteAddress}</span>
+          <p>{t?.deleteAddressSub}</p>
           <div className="deleteAddressButtons">
             <button
               className="deleteAddressButtonsNo"
               type="button"
               onClick={handleNoClick}
             >
-              No, back
+              {t?.no}
             </button>
             <button className="deleteAddressButtonsYes" type="button">
-              yes, delete
+              {t?.yes}
             </button>
           </div>
 

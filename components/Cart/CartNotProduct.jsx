@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const CartNotProduct = () => {
+const CartNotProduct = ({t}) => {
   return (
     <div className="cartNotProduct">
       <div className="cartNotProductItem">
@@ -34,10 +34,10 @@ const CartNotProduct = () => {
           </svg>
         </span>
         <div className="cartNotProductContent">
-          <span>Basket</span>
-          <p>You haven’t placed any orders yet.</p>
+          <span>{t?.basket}</span>
+          <p>{t?.basketNotFoundSub}</p>
           <Link href="/">
-            <button>start to buy</button>
+            <button>{t?.startToBuy}</button>
           </Link>
         </div>
       </div>

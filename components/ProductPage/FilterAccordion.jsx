@@ -263,7 +263,7 @@ const FilterAccordion = ({
         <div className="filterAccordionLine"></div>
 
         {/* Price accordion */}
-        <Panel header={t?.price} key="4">
+        {/* <Panel header={t?.price} key="4">
           <div className="filterAccordionContentPrices">
             <div className="filterAccordionContentPricesItems">
               <div className="filterAccordionContentPricesItemsMinPrice">
@@ -278,7 +278,7 @@ const FilterAccordion = ({
             <RangeSlider value={priceRange} onChange={setPriceRange} />
           </div>
         </Panel>
-        <div className="filterAccordionLine"></div>
+        <div className="filterAccordionLine"></div> */}
 
         {groupedAttributes.map(({ topAttr, values }) => (
           <React.Fragment key={topAttr.id}>

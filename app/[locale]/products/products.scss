@@ -185,7 +185,7 @@
     &.closing {
       animation: slideOut 0.3s forwards;
     }
-    .filterOverlayTitle{
+    .filterOverlayTitle {
       position: absolute;
       color: #000;
       top: 2.5rem;
@@ -279,132 +279,6 @@
   scrollbar-width: thin;
 }
 
-// .productPageDetails {
-//   padding-top: 5.3rem;
-//   .productPageDetailsHeader {
-//     border-bottom: 0.1rem solid #efe9f0;
-//     padding-bottom: 2.5rem;
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     .productPageDetailsHeaderLeft {
-//       display: flex;
-//       gap: 3.9rem;
-//       align-items: center;
-//       span {
-//         color: #000;
-//         font-size: 2.8rem;
-//         font-style: normal;
-//         font-weight: 600;
-//         line-height: normal;
-//       }
-//       p {
-//         color: #000;
-//         font-size: 1.4rem;
-//         font-style: normal;
-//         font-weight: 600;
-//         opacity: 0.4;
-//         line-height: normal;
-//         strong {
-//           color: #000;
-//           font-size: 1.4rem;
-//           font-style: normal;
-//           font-weight: 600;
-//           line-height: normal;
-//         }
-//       }
-//     }
-//   }
-//   .productPageLayout {
-//     padding-top: 3.3rem;
-//     .productPageLayoutRight {
-//       .productPageLayoutRightBanner {
-//         height: 30rem;
-//         flex-shrink: 0;
-//         border-radius: 1.2rem;
-//         img {
-//           width: 100%;
-//           height: 100%;
-//           border-radius: 1.2rem;
-//         }
-//       }
-//       .productPageLayoutRightCards {
-//         padding-top: 3rem;
-//         .productPageLayoutRightCardsPagination {
-//           .productPageLayoutRightCardsPaginationItem {
-//             padding-top: 3.2rem;
-//             padding-bottom: 9.3rem;
-//             display: flex;
-//             justify-content: center;
-//             align-items: center;
-//             gap: 1rem;
-//             .paginationArrow {
-//               width: 4rem;
-//               height: 4rem;
-//               border-radius: 50%;
-//               background: transparent;
-//               display: flex;
-//               align-items: center;
-//               justify-content: center;
-//               cursor: pointer;
-//               transition: all 0.2s ease;
-
-//               &:hover {
-//                 border-color: #681616;
-//               }
-//             }
-
-//             .paginationPages {
-//               display: flex;
-//               align-items: center;
-//               gap: 1.2rem; // bütün dairələr arasında 1.2rem
-//             }
-
-//             .paginationItem {
-//               width: 4rem;
-//               height: 4rem;
-//               border-radius: 50%;
-//               border: 1px solid #d9d9d9;
-//               background: transparent;
-//               display: flex;
-//               align-items: center;
-//               justify-content: center;
-//               font-size: 1.6rem;
-//               font-weight: 500;
-//               color: #000;
-//               cursor: pointer;
-//               transition: all 0.2s ease;
-
-//               &.active {
-//                 background: #681616;
-//                 border-color: #681616;
-//                 color: #fff;
-//               }
-
-//               &:hover:not(.active) {
-//                 border-color: #681616;
-//               }
-//             }
-
-//             .paginationDots {
-//               font-size: 2rem;
-//               width: 4rem;
-//               height: 4rem;
-//               display: flex;
-//               align-items: center;
-//               justify-content: center;
-//             }
-//           }
-//         }
-//       }
-//     }
-
-//     .productPageLayoutLeft {
-//       padding-right: 3.9rem;
-//     }
-//   }
-// }
-
 @media only screen and (max-width: 767.9px) {
   .productPageDetailsHeaderLeft {
     display: flex;
@@ -471,6 +345,7 @@
     opacity: 0.6;
   }
 }
+
 .ant-select-dropdown {
   padding: 0 !important;
   background-color: white;
@@ -539,18 +414,28 @@
   }
 }
 
+@media only screen and (max-width: 767.9px) {
+  .sortBy {
+    padding: 1.1rem 5.5rem !important;
+    .ant-select-content {
+      font-size: 1.4rem !important;
+      opacity: 1 !important;
+    }
+  }
+  .ant-select .ant-select-placeholder {
+    color: #000;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    opacity: 1 !important;
+  }
+}
+
 .ant-select-item-option-content {
   text-align: center;
 }
-
-/* Remove or comment out the global fixed width rule that caused overflow:
-.ant-select-dropdown {
-  padding: 0 !important;
-  background-color: white;
-  box-sizing: border-box;
-  width: 19rem !important;  <-- remove this line
-}
-*/
 
 .filterAccordion {
   .filterAccordionLine {
@@ -1326,7 +1211,7 @@
       color: #fff;
       padding: 0.5rem 1rem;
       font-family: "Inter", sans-serif !important;
-      p{
+      p {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1335,7 +1220,7 @@
     }
   }
 }
-.closeSelectFilter{
+.closeSelectFilter {
   width: 2rem;
   height: 2rem;
 }

@@ -1,43 +1,13 @@
-// import Link from "next/link";
-// import React from "react";
-
-// const GuestUserForm = () => {
-//   return (
-//     <div className="guestUserForm">
-//       <div className="guestUserFormTopLink">
-//         <span>Please fill infos</span>
-//         <p>
-//           Do you have an account ? <Link href="#">Login now</Link>
-//         </p>
-//       </div>
-//       <div className="guestUserFormSector">
-//         <div className="guestUserFormSectorItem">
-//             <>Inputlar bu hissede olmalidir</>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default GuestUserForm;
-
-
-
-
-
-
-
-
 import Link from "next/link";
 import React from "react";
 
-const GuestUserForm = () => {
+const GuestUserForm = ({t}) => {
   return (
     <div className="guestUserForm">
       <div className="guestUserFormTopLink">
-        <span>Please fill infos</span>
+        <span>{t?.basketFillForm}</span>
         <p>
-          Do you have an account ? <Link href="#">Login now</Link>
+          {t?.haveAccount} <Link href="#">{t?.loginNow}</Link>
         </p>
       </div>
       <div className="guestUserFormSector">
@@ -52,7 +22,7 @@ const GuestUserForm = () => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="guestFullName">Full name</label>
+                <label htmlFor="guestFullName">{t?.namesurname}</label>
               </div>
 
               <div className="floatingInput">
@@ -63,7 +33,7 @@ const GuestUserForm = () => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="guestPhone">Phone</label>
+                <label htmlFor="guestPhone">{t?.phone}</label>
               </div>
             </div>
 
@@ -76,7 +46,7 @@ const GuestUserForm = () => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="guestCity">City</label>
+                <label htmlFor="guestCity">{t?.city}</label>
               </div>
 
               <div className="floatingInput">
@@ -87,7 +57,7 @@ const GuestUserForm = () => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="guestAddress">Address</label>
+                <label htmlFor="guestAddress">{t?.address}</label>
               </div>
             </div>
           </form>

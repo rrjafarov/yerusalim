@@ -7,7 +7,7 @@ const HeaderTop = () => {
       <div className="headerTop">
         <div className="container">
           <div className="headerTopItem">
-            <Link href="#">
+            <Link href="/products">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddAddressPopup = ({ onClose }) => {
+const AddAddressPopup = ({ onClose,t }) => {
   const handleOverlayClick = (e) => {
     // yalnız overlay-in özünə klik olunanda bağlansın
     if (e.target === e.currentTarget && onClose) {
@@ -36,7 +36,7 @@ const AddAddressPopup = ({ onClose }) => {
           </div>
 
           <div className="addAddressPopupItemsForm">
-            <span className="addAddressPopupTitle">ADD NEW ADDRESS</span>
+            <span className="addAddressPopupTitle">{t?.addNewAddress}</span>
 
             <form className="addAddressPopupForm">
               {/* Add name */}
@@ -48,7 +48,7 @@ const AddAddressPopup = ({ onClose }) => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="addressName">Add name</label>
+                <label htmlFor="addressName">{t?.namesurname}</label>
               </div>
 
               {/* Address */}
@@ -60,7 +60,7 @@ const AddAddressPopup = ({ onClose }) => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="addressLine">Address</label>
+                <label htmlFor="addressLine">{t?.address}</label>
               </div>
 
               {/* City – SELECT */}
@@ -71,7 +71,7 @@ const AddAddressPopup = ({ onClose }) => {
                   <option value="ganja">Ganja, Azerbaijan</option>
                   {/* istəsən əlavə şəhər opsiyaları yaza bilərsən */}
                 </select>
-                <label htmlFor="city">City</label>
+                <label htmlFor="city">{t?.city}</label>
 
                 <span className="selectArrow">
                   <svg
@@ -102,12 +102,12 @@ const AddAddressPopup = ({ onClose }) => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="phone">Phone</label>
+                <label htmlFor="phone">{t?.phone}</label>
               </div>
 
               {/* Button */}
               <button type="submit" className="addAddressPopupButton">
-                SAVE ADDRESS
+                {t?.save}
               </button>
             </form>
           </div>
