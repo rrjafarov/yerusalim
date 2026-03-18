@@ -95,7 +95,7 @@ import React from "react";
 import Cookies from "js-cookie";
 import axiosInstance from "@/lib/axios";
 
-const Logout = ({ onClose }) => {
+const Logout = ({t, onClose }) => {
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget && onClose) onClose();
   };
@@ -134,15 +134,15 @@ const Logout = ({ onClose }) => {
             </svg>
           </div>
 
-          <span>Do you want to go out?</span>
-          <p>You will be logged out from your account immediately.</p>
+          <span>{t?.logoutPopupTitle}</span>
+          <p> {t?.logoutPopupSubTitle}</p>
 
           <div className="deleteAddressButtons">
             <button className="deleteAddressButtonsNo" type="button" onClick={handleNoClick}>
-              No, back
+              {t?.no}
             </button>
             <button className="deleteAddressButtonsYes" type="button" onClick={handleYesClick}>
-              Yes, logout
+              {t?.yes}
             </button>
           </div>
 

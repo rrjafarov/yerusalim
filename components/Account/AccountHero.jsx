@@ -49,7 +49,7 @@ import React, { useState } from "react";
 import { useGetUserInfoQuery } from "@/redux/userService";
 import Logout from "@/components/Mixed/Logout";
 
-const AccountHero = () => {
+const AccountHero = ({t}) => {
   const { data: user, isLoading, isError } = useGetUserInfoQuery();
   const [isPopup, setIsPopup] = useState(false);
 
@@ -58,9 +58,9 @@ const AccountHero = () => {
       <div className="container">
         <div className="accountHeroItem">
           <h1>
-            Welcome back, {user ? user.name_surname : "User"}!
+            {t?.welcome}, {user ? user.name_surname : "User"}!
           </h1>
-          <p>View all your orders and manage your account information.</p>
+          <p>{t?.accountSubTitle}</p>
 
           <div className="logOut">
             <button type="button" onClick={() => setIsPopup(true)}>
@@ -78,13 +78,13 @@ const AccountHero = () => {
                   />
                 </svg>
               </div>
-              <span>Log out</span>
+              <span>{t?.logout}</span>
             </button>
           </div>
         </div>
       </div>
 
-      {isPopup && <Logout onClose={() => setIsPopup(false)} />}
+      {isPopup && <Logout t={t} onClose={() => setIsPopup(false)} />}
     </div>
   );
 };

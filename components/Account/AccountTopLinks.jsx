@@ -36,7 +36,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
 
-const AccountTopLinks = () => {
+const AccountTopLinks = ({t}) => {
   const pathname = usePathname();
 
   const isActive = (href) => {
@@ -49,10 +49,10 @@ const AccountTopLinks = () => {
     <div className="accountLinks">
       <ul>
         <li className={isActive("/account/profile") ? "active" : ""}>
-          <Link href="/account/profile">My accoount</Link>
+          <Link href="/account/profile">{t?.myAccount}</Link>
         </li>
         <li className={isActive("/account/address") ? "active" : ""}>
-          <Link href="/account/address">My address</Link>
+          <Link href="/account/address">{t?.myAddress}</Link>
         </li>
         <li className={isActive("/account/orders") ? "active" : ""}>
           <Link href="/account/orders">My orders</Link>
