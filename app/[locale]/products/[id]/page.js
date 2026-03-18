@@ -159,6 +159,8 @@ const page = async ({ params }) => {
     benefit?.data?.data?.filter((item) => item.page_section === "benefit") ||
     [];
 
+    console.log(productDetail || "dwe")
+
   return (
     <div>
       <div className="productPageBackground">

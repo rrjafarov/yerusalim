@@ -1,7 +1,11 @@
+
 import React from "react";
 import Link from "next/link";
 
-const ProductDetailPageBreadcrumbs = ({productDetail,t}) => {
+const ProductDetailPageBreadcrumbs = ({ productDetail, t }) => {
+
+  const categoryBreadcrumbs = productDetail.category?.[0] || null;
+
   return (
     <div className="container">
       <nav className="breadcrumbs">
@@ -13,6 +17,16 @@ const ProductDetailPageBreadcrumbs = ({productDetail,t}) => {
           <li>
             <Link href="/products">{t?.products}</Link>
           </li>
+          {categoryBreadcrumbs && (
+            <>
+              <span>/</span>
+              <li>
+                <Link href={`/products?category=${categoryBreadcrumbs.url_slug}-${categoryBreadcrumbs.id}`}>
+                  {categoryBreadcrumbs.name}
+                </Link>
+              </li>
+            </>
+          )}
           <span>/</span>
           <li>{productDetail?.name}</li>
         </ul>
@@ -20,4 +34,5 @@ const ProductDetailPageBreadcrumbs = ({productDetail,t}) => {
     </div>
   );
 };
+
 export default ProductDetailPageBreadcrumbs;

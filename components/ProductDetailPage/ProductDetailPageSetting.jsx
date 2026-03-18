@@ -21,7 +21,7 @@ const ProductDetailPageSetting = ({
           return (
             <li key={attr.id}>
               <span className="productDpTitle">
-                {topAttr?.name?.toUpperCase()}:
+                {topAttr?.name}:
               </span>
 
               <p className="productDpValue">
@@ -38,8 +38,6 @@ const ProductDetailPageSetting = ({
           <div className="productDpValueSize">
             {variants?.map((variant, index) => (
               <button
-                // key={variant.product_code}
-                // onClick={() => setSelectedVariant(variant)}
 
                 key={variant.product_code}
                 onClick={() => {
