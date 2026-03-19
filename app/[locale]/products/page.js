@@ -341,7 +341,7 @@ async function fetchAttributesData() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE");
 
-  const { data } = await axiosInstance.get(`/page-data/attributes`, {
+  const { data } = await axiosInstance.get(`/page-data/attributes?per_page=999`, {
     headers: { Lang: lang?.value || "az" },
     cache: "no-store",
   });

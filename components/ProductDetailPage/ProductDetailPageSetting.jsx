@@ -9,7 +9,7 @@ const ProductDetailPageSetting = ({
   setSelectedVariant,
   selectedVariantIndex,
   setSelectedVariantIndex,
-  t
+  t,
 }) => {
   return (
     <div className="productDetailPageRightSettingItems">
@@ -20,9 +20,7 @@ const ProductDetailPageSetting = ({
 
           return (
             <li key={attr.id}>
-              <span className="productDpTitle">
-                {topAttr?.name}:
-              </span>
+              <span className="productDpTitle">{topAttr?.name}:</span>
 
               <p className="productDpValue">
                 <Link href="#">{attr?.name}</Link>
@@ -32,7 +30,7 @@ const ProductDetailPageSetting = ({
         })}
 
         {/* SIZE VARIANTS */}
-        <li>
+        {/* <li>
           <span className="productDpTitle">{t?.size}:</span>
 
           <div className="productDpValueSize">
@@ -54,7 +52,34 @@ const ProductDetailPageSetting = ({
               </button>
             ))}
           </div>
-        </li>
+        </li> */}
+
+        {variants?.some((variant) => variant?.size) && (
+          <li>
+            <span className="productDpTitle">{t?.size}:</span>
+
+            <div className="productDpValueSize">
+              {variants
+                ?.filter((variant) => variant?.size) // yalnız size olanlar
+                .map((variant, index) => (
+                  <button
+                    key={variant.product_code}
+                    onClick={() => {
+                      setSelectedVariant(variant);
+                      setSelectedVariantIndex(index);
+                    }}
+                    style={
+                      selectedVariant?.product_code === variant.product_code
+                        ? { backgroundColor: "#F2EEE7" }
+                        : {}
+                    }
+                  >
+                    <span>{variant.size}</span>
+                  </button>
+                ))}
+            </div>
+          </li>
+        )}
       </ul>
     </div>
   );
