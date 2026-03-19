@@ -17,7 +17,7 @@ const Footer = ({ contactData, categoryData, supportData, t }) => {
                     {categoryData?.data?.data
                       ?.filter(
                         (cat) =>
-                          !cat.top_category || !Array.isArray(cat.top_category),
+                          !cat.top_category || cat.top_category.length === 0,
                       )
                       .slice(0, 5)
                       .map((cat) => (

@@ -55,10 +55,10 @@ const AccountTopLinks = ({t}) => {
           <Link href="/account/address">{t?.myAddress}</Link>
         </li>
         <li className={isActive("/account/orders") ? "active" : ""}>
-          <Link href="/account/orders">My orders</Link>
+          <Link href="/account/orders">{t?.myOrders}</Link>
         </li>
         <li className={isActive("/account/change-password") ? "active" : ""}>
-          <Link href="/account/change-password">Change Password</Link>
+          <Link href="/account/change-password">{t?.changePass}</Link>
         </li>
       </ul>
     </div>

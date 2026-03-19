@@ -228,6 +228,9 @@
 
 // export default page;
 
+
+
+
 // !poolitano mateo
 import ProductPageHero from "@/components/ProductPage/ProductPageHero";
 import "./products.scss";

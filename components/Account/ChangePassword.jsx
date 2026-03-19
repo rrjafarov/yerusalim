@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useUpdatePasswordMutation } from "@/redux/userService";
 
-const ChangePassword = () => {
+const ChangePassword = ({ t }) => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
@@ -42,11 +42,13 @@ const ChangePassword = () => {
   return (
     <div className="changePasswordPage">
       <div className="changePasswordPageItems">
-        <span className="changePasswordTitle">Change password</span>
+        <span className="changePasswordTitle">{t?.changePass}</span>
         <form className="changePasswordForm" onSubmit={handleSubmit}>
           {/* Current password */}
           <div className="changePasswordField">
-            <span className="changePasswordFieldLabel">Current password</span>
+            <span className="changePasswordFieldLabel">
+              {t?.currentPassword}
+            </span>
             <input
               type="password"
               value={currentPassword}
@@ -55,7 +57,7 @@ const ChangePassword = () => {
           </div>
           {/* New password */}
           <div className="changePasswordField">
-            <span className="changePasswordFieldLabel">New password</span>
+            <span className="changePasswordFieldLabel">{t?.newPassword}</span>
             <input
               type="password"
               value={newPassword}
@@ -64,7 +66,9 @@ const ChangePassword = () => {
           </div>
           {/* Retype password */}
           <div className="changePasswordField">
-            <span className="changePasswordFieldLabel">Retype password</span>
+            <span className="changePasswordFieldLabel">
+              {t?.retypePassword}
+            </span>
             <input
               type="password"
               value={retypePassword}
@@ -87,10 +91,10 @@ const ChangePassword = () => {
             }
           >
             {isLoading
-              ? "Saving..."
+              ? t?.saving
               : successMessage
-              ? "Password updated!"
-              : "SAVE AND CONTINUE"}
+                ? t?.passwordUpdated
+                : t?.accountSaveButton}
           </button>
         </form>
       </div>

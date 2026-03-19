@@ -9,11 +9,13 @@ const ProductDropdownMenu = ({ categoryData, onClose, t }) => {
 
     const data = categoryData.data.data;
 
-    // əsas kateqoriyalar
-    const parents = data.filter((item) => !item.top_category);
+    const parents = data.filter(
+  (item) => !item.top_category || item.top_category.length === 0
+);
 
-    // alt kateqoriyalar
-    const children = data.filter((item) => item.top_category?.length);
+const children = data.filter(
+  (item) => item.top_category && item.top_category.length > 0
+);
 
     return parents.map((parent) => ({
       id: parent.id,

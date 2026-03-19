@@ -252,6 +252,29 @@
       padding: 0;
       cursor: pointer;
     }
+
+    .profilePhoneWrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .profilePhonePrefix {
+        position: absolute;
+        left: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #000;
+        font-family: "Noto Serif Display";
+        font-size: 1.4rem;
+        font-weight: 500;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      input {
+        padding-left: 3rem;
+      }
+    }
   }
 
   .profileSaveBtn {
@@ -339,7 +362,7 @@
       button {
         border-radius: 1rem;
         border: 1px solid #efe9f0;
-        width: 17.3rem;
+        width: fit-content;
         height: 4.7rem;
         background: transparent;
         display: flex;
@@ -543,8 +566,6 @@
 
     transition: background 0.2s ease;
   }
-
-  
 }
 
 @media only screen and (max-width: 767.9px) {
