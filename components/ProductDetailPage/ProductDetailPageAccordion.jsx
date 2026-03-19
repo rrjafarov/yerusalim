@@ -6,7 +6,7 @@ import VideoPopup from "./VideoPopup";
 
 const { Panel } = Collapse;
 
-const ProductDetailPageAccordion = ({ productDetail, attributes ,t}) => {
+const ProductDetailPageAccordion = ({ productDetail, attributes, t }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const handleOpenVideo = () => {
@@ -73,7 +73,7 @@ const ProductDetailPageAccordion = ({ productDetail, attributes ,t}) => {
           </>
         )}
 
-        {attributes && attributes.length > 0 && (
+        {/* {attributes && attributes.length > 0 && (
           <>
             <div className="acordionLineDP"></div>
             <Panel header={t?.specification} key="2">
@@ -89,6 +89,40 @@ const ProductDetailPageAccordion = ({ productDetail, attributes ,t}) => {
                         </li>
                       );
                     })}
+                  </ul>
+                </div>
+              </div>
+            </Panel>
+          </>
+        )} */}
+
+        {attributes && attributes.length > 0 && (
+          <>
+            <div className="acordionLineDP"></div>
+            <Panel header={t?.specification} key="2">
+              <div className="productDetailPageAccordionContent">
+                <div className="productDetailPageAccordionContentSpesifications">
+                  <ul>
+                    {Object.entries(
+                      attributes.reduce((acc, attr) => {
+                        const topAttr = attr?.top_attributes?.[0]?.name;
+
+                        if (!topAttr) return acc;
+
+                        if (!acc[topAttr]) {
+                          acc[topAttr] = [];
+                        }
+
+                        acc[topAttr].push(attr.name);
+
+                        return acc;
+                      }, {}),
+                    ).map(([key, values]) => (
+                      <li key={key}>
+                        <span>{key}:</span>
+                        <p>{values.join(", ")}</p>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
