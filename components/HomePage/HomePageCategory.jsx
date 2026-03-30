@@ -7,9 +7,9 @@ import { Autoplay } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
 
-const HomePageCategory = ({ categoryData,t }) => {
+const HomePageCategory = ({ categoryData, t }) => {
   const categoryDataTopCategories = categoryData?.data?.data?.filter(
-    (item) => !item.top_category,
+    (item) => !item.top_category || item.top_category.length === 0,
   );
 
   return (
