@@ -411,15 +411,15 @@ const Cart = ({ t }) => {
                               <Image
                                 src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${image}`}
                                 alt={product?.name}
-                                width={110}
-                                height={110}
+                                width={400}
+                                height={400}
                               />
                             ) : (
                               <Image
                                 src="/img/cartProo.png"
                                 alt="product"
-                                width={110}
-                                height={110}
+                                width={400}
+                                height={400}
                               />
                             )}
                           </div>
