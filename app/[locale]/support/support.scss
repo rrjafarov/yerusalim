@@ -55,7 +55,9 @@
         font-style: normal;
         font-weight: 500;
         line-height: normal;
-        transition: color 0.25s ease, font-size 0.25s ease;
+        transition:
+          color 0.25s ease,
+          font-size 0.25s ease;
       }
 
       // ellips üçün default state (gizli)
@@ -70,7 +72,9 @@
         background: #ff0000;
         transform: translateY(-50%) scale(0.4);
         opacity: 0;
-        transition: opacity 0.25s ease, transform 0.25s ease;
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
       }
 
       &.active {
@@ -137,7 +141,9 @@
     border-radius: 0.4rem;
     border: 0.1rem solid #f0f0f0; /* bağlı halda açıq boz */
     // overflow: hidden;
-    transition: border-color 0.25s ease, background-color 0.25s ease;
+    transition:
+      border-color 0.25s ease,
+      background-color 0.25s ease;
     // min-height: 9.2rem; /* ✅ bağlı halda hündürlük 9.2rem */
   }
 
@@ -166,7 +172,6 @@
     border: 0.1rem solid #ab1d1d; /* bağlı halda açıq boz */
     border-radius: 0.4rem !important;
   }
-
 
   /* HEADER */
   .ant-collapse-header {
@@ -380,6 +385,16 @@
       line-height: 170%; /* 2.72rem */
       opacity: 0.64;
     }
+    li {
+      color: #222;
+      font-size: 1.6rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 170%; /* 2.72rem */
+      opacity: 0.64;
+      list-style: disc;
+      margin-left: 2rem;
+    }
   }
 }
 
@@ -558,13 +573,8 @@
   }
 }
 
-
-
-
-
-
-.faqAnswer{
-  li{
+.faqAnswer {
+  li {
     list-style-type: disc;
   }
 }

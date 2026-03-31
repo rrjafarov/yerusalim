@@ -687,7 +687,7 @@
           background: #f0e6e6;
           display: flex;
           align-items: center;
-          gap: 3.5rem;
+          // gap: 3.5rem;
           .productDetailPageRightTopNewPrice {
             color: #681616;
             font-size: 2.4rem;
@@ -699,6 +699,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            padding-right: 3.5rem;
             p {
               display: flex;
               align-items: center;
@@ -744,6 +745,11 @@
             }
           }
         }
+
+
+
+
+
         .productDetailPageRightTopBasket {
           width: 28.8rem;
           height: 5.6rem;
