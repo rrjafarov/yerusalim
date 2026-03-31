@@ -79,8 +79,8 @@ const ProductCard = ({
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${image}`}
             alt="product"
-            width={100}
-            height={100}
+            width={400}
+            height={400}
           />
         </Link>
 
