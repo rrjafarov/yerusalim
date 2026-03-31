@@ -9,20 +9,29 @@ const ProductDropdownMenu = ({ categoryData, onClose, t }) => {
 
     const data = categoryData.data.data;
 
-    const parents = data.filter(
-  (item) => !item.top_category || item.top_category.length === 0
-);
+    const parents = data.filter((item) => {
+      const top = item.top_category?.[0];
 
-const children = data.filter(
-  (item) => item.top_category && item.top_category.length > 0
-);
+      return (
+        !item.top_category?.length || top === item.id || top?.id === item.id
+      );
+    });
+    const children = data.filter(
+      (item) => item.top_category && item.top_category.length > 0,
+    );
 
     return parents.map((parent) => ({
       id: parent.id,
       title: parent.name,
       slug: parent.url_slug,
       subcategories: children
-        .filter((child) => child.top_category[0].id === parent.id)
+        .filter((child) => {
+          const top = child.top_category?.[0];
+          return (
+            (top === parent.id || top?.id === parent.id) &&
+            child.id !== parent.id
+          );
+        })
         .map((child) => ({
           id: child.id,
           title: child.name,
@@ -57,7 +66,7 @@ const children = data.filter(
   }, [onClose]);
 
   if (!categories.length) return null;
-
+  
   return (
     <div className="productDropdownMenu" ref={menuRef}>
       <div className="productDropdownMenuItem">

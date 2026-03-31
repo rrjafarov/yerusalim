@@ -259,7 +259,7 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
             </div>
 
             <div className="salesOff">
-              <Link href="#">
+              <Link href="/products?status=is_discount">
                 <img src="/icons/sales.svg" alt="sales" />
                 <span>{t?.sale}</span>
               </Link>
@@ -329,7 +329,8 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
                     </svg>
                   </span>
                   <p>
-                    {t?.basket} <strong>({cartCount})</strong>
+                    {t?.basket}
+                    {cartCount > 0 && <strong>({cartCount})</strong>}
                   </p>
                   <span>
                     <svg

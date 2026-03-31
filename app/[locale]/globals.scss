@@ -2450,6 +2450,12 @@ ul {
           color: #000;
         }
       }
+      h3{
+        color: #000;
+        font-size: 1.8rem;
+        font-weight: 600;
+        opacity: 0.7;
+      }
 
       .seoMoreText {
         max-height: 0;
@@ -4069,12 +4075,13 @@ ul {
       width: 30rem;
       border-right: 0.1rem solid #f0ecec;
       padding-left: 1.9rem;
-
       ul {
         display: flex;
         padding-right: 5.8rem;
         flex-direction: column;
+
         li {
+          flex-shrink: 0;
           cursor: pointer;
           padding: 1.8rem 0;
           display: flex;

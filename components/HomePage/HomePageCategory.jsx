@@ -8,9 +8,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 const HomePageCategory = ({ categoryData, t }) => {
-  const categoryDataTopCategories = categoryData?.data?.data?.filter(
-    (item) => !item.top_category || item.top_category.length === 0,
-  );
+  const categoryDataTopCategories = categoryData?.data?.data?.filter((item) => {
+    const top = item.top_category?.[0];
+
+    return !item.top_category?.length || top === item.id || top?.id === item.id;
+  });
 
   return (
     <div className="homePageCategory">

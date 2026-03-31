@@ -5,7 +5,6 @@ import HeaderLang from "../Header/HeaderLang";
 import Image from "next/image";
 import { useGetCartQuery } from "@/redux/cartService";
 
-
 const MobileMenuHamburger = ({
   isOpen,
   onClose,
@@ -13,7 +12,7 @@ const MobileMenuHamburger = ({
   token,
   isSuccess,
   categoryData,
-  t
+  t,
 }) => {
   const [active, setActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -27,7 +26,7 @@ const MobileMenuHamburger = ({
   };
 
   const { data: cartData } = useGetCartQuery();
-    const cartCount = cartData?.cart?.count ?? 0;
+  const cartCount = cartData?.cart?.count ?? 0;
 
   return (
     <div className={`mobileMenuHamburger ${active ? "active" : ""}`}>
@@ -67,7 +66,7 @@ const MobileMenuHamburger = ({
                 />
               </svg>
             </p>
-            <span>{token && isSuccess ? t?.myAccount : t?.loginSignUp}</span>
+            <span>{token && isSuccess ? t?.myAccount : t?.login}</span>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +87,7 @@ const MobileMenuHamburger = ({
         </div>
 
         <div className="mobileMenuHamburgerLogin">
-          <Link href="/login">
+          <Link href="/cart">
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +110,10 @@ const MobileMenuHamburger = ({
                 />
               </svg>
             </p>
-            <span>{t?.basket} <span>({cartCount})</span></span>
+            <span>
+              {t?.basket}
+              {cartCount > 0 && <span>({cartCount})</span>}
+            </span>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -163,10 +165,17 @@ const MobileMenuHamburger = ({
             >
               <ul className="accordionContentMenuTopCategory">
                 {categoryData?.data?.data
-                  ?.filter((item) => !item.top_category)
+                  // ?.filter((item) => !item.top_category)
+                  ?.filter(
+                    (item) =>
+                      !item.top_category || item.top_category.length === 0,
+                  )
                   ?.map((topCat) => {
                     const subCategories = categoryData?.data?.data?.filter(
-                      (sub) => sub?.top_category?.[0]?.id === topCat.id,
+                      // (sub) => sub?.top_category?.[0]?.id === topCat.id,
+                      (sub) =>
+                        sub?.top_category?.length > 0 &&
+                        sub?.top_category?.[0]?.id === topCat.id,
                     );
 
                     return (
@@ -272,7 +281,7 @@ const MobileMenuHamburger = ({
                 />
               </svg>
             </p>
-            +994 000 00 00
+            {contactData.phone_number}
           </Link>
         </div>
         <div className="mobileLIne"></div>
