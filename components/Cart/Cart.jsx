@@ -418,7 +418,7 @@ const Cart = ({ t }) => {
                               <Image
                                 src="/img/cartProo.png"
                                 alt="product"
-                                width={400}
+                                width={450}
                                 height={400}
                               />
                             )}
