@@ -84,6 +84,20 @@ async function fetchSupportData(locale) {
   }
 }
 
+async function fetchTopLinkPageData() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/page-data/top-banner`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
+
 /* ---------------- NOT FOUND ---------------- */
 
 export default async function NotFoundPage({ params }) {
@@ -104,6 +118,7 @@ export default async function NotFoundPage({ params }) {
 
   const categoryData = categoryPageData;
   const contactData = contactPageData?.data;
+  const topLinkData = await fetchTopLinkPageData();
 
   return (
     <html lang={locale}>
@@ -116,6 +131,7 @@ export default async function NotFoundPage({ params }) {
             <NavigationProgress />
 
             <Header
+              topLinkData={topLinkData}
               t={t}
               contactData={contactData}
               categoryData={categoryData}

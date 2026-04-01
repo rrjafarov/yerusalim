@@ -408,11 +408,11 @@ ul {
   background: #291d2d;
   .headerTopItem {
     padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4.6rem;
     a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4.6rem;
       span {
         svg {
           transition: transform 0.5s ease;
@@ -422,7 +422,6 @@ ul {
         color: #fff;
         opacity: 0.78;
         text-align: center;
-        // font-family: Inter;
         font-size: 1.2rem;
         font-style: normal;
         font-weight: 600;
@@ -432,7 +431,6 @@ ul {
       }
       strong {
         color: #fff;
-        // font-family: Inter;
         font-size: 1.2rem;
         font-style: normal;
         font-weight: 600;
@@ -469,6 +467,18 @@ ul {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 .headerMid {
   border-bottom: 0.08rem solid #efe9f0;
   .headerMidTop {
@@ -2450,7 +2460,7 @@ ul {
           color: #000;
         }
       }
-      h3{
+      h3 {
         color: #000;
         font-size: 1.8rem;
         font-weight: 600;

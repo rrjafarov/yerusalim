@@ -51,7 +51,19 @@ async function fetchContactPageData() {
     throw error;
   }
 }
-
+async function fetchTopLinkPageData() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("NEXT_LOCALE");
+  try {
+    const { data: about } = await axiosInstance.get(`/page-data/top-banner`, {
+      headers: { Lang: lang.value },
+      cache: "no-store",
+    });
+    return about;
+  } catch (error) {
+    throw error;
+  }
+}
 async function getTranslations() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE");
@@ -81,7 +93,7 @@ async function fetchSupportData() {
   }
 }
 
-export default async function RootLayout({ children,params }) {
+export default async function RootLayout({ children, params }) {
   const t = await getTranslations();
 
   const categoryPageData = await fetchCategoryPageData();
@@ -89,6 +101,8 @@ export default async function RootLayout({ children,params }) {
 
   const contactPageData = await fetchContactPageData();
   const contactData = contactPageData.data;
+
+  const topLinkData = await fetchTopLinkPageData();
 
   const supportData = await fetchSupportData();
 
@@ -107,6 +121,7 @@ export default async function RootLayout({ children,params }) {
             <FormValidationProvider />
             <NavigationProgress />
             <Header
+              topLinkData={topLinkData}
               t={t}
               contactData={contactData}
               categoryData={categoryData}
