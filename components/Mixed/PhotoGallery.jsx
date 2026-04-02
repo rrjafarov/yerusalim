@@ -253,7 +253,7 @@ const PhotoGallery = ({ aboutData,t }) => {
               {/* SAĞ – Grid */}
               <div className="xl-6 lg-6 md-6 sm-12" id="rowForced">
                 <div className="row" id="rowForced">
-                  {gallery.map((img, index) => (
+                  {gallery.slice(1, 5).map((img, index) => (
                     <div
                       className="xl-6 lg-6 md-6 sm-6"
                       id="forcedXL"
