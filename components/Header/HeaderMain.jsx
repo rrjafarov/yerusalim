@@ -9,11 +9,17 @@ import MobileMenuHamburger from "../Mixed/MobileMenuHamburger";
 import { useGetUserInfoQuery } from "@/redux/userService";
 import Cookies from "js-cookie";
 import { useGetCartQuery } from "@/redux/cartService";
+import { usePathname } from "next/navigation";
 
 const HeaderMain = ({ categoryData, contactData, t }) => {
   const [text, setText] = useState("");
   const [mode, setMode] = useState("typing");
   const [idx, setIdx] = useState(0);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setMobileHamburgerOpen(false);
+  }, [pathname]);
 
   const [searchValue, setSearchValue] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);

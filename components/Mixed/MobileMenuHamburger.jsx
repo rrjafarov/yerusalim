@@ -17,6 +17,8 @@ const MobileMenuHamburger = ({
   const [active, setActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
 
+  
+
   useEffect(() => {
     setActive(isOpen);
   }, [isOpen]);
@@ -222,7 +224,7 @@ const MobileMenuHamburger = ({
           </li>
 
           <li>
-            <Link href="#" className="accordionHeader">
+            <Link href="/products?status=is_discounted" className="accordionHeader">
               <span>{t?.sale}</span>
             </Link>
           </li>
