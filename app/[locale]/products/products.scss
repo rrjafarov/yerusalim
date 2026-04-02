@@ -562,9 +562,9 @@
     // 2rem (margin-top) + 4rem (search height) ≈ 6rem
   }
   // 🔹 Search olan accordion üçün scrollbar track bir az aşağıdan startsın
-  .filterAccordionCustomScrollbar {
-    top: 5rem;
-  }
+  // .filterAccordionCustomScrollbar {
+  //   top: 5rem;
+  // }
 }
 
 .filterAccordionContentPrices {
