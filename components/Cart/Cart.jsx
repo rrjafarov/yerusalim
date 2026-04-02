@@ -340,7 +340,7 @@ import {
 } from "@/redux/cartService";
 import CartNotProduct from "@/components/Cart/CartNotProduct";
 
-const Cart = ({ t }) => {
+const Cart = ({ t,delveryRegions }) => {
   const { data: cartData, isLoading } = useGetCartQuery();
   const [removeFromCart] = useRemoveFromCartMutation();
   const [increaseCartItem] = useIncreaseCartItemMutation();
@@ -516,7 +516,7 @@ const Cart = ({ t }) => {
               </div>
 
               <div className="getUserAddressSection">
-                <Address t={t} />
+                <Address delveryRegions={delveryRegions} t={t} />
               </div>
 
               <p className="paymentTitle">{t?.paymentOptions}</p>

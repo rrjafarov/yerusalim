@@ -60,9 +60,9 @@ const Address = ({ t, delveryRegions }) => {
         </div>
         <div className="addressCards">
           <div className="row">
-            <div className="xl-6 lg-6 md-6 sm-12">
-              {data?.data?.map((item) => (
-                <div key={item.id} className="addressCard">
+            {data?.map((item) => (
+              <div key={item.id} className="xl-6 lg-6 md-6 sm-12">
+                <div className="addressCard">
                   <div className="addressCardInner">
                     <div className="addressCardInnerTop">
                       <div className="addressCardInnerTitle">
@@ -125,7 +125,7 @@ const Address = ({ t, delveryRegions }) => {
                     <div className="addressCardInnerDetails">
                       <div className="addressCardInnerDetail">
                         <span>{t?.city}</span>
-                        <p>{item.city}</p>
+                        <p>{item.region}</p>
                       </div>
                       <div className="addressCardInnerDetail">
                         <span>{t?.address}</span>
@@ -133,13 +133,13 @@ const Address = ({ t, delveryRegions }) => {
                       </div>
                       <div className="addressCardInnerDetail">
                         <span>{t?.phone}</span>
-                        <p>{item.phone}</p>
+                        <p>{item.tel}</p>
                       </div>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
