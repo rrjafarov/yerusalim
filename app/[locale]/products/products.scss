@@ -477,7 +477,7 @@
       height: 0;
     }
     ul {
-      padding-top: 2rem;
+      // padding-top: 2rem;
       display: flex;
       flex-direction: column;
       gap: 1.6rem;
@@ -509,63 +509,62 @@
     transition: transform 0.1s linear;
   }
 }
+// !MY NAME IS SEARCH
+// .filterAccordionContentSearch {
+//   .filterAccordionSearch {
+//     margin-top: 2rem;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     width: 100%;
+//     height: 4rem;
+//     border-radius: 0.7rem;
+//     border: 1px solid #ddd;
+//     input {
+//       border: none;
+//       outline: none;
+//       background-color: transparent;
+//       color: #a5a5a5;
+//       font-size: 1.4rem;
+//       font-style: normal;
+//       font-weight: 400;
+//       line-height: normal;
+//       margin-left: 1.2rem;
+//       letter-spacing: -0.014rem;
+//       &::placeholder {
+//         color: #a5a5a5;
+//       }
+//     }
+//     p {
+//       width: 1.6rem;
+//       height: 1.6rem;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       margin-right: 1.2rem;
+//     }
+//   }
+//   .searchUL {
+//     li {
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       .searchCheck {
+//         margin-right: 1.4rem;
+//       }
+//     }
+//   }
 
-.filterAccordionContentSearch {
-  .filterAccordionSearch {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 4rem;
-    border-radius: 0.7rem;
-    border: 1px solid #ddd;
-    input {
-      border: none;
-      outline: none;
-      background-color: transparent;
-      color: #a5a5a5;
-      font-size: 1.4rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      margin-left: 1.2rem;
-      letter-spacing: -0.014rem;
-      &::placeholder {
-        color: #a5a5a5;
-      }
-    }
-    p {
-      width: 1.6rem;
-      height: 1.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1.2rem;
-    }
-  }
-  .searchUL {
-    li {
-      // text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .searchCheck {
-        margin-right: 1.4rem;
-      }
-    }
-  }
-
-  // 🔹 Search olan accordion üçün: scroll bu blokun ALTINDAN başlayır
-  .filterAccordionScroll {
-    height: calc(100% - 6rem);
-    // 2rem (margin-top) + 4rem (search height) ≈ 6rem
-  }
-  // 🔹 Search olan accordion üçün scrollbar track bir az aşağıdan startsın
-  // .filterAccordionCustomScrollbar {
-  //   top: 5rem;
-  // }
-}
+//   .filterAccordionScroll {
+//     height: calc(100% - 6rem);
+//     // 2rem (margin-top) + 4rem (search height) ≈ 6rem
+//   }
+//   // 🔹 Search olan accordion üçün scrollbar track bir az aşağıdan startsın
+//   // .filterAccordionCustomScrollbar {
+//   //   top: 5rem;
+//   // }
+// }
+// !MY NAME IS SEARCH
 
 .filterAccordionContentPrices {
   padding-top: 1.5rem;
@@ -611,36 +610,67 @@
         }
       }
     }
-    .filterAccordionCustomScrollbar {
-      top: 5rem;
+    // .filterAccordionCustomScrollbar {
+    //   top: 5rem;
+    // }
+  }
+}
+.filterAccordionContentSearch {
+  padding-top: 1.9rem;
+  .filterAccordionSearch {
+    width: 100%;
+    height: 4rem !important;
+    border-radius: 0.7rem;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    input {
+      // width: 100%;
+      height: 100%;
+      font-size: 1.5rem;
+      border-radius: 0.7rem;
+      background-color: transparent;
+      padding-left: 1.9rem;
+      border: none;
+      opacity: 0.5;
+    }
+    input::placeholder {
+      color: #575555;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -0.014rem;
+      opacity: 1;
+    }
+    p {
+      // margin-right: 2rem;
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
-
-  .filterAccordionContentSearch {
-    .filterAccordionSearch {
-      width: 95%;
-      height: 4rem !important;
-      input {
-        font-size: 1.5rem;
-      }
-      p {
-        margin-right: 2rem;
-      }
-    }
-    .searchUL {
-      li {
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .searchCheck {
-          margin-right: 1.4rem;
-        }
+  .searchUL {
+    li {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .searchCheck {
+        margin-right: 1.4rem;
       }
     }
   }
 }
-
+.firstAccordion{
+  padding-top: 1.9rem;
+}
 //!   Product Detail Page ------------------------------------------------------------
 
 .productDetailPage {
@@ -745,10 +775,6 @@
             }
           }
         }
-
-
-
-
 
         .productDetailPageRightTopBasket {
           width: 28.8rem;
@@ -864,8 +890,7 @@
         font-size: 1.4rem;
         font-style: normal;
         font-weight: 500;
-        line-height: 140%; 
-        
+        line-height: 140%;
       }
       p {
         display: flex;
@@ -882,7 +907,7 @@
           font-size: 1.4rem;
           font-style: normal;
           font-weight: 700;
-          line-height: 140%; 
+          line-height: 140%;
           text-decoration-line: underline;
           text-decoration-style: solid;
           text-decoration-skip-ink: none;

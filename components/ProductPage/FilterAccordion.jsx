@@ -12,7 +12,7 @@ const FilterAccordion = ({
   selectedCategory,
   filterAttributes,
   categories,
-  t
+  t,
 }) => {
   const scrollRefs = useRef({});
   const [thumbStyles, setThumbStyles] = useState({});
@@ -21,6 +21,8 @@ const FilterAccordion = ({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const [searchTerms, setSearchTerms] = useState({});
 
   // Local state — checkbox dərhal aktiv olsun
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
@@ -150,7 +152,6 @@ const FilterAccordion = ({
         )}
       >
         {/* 1-ci accordion */}
-        {/* 1-ci accordion */}
         <Panel
           header={
             selectedCategory &&
@@ -161,7 +162,7 @@ const FilterAccordion = ({
           }
           key="1"
         >
-          <div className="filterAccordionContent">
+          <div className="filterAccordionContent firstAccordion">
             <div
               className="filterAccordionScroll"
               ref={(el) => (scrollRefs.current["categories"] = el)}
@@ -283,6 +284,46 @@ const FilterAccordion = ({
         {groupedAttributes.map(({ topAttr, values }) => (
           <React.Fragment key={topAttr.id}>
             <Panel header={topAttr.name} key={`attr-${topAttr.id}`}>
+              <div className="filterAccordionContentSearch">
+                <div className="filterAccordionSearch">
+                  <input
+                    type="text"
+                    placeholder={t?.search}
+                    value={searchTerms[topAttr.id] || ""}
+                    onChange={(e) =>
+                      setSearchTerms((prev) => ({
+                        ...prev,
+                        [topAttr.id]: e.target.value,
+                      }))
+                    }
+                  />
+                  <p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <path
+                        d="M11.25 11.25L14.25 14.25"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M7.5 12.25C10.1234 12.25 12.25 10.1234 12.25 7.5C12.25 4.87665 10.1234 2.75 7.5 2.75C4.87665 2.75 2.75 4.87665 2.75 7.5C2.75 10.1234 4.87665 12.25 7.5 12.25Z"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </p>
+                </div>
+              </div>
+
               <div className="filterAccordionContent filterAccordionContentSearch">
                 <div
                   className="filterAccordionScroll"
@@ -292,6 +333,30 @@ const FilterAccordion = ({
                   }
                 >
                   <ul className="searchUL">
+                    {values
+                      .filter((val) =>
+                        val.name
+                          .toLowerCase()
+                          .includes(
+                            (searchTerms[topAttr.id] || "").toLowerCase(),
+                          ),
+                      )
+                      .map((val) => (
+                        <li key={val.id}>
+                          <input
+                            className="searchCheck"
+                            type="checkbox"
+                            checked={selectedAttributes.includes(
+                              String(val.id),
+                            )}
+                            onChange={() => handleAttributeChange(val.id)}
+                          />
+                          {val.name}
+                        </li>
+                      ))}
+                  </ul>
+
+                  {/* <ul className="searchUL">
                     {values.map((val) => (
                       <li key={val.id}>
                         <input
@@ -303,7 +368,7 @@ const FilterAccordion = ({
                         {val.name}
                       </li>
                     ))}
-                  </ul>
+                  </ul> */}
                 </div>
                 <div className="filterAccordionCustomScrollbar">
                   <div
