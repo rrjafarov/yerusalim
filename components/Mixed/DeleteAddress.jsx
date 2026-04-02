@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import { useDeleteAddressListMutation } from "@/redux/userService";
 
-const DeleteAddress = ({ onClose,t }) => {
+const DeleteAddress = ({ onClose, t, id }) => {
   const handleOverlayClick = (e) => {
     // yalnız overlay-in özünə klik olunanda bağlansın
     if (e.target === e.currentTarget && onClose) {
@@ -20,6 +21,12 @@ const DeleteAddress = ({ onClose,t }) => {
     if (onClose) {
       onClose();
     }
+  };
+
+  const [deleteAddress] = useDeleteAddressListMutation();
+  const handleDelete = async () => {
+    await deleteAddress(id);
+    onClose();
   };
 
   return (
@@ -50,7 +57,11 @@ const DeleteAddress = ({ onClose,t }) => {
             >
               {t?.no}
             </button>
-            <button className="deleteAddressButtonsYes" type="button">
+            <button
+              className="deleteAddressButtonsYes"
+              type="button"
+              onClick={handleDelete}
+            >
               {t?.yes}
             </button>
           </div>
