@@ -29,7 +29,7 @@ const BrandsPage = ({ brandsData,t }) => {
                       className="brandDescription"
                         dangerouslySetInnerHTML={{ __html: brandItem.description }}
                       />
-                      <Link href="#">
+                      <Link href={`/products?brand=${brandItem.id}`}>
                         <button>{t?.shopAll}</button>
                       </Link>
                     </div>

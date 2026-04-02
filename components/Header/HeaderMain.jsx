@@ -259,7 +259,7 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
             </div>
 
             <div className="salesOff">
-              <Link href="/products?status=is_discount">
+              <Link href="/products?status=is_discounted">
                 <img src="/icons/sales.svg" alt="sales" />
                 <span>{t?.sale}</span>
               </Link>

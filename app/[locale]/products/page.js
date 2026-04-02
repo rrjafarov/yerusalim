@@ -230,7 +230,6 @@
 
 
 
-
 // !poolitano mateo
 import ProductPageHero from "@/components/ProductPage/ProductPageHero";
 import "./products.scss";
@@ -242,11 +241,12 @@ import { cookies } from "next/headers";
 
 async function fetchProducts(
   categoryId = null,
+  brandId = null,
   page = 1,
   perPage = 12,
   searchText = null,
   attributeParam = null,
-  statusParam = null, // YENİ
+  statusParam = null,
   sortBy = null,
   sortOrder = null,
 ) {
@@ -290,6 +290,21 @@ async function fetchProducts(
         url += `&filters[${filterIndex}][key]=special_badge`;
         url += `&filters[${filterIndex}][operator]=IN`;
         url += `&filters[${filterIndex}][value][]=is_new`;
+        filterIndex++;
+      }
+
+      if (statusParam === "is_discounted") {
+        url += `&filters[${filterIndex}][key]=special_badge`;
+        url += `&filters[${filterIndex}][operator]=IN`;
+        url += `&filters[${filterIndex}][value][]=is_discounted`;
+        filterIndex++;
+      }
+
+      // BRAND
+      if (brandId) {
+        url += `&filters[${filterIndex}][key]=brand`;
+        url += `&filters[${filterIndex}][operator]=IN`;
+        url += `&filters[${filterIndex}][value]=${brandId}`;
         filterIndex++;
       }
 
@@ -344,10 +359,13 @@ async function fetchAttributesData() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE");
 
-  const { data } = await axiosInstance.get(`/page-data/attributes?per_page=999`, {
-    headers: { Lang: lang?.value || "az" },
-    cache: "no-store",
-  });
+  const { data } = await axiosInstance.get(
+    `/page-data/attributes?per_page=999`,
+    {
+      headers: { Lang: lang?.value || "az" },
+      cache: "no-store",
+    },
+  );
 
   return data?.data || null;
 }
@@ -408,6 +426,9 @@ const page = async ({ searchParams }) => {
   const sortBy = params?.sort_by || null;
   const sortOrder = params?.sort_order || null;
 
+  const brandParam = params?.brand || null;
+  const brandId = brandParam ? parseInt(brandParam) : null;
+
   const categoryId = categoryParam
     ? parseInt(categoryParam.split("-").pop())
     : null;
@@ -416,11 +437,12 @@ const page = async ({ searchParams }) => {
 
   const productsData = await fetchProducts(
     categoryId,
+    brandId,
     currentPage,
     12,
     searchText,
     attributeParam,
-    statusParam, // YENİ
+    statusParam,
     sortBy,
     sortOrder,
   );
