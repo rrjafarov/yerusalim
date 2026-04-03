@@ -284,6 +284,7 @@ const FilterAccordion = ({
         {groupedAttributes.map(({ topAttr, values }) => (
           <React.Fragment key={topAttr.id}>
             <Panel header={topAttr.name} key={`attr-${topAttr.id}`}>
+              {values.length > 5 && (
               <div className="filterAccordionContentSearch">
                 <div className="filterAccordionSearch">
                   <input
@@ -323,6 +324,7 @@ const FilterAccordion = ({
                   </p>
                 </div>
               </div>
+              )}
 
               <div className="filterAccordionContent filterAccordionContentSearch">
                 <div

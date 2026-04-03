@@ -3249,14 +3249,15 @@ ul {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 0.4rem;
   background: transparent;
   border: 1px solid #ddd;
   cursor: pointer;
   position: relative;
   outline: none;
+  padding-right: 1.4rem;
 
   &:checked {
     background: #ff0000
