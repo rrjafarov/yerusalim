@@ -361,7 +361,6 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
             </div>
           </div>
 
-          {/* Bura qalan headerMainRight kodu eyni qalır, dəyişmir */}
         </div>
       </div>
 

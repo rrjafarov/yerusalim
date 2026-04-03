@@ -322,8 +322,6 @@
 
 // export default Cart;
 
-
-
 // !  Cart redux generate
 
 "use client";
@@ -339,8 +337,10 @@ import {
   useDecreaseCartItemMutation,
 } from "@/redux/cartService";
 import CartNotProduct from "@/components/Cart/CartNotProduct";
+import { useGetUserInfoQuery } from "@/redux/userService";
+import Cookies from "js-cookie";
 
-const Cart = ({ t,delveryRegions }) => {
+const Cart = ({ t, delveryRegions }) => {
   const { data: cartData, isLoading } = useGetCartQuery();
   const [removeFromCart] = useRemoveFromCartMutation();
   const [increaseCartItem] = useIncreaseCartItemMutation();
@@ -348,6 +348,11 @@ const Cart = ({ t,delveryRegions }) => {
 
   const cartProducts = cartData?.cart?.cart_products ?? [];
   const cartAmount = cartData?.cart?.amount ?? 0;
+
+  const token = Cookies.get("token");
+  const { data: userData, isSuccess } = useGetUserInfoQuery();
+  const isUser = Boolean(token && userData);
+  // const isUser = Boolean(token && isSuccess);
 
   if (isLoading) return <div>Loading...</div>;
   if (cartProducts.length === 0) return <CartNotProduct t={t} />;
@@ -388,9 +393,11 @@ const Cart = ({ t,delveryRegions }) => {
                   </button>
                 </div>
               </div>
-              <div className="guesUserFormSection">
-                <GuestUserForm t={t} />
-              </div>
+              {!isUser && (
+                <div className="guesUserFormSection">
+                  <GuestUserForm t={t} />
+                </div>
+              )}
 
               <div className="basketProducts">
                 {cartProducts.map((item, index) => {
@@ -514,12 +521,14 @@ const Cart = ({ t,delveryRegions }) => {
                   );
                 })}
               </div>
-
-              <div className="getUserAddressSection">
-                <Address delveryRegions={delveryRegions} t={t} />
-              </div>
-
+              {isUser && (
+                <div className="getUserAddressSection">
+                  <Address delveryRegions={delveryRegions} t={t} />
+                </div>
+              )}
               <p className="paymentTitle">{t?.paymentOptions}</p>
+
+              
               <div className="paymentMethods">
                 <div className="paymentMethod">
                   <input type="radio" name="card" />

@@ -113,7 +113,7 @@ export default async function RootLayout({ children, params }) {
   const messages = await getMessages();
 
   return (
-    <html lang="az">
+    <html lang={locale || "az"}>
       <body suppressHydrationWarning>
         <StoreProvider>
           <GuestUUIDProvider />
