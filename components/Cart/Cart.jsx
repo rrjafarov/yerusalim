@@ -324,14 +324,8 @@
 
 // !  Cart redux generate
 
-
-
-
-
-
-
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GuestUserForm from "./GuestUserForm";
 import Address from "../Account/Address";
 import Image from "next/image";
@@ -347,22 +341,102 @@ import { useGetUserInfoQuery } from "@/redux/userService";
 import Cookies from "js-cookie";
 
 const Cart = ({ t, delveryRegions }) => {
+  const [selectedRegion, setSelectedRegion] = useState(null);
+
+  const handleRegionSelect = (region) => {
+    setSelectedRegion({ ...region });
+  };
+
+  const [deliveryInfo, setDeliveryInfo] = useState({
+    price: "0.00",
+    isFree: false,
+  });
+
+  // ✅ 1. ƏVVƏL query
   const { data: cartData, isLoading } = useGetCartQuery();
+
+  // ✅ 2. SONRA derive data
+  const cartProducts = cartData?.cart?.cart_products ?? [];
+  const cartAmount = cartData?.cart?.amount ?? 0;
+
+  // ✅ 3. digər mutations
   const [removeFromCart] = useRemoveFromCartMutation();
   const [increaseCartItem] = useIncreaseCartItemMutation();
   const [decreaseCartItem] = useDecreaseCartItemMutation();
 
-  const cartProducts = cartData?.cart?.cart_products ?? [];
-  const cartAmount = cartData?.cart?.amount ?? 0;
-
+  // ✅ 4. user info
   const token = Cookies.get("token");
-  const { data: userData, isSuccess } = useGetUserInfoQuery();
+  const { data: userData } = useGetUserInfoQuery();
   const isUser = Boolean(token && userData);
-  // const isUser = Boolean(token && isSuccess);
 
+
+
+
+
+
+
+
+
+
+  // // ✅ 5. useEffect (cartAmount artıq mövcuddur)
+  // useEffect(() => {
+  //   if (!selectedRegion) return;
+  //   if (!cartAmount) return;
+
+  //   const limit = parseFloat(selectedRegion.min_purchase_amount) || 0;
+  //   const price = parseFloat(selectedRegion.delivery_fee) || 0;
+
+  //   if (cartAmount >= limit) {
+  //     setDeliveryInfo({
+  //       price: "0.00",
+  //       isFree: true,
+  //     });
+  //   } else {
+  //     setDeliveryInfo({
+  //       price: price.toFixed(2),
+  //       isFree: false,
+  //     });
+  //   }
+  // }, [selectedRegion, cartAmount]);
+
+
+
+
+
+
+  useEffect(() => {
+  if (!selectedRegion?.id) return;
+  if (cartAmount === undefined) return;
+
+  const limit = Number(selectedRegion.min_purchase_amount || 0);
+  const fee = Number(selectedRegion.delivery_fee || 0);
+
+  const isFree = cartAmount >= limit;
+
+  setDeliveryInfo({
+    price: isFree ? 0 : fee,
+    isFree,
+  });
+}, [selectedRegion?.id, cartAmount]);
+
+
+
+
+
+
+
+
+
+
+
+
+  // ✅ 6. total hesabı
+  const finalTotal =
+    cartAmount + (deliveryInfo.isFree ? 0 : parseFloat(deliveryInfo.price));
+
+  // ✅ 7. loading və empty check
   if (isLoading) return <div>Loading...</div>;
   if (cartProducts.length === 0) return <CartNotProduct t={t} />;
-
   return (
     <div className="cartPage">
       <div className="container">
@@ -401,10 +475,13 @@ const Cart = ({ t, delveryRegions }) => {
               </div>
               {!isUser && (
                 <div className="guesUserFormSection">
-                  <GuestUserForm delveryRegions={delveryRegions} t={t} />
+                  <GuestUserForm
+                    onRegionSelect={setSelectedRegion}
+                    delveryRegions={delveryRegions}
+                    t={t}
+                  />
                 </div>
               )}
-
               <div className="basketProducts">
                 {cartProducts.map((item, index) => {
                   const product = item.product;
@@ -529,12 +606,16 @@ const Cart = ({ t, delveryRegions }) => {
               </div>
               {isUser && (
                 <div className="getUserAddressSection">
-                  <Address delveryRegions={delveryRegions} t={t} />
+                  <Address
+                    // onRegionSelect={setSelectedRegion}
+                    onRegionSelect={handleRegionSelect}
+                    delveryRegions={delveryRegions}
+                    t={t}
+                  />
                 </div>
               )}
               <p className="paymentTitle">{t?.paymentOptions}</p>
 
-              
               <div className="paymentMethods">
                 <div className="paymentMethod">
                   <input type="radio" name="card" />
@@ -563,13 +644,18 @@ const Cart = ({ t, delveryRegions }) => {
                       <span>{cartAmount} azn</span>
                     </li>
                     <li>
-                      <p>{t?.delivery}</p> <span>4 azn</span>
+                      <p>{t?.delivery}</p>
+                      <span>
+                        {deliveryInfo.isFree
+                          ? "0 azn"
+                          : `${deliveryInfo.price} azn`}
+                      </span>
                     </li>
                   </ul>
                 </div>
                 <div className="totalPaymetTotalPrice">
                   <p>{t?.total}:</p>
-                  <span>{cartAmount} azn</span>
+                  <span>{finalTotal.toFixed(2)} azn</span>
                 </div>
                 <div className="totalPaymetCompleteButton">
                   <button>{t?.completeOrder}</button>

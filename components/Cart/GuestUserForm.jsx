@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-const GuestUserForm = ({ delveryRegions, t }) => {
+const GuestUserForm = ({ delveryRegions, t, onRegionSelect }) => {
   const [formData, setFormData] = useState({
     region: "",
     region_id: "",
@@ -43,7 +43,6 @@ const GuestUserForm = ({ delveryRegions, t }) => {
             </div>
 
             <div className="guestUserFormRow">
-            
               <div className="floatingInput floatingSelect">
                 <select
                   id="guestCity"
@@ -59,6 +58,7 @@ const GuestUserForm = ({ delveryRegions, t }) => {
                       region: selected?.region_name || "",
                       region_id: selected?.id || "",
                     });
+                    onRegionSelect && onRegionSelect(selected);
                   }}
                 >
                   <option value="" disabled>
@@ -91,18 +91,7 @@ const GuestUserForm = ({ delveryRegions, t }) => {
                     />
                   </svg>
                 </span>
-                
               </div>
-              {/* <div className="floatingInput">
-                <input
-                  type="text"
-                  id="guestCity"
-                  name="city"
-                  placeholder=" "
-                  required
-                />
-                <label htmlFor="guestCity">{t?.city}</label>
-              </div> */}
               <div className="floatingInput">
                 <input
                   type="text"
