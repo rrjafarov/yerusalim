@@ -3300,11 +3300,13 @@ ul {
             width: 100% !important;
             height: 100%;
           }
-        }
+        } 
       }
     }
   }
 }
+
+
 
 .photoGalleryItemsSwiper {
   width: 100% !important;
@@ -3314,7 +3316,7 @@ ul {
 .gallerySliderSwiper {
   width: 100%;
   height: 100%;
-  position: relative; // pagination üçün bazis olsun
+  position: relative;
   .swiper-button-next,
   .swiper-button-prev {
     margin-right: 1.5rem;
@@ -3326,7 +3328,6 @@ ul {
     background-repeat: no-repeat;
     background-position: center;
     top: 50%;
-    // bottom: 2.5rem;
     transform: translateY(0);
   }
   .swiper-button-prev {

@@ -324,6 +324,12 @@
 
 // !  Cart redux generate
 
+
+
+
+
+
+
 "use client";
 import React from "react";
 import GuestUserForm from "./GuestUserForm";
@@ -395,7 +401,7 @@ const Cart = ({ t, delveryRegions }) => {
               </div>
               {!isUser && (
                 <div className="guesUserFormSection">
-                  <GuestUserForm t={t} />
+                  <GuestUserForm delveryRegions={delveryRegions} t={t} />
                 </div>
               )}
 
