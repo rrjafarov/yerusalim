@@ -324,6 +324,23 @@
 
 // !  Cart redux generate
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "use client";
 import React, { useEffect, useState } from "react";
 import GuestUserForm from "./GuestUserForm";
@@ -355,9 +372,13 @@ const Cart = ({ t, delveryRegions }) => {
   // ✅ 1. ƏVVƏL query
   const { data: cartData, isLoading } = useGetCartQuery();
 
+  console.log(cartData , "cART DATA 1991");
+  
+
   // ✅ 2. SONRA derive data
   const cartProducts = cartData?.cart?.cart_products ?? [];
   const cartAmount = cartData?.cart?.amount ?? 0;
+  // const oldPrice = cartData?.product_variants?.[0]?.old_price;
 
   // ✅ 3. digər mutations
   const [removeFromCart] = useRemoveFromCartMutation();
@@ -368,74 +389,27 @@ const Cart = ({ t, delveryRegions }) => {
   const token = Cookies.get("token");
   const { data: userData } = useGetUserInfoQuery();
   const isUser = Boolean(token && userData);
-
-
-
-
-
-
-
-
-
-
-  // // ✅ 5. useEffect (cartAmount artıq mövcuddur)
-  // useEffect(() => {
-  //   if (!selectedRegion) return;
-  //   if (!cartAmount) return;
-
-  //   const limit = parseFloat(selectedRegion.min_purchase_amount) || 0;
-  //   const price = parseFloat(selectedRegion.delivery_fee) || 0;
-
-  //   if (cartAmount >= limit) {
-  //     setDeliveryInfo({
-  //       price: "0.00",
-  //       isFree: true,
-  //     });
-  //   } else {
-  //     setDeliveryInfo({
-  //       price: price.toFixed(2),
-  //       isFree: false,
-  //     });
-  //   }
-  // }, [selectedRegion, cartAmount]);
-
-
-
-
-
-
   useEffect(() => {
-  if (!selectedRegion?.id) return;
-  if (cartAmount === undefined) return;
+    if (!selectedRegion?.id) return;
+    if (cartAmount === undefined) return;
 
-  const limit = Number(selectedRegion.min_purchase_amount || 0);
-  const fee = Number(selectedRegion.delivery_fee || 0);
+    const limit = Number(selectedRegion.min_purchase_amount || 0);
+    const fee = Number(selectedRegion.delivery_fee || 0);
 
-  const isFree = cartAmount >= limit;
+    const isFree = cartAmount >= limit;
 
-  setDeliveryInfo({
-    price: isFree ? 0 : fee,
-    isFree,
-  });
-}, [selectedRegion?.id, cartAmount]);
-
-
-
-
-
-
-
-
-
-
-
+    setDeliveryInfo({
+      price: isFree ? 0 : fee,
+      isFree,
+    });
+  }, [selectedRegion?.id, cartAmount]);
 
   // ✅ 6. total hesabı
   const finalTotal =
     cartAmount + (deliveryInfo.isFree ? 0 : parseFloat(deliveryInfo.price));
 
   // ✅ 7. loading və empty check
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>...</div>;
   if (cartProducts.length === 0) return <CartNotProduct t={t} />;
   return (
     <div className="cartPage">
@@ -446,7 +420,7 @@ const Cart = ({ t, delveryRegions }) => {
               <div className="cartPageLeftItemsSearch">
                 <span>{t?.basket}</span>
                 <p>{t?.basketPageSubTitle}</p>
-                <div className="cartPageLeftItemsSearchInput">
+                {/* <div className="cartPageLeftItemsSearchInput">
                   <input
                     type="text"
                     placeholder="Here is a message about payment delivery"
@@ -471,7 +445,7 @@ const Cart = ({ t, delveryRegions }) => {
                       </g>
                     </svg>
                   </button>
-                </div>
+                </div> */}
               </div>
               {!isUser && (
                 <div className="guesUserFormSection">
@@ -488,6 +462,7 @@ const Cart = ({ t, delveryRegions }) => {
                   const image = product?.image_gallery?.[0];
                   const size = item?.size;
                   const price = item?.price;
+                  const oldPrice = product?.product_variants?.[0]?.old_price;
 
                   return (
                     <React.Fragment key={item.id}>
@@ -515,9 +490,13 @@ const Cart = ({ t, delveryRegions }) => {
                           </div>
                           <div className="cartPageLeftItemsProductsLeftTitle">
                             <span>{product?.name}</span>
-                            <p>
-                              {t?.size}: <span>{size}</span>
-                            </p>
+
+                            {size && (
+                              <p>
+                                {t?.size}: <span>{size}</span>
+                              </p>
+                            )}
+
                             <div className="cartPageLeftItemsProductsLeftTitleCountUp">
                               <button
                                 type="button"
@@ -543,7 +522,7 @@ const Cart = ({ t, delveryRegions }) => {
                             >
                               <span>{t?.showProducts}</span>
                             </Link>
-                            {/* {oldPrice && (
+                            {oldPrice && (
                               <div className="cartPageLeftItemsProductsRightOldPrice">
                                 <span>{oldPrice}</span>
                                 <p>
@@ -552,15 +531,15 @@ const Cart = ({ t, delveryRegions }) => {
                                   </svg>
                                 </p>
                               </div>
-                            )} */}
+                            )}
                             <div className="cartPageLeftItemsProductsRightNewPrice">
-                              {/* {oldPrice && (
+                              {oldPrice && (
                                 <div className="cartPageLeftItemsProductsRightDiscount">
                                   <span>
                                     - {Math.round((1 - price / oldPrice) * 100)}% Discount
                                   </span>
                                 </div>
-                              )} */}
+                              )}
                               <span>{price}</span>
                               <p>
                                 <svg
@@ -607,7 +586,6 @@ const Cart = ({ t, delveryRegions }) => {
               {isUser && (
                 <div className="getUserAddressSection">
                   <Address
-                    // onRegionSelect={setSelectedRegion}
                     onRegionSelect={handleRegionSelect}
                     delveryRegions={delveryRegions}
                     t={t}

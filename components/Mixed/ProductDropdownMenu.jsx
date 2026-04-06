@@ -66,18 +66,28 @@ const ProductDropdownMenu = ({ categoryData, onClose, t }) => {
   }, [onClose]);
 
   if (!categories.length) return null;
-  
+
   return (
     <div className="productDropdownMenu" ref={menuRef}>
       <div className="productDropdownMenuItem">
         {/* LEFT SIDE */}
         <div className="productDropdownMenuItemLeft">
-          <ul>
+          <ul
+            style={{
+              maxHeight: "44rem",
+              overflowY: "auto",
+              scrollbarWidth: "thin",
+              scrollbarColor: "#cebebe transparent",
+              paddingLeft: "2.9rem", // ::before-un left: -2.9rem-i üçün yer
+              marginLeft: "-2.9rem", // vizual pozisiyanı qorumaq üçün
+            }}
+          >
             {categories.map((cat) => (
               <li
                 key={cat.id}
                 onClick={() => setSelectedSlug(cat.slug)}
                 className={selectedSlug === cat.slug ? "is-active" : ""}
+
               >
                 {cat.title}
                 <div>

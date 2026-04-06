@@ -468,17 +468,6 @@ ul {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .headerMid {
   border-bottom: 0.08rem solid #efe9f0;
   .headerMidTop {
@@ -3301,13 +3290,11 @@ ul {
             width: 100% !important;
             height: 100%;
           }
-        } 
+        }
       }
     }
   }
 }
-
-
 
 .photoGalleryItemsSwiper {
   width: 100% !important;
@@ -4248,29 +4235,10 @@ ul {
             transform 150ms ease;
           z-index: -1;
         }
-
-        // &:hover {
-        //   /* hide the bottom dividing line while hovered so radius looks clean */
-        //   border-bottom-color: transparent;
-
-        //   &::before {
-        //     opacity: 1;
-        //   }
-
-        //   a {
-        //     color: #681616;
-        //   }
-
-        //   /* override inline svg fill */
-        //   svg path {
-        //     fill: #a12b2b !important;
-        //   }
-        // }
       }
     }
   }
 }
-
 .productDropdownMenuItemLeft {
   ul {
     li.is-active {
@@ -4286,6 +4254,9 @@ ul {
 
       svg path {
         fill: #a12b2b !important;
+      }
+      & + li {
+        border-top: none;
       }
     }
   }

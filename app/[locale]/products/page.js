@@ -228,9 +228,8 @@
 
 // export default page;
 
-
-
 // !poolitano mateo
+
 import ProductPageHero from "@/components/ProductPage/ProductPageHero";
 import "./products.scss";
 import Breadcrumbs from "@/components/Mixed/Breadcrumbs";
@@ -470,6 +469,7 @@ const page = async ({ searchParams }) => {
       <ProductPageHero
         t={t}
         productsData={productsData}
+        productsPageInfo={productsPageInfo}
         selectedCategory={selectedCategory}
       />
       <div className="productPageBackground">
