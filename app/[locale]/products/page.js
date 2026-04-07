@@ -252,68 +252,145 @@ async function fetchProducts(
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE");
 
+  // try {
+  //   let url = `/page-data/product-list?page=${page}&per_page=${perPage}`;
+  //   if (sortBy && sortOrder) {
+  //     url += `&sort_by=${sortBy}&sort_order=${sortOrder}`;
+  //   }
+
+  //   if (searchText) {
+  //     url += `&search_text=${encodeURIComponent(searchText)}`;
+  //   } else {
+  //     let filterIndex = 0;
+
+  //     // ATTRIBUTE
+  //     if (attributeParam) {
+  //       const attributes = attributeParam.split(",");
+
+  //       url += `&filters[${filterIndex}][key]=attributes`;
+  //       url += `&filters[${filterIndex}][operator]=IN`;
+
+  //       attributes.forEach((attr) => {
+  //         url += `&filters[${filterIndex}][value][]=${attr}`;
+  //       });
+
+  //       filterIndex++;
+  //     }
+
+  //     // STATUS (is_bestseller, və s.)
+  //     if (statusParam === "is_bestseller") {
+  //       url += `&filters[${filterIndex}][key]=special_badge`;
+  //       url += `&filters[${filterIndex}][operator]=IN`;
+  //       url += `&filters[${filterIndex}][value][]=best_seller`;
+  //       filterIndex++;
+  //     }
+
+  //     if (statusParam === "is_new") {
+  //       url += `&filters[${filterIndex}][key]=special_badge`;
+  //       url += `&filters[${filterIndex}][operator]=IN`;
+  //       url += `&filters[${filterIndex}][value][]=is_new`;
+  //       filterIndex++;
+  //     }
+
+  //     if (statusParam === "is_discounted") {
+  //       url += `&filters[${filterIndex}][key]=special_badge`;
+  //       url += `&filters[${filterIndex}][operator]=IN`;
+  //       url += `&filters[${filterIndex}][value][]=is_discounted`;
+  //       filterIndex++;
+  //     }
+
+  //     // BRAND
+  //     if (brandId) {
+  //       url += `&filters[${filterIndex}][key]=brand`;
+  //       url += `&filters[${filterIndex}][operator]=IN`;
+  //       url += `&filters[${filterIndex}][value]=${brandId}`;
+  //       filterIndex++;
+  //     }
+
+  //     // CATEGORY
+  //     if (categoryId) {
+  //       url += `&filters[${filterIndex}][key]=category`;
+  //       url += `&filters[${filterIndex}][operator]=IN`;
+  //       url += `&filters[${filterIndex}][value]=${categoryId}`;
+  //     }
+  //   }
+
+  //   const { data } = await axiosInstance.get(url, {
+  //     headers: { Lang: lang?.value || "az" },
+  //     cache: "no-store",
+  //   });
+
+  //   return data;
+  // } catch (error) {
+  //   console.error("Product fetch error:", error);
+  //   return null;
+  // }
+
   try {
     let url = `/page-data/product-list?page=${page}&per_page=${perPage}`;
+
     if (sortBy && sortOrder) {
       url += `&sort_by=${sortBy}&sort_order=${sortOrder}`;
     }
 
     if (searchText) {
       url += `&search_text=${encodeURIComponent(searchText)}`;
-    } else {
-      let filterIndex = 0;
-
-      // ATTRIBUTE
-      if (attributeParam) {
-        const attributes = attributeParam.split(",");
-
-        url += `&filters[${filterIndex}][key]=attributes`;
-        url += `&filters[${filterIndex}][operator]=IN`;
-
-        attributes.forEach((attr) => {
-          url += `&filters[${filterIndex}][value][]=${attr}`;
-        });
-
-        filterIndex++;
-      }
-
-      // STATUS (is_bestseller, və s.)
-      if (statusParam === "is_bestseller") {
-        url += `&filters[${filterIndex}][key]=special_badge`;
-        url += `&filters[${filterIndex}][operator]=IN`;
-        url += `&filters[${filterIndex}][value][]=best_seller`;
-        filterIndex++;
-      }
-
-      if (statusParam === "is_new") {
-        url += `&filters[${filterIndex}][key]=special_badge`;
-        url += `&filters[${filterIndex}][operator]=IN`;
-        url += `&filters[${filterIndex}][value][]=is_new`;
-        filterIndex++;
-      }
-
-      if (statusParam === "is_discounted") {
-        url += `&filters[${filterIndex}][key]=special_badge`;
-        url += `&filters[${filterIndex}][operator]=IN`;
-        url += `&filters[${filterIndex}][value][]=is_discounted`;
-        filterIndex++;
-      }
-
-      // BRAND
-      if (brandId) {
-        url += `&filters[${filterIndex}][key]=brand`;
-        url += `&filters[${filterIndex}][operator]=IN`;
-        url += `&filters[${filterIndex}][value]=${brandId}`;
-        filterIndex++;
-      }
-
-      // CATEGORY
-      if (categoryId) {
-        url += `&filters[${filterIndex}][key]=category`;
-        url += `&filters[${filterIndex}][operator]=IN`;
-        url += `&filters[${filterIndex}][value]=${categoryId}`;
-      }
     }
+
+    let filterIndex = 0;
+
+    // ATTRIBUTE
+    if (attributeParam) {
+      const attributes = attributeParam.split(",");
+
+      url += `&filters[${filterIndex}][key]=attributes`;
+      url += `&filters[${filterIndex}][operator]=IN`;
+
+      attributes.forEach((attr) => {
+        url += `&filters[${filterIndex}][value][]=${attr}`;
+      });
+
+      filterIndex++;
+    }
+
+    // STATUS
+    if (statusParam === "is_bestseller") {
+      url += `&filters[${filterIndex}][key]=special_badge`;
+      url += `&filters[${filterIndex}][operator]=IN`;
+      url += `&filters[${filterIndex}][value][]=best_seller`;
+      filterIndex++;
+    }
+
+    if (statusParam === "is_new") {
+      url += `&filters[${filterIndex}][key]=special_badge`;
+      url += `&filters[${filterIndex}][operator]=IN`;
+      url += `&filters[${filterIndex}][value][]=is_new`;
+      filterIndex++;
+    }
+
+    if (statusParam === "is_discounted") {
+      url += `&filters[${filterIndex}][key]=special_badge`;
+      url += `&filters[${filterIndex}][operator]=IN`;
+      url += `&filters[${filterIndex}][value][]=is_discounted`;
+      filterIndex++;
+    }
+
+    // BRAND
+    if (brandId) {
+      url += `&filters[${filterIndex}][key]=brand`;
+      url += `&filters[${filterIndex}][operator]=IN`;
+      url += `&filters[${filterIndex}][value]=${brandId}`;
+      filterIndex++;
+    }
+
+    // CATEGORY
+    if (categoryId) {
+      url += `&filters[${filterIndex}][key]=category`;
+      url += `&filters[${filterIndex}][operator]=IN`;
+      url += `&filters[${filterIndex}][value]=${categoryId}`;
+    }
+
+    console.log("FINAL URL:", url);
 
     const { data } = await axiosInstance.get(url, {
       headers: { Lang: lang?.value || "az" },

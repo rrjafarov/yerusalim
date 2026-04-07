@@ -254,6 +254,9 @@ const MobileMenuHamburger = ({
                 <li>
                   <Link href="/support/faq">{t?.support}</Link>
                 </li>
+                <li>
+                  <Link href="/brands">{t?.brands}</Link>
+                </li>
               </ul>
             </div>
           </div>

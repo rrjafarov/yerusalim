@@ -10,7 +10,7 @@ const AboutBreadcrumbs = ({aboutData,t}) => {
             <Link href="/">{t?.breadcrumbs}</Link>
           </li>
           <span>/</span>
-          <li>{aboutData.page_name}</li>
+          <li>{t?.about}</li>
         </ul>
       </nav>
     </div>
