@@ -339,6 +339,7 @@
 }
 
 .deliverySupport {
+  margin-left: 2.6rem;
   h3 {
     color: #000;
     font-size: 2.8rem;
@@ -350,6 +351,7 @@
   .deliverySupportImages {
     .deliverySupportImage {
       width: 87rem;
+      width: 95%;
       height: 34.6rem;
       img {
         width: 100%;
@@ -414,6 +416,23 @@
         width: 100% !important;
         font-size: 1.4rem !important;
       }
+    }
+  }
+  .deliverySupport {
+    margin-left: 0rem !important;
+  }
+}
+
+.paymentSupportImages {
+  display: flex;
+  gap: 1.7rem;
+  .paymentSupportImage {
+    width: 26.9rem;
+    height: 20.1rem;
+    border-radius: 0.4rem;
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 }
