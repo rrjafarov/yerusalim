@@ -92,7 +92,7 @@ import React, { useRef, useState, useEffect } from "react";
 
 const SeoContent = ({ selectedCategory, productsPageInfo, homeData, t }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [height, setHeight] = useState(200);
+  const [height, setHeight] = useState(50);
 
   const contentRef = useRef(null);
 
@@ -106,7 +106,7 @@ const SeoContent = ({ selectedCategory, productsPageInfo, homeData, t }) => {
     if (isExpanded) {
       setHeight(contentRef.current.scrollHeight);
     } else {
-      setHeight(300);
+      setHeight(100);
     }
   }, [isExpanded, selectedCategory, productsPageInfo, homeData]);
 
