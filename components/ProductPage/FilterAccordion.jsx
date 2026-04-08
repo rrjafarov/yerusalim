@@ -13,6 +13,7 @@ const FilterAccordion = ({
   filterAttributes,
   categories,
   t,
+  onMobileClose,
 }) => {
   const scrollRefs = useRef({});
   const [thumbStyles, setThumbStyles] = useState({});
@@ -23,6 +24,12 @@ const FilterAccordion = ({
   const searchParams = useSearchParams();
 
   const [searchTerms, setSearchTerms] = useState({});
+
+  const closeIfMobile = () => {
+    if (typeof window !== "undefined" && window.innerWidth < 992) {
+      onMobileClose?.();
+    }
+  };
 
   // Local state — checkbox dərhal aktiv olsun
   const [selectedAttributes, setSelectedAttributes] = useState(() =>
@@ -50,12 +57,16 @@ const FilterAccordion = ({
 
     setSelectedAttributes(updated);
     updateURL(updated);
+
+    closeIfMobile();
   };
 
   const handleRemoveSelected = (id) => {
     const updated = selectedAttributes.filter((v) => v !== String(id));
     setSelectedAttributes(updated);
     updateURL(updated);
+
+    closeIfMobile();
   };
 
   const updateThumb = (el, key) => {
@@ -188,11 +199,12 @@ const FilterAccordion = ({
                     return subCategories.map((cat) => (
                       <li
                         key={cat.id}
-                        onClick={() =>
+                        onClick={() => {
                           router.push(
                             `/products?category=${cat.url_slug}-${cat.id}`,
-                          )
-                        }
+                          );
+                          closeIfMobile();
+                        }}
                         style={{ cursor: "pointer" }}
                       >
                         {cat.name}
@@ -208,11 +220,12 @@ const FilterAccordion = ({
                       .map((cat) => (
                         <li
                           key={cat.id}
-                          onClick={() =>
+                          onClick={() => {
                             router.push(
                               `/products?category=${cat.url_slug}-${cat.id}`,
-                            )
-                          }
+                            );
+                            closeIfMobile();
+                          }}
                           style={{
                             cursor: "pointer",
                             fontWeight:
@@ -230,11 +243,12 @@ const FilterAccordion = ({
                   //   return categories.map((cat) => (
                   //     <li
                   //       key={cat.id}
-                  //       onClick={() =>
+                  //       onClick={() =>{
                   //         router.push(
                   //           `/products?category=${cat.url_slug}-${cat.id}`,
-                  //         )
-                  //       }
+                  //         );
+                  // closeIfMobile();
+                  //       }}
                   //       style={{
                   //         cursor: "pointer",
                   //         fontWeight:
@@ -285,45 +299,45 @@ const FilterAccordion = ({
           <React.Fragment key={topAttr.id}>
             <Panel header={topAttr.name} key={`attr-${topAttr.id}`}>
               {values.length > 5 && (
-              <div className="filterAccordionContentSearch">
-                <div className="filterAccordionSearch">
-                  <input
-                    type="text"
-                    placeholder={t?.search}
-                    value={searchTerms[topAttr.id] || ""}
-                    onChange={(e) =>
-                      setSearchTerms((prev) => ({
-                        ...prev,
-                        [topAttr.id]: e.target.value,
-                      }))
-                    }
-                  />
-                  <p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                    >
-                      <path
-                        d="M11.25 11.25L14.25 14.25"
-                        stroke="black"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M7.5 12.25C10.1234 12.25 12.25 10.1234 12.25 7.5C12.25 4.87665 10.1234 2.75 7.5 2.75C4.87665 2.75 2.75 4.87665 2.75 7.5C2.75 10.1234 4.87665 12.25 7.5 12.25Z"
-                        stroke="black"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </p>
+                <div className="filterAccordionContentSearch">
+                  <div className="filterAccordionSearch">
+                    <input
+                      type="text"
+                      placeholder={t?.search}
+                      value={searchTerms[topAttr.id] || ""}
+                      onChange={(e) =>
+                        setSearchTerms((prev) => ({
+                          ...prev,
+                          [topAttr.id]: e.target.value,
+                        }))
+                      }
+                    />
+                    <p>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M11.25 11.25L14.25 14.25"
+                          stroke="black"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M7.5 12.25C10.1234 12.25 12.25 10.1234 12.25 7.5C12.25 4.87665 10.1234 2.75 7.5 2.75C4.87665 2.75 2.75 4.87665 2.75 7.5C2.75 10.1234 4.87665 12.25 7.5 12.25Z"
+                          stroke="black"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </p>
+                  </div>
                 </div>
-              </div>
               )}
 
               <div className="filterAccordionContent filterAccordionContentSearch">

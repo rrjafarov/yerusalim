@@ -118,10 +118,17 @@
     line-height: normal;
   }
 }
+@media only screen and (max-width: 767.9px) {
+  .faqS {
+    h3 {
+      padding-bottom: 0rem !important;
+      padding-top: 2rem !important;
+    }
+  }
+}
 
 .faqS {
   h3 {
-    /* öz dizaynına uyğun istədiyini yaza bilərsən */
     margin-bottom: 2.4rem;
   }
 }

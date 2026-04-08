@@ -91,13 +91,6 @@
 // export default ProductPageDetails;
 // !YUXARIDA OLAN KODDA HECBIR DATA YOXDUR
 
-
-
-
-
-
-
-
 "use client";
 import React, { useState, useEffect } from "react";
 import SortBy from "./SortBy";
@@ -134,27 +127,24 @@ const ProductPageDetails = ({
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  // scroll effect
   useEffect(() => {
     const page = searchParams.get("page");
+    if (!page) return;
 
-    if (page) {
+    setTimeout(() => {
       const element = document.getElementById("product-section-start");
 
       if (element) {
-        const headerOffset = 20;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+        const offsetPosition =
+          element.getBoundingClientRect().top + window.scrollY - 20;
 
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
         });
       }
-    }
+    }, 50);
   }, [searchParams]);
-
-  // loading trigger (filter / pagination change)
 
   useEffect(() => {
     setLoading(true);
@@ -223,6 +213,7 @@ const ProductPageDetails = ({
                   filterAttributes={filterAttributes}
                   selectedCategory={selectedCategory}
                   categories={categoriesData?.data?.data || []}
+                  onMobileClose={closeMobileFilter}
                 />
               </div>
             </div>
@@ -249,6 +240,7 @@ const ProductPageDetails = ({
                     filterAttributes={filterAttributes}
                     selectedCategory={selectedCategory}
                     categories={categoriesData?.data?.data || []}
+                    onMobileClose={closeMobileFilter}
                   />
                 </div>
               </div>
@@ -257,7 +249,7 @@ const ProductPageDetails = ({
             {/* Products */}
             <div className="xl-9 lg-8 md-6 sm-12">
               <div className="productPageLayoutRight">
-                {categoryBanner && (
+                {categoryBanner && products.length > 0 &&  (
                   <div className="productPageLayoutRightBanner">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${categoryBanner}`}

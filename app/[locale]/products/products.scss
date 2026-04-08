@@ -300,7 +300,8 @@
     border: 1.5px solid #efe9f0;
     border-radius: 0.8rem;
     padding: 0.5rem 2rem;
-    width: 19rem !important;
+    min-width: 19rem !important;
+    width: fit-content !important;
     display: flex;
     align-items: center !important;
     justify-content: center !important;
@@ -334,6 +335,8 @@
     display: inline-flex;
     align-items: center;
     width: fit-content;
+    // width: 100% !important;
+    height: 100% !important;
   }
   .ant-select-content {
     color: #000;
@@ -352,6 +355,7 @@
   box-sizing: border-box;
   width: 19rem !important;
 }
+
 .ant-select-item-option-selected {
   padding: 1rem;
   color: #711111 !important;
@@ -359,7 +363,6 @@
 }
 .productPageDetailsHeaderRight {
   position: relative;
-  /* overflow: visible ensures dropdown can show; if you want to clip dropdown to the box, use overflow: hidden */
   overflow: visible;
 }
 
@@ -370,7 +373,6 @@
   align-items: center;
   width: 24rem;
   justify-content: flex-end;
-
   span {
     color: #2b2e32;
     font-size: 1.2rem;
@@ -385,7 +387,6 @@
     align-items: center;
     gap: 0.8rem;
   }
-
   .ant-select {
     display: inline-flex;
     align-items: center;
@@ -399,7 +400,6 @@
     opacity: 0.6;
   }
 
-  /* Scoped dropdown: absolute inside .sortBy and aligned to right, width matches wrapper */
   .ant-select-dropdown {
     position: absolute !important;
     top: calc(100% + 0.4rem) !important;
@@ -416,7 +416,7 @@
 
 @media only screen and (max-width: 767.9px) {
   .sortBy {
-    padding: 1.1rem 5.5rem !important;
+    padding: 1.1rem 0rem !important;
     .ant-select-content {
       font-size: 1.4rem !important;
       opacity: 1 !important;
@@ -430,6 +430,19 @@
     font-weight: 600;
     line-height: normal;
     opacity: 1 !important;
+  }
+  .ant-select {
+    width: 100% !important;
+  }
+  .ant-select-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sortBy {
+    .ant-select-dropdown {
+      width: 30rem !important;
+    }
   }
 }
 
@@ -510,7 +523,6 @@
   }
 }
 
-
 .filterAccordionContentPrices {
   padding-top: 1.5rem;
 
@@ -560,6 +572,7 @@
     // }
   }
 }
+
 .filterAccordionContentSearch {
   padding-top: 1.9rem;
   .filterAccordionSearch {
@@ -570,9 +583,7 @@
     display: flex;
     align-items: center;
     position: relative;
-
     input {
-      // width: 100%;
       height: 100%;
       font-size: 1.5rem;
       border-radius: 0.7rem;
@@ -591,7 +602,6 @@
       opacity: 1;
     }
     p {
-      // margin-right: 2rem;
       position: absolute;
       right: 2rem;
       top: 50%;
@@ -613,7 +623,18 @@
     }
   }
 }
-.firstAccordion{
+
+@media only screen and (max-width: 767.9px) {
+  .filterAccordionContentSearch {
+    .filterAccordionSearch {
+      height: 5rem !important;
+      input {
+        width: 70% !important;
+      }
+    }
+  }
+}
+.firstAccordion {
   padding-top: 1.9rem;
 }
 //!   Product Detail Page ------------------------------------------------------------
