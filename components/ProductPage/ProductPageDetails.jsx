@@ -91,13 +91,6 @@
 // export default ProductPageDetails;
 // !YUXARIDA OLAN KODDA HECBIR DATA YOXDUR
 
-
-
-
-
-
-
-
 "use client";
 import React, { useState, useEffect } from "react";
 import SortBy from "./SortBy";
@@ -198,7 +191,7 @@ const ProductPageDetails = ({
             <span onClick={openMobileFilter}>{t?.filter}</span>
 
             {searchText && (
-              <p>
+              <p className="desktopSearchResult">
                 <strong>{paginationData?.total || 0}</strong> {t?.searchResults}{" "}
                 <strong>&quot;{searchText}&quot;</strong>
               </p>
@@ -208,17 +201,14 @@ const ProductPageDetails = ({
           <div className="productPageDetailsHeaderRight">
             <SortBy t={t} />
           </div>
-
-
-          
-
-
-
-
         </div>
 
-
-        
+        {searchText && (
+          <p className="mobileSearchResult">
+            <strong>{paginationData?.total || 0}</strong> {t?.searchResults}{" "}
+            <strong>&quot;{searchText}&quot;</strong>
+          </p>
+        )}
 
         <div className="productPageLayout">
           <div className="row">
@@ -266,7 +256,7 @@ const ProductPageDetails = ({
             {/* Products */}
             <div className="xl-9 lg-8 md-6 sm-12">
               <div className="productPageLayoutRight">
-                {categoryBanner && products.length > 0 &&  (
+                {categoryBanner && products.length > 0 && (
                   <div className="productPageLayoutRightBanner">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${categoryBanner}`}

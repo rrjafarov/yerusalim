@@ -1235,4 +1235,50 @@
 
 
 
+
+
+
+
+
+.desktopSearchResult {
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: 600;
+  opacity: 0.4;
+}
+
+.mobileSearchResult {
+  display: none;
+}
+
+@media only screen and (max-width: 767.9px) {
+  .desktopSearchResult {
+    display: none;
+  }
+
+  .mobileSearchResult {
+    display: block;
+    padding-top: 1.5rem;
+    color: #000;
+    font-size: 1.4rem;
+    font-weight: 600;
+    opacity: 0.4;
+  }
+}
+
+
+// @media only screen and (max-width: 767.9px) {
+//   .productPageDetailsHeaderLeft {
+//     flex-wrap: wrap !important;
+//   }
+
+//   .productPageDetailsHeaderLeft span {
+//     width: 100%;
+//   }
+// }
+
+
+
+
+
 // ! mobile search results
