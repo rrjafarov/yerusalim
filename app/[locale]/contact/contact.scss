@@ -30,6 +30,7 @@
       font-weight: 600;
       line-height: 120%; /* 3.36rem */
       letter-spacing: -0.056rem;
+      margin: 0 16rem;
     }
     .contactPageMainItemsContent {
       padding-top: 4.2rem;
@@ -297,22 +298,15 @@
     padding-left: 0rem !important;
   }
 
+  .contactPageMainItemsContentMiddle {
+    display: none !important;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.contactPageMainItems {
-    padding: 7.1rem 0 5rem 0 !important; 
+  .contactPageMainItems {
+    h2 {
+      margin: 0 1rem !important;
+    }
+    padding: 7.1rem 0 5rem 0 !important;
     .contactPageMainItemsContent {
       height: auto !important;
       display: flex;
@@ -336,12 +330,6 @@
   }
 }
 
-
-
-
-
-
-
 .contactFormGroup {
   position: relative;
   // margin-bottom: 2.6rem;
@@ -363,12 +351,9 @@
   border-color: #ec1f27 !important;
 }
 
-
-
 .inputError textarea {
   border-color: #ec1f27 !important;
 }
-
 
 .floatingInput {
   textarea + label {
@@ -382,5 +367,64 @@
     transform: translateY(-50%);
     font-size: 1.1rem;
     color: #681616;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 767.9px) {
+  .contactPageMainItemsContent {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 2rem !important;
+    align-items: flex-start !important;
+  }
+
+  .contactPageMainItemsContentLeft,
+  .contactPageMainItemsContentRight {
+    width: 48% !important;
+  }
+
+  .contactPageMainItemsContentMiddle {
+    display: none !important;
+  }
+
+  /* LEFT İÇİ FLEX START */
+  .contactPageMainItemsContentLeft {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 2rem !important;
+  }
+
+  .contactPageMainItemsContentLeftTop,
+  .contactPageMainItemsContentLeftBottom {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .contactPageMainItemsContentLeft p,
+  .contactPageMainItemsContentLeft span {
+    text-align: left !important;
+  }
+
+
+  .contactPageMainItemsContentRightCard{
+    a{
+      font-size: 1.8rem !important;
+    }
   }
 }

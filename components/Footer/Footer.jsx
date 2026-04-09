@@ -333,9 +333,10 @@ const Footer = ({ contactData, categoryData, supportData, t }) => {
               </p>
             </div>
             <div className="footerBottomItemRight">
+              <p>{t?.site}</p>
               <Link href="https://one.az" target="_blank">
                 <p>
-                  {t?.site} <strong>One Studio</strong>
+                  <strong>One Studio</strong>
                 </p>
               </Link>
             </div>
