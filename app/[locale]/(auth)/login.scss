@@ -347,9 +347,10 @@
   .forgotPasswordFormGroup {
     width: 50rem;
     margin-bottom: 2.6rem;
+    position: relative;
   }
 
-  /* FLOATING LABEL – login ilə eyni mentiq */
+  
   .floatingInput {
     position: relative;
     width: 100%;
@@ -719,4 +720,18 @@
   cursor: pointer;
   font-size: 2rem;
   color: #777;
+}
+
+
+
+
+
+
+
+
+
+
+
+.loginFormGroup {
+  position: relative;
 }

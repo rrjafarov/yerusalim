@@ -4,15 +4,15 @@
 #nprogress .bar {
   height: 0.5rem !important; // default 2px-dir
   border-radius: 0.3rem;
-  box-shadow:
-    0 0 10px #711111,
-    0 0 5px #711111 !important;
+  // box-shadow:
+  //   0 0 10px #711111,
+  //   0 0 5px #711111 !important;
 }
 
 #nprogress .bar {
-  box-shadow:
-    0 0 5px #711111,
-    0 0 5px #711111 !important;
+  // box-shadow:
+  //   0 0 5px #711111,
+  //   0 0 5px #711111 !important;
   background: #711111 !important; // Burada istədiyin rəngi yaz (məs: #08316F, red, green)
 }
 

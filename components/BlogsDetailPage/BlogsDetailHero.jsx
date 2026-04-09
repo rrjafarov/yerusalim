@@ -31,9 +31,9 @@ const BlogsDetailHero = ({ blogData }) => {
           <div className="blogsDetailHeroItemHashtag">
             {blogData?.hastags &&
               Object.values(blogData.hastags).map((hashtag, index) => (
-                <Link key={index} href="#">
+                <span key={index}>
                   #{hashtag.name}
-                </Link>
+                </span>
               ))}
           </div>
         </div>
