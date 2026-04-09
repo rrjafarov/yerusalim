@@ -9,13 +9,14 @@ import MobileMenuHamburger from "../Mixed/MobileMenuHamburger";
 import { useGetUserInfoQuery } from "@/redux/userService";
 import Cookies from "js-cookie";
 import { useGetCartQuery } from "@/redux/cartService";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const HeaderMain = ({ categoryData, contactData, t }) => {
   const [text, setText] = useState("");
   const [mode, setMode] = useState("typing");
   const [idx, setIdx] = useState(0);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     setMobileHamburgerOpen(false);
@@ -235,6 +236,14 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
                 placeholder={text}
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && searchValue.trim()) {
+                    router.push(
+                      `/products?search_text=${encodeURIComponent(searchValue.trim())}`,
+                    );
+                    setSearchValue("");
+                  }
+                }}
               />
               <Link href="#">
                 <svg
@@ -360,7 +369,6 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
               </Link>
             </div>
           </div>
-
         </div>
       </div>
 

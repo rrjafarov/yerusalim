@@ -135,7 +135,7 @@ const SearchResults = ({ searchText, onClose, t }) => {
                 <React.Fragment key={prod.id}>
                   <div className="searchResultsLine"></div>
                   <div className="searchResultsProduct">
-                    <Link href={`/products/${prod.url_slug}-${prod.id}`}>
+                    <Link href={`/products/${prod.url_slug}-${prod.id}`} onClick={onClose}>
                       <Image
                         src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${prod.image_gallery?.[0]}`}
                         alt={prod.name}
@@ -197,6 +197,7 @@ const SearchResults = ({ searchText, onClose, t }) => {
           <div className="searchAllButton">
             <Link
               href={`/products?search_text=${encodeURIComponent(searchText)}`}
+              onClick={onClose}
             >
               <button>
                 <span>{t?.seeAllResults}</span>
