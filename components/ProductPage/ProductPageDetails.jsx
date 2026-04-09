@@ -91,6 +91,13 @@
 // export default ProductPageDetails;
 // !YUXARIDA OLAN KODDA HECBIR DATA YOXDUR
 
+
+
+
+
+
+
+
 "use client";
 import React, { useState, useEffect } from "react";
 import SortBy from "./SortBy";
@@ -201,7 +208,17 @@ const ProductPageDetails = ({
           <div className="productPageDetailsHeaderRight">
             <SortBy t={t} />
           </div>
+
+
+          
+
+
+
+
         </div>
+
+
+        
 
         <div className="productPageLayout">
           <div className="row">

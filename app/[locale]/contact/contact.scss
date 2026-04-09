@@ -335,3 +335,52 @@
     }
   }
 }
+
+
+
+
+
+
+
+.contactFormGroup {
+  position: relative;
+  // margin-bottom: 2.6rem;
+  width: 100%;
+
+  .validationMessage {
+    position: absolute;
+    top: -1.8rem;
+    left: 0;
+    color: #ec1f27;
+    font-size: 1.2rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+}
+
+.inputError input,
+.inputError textarea {
+  border-color: #ec1f27 !important;
+}
+
+
+
+.inputError textarea {
+  border-color: #ec1f27 !important;
+}
+
+
+.floatingInput {
+  textarea + label {
+    top: 1.5rem;
+    transform: none;
+  }
+
+  textarea:focus + label,
+  textarea:not(:placeholder-shown) + label {
+    top: 0;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: #681616;
+  }
+}
