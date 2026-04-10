@@ -48,7 +48,7 @@ const HomePageBrands = ({ brandsData,t }) => {
               {brandsData?.map((data) => (
                 <SwiperSlide key={data.id}>
                   <div className="brandsLogo">
-                    <Link href="#">
+                    <Link href={`/products?brand=${data.id}`}>
                       <Image
                         src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${data.logo}`}
                         alt={data.name || "brand"}

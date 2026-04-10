@@ -14,9 +14,6 @@ const MostPopularProduct = ({ categoryData, bestSellerData, t }) => {
   const [products, setProducts] = useState(bestSellerData || []);
   const [loading, setLoading] = useState(false);
 
-  // const topCategories =
-  //   categoryData?.data?.data?.filter((item) => !item.fk_id_page) || [];
-
   const topCategories =
     categoryData?.data?.data?.filter(
       (item) => !item.fk_id_page && !item.top_category,
