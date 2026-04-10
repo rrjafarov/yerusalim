@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useMemo, useState, useEffect, useRef } from "react";
 
-const ProductDropdownMenu = ({ categoryData, onClose, t }) => {
+const ProductDropdownMenu = ({ categoryData, onClose, t , buttonRef }) => {
   // API datasını UI üçün uyğun formaya salırıq
   const categories = useMemo(() => {
     if (!categoryData?.data?.data) return [];
@@ -52,18 +52,51 @@ const ProductDropdownMenu = ({ categoryData, onClose, t }) => {
   const leftSub = subcategories.slice(0, half);
   const rightSub = subcategories.slice(half);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        onClose?.();
-      }
-    };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [onClose]);
+
+
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (menuRef.current && !menuRef.current.contains(event.target)) {
+  //       onClose?.();
+  //     }
+  //   };
+
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [onClose]);
+
+
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    const menuEl = menuRef.current;
+    const buttonEl = buttonRef?.current;
+
+    if (
+      menuEl &&
+      !menuEl.contains(event.target) &&
+      buttonEl &&
+      !buttonEl.contains(event.target)
+    ) {
+      onClose?.();
+    }
+  };
+
+  document.addEventListener("click", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("click", handleClickOutside);
+  };
+}, [onClose, buttonRef]);
+
+
+
+
+
+
+
 
   if (!categories.length) return null;
 

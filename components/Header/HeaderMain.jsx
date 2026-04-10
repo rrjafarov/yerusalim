@@ -266,6 +266,7 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
                     t={t}
                     categoryData={categoryData}
                     onClose={() => setIsProductMenuOpen(false)}
+                    buttonRef={productButtonRef}
                   />
                 </div>
               )}
