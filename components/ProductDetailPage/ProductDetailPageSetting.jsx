@@ -23,7 +23,7 @@ const ProductDetailPageSetting = ({
               <span className="productDpTitle">{topAttr?.name}:</span>
 
               <p className="productDpValue">
-                <Link href="#">{attr?.name}</Link>
+                <Link href={`/products?attribute=${attr?.id}`}>{attr?.name}</Link>
               </p>
             </li>
           );

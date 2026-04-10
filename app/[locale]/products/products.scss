@@ -434,7 +434,7 @@
   .ant-select {
     width: 100% !important;
   }
-  .ant-select-content{
+  .ant-select-content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -820,6 +820,7 @@
         font-weight: 400;
         line-height: 116.1%; /* 1.5093rem */
         letter-spacing: -0.013rem;
+        padding: 0 1rem;
 
         span {
           display: flex;
@@ -1186,6 +1187,18 @@
       border-radius: 0.8rem;
     }
   }
+
+  .productDetailPageRightTopNewPrice {
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg{
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
 }
 
 .selectedFilters {
@@ -1224,22 +1237,6 @@
   height: 2rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .desktopSearchResult {
   color: #000;
   font-size: 1.4rem;
@@ -1266,7 +1263,6 @@
   }
 }
 
-
 // @media only screen and (max-width: 767.9px) {
 //   .productPageDetailsHeaderLeft {
 //     flex-wrap: wrap !important;
@@ -1276,9 +1272,5 @@
 //     width: 100%;
 //   }
 // }
-
-
-
-
 
 // ! mobile search results

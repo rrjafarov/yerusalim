@@ -209,6 +209,12 @@ const ProductDetailPage = ({ productDetail, t }) => {
                 />
               </div>
 
+
+
+
+
+              
+
               <div className="productDetailPageRightAccordion">
                 <ProductDetailPageAccordion
                   t={t}

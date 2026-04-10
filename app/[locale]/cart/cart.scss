@@ -401,7 +401,6 @@
       gap: 1rem;
     }
     a {
-      //   margin-bottom: 1rem;
       span {
         color: #000;
         font-size: 1.4rem;
@@ -765,9 +764,15 @@
         }
         .cartPageLeftItemsProductsRightNewPrice {
           display: flex;
-          gap: 1.4rem;
+          gap: 0.5rem;
           span {
             font-size: 2.2rem;
+          }
+          p {
+            svg {
+              width: 2rem !important;
+              height: 2rem !important;
+            }
           }
           .cartPageLeftItemsProductsRightDiscount {
             display: none !important;
@@ -780,7 +785,11 @@
           }
         }
         .cartPageLeftItemsProductsRightDelete {
-          margin-left: 2.03rem;
+          margin-left: 1.03rem;
+          svg{
+            width: 3rem !important;
+            height: 3rem !important;
+          }
         }
       }
     }
@@ -794,6 +803,15 @@
   .totalPaymetContactLink {
     padding-bottom: 4rem;
   }
+
+  .cartPageLeftItemsProductsRightPriceSector {
+    a {
+    span {
+      font-size: 1.2rem !important;
+    }
+  }
+  }
+  
 }
 
 // ? Mobile Responsive
@@ -858,4 +876,36 @@
       }
     }
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+// @ mobile cart products count 
+.cartBadge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+
+  background: #711111; /* 🔴 yumru hissə */
+  color: #fff;          /* ⚪ text */
+
+  font-size: 10px;
+  font-weight: 600;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

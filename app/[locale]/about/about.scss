@@ -468,4 +468,33 @@
       }
     }
   }
+
+
+  .aboutPageHeroTitle {
+    width: 100%;
+    padding: 0 2rem !important;
+    h1 {
+      font-size: 3.8rem;
+    }
+  }
+
+
+  .aboutHeroUnderContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13.8rem 0 13.2rem;
+  flex-direction: column;
+  gap: 2.8rem;
+  h2 {
+    font-size: 4rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+  p {
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+  
 }
