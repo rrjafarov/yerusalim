@@ -4,7 +4,7 @@ import BlogCard from "@/components/Mixed/BlogCard";
 import Pagination from "@/components/Mixed/Pagination";
 import Loading from "@/components/Loading";
 
-const BlogsPage = ({ blogsData, blogsCategoryData,t }) => {
+const BlogsPage = ({ blogsData, blogsCategoryData, t }) => {
   const blogsCategories = blogsCategoryData?.data?.data || [];
   const allBlogs = blogsData?.data?.data || [];
 
@@ -15,6 +15,13 @@ const BlogsPage = ({ blogsData, blogsCategoryData,t }) => {
   useEffect(() => {
     setFilteredBlogs(allBlogs);
   }, [allBlogs]);
+
+  useEffect(() => {
+    const el = document.querySelector(".blogsPageCategories ul");
+    if (el) {
+      el.scrollLeft = 0;
+    }
+  }, []);
 
   const handleCategoryClick = (categoryName) => {
     setActiveCategory(categoryName);
@@ -52,7 +59,9 @@ const BlogsPage = ({ blogsData, blogsCategoryData,t }) => {
             {blogsCategories.map((category) => (
               <li
                 key={category.id || category.name}
-                className={activeCategory === category.name ? "activeCategory" : ""}
+                className={
+                  activeCategory === category.name ? "activeCategory" : ""
+                }
                 onClick={() => handleCategoryClick(category.name)}
               >
                 {category.name}
@@ -66,7 +75,9 @@ const BlogsPage = ({ blogsData, blogsCategoryData,t }) => {
         ) : (
           <>
             {filteredBlogs.length === 0 ? (
-              <div className="noBlogFound" id="noProductFound">{t?.blogNotFound}</div>
+              <div className="noBlogFound" id="noProductFound">
+                {t?.blogNotFound}
+              </div>
             ) : (
               <div className="blogsPageCards">
                 <div className="row">

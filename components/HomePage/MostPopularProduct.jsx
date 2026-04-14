@@ -15,9 +15,14 @@ const MostPopularProduct = ({ categoryData, bestSellerData, t }) => {
   const [loading, setLoading] = useState(false);
 
   const topCategories =
-    categoryData?.data?.data?.filter(
-      (item) => !item.fk_id_page && !item.top_category,
-    ) || [];
+    categoryData?.data?.data?.filter((item) => {
+      const top = item.top_category?.[0];
+
+      return (
+        !item.fk_id_page &&
+        (!item.top_category?.length || top === item.id || top?.id === item.id)
+      );
+    }) || [];
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -50,28 +55,6 @@ const MostPopularProduct = ({ categoryData, bestSellerData, t }) => {
         <div className="mostPopularProductItem">
           <h2>{t?.bestSeller}</h2>
 
-          {/* {topCategories.length > 0 && (
-            <div className="mostPopularCategory">
-              <ul>
-                <li
-                  className={activeCategory === "All categories" ? "activeCategory" : ""}
-                  onClick={() => setActiveCategory("All categories")}
-                >
-                  All categories
-                </li>
-                {topCategories.map((category) => (
-                  <li
-                    key={category.id}
-                    className={activeCategory === category.id ? "activeCategory" : ""}
-                    onClick={() => setActiveCategory(category.id)}
-                  >
-                    {category.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )} */}
-
           {topCategories.length > 0 && (
             <div className="mostPopularCategory">
               <ul style={{ display: "flex", alignItems: "center" }}>
@@ -81,7 +64,7 @@ const MostPopularProduct = ({ categoryData, bestSellerData, t }) => {
                     activeCategory === "All categories" ? "activeCategory" : ""
                   }
                   onClick={() => setActiveCategory("All categories")}
-                  style={{ flexShrink: 0, marginRight: "8px" }}
+                  style={{ flexShrink: 0, marginRight: "0.8rem" }}
                 >
                   {t?.allCategories}
                 </li>
@@ -91,21 +74,24 @@ const MostPopularProduct = ({ categoryData, bestSellerData, t }) => {
                   <Swiper
                     modules={[Autoplay]}
                     slidesPerView="auto"
-                    spaceBetween={10}
+                    spaceBetween={32}
                     loop={true}
-                    loopAdditionalSlides={topCategories.length}
                     speed={3000}
+                    allowTouchMove={false}
                     autoplay={{
-                      delay: 100,
+                      delay: 0,
                       disableOnInteraction: false,
-                      pauseOnMouseEnter: true,
-                      waitForTransition: false,
+                      reverseDirection: false,
+                    }}
+                    breakpoints={{
+                      0: { spaceBetween: 10 },
+                      768: { spaceBetween: 32 },
                     }}
                   >
                     {topCategories.map((category) => (
                       <SwiperSlide
                         key={category.id}
-                        style={{ width: "auto", paddingRight: "8px" }}
+                        style={{ width: "auto", paddingRight: "0.8rem" }}
                       >
                         <li
                           className={

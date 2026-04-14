@@ -12,9 +12,6 @@ const SignUp = ({ t }) => {
   const [phoneTouched, setPhoneTouched] = useState(false);
 
   const [loading, setLoading] = useState(false);
-  // const [message, setMessage] = useState("");
-  // const [messageType, setMessageType] = useState("");
-  // const [showMessage, setShowMessage] = useState(false);
 
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState(""); 
@@ -63,7 +60,6 @@ const SignUp = ({ t }) => {
     const form = e.target;
 
     if (!validateForm(form)) {
-      // əgər mismatch varsa onu serverError-a da atırıq
       if (
         form.password.value &&
         form.passwordConfirm.value &&
@@ -150,7 +146,7 @@ const SignUp = ({ t }) => {
 
         <div className="signupForm">
           <form onSubmit={handleSubmit}>
-            {/* Name */}
+          
             <div className="signupFormGroup">
               {errors.name && (
                 <div className="validationMessage">{errors.name}</div>
@@ -168,7 +164,7 @@ const SignUp = ({ t }) => {
               </div>
             </div>
 
-            {/* Email */}
+            
             <div className="signupFormGroup">
               {errors.email && (
                 <div className="validationMessage">{errors.email}</div>
@@ -186,7 +182,7 @@ const SignUp = ({ t }) => {
               </div>
             </div>
 
-            {/* Phone */}
+          
             <div className="signupFormGroup">
               {errors.phone && (
                 <div className="validationMessage">{errors.phone}</div>
@@ -218,7 +214,6 @@ const SignUp = ({ t }) => {
               </div>
             </div>
 
-            {/* Password */}
             <div className="signupFormGroup">
               {errors.password && (
                 <div className="validationMessage">{errors.password}</div>
@@ -244,7 +239,6 @@ const SignUp = ({ t }) => {
               </div>
             </div>
 
-            {/* Confirm Password */}
             <div className="signupFormGroup">
               {errors.passwordConfirm &&
                 errors.passwordConfirm !== t?.passwordNotMatch && (
@@ -278,7 +272,6 @@ const SignUp = ({ t }) => {
               </div>
             </div>
 
-            {/* ✅ EYNİ YERDƏ ERROR */}
             {serverError && (
               <p
                 style={{
@@ -292,7 +285,6 @@ const SignUp = ({ t }) => {
               </p>
             )}
 
-            {/* Button */}
             <button
               type="submit"
               className="signupSubmitBtn"
@@ -319,7 +311,6 @@ const SignUp = ({ t }) => {
               )}
             </button>
 
-            {/* Bottom */}
             <div className="signupFormBottom">
               <p>
                 {t?.haveAccount}{" "}

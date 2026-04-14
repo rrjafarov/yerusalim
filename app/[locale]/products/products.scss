@@ -18,6 +18,15 @@
   }
 }
 
+@media only screen and (max-width: 767.9px) {
+  .productPageHero {
+    h1 {
+      padding: 0 2rem;
+      font-size: 3.4rem;
+    }
+  }
+}
+
 .productPageDetails {
   padding-top: 5.3rem;
 
@@ -1193,7 +1202,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      svg{
+      svg {
         width: 2rem;
         height: 2rem;
       }

@@ -12,7 +12,7 @@ const GuestUserForm = ({ delveryRegions, t, onRegionSelect }) => {
       <div className="guestUserFormTopLink">
         <span>{t?.basketFillForm}</span>
         <p>
-          {t?.haveAccount} <Link href="#">{t?.loginNow}</Link>
+          {t?.haveAccount} <Link href="/login">{t?.loginNow}</Link>
         </p>
       </div>
       <div className="guestUserFormSector">
