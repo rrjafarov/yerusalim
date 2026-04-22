@@ -250,7 +250,9 @@ async function fetchProducts(
   sortOrder = null,
 ) {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
 
   // try {
   //   let url = `/page-data/product-list?page=${page}&per_page=${perPage}`;
@@ -393,7 +395,7 @@ async function fetchProducts(
     console.log("FINAL URL:", url);
 
     const { data } = await axiosInstance.get(url, {
-      headers: { Lang: lang?.value || "az" },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
 
@@ -406,12 +408,14 @@ async function fetchProducts(
 
 async function fetchCategoryPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
 
   const { data } = await axiosInstance.get(
     `/page-data/product-categoires?per_page=999`,
     {
-      headers: { Lang: lang?.value || "az" },
+      headers: { Lang: langValue },
       cache: "no-store",
     },
   );
@@ -421,10 +425,12 @@ async function fetchCategoryPageData() {
 
 async function fetchProductsPageInfo() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
 
   const { data } = await axiosInstance.get(`/page-data/page-info`, {
-    headers: { Lang: lang?.value || "az" },
+    headers: { Lang: langValue }, 
     cache: "no-store",
   });
 
@@ -433,12 +439,14 @@ async function fetchProductsPageInfo() {
 
 async function fetchAttributesData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
 
   const { data } = await axiosInstance.get(
     `/page-data/attributes?per_page=999`,
     {
-      headers: { Lang: lang?.value || "az" },
+      headers: { Lang: langValue },
       cache: "no-store",
     },
   );
@@ -448,10 +456,12 @@ async function fetchAttributesData() {
 
 async function getTranslations() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
   try {
     const { data: about } = await axiosInstance.get(`/translation-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -488,7 +498,7 @@ export async function generateMetadata({ searchParams }) {
     title: seoData?.meta_title || "Yerusalim18",
     description: seoData?.meta_description || "Yerusalim18",
     alternates: {
-      canonical: "https://adentta.az/products",
+      canonical: "https://yerusalim18.com/products",
     },
   };
 }

@@ -9,10 +9,11 @@ import { cookies } from "next/headers";
 
 async function fetchContactPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
   try {
     const { data: about } = await axiosInstance.get(`/page-data/contact`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -20,12 +21,15 @@ async function fetchContactPageData() {
     throw error;
   }
 }
+
+
 async function getTranslations() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
   try {
     const { data: about } = await axiosInstance.get(`/translation-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -33,6 +37,9 @@ async function getTranslations() {
     throw error;
   }
 }
+
+
+
 export async function generateMetadata() {
   const contactPageData = await fetchContactPageData();
   const contactData = contactPageData.data;
@@ -40,7 +47,7 @@ export async function generateMetadata() {
   const lang = (await cookies()).get("NEXT_LOCALE")?.value || "az";
   const imageUrl = contactData?.og_image;
   const imageAlt = contactData?.meta_title || "Yerusalim 18";
-  const canonicalUrl = "https://yerusalim18.az/contact";
+  const canonicalUrl = "https://yerusalim18.com/contact";
 
   return {
     title: contactData?.meta_title,
@@ -53,8 +60,8 @@ export async function generateMetadata() {
       images: [
         {
           url: imageUrl
-            ? `https://admin.yerusalim18.az/storage${imageUrl}`
-            : "https://yerusalim18.az/default-og.png",
+            ? `https://admin.yerusalim18.com/storage${imageUrl}`
+            : "https://yerusalim18.com/default-og.png",
           alt: imageAlt,
           width: 1200,
           height: 630,
@@ -73,17 +80,17 @@ export async function generateMetadata() {
       site: "@yerusalim18",
       images: [
         imageUrl
-          ? `https://admin.yerusalim18.az/storage${imageUrl}`
-          : "https://yerusalim18.az/default-og.png",
+          ? `https://admin.yerusalim18.com/storage${imageUrl}`
+          : "https://yerusalim18.com/default-og.png",
       ],
     },
 
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        az: "https://yerusalim18.az/az/contact",
-        ru: "https://yerusalim18.az/ru/contact",
-        en: "https://yerusalim18.az/en/contact",
+        az: "https://yerusalim18.com/az/contact",
+        ru: "https://yerusalim18.com/ru/contact",
+        en: "https://yerusalim18.com/en/contact",
       },
     },
   };

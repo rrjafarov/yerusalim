@@ -23,12 +23,13 @@ export const viewport = {
 
 async function fetchCategoryPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az";
   try {
     const { data: about } = await axiosInstance.get(
       `/page-data/product-categoires?per_page=999`,
       {
-        headers: { Lang: lang.value },
+        headers: { Lang: langValue },
         cache: "no-store",
       },
     );
@@ -40,10 +41,11 @@ async function fetchCategoryPageData() {
 
 async function fetchContactPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az";  // ✅
   try {
     const { data: about } = await axiosInstance.get(`/page-data/contact`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -53,10 +55,11 @@ async function fetchContactPageData() {
 }
 async function fetchTopLinkPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az";  // ✅
   try {
     const { data: about } = await axiosInstance.get(`/page-data/top-banner`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -66,10 +69,11 @@ async function fetchTopLinkPageData() {
 }
 async function getTranslations() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az";  // ✅
   try {
     const { data: about } = await axiosInstance.get(`/translation-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -80,7 +84,7 @@ async function getTranslations() {
 
 async function fetchSupportData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE")?.value || "en";
+  const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
   try {
     const { data } = await axiosInstance.get(`/page-data/support-list`, {
       headers: { Lang: lang },

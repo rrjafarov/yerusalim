@@ -10,11 +10,13 @@ import ProductDetailPageBreadcrumbs from "@/components/ProductDetailPage/Product
 /* ================= FETCH ================= */
 async function fetchProductById(id) {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+  // const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
 
   try {
     const { data } = await axiosInstance.get(`/first-page-data/${id}`, {
-      headers: { Lang: lang },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
 
@@ -27,13 +29,15 @@ async function fetchProductById(id) {
 
 async function fetchSimilarProducts(categoryId, currentProductId) {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+  // const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
 
   try {
     const { data } = await axiosInstance.get(
       `/page-data/product-list?per_page=12&filters[0][key]=category&filters[0][operator]=IN&filters[0][value][]=${categoryId}`,
       {
-        headers: { Lang: lang },
+        headers: { Lang: langValue },
         cache: "no-store",
       },
     );
@@ -71,7 +75,7 @@ export async function generateMetadata({ params }) {
   const pageDescription = productDetail?.meta_description || "Yerusalim18";
   const imageUrl = productDetail?.image_gallery?.[0] || "/favicon.ico";
   const imageAlt = productDetail?.name || "Yerusalim18";
-  const canonicalUrl = `https://adentta.az/products/${slug}`;
+  const canonicalUrl = `https://yerusalim18.com/products/${slug}`;
 
   return {
     title: pageTitle,
@@ -82,7 +86,7 @@ export async function generateMetadata({ params }) {
       url: canonicalUrl,
       images: [
         {
-          url: `https://admin.adentta.az/storage${imageUrl}`,
+          url: `https://admin.yerusalim18.com/storage${imageUrl}`,
           alt: imageAlt,
           width: 1200,
           height: 630,
@@ -98,7 +102,7 @@ export async function generateMetadata({ params }) {
       description: pageDescription,
       creator: "@Yerusalim18",
       site: "@Yerusalim18",
-      images: [`https://admin.adentta.az/storage${imageUrl}`],
+      images: [`https://admin.yerusalim18.com/storage${imageUrl}`],
     },
     alternates: {
       canonical: canonicalUrl,
@@ -108,12 +112,14 @@ export async function generateMetadata({ params }) {
 
 async function fetchCraftPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+  
   try {
     const { data: about } = await axiosInstance.get(
       `/page-data/benefit-craft`,
       {
-        headers: { Lang: lang.value },
+        headers: { Lang: langValue },
         cache: "no-store",
       },
     );
@@ -125,10 +131,12 @@ async function fetchCraftPageData() {
 
 async function getTranslations() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
   try {
     const { data: about } = await axiosInstance.get(`/translation-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;

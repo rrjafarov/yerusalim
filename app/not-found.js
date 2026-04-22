@@ -20,12 +20,13 @@ import "../app/[locale]/globals.scss";
 async function fetchCategoryPageData(locale) {
   try {
     const cookieStore = await cookies();
-    const lang = cookieStore.get("NEXT_LOCALE");
+    // const lang = cookieStore.get("NEXT_LOCALE");
+    const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
 
     const { data } = await axiosInstance.get(
       `/page-data/product-categoires?per_page=999`,
       {
-        headers: { Lang: lang?.value || locale },
+        headers: { Lang: langValue },
         cache: "no-store",
       },
     );
@@ -39,10 +40,11 @@ async function fetchCategoryPageData(locale) {
 async function fetchContactPageData(locale) {
   try {
     const cookieStore = await cookies();
-    const lang = cookieStore.get("NEXT_LOCALE");
+    // const lang = cookieStore.get("NEXT_LOCALE");
+    const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
 
     const { data } = await axiosInstance.get(`/page-data/contact`, {
-      headers: { Lang: lang?.value || locale },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
 
@@ -55,10 +57,11 @@ async function fetchContactPageData(locale) {
 async function getTranslations(locale) {
   try {
     const cookieStore = await cookies();
-    const lang = cookieStore.get("NEXT_LOCALE");
+    // const lang = cookieStore.get("NEXT_LOCALE");
+    const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
 
     const { data } = await axiosInstance.get(`/translation-list`, {
-      headers: { Lang: lang?.value || locale },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
 
@@ -71,10 +74,11 @@ async function getTranslations(locale) {
 async function fetchSupportData(locale) {
   try {
     const cookieStore = await cookies();
-    const lang = cookieStore.get("NEXT_LOCALE");
+    // const lang = cookieStore.get("NEXT_LOCALE");
+    const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
 
     const { data } = await axiosInstance.get(`/page-data/support-list`, {
-      headers: { Lang: lang?.value || locale },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
 
@@ -86,10 +90,12 @@ async function fetchSupportData(locale) {
 
 async function fetchTopLinkPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
   try {
     const { data: about } = await axiosInstance.get(`/page-data/top-banner`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;

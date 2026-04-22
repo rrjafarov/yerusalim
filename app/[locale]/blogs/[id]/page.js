@@ -12,10 +12,11 @@ import "../blogs.scss";
 
 async function fetchBlogById(id) {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+  // const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
   try {
     const { data } = await axiosInstance.get(`/first-page-data/${id}`, {
-      headers: { Lang: lang },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return data?.data || data;
@@ -27,10 +28,11 @@ async function fetchBlogById(id) {
 
 async function fetchBlogsPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
   try {
     const { data: blog } = await axiosInstance.get(`/page-data/blog-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return blog;
@@ -40,10 +42,11 @@ async function fetchBlogsPageData() {
 }
 async function getTranslations() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
   try {
     const { data: about } = await axiosInstance.get(`/translation-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -60,7 +63,7 @@ export async function generateMetadata({ params }) {
     return { title: "Yerusalim18", description: "Blog not found." };
   }
   const imageUrl = blog.cover_image || blog.main_image || "";
-  const baseUrl = "https://yerusalim.az";
+  const baseUrl = "https://yerusalim.com";
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
   const canonicalUrl = `${baseUrl}/${lang}/blogs/${slug}`;
@@ -73,7 +76,7 @@ export async function generateMetadata({ params }) {
       url: canonicalUrl,
       images: [
         {
-          url: `https://admin.yerusalim.az/storage${imageUrl}`,
+          url: `https://admin.yerusalim18.com/storage${imageUrl}`,
           width: 1200,
           height: 630,
         },
@@ -85,6 +88,8 @@ export async function generateMetadata({ params }) {
     },
   };
 }
+
+
 /* ================= PAGE COMPONENT ================= */
 const page = async ({ params }) => {
   const { id: slug } = await params;

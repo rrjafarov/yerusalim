@@ -14,10 +14,11 @@ import { cookies } from "next/headers";
 
 async function fetchAboutPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
   try {
     const { data: about } = await axiosInstance.get(`/page-data/about`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -28,10 +29,11 @@ async function fetchAboutPageData() {
 
 async function fetchBrandsPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
   try {
     const { data: about } = await axiosInstance.get(`/page-data/brand-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -42,12 +44,14 @@ async function fetchBrandsPageData() {
 
 async function fetchCraftPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+  
   try {
     const { data: about } = await axiosInstance.get(
       `/page-data/benefit-craft`,
       {
-        headers: { Lang: lang.value },
+        headers: { Lang: langValue },
         cache: "no-store",
       },
     );
@@ -59,10 +63,12 @@ async function fetchCraftPageData() {
 
 async function getTranslations() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
   try {
     const { data: about } = await axiosInstance.get(`/translation-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -77,51 +83,51 @@ export async function generateMetadata() {
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
 
   const imageUrl = aboutInfo?.data?.banner_image;
-  const imageAlt = aboutInfo?.data?.meta_title || "Adentta";
-  const canonicalUrl = "https://adentta.az";
+  const imageAlt = aboutInfo?.data?.meta_title || "Yerusalim18";
+  const canonicalUrl = "https://yerusalim18.com/about";
 
   return {
     title: aboutInfo?.data?.meta_title,
     description: aboutInfo?.data?.meta_description,
 
     openGraph: {
-      title: aboutInfo?.data?.meta_title || "Adentta",
+      title: aboutInfo?.data?.meta_title || "Yerusalim18",
       description: aboutInfo?.data?.meta_description,
       url: canonicalUrl,
       images: [
         {
           url: imageUrl
-            ? `https://admin.adentta.az/storage${imageUrl}`
-            : "https://adentta.az/default-og.png",
+            ? `https://admin.yerusalim18.com/storage${imageUrl}`
+            : "https://yerusalim18.com/default-og.png",
           alt: imageAlt,
           width: 1200,
           height: 630,
         },
       ],
-      site_name: "Adentta",
+      site_name: "Yerusalim18",
       type: "website",
       locale: lang,
     },
 
     twitter: {
       card: "summary_large_image",
-      title: aboutInfo?.data?.meta_title || "Adentta",
-      description: aboutInfo?.data?.meta_description || "Adentta",
-      creator: "@adentta",
-      site: "@adentta",
+      title: aboutInfo?.data?.meta_title || "Yerusalim18",
+      description: aboutInfo?.data?.meta_description || "Yerusalim18",
+      creator: "@yerusalim18",
+      site: "@yerusalim18",
       images: [
         imageUrl
-          ? `https://admin.adentta.az/storage${imageUrl}`
-          : "https://adentta.az/default-og.png",
+          ? `https://admin.yerusalim18.com/storage${imageUrl}`
+          : "https://yerusalim18.com/default-og.png",
       ],
     },
 
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        az: "https://adentta.az/az",
-        ru: "https://adentta.az/ru",
-        en: "https://adentta.az/en",
+        az: "https://yerusalim18.com/az",
+        ru: "https://yerusalim18.com/ru",
+        en: "https://yerusalim18.com/en",
       },
     },
   };

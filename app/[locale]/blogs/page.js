@@ -8,10 +8,12 @@ import { cookies } from "next/headers";
 
 async function fetchBlogsPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
   try {
     const { data: blog } = await axiosInstance.get(`/page-data/blog-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return blog;
@@ -23,10 +25,12 @@ async function fetchBlogsPageData() {
 
 async function fetchBlogsCategoriesData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
   try {
     const { data: blog } = await axiosInstance.get(`/page-data/blog-categories`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return blog;
@@ -37,10 +41,12 @@ async function fetchBlogsCategoriesData() {
 
 async function fetchBlogsSeoPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
   try {
     const { data: info } = await axiosInstance.get(`/page-data/blog-info`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return info;
@@ -63,7 +69,7 @@ export async function generateMetadata() {
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
   const imageUrl = blogInfo?.data?.og_image;
   const imageAlt = blogInfo?.data?.meta_title || "Yerusalim 18";
-  const canonicalUrl = "https://adentta.az";
+  const canonicalUrl = "https://yerusalim18.com/blogs";
   return {
     title: blogInfo?.data?.meta_title,
     description: blogInfo?.data?.meta_description,
@@ -75,8 +81,8 @@ export async function generateMetadata() {
       images: [
         {
           url: imageUrl
-            ? `https://admin.adentta.az/storage${imageUrl}`
-            : "https://adentta.az/default-og.png",
+            ? `https://admin.yerusalim18.com/storage${imageUrl}`
+            : "https://yerusalim18.com/default-og.png",
           alt: imageAlt,
           width: 1200,
           height: 630,
@@ -95,27 +101,29 @@ export async function generateMetadata() {
       site: "@yerusalim18",
       images: [
         imageUrl
-          ? `https://admin.adentta.az/storage${imageUrl}`
-          : "https://adentta.az/default-og.png",
+          ? `https://admin.yerusalim18.com/storage${imageUrl}`
+          : "https://yerusalim18.com/default-og.png",
       ],
     },
 
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        az: "https://adentta.az/az",
-        ru: "https://adentta.az/ru",
-        en: "https://adentta.az/en",
+        az: "https://yerusalim18.com/az/blogs",
+        ru: "https://yerusalim18.com/ru/blogs",
+        en: "https://yerusalim18.com/en/blogs",
       },
     },
   };
 }
 async function getTranslations() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
   try {
     const { data: about } = await axiosInstance.get(`/translation-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;

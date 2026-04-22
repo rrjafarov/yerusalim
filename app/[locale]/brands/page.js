@@ -5,13 +5,16 @@ import BrandsPage from "@/components/BrandsPage/BrandsPage";
 import BrandsBreadcrumbs from "@/components/BrandsPage/BrandsBreadcrumbs";
 import axiosInstance from "@/lib/axios";
 import { cookies } from "next/headers";
+
+
 async function fetchBrandsPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
 
   try {
     const { data: brand } = await axiosInstance.get(`/page-data/brand-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return brand;
@@ -21,10 +24,11 @@ async function fetchBrandsPageData() {
 }
 async function getTranslations() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
   try {
     const { data: about } = await axiosInstance.get(`/translation-list`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return about;
@@ -34,10 +38,12 @@ async function getTranslations() {
 }
 async function fetchBrandsSeoPageData() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  // const lang = cookieStore.get("NEXT_LOCALE");
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+
   try {
     const { data: info } = await axiosInstance.get(`/page-data/brand-info`, {
-      headers: { Lang: lang.value },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return info;
@@ -59,7 +65,7 @@ export async function generateMetadata() {
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
   const imageUrl = brandInfo?.data?.og_image;
   const imageAlt = brandInfo?.data?.meta_title || "Yerusalim 18";
-  const canonicalUrl = "https://yerusalim18.az";
+  const canonicalUrl = "https://yerusalim18.com/brands";
 
   return {
     title: brandInfo?.data?.meta_title,
@@ -72,8 +78,8 @@ export async function generateMetadata() {
       images: [
         {
           url: imageUrl
-            ? `https://admin.yerusalim18.az/storage${imageUrl}`
-            : "https://yerusalim18.az/default-og.png",
+            ? `https://admin.yerusalim18.com/storage${imageUrl}`
+            : "https://yerusalim18.com/default-og.png",
           alt: imageAlt,
           width: 1200,
           height: 630,
@@ -92,17 +98,17 @@ export async function generateMetadata() {
       site: "@yerusalim18",
       images: [
         imageUrl
-          ? `https://admin.yerusalim18.az/storage${imageUrl}`
-          : "https://yerusalim18.az/default-og.png",
+          ? `https://admin.yerusalim18.com/storage${imageUrl}`
+          : "https://yerusalim18.com/default-og.png",
       ],
     },
 
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        az: "https://yerusalim18.az/az",
-        ru: "https://yerusalim18.az/ru",
-        en: "https://yerusalim18.az/en",
+        az: "https://yerusalim18.com/az/brands",
+        ru: "https://yerusalim18.com/ru/brands",
+        en: "https://yerusalim18.com/en/brands",
       },
     },
   };

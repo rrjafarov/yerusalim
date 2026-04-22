@@ -6,11 +6,12 @@ import { cookies } from "next/headers";
 /* ================= SUPPORT FETCH ================= */
 async function fetchSupportById(id) {
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+  // const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
 
   try {
     const { data } = await axiosInstance.get(`/first-page-data/${id}`, {
-      headers: { Lang: lang },
+      headers: { Lang: langValue },
       cache: "no-store",
     });
     return data?.data || data;
