@@ -504,6 +504,8 @@
       flex-direction: column;
       gap: 1.6rem;
       align-items: flex-start;
+      font-family: "Inter", sans-serif !important;
+
       li {
         cursor: pointer;
         color: #3a3a3a;
@@ -511,6 +513,7 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        font-family: "Inter", sans-serif !important;
       }
     }
   }

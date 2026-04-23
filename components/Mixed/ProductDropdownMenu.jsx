@@ -55,20 +55,6 @@ const ProductDropdownMenu = ({ categoryData, onClose, t , buttonRef }) => {
 
 
 
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (menuRef.current && !menuRef.current.contains(event.target)) {
-  //       onClose?.();
-  //     }
-  //   };
-
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [onClose]);
-
-
   useEffect(() => {
   const handleClickOutside = (event) => {
     const menuEl = menuRef.current;

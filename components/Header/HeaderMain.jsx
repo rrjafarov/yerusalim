@@ -252,7 +252,6 @@ const HeaderMain = ({ categoryData, contactData, t }) => {
                 <p>{t?.products}</p>
               </button>
 
-              {/* ✅ YENİ: ProductDropdownMenu - Buttonun altında 2rem məsafədə */}
               {isProductMenuOpen && (
                 <div
                   style={{
