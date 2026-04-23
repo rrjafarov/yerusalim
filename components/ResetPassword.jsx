@@ -84,7 +84,7 @@ const ForgotPassword = ({ t }) => {
             </div>
           </>
         ) : (
-          /* 🔹 Mail göndərildikdən sonra göstərilən mesaj */
+          /* 🔹 Mail göndərildikdən sonra göstərilən mesaj */ 
           <div className="recoveryMailSent">
             <h1>{t?.recoveryMailSent || "RECOVERY MAIL SENT"}</h1>
             <p>

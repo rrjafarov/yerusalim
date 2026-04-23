@@ -36,7 +36,7 @@ export async function generateMetadata() {
           height: 630,
         },
       ],
-      site_name: "yerusalim18.com",
+      site_name: "Yerusalim18",
       type: "website",
       locale: lang?.value,
     },

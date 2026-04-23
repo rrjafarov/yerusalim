@@ -63,18 +63,18 @@ export async function generateMetadata({ params }) {
 
   if (!slug) {
     return {
-      title: "Yerusalim18",
-      description: "Yerusalim18",
+      title: "Yerusalim 18",
+      description: "Yerusalim 18",
     };
   }
 
   const id = slug.split("-").pop();
   const productDetail = await fetchProductById(id);
 
-  const pageTitle = productDetail?.meta_title || "Yerusalim18";
-  const pageDescription = productDetail?.meta_description || "Yerusalim18";
+  const pageTitle = productDetail?.meta_title || "Yerusalim 18";
+  const pageDescription = productDetail?.meta_description || "Yerusalim 18";
   const imageUrl = productDetail?.image_gallery?.[0] || "/favicon.ico";
-  const imageAlt = productDetail?.name || "Yerusalim18";
+  const imageAlt = productDetail?.name || "Yerusalim 18";
   const canonicalUrl = `https://yerusalim18.com/products/${slug}`;
 
   return {
@@ -92,7 +92,7 @@ export async function generateMetadata({ params }) {
           height: 630,
         },
       ],
-      site_name: "Yerusalim18",
+      site_name: "Yerusalim 18",
       type: "website",
       locale: "az",
     },
