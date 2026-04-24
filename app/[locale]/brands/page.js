@@ -64,7 +64,7 @@ export async function generateMetadata() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
   const imageUrl = brandInfo?.data?.og_image;
-  const imageAlt = brandInfo?.data?.meta_title || "Yerusalim 18";
+  const imageAlt = brandInfo?.data?.meta_title || "Yerusalim18";
   const canonicalUrl = "https://yerusalim18.com/brands";
 
   return {
@@ -72,7 +72,7 @@ export async function generateMetadata() {
     description: brandInfo?.data?.meta_description,
 
     openGraph: {
-      title: brandInfo?.data?.meta_title || "Yerusalim 18",
+      title: brandInfo?.data?.meta_title || "Yerusalim18",
       description: brandInfo?.data?.meta_description,
       url: canonicalUrl,
       images: [
@@ -85,15 +85,15 @@ export async function generateMetadata() {
           height: 630,
         },
       ],
-      site_name: "Yerusalim 18",
+      site_name: "Yerusalim18",
       type: "website",
       locale: lang,
     },
 
     twitter: {
       card: "summary_large_image",
-      title: brandInfo?.data?.meta_title || "Yerusalim 18",
-      description: brandInfo?.data?.meta_description || "Yerusalim 18",
+      title: brandInfo?.data?.meta_title || "Yerusalim18",
+      description: brandInfo?.data?.meta_description || "Yerusalim18",
       creator: "@yerusalim18",
       site: "@yerusalim18",
       images: [

@@ -68,14 +68,14 @@ export async function generateMetadata() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
   const imageUrl = blogInfo?.data?.og_image;
-  const imageAlt = blogInfo?.data?.meta_title || "Yerusalim 18";
+  const imageAlt = blogInfo?.data?.meta_title || "Yerusalim18";
   const canonicalUrl = "https://yerusalim18.com/blogs";
   return {
     title: blogInfo?.data?.meta_title,
     description: blogInfo?.data?.meta_description,
 
     openGraph: {
-      title: blogInfo?.data?.meta_title || "Yerusalim 18",
+      title: blogInfo?.data?.meta_title || "Yerusalim18",
       description: blogInfo?.data?.meta_description,
       url: canonicalUrl,
       images: [
@@ -88,15 +88,15 @@ export async function generateMetadata() {
           height: 630,
         },
       ],
-      site_name: "Yerusalim 18",
+      site_name: "Yerusalim18",
       type: "website",
       locale: lang,
     },
 
     twitter: {
       card: "summary_large_image",
-      title: blogInfo?.data?.meta_title || "Yerusalim 18",
-      description: blogInfo?.data?.meta_description || "Yerusalim 18",
+      title: blogInfo?.data?.meta_title || "Yerusalim18",
+      description: blogInfo?.data?.meta_description || "Yerusalim18",
       creator: "@yerusalim18",
       site: "@yerusalim18",
       images: [

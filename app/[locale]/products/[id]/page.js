@@ -63,18 +63,18 @@ export async function generateMetadata({ params }) {
 
   if (!slug) {
     return {
-      title: "Yerusalim 18",
-      description: "Yerusalim 18",
+      title: "Yerusalim18",
+      description: "Yerusalim18",
     };
   }
 
   const id = slug.split("-").pop();
   const productDetail = await fetchProductById(id);
 
-  const pageTitle = productDetail?.meta_title || "Yerusalim 18";
-  const pageDescription = productDetail?.meta_description || "Yerusalim 18";
+  const pageTitle = productDetail?.meta_title || "Yerusalim18";
+  const pageDescription = productDetail?.meta_description || "Yerusalim18";
   const imageUrl = productDetail?.image_gallery?.[0] || "/favicon.ico";
-  const imageAlt = productDetail?.name || "Yerusalim 18";
+  const imageAlt = productDetail?.name || "Yerusalim18";
   const canonicalUrl = `https://yerusalim18.com/products/${slug}`;
 
   return {
@@ -92,7 +92,7 @@ export async function generateMetadata({ params }) {
           height: 630,
         },
       ],
-      site_name: "Yerusalim 18",
+      site_name: "Yerusalim18",
       type: "website",
       locale: "az",
     },
@@ -100,8 +100,8 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
-      creator: "@Yerusalim18",
-      site: "@Yerusalim18",
+      creator: "@yerusalim18",
+      site: "@yerusalim18",
       images: [`https://admin.yerusalim18.com/storage${imageUrl}`],
     },
     alternates: {
@@ -167,17 +167,13 @@ const page = async ({ params }) => {
     benefit?.data?.data?.filter((item) => item.page_section === "benefit") ||
     [];
 
-    console.log(productDetail || "dwe")
-
   return (
     <div>
       <div className="productPageBackground">
         <ProductDetailPageBreadcrumbs t={t} productDetail={productDetail} />
         <ProductDetailPage t={t} productDetail={productDetail} />
       </div>
-
       <Advantages t={t} benefitData={benefitData} />
-
       <ProductDetailPageSimilars t={t} products={similarProducts} />
     </div>
   );

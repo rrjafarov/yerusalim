@@ -46,7 +46,7 @@ export async function generateMetadata() {
 
   const lang = (await cookies()).get("NEXT_LOCALE")?.value || "az";
   const imageUrl = contactData?.og_image;
-  const imageAlt = contactData?.meta_title || "Yerusalim 18";
+  const imageAlt = contactData?.meta_title || "Yerusalim18";
   const canonicalUrl = "https://yerusalim18.com/contact";
 
   return {
@@ -54,7 +54,7 @@ export async function generateMetadata() {
     description: contactData?.meta_description,
 
     openGraph: {
-      title: contactData?.meta_title || "Yerusalim 18",
+      title: contactData?.meta_title || "Yerusalim18",
       description: contactData?.meta_description,
       url: canonicalUrl,
       images: [
@@ -67,15 +67,15 @@ export async function generateMetadata() {
           height: 630,
         },
       ],
-      site_name: "Yerusalim 18",
+      site_name: "Yerusalim18",
       type: "website",
       locale: lang,
     },
 
     twitter: {
       card: "summary_large_image",
-      title: contactData?.meta_title || "Yerusalim 18",
-      description: contactData?.meta_description || "Yerusalim 18",
+      title: contactData?.meta_title || "Yerusalim18",
+      description: contactData?.meta_description || "Yerusalim18",
       creator: "@yerusalim18",
       site: "@yerusalim18",
       images: [

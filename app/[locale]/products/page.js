@@ -495,8 +495,8 @@ export async function generateMetadata({ searchParams }) {
   }
 
   return {
-    title: seoData?.meta_title || "Yerusalim 18",
-    description: seoData?.meta_description || "Yerusalim 18",
+    title: seoData?.meta_title || "Yerusalim18",
+    description: seoData?.meta_description || "Yerusalim18",
     alternates: {
       canonical: "https://yerusalim18.com/products",
     },

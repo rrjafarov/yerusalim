@@ -60,7 +60,7 @@ export async function generateMetadata({ params }) {
   const id = slug.split("-").pop();
   const blog = await fetchBlogById(id);
   if (!blog) {
-    return { title: "Yerusalim 18", description: "Blog not found." };
+    return { title: "Yerusalim18", description: "Blog not found." };
   }
   const imageUrl = blog.cover_image || blog.main_image || "";
   const baseUrl = "https://yerusalim.com";
