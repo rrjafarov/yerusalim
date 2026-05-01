@@ -221,6 +221,7 @@ const ProductPageDetails = ({
                   selectedCategory={selectedCategory}
                   categories={categoriesData?.data?.data || []}
                   onMobileClose={closeMobileFilter}
+                  products={products}
                 />
               </div>
             </div>
@@ -248,6 +249,7 @@ const ProductPageDetails = ({
                     selectedCategory={selectedCategory}
                     categories={categoriesData?.data?.data || []}
                     onMobileClose={closeMobileFilter}
+                    products={products}
                   />
                 </div>
               </div>

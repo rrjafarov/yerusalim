@@ -33,11 +33,13 @@ const SortBy = ({ t }) => {
       sortOrder = "desc";
     }
     if (value === "priceLowToHigh") {
-      sortBy = "product_variants[0].price";
+      // sortBy = "product_variants[0].price";
+      sortBy = "price";
       sortOrder = "asc";
     }
     if (value === "priceHighToLow") {
-      sortBy = "product_variants[0].price";
+      // sortBy = "product_variants[0].price";
+      sortBy = "price";
       sortOrder = "desc";
     }
 
@@ -68,8 +70,8 @@ const SortBy = ({ t }) => {
         }
         dropdownMatchSelectWidth={true}
         options={[
-          { value: "priceLowToHigh", label: t?.priceHighToLow },
-          { value: "priceHighToLow", label: t?.priceLowToHigh },
+          { value: "priceLowToHigh", label: t?.priceLowToHigh },
+          { value: "priceHighToLow", label: t?.priceHighToLow },  
           { value: "a-z", label: t?.sortAZ },
           { value: "z-a", label: t?.sortZA },
         ]}
