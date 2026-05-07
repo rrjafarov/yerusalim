@@ -4544,3 +4544,61 @@ ul {
     }
   }
 }
+
+.successPaymentDesign {
+  margin: 15rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-direction: column;
+  span {
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.0117rem; /* 143.69% */
+    letter-spacing: 0.014rem;
+    text-transform: uppercase;
+    color: #711111;
+    font-family: "Noto Serif Display";
+  }
+  .successPayError {
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    color: #711111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+  }
+  button {
+    width: 25rem;
+    height: 5rem;
+    margin-top: 1rem;
+    a {
+      border-radius: 0.8rem;
+      background-color: #711111;
+      color: #fff;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 2.0117rem;
+      letter-spacing: 0.014rem;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease-in-out;
+      &:hover {
+        background-color: #000;
+        transition: background-color 0.2s ease-in-out;
+      }
+    }
+  }
+}
+
+
+

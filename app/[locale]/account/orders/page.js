@@ -19,12 +19,31 @@ async function getTranslations() {
   }
 }
 
+async function fetchOrderData() {
+  const cookieStore = await cookies();
+  const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
+  const token = cookieStore.get("token")?.value;
+  try {
+    const { data: order } = await axiosInstance.get(`/user-orders`, {
+      headers: {
+        Lang: langValue,
+        Authorization: token ? `Bearer ${token}` : "",
+      },
+      cache: "no-store",
+    });
+    return order;
+  } catch (error) {
+    throw error;
+  }
+}
+
 const page = async () => {
   const t = await getTranslations();
+  const orders = await fetchOrderData();
 
   return (
     <div>
-      <OrderList t={t} />
+      <OrderList t={t} orders={orders} />
     </div>
   );
 };

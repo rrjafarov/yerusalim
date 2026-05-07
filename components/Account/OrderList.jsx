@@ -1,10 +1,174 @@
+// "use client";
+
+// import Image from "next/image";
+// import Link from "next/link";
+// import React, { useState } from "react";
+
+// const OrderList = ({ t, orders }) => {
+//   const [expandedOrder, setExpandedOrder] = useState(null);
+
+//   const toggleOrder = (orderNo) => {
+//     setExpandedOrder(expandedOrder === orderNo ? null : orderNo);
+//   };
+
+//   return (
+//     <div className="orderList">
+//       <div className="order-list-container">
+//         <span className="order-list-title">{t?.myOrderList}</span>
+
+//         <table className="order-table">
+//           <thead>
+//             <tr className="orderHeader">
+//               <th>{t?.orderNum}</th>
+//               <th>{t?.customerName}</th>
+//               <th>{t?.orderDate}</th>
+//               <th>{t?.address}</th>
+//               <th>{t?.paymentStatus}</th>
+//               <th>{t?.amount}</th>
+//               <th>{t?.status}</th>
+//             </tr>
+//           </thead>
+
+//           <tbody>
+//             {/* MAIN ORDER ROW */}
+//             <tr className="orderRow" onClick={() => toggleOrder("300")}>
+//               <td>300</td>
+//               <td>Lavinia Leo</td>
+//               <td>13-Nov-2026</td>
+//               <td>Baku, Azerbaijan</td>
+//               <td>
+//                 <span className="paymentStatus">{t?.paid}</span>
+//               </td>
+//               <td>$400</td>
+//               <td className="order-status-cell">
+//                 <span className="orderStatus">{t?.confirmed}</span>
+//                 <span
+//                   className={`chevron-icon ${
+//                     expandedOrder === "300" ? "open" : ""
+//                   }`}
+//                 >
+//                   {expandedOrder === "300" ? (
+//                     <svg
+//                       xmlns="http://www.w3.org/2000/svg"
+//                       width="18"
+//                       height="16"
+//                       viewBox="0 0 18 16"
+//                       fill="none"
+//                     >
+//                       <path
+//                         d="M14.9386 10.0601L10.0486 5.71339C9.47109 5.20006 8.5261 5.20006 7.94859 5.71339L3.05859 10.0601"
+//                         stroke="#FF0000"
+//                         strokeWidth="1.5"
+//                         strokeLinecap="round"
+//                         strokeLinejoin="round"
+//                       />
+//                     </svg>
+//                   ) : (
+//                     <svg
+//                       xmlns="http://www.w3.org/2000/svg"
+//                       width="18"
+//                       height="16"
+//                       viewBox="0 0 18 16"
+//                       fill="none"
+//                     >
+//                       <path
+//                         d="M3.06141 5.94043L7.95141 10.2871C8.52891 10.8004 9.47391 10.8004 10.0514 10.2871L14.9414 5.94043"
+//                         stroke="#222222"
+//                         strokeWidth="1.5"
+//                         strokeLinecap="round"
+//                         strokeLinejoin="round"
+//                       />
+//                     </svg>
+//                   )}
+//                 </span>
+//               </td>
+//             </tr>
+//             {expandedOrder === "300" && (
+//               <tr className="accordionRow">
+//                 <td colSpan="7">
+//                   <div className="order-details">
+//                     <div className="order-details-grid">
+//                       {/* PRODUCTS */}
+//                       <div className="products-section">
+//                         <div className="product-card">
+//                           <div className="product-info">
+//                             <Image
+//                               src="/img/cartPro.png"
+//                               alt="orderImage"
+//                               width={110}
+//                               height={110}
+//                               className="product-image"
+//                             />
+
+//                             <div className="product-text">
+//                               <span className="product-name">
+//                                 Product Name is here
+//                               </span>
+//                               <div className="product-specs">
+//                                 <span>{t?.size}: L</span>
+//                                 <span>{t?.quantity}: 1</span>
+//                               </div>
+//                             </div>
+//                           </div>
+//                           <div className="product-actions">
+//                             <Link
+//                               href="/product/id"
+//                               className="see-product-link"
+//                             >
+//                               {t?.showProducts}
+//                             </Link>
+//                             <span className="product-price">37 azn</span>
+//                           </div>
+//                         </div>
+//                         <div className="product-cardLine"></div>
+//                       </div>
+
+//                       {/* SUMMARY */}
+//                       <div className="order-summary">
+//                         <div className="order-summaryItems">
+//                           <p className="summary-title">{t?.orderSummary}</p>
+//                           <div className="summary-items">
+//                             <div className="summary-row">
+//                               <span>{t?.itemTotal}</span>
+//                               <span>4</span>
+//                             </div>
+//                             <div className="summary-row">
+//                               <span>{t?.subTotal}</span>
+//                               <span>148 azn</span>
+//                             </div>
+//                             <div className="summary-row">
+//                               <span>{t?.delivery}</span>
+//                               <span>1 azn</span>
+//                             </div>
+//                           </div>
+
+//                           <div className="summary-total">
+//                             <span>{t?.total} :</span>
+//                             <span>149 azn</span>
+//                           </div>
+//                         </div>
+//                       </div>
+//                     </div>
+//                   </div>
+//                 </td>
+//               </tr>
+//             )}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default OrderList;
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
-const OrderList = ({ t }) => {
+const OrderList = ({ t, orders }) => {
   const [expandedOrder, setExpandedOrder] = useState(null);
 
   const toggleOrder = (orderNo) => {
@@ -30,129 +194,159 @@ const OrderList = ({ t }) => {
           </thead>
 
           <tbody>
-            {/* MAIN ORDER ROW */}
-            <tr className="orderRow" onClick={() => toggleOrder("300")}>
-              <td>300</td>
-              <td>Lavinia Leo</td>
-              <td>13-Nov-2026</td>
-              <td>Baku, Azerbaijan</td>
-              <td>
-                <span className="paymentStatus">{t?.paid}</span>
-              </td>
-              <td>$400</td>
-              <td className="order-status-cell">
-                <span className="orderStatus">{t?.confirmed}</span>
-                <span
-                  className={`chevron-icon ${
-                    expandedOrder === "300" ? "open" : ""
-                  }`}
-                >
-                  {expandedOrder === "300" ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="16"
-                      viewBox="0 0 18 16"
-                      fill="none"
-                    >
-                      <path
-                        d="M14.9386 10.0601L10.0486 5.71339C9.47109 5.20006 8.5261 5.20006 7.94859 5.71339L3.05859 10.0601"
-                        stroke="#FF0000"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="16"
-                      viewBox="0 0 18 16"
-                      fill="none"
-                    >
-                      <path
-                        d="M3.06141 5.94043L7.95141 10.2871C8.52891 10.8004 9.47391 10.8004 10.0514 10.2871L14.9414 5.94043"
-                        stroke="#222222"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </span>
-              </td>
-            </tr>
-            {expandedOrder === "300" && (
-              <tr className="accordionRow">
-                <td colSpan="7">
-                  <div className="order-details">
-                    <div className="order-details-grid">
-                      {/* PRODUCTS */}
-                      <div className="products-section">
-                        <div className="product-card">
-                          <div className="product-info">
-                            <Image
-                              src="/img/cartPro.png"
-                              alt="orderImage"
-                              width={110}
-                              height={110}
-                              className="product-image"
-                            />
+            {orders?.map((order) => (
+              <React.Fragment key={order.id}>
+                {/* MAIN ORDER ROW */}
+                <tr className="orderRow" onClick={() => toggleOrder(order.id)}>
+                  <td>{order.id}</td>
 
-                            <div className="product-text">
-                              <span className="product-name">
-                                Product Name is here
-                              </span>
-                              <div className="product-specs">
-                                <span>{t?.size}: L</span>
-                                <span>{t?.quantity}: 1</span>
+                  <td>{order.user?.full_name}</td>
+
+                  <td>
+                    {new Date(order.created_at).toLocaleDateString("en-GB")}
+                  </td>
+
+                  <td>{order.user?.address}</td>
+
+                  <td>
+                    <span className="paymentStatus">
+                      {order.payment_status}
+                    </span>
+                  </td>
+
+                  <td>{order.amount} azn</td>
+
+                  <td className="order-status-cell">
+                    <span className="orderStatus">{order.status}</span>
+
+                    <span
+                      className={`chevron-icon ${
+                        expandedOrder === order.id ? "open" : ""
+                      }`}
+                    >
+                      {expandedOrder === order.id ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="16"
+                          viewBox="0 0 18 16"
+                          fill="none"
+                        >
+                          <path
+                            d="M14.9386 10.0601L10.0486 5.71339C9.47109 5.20006 8.5261 5.20006 7.94859 5.71339L3.05859 10.0601"
+                            stroke="#FF0000"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="16"
+                          viewBox="0 0 18 16"
+                          fill="none"
+                        >
+                          <path
+                            d="M3.06141 5.94043L7.95141 10.2871C8.52891 10.8004 9.47391 10.8004 10.0514 10.2871L14.9414 5.94043"
+                            stroke="#222222"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      )}
+                    </span>
+                  </td>
+                </tr>
+
+                {/* ACCORDION */}
+                {expandedOrder === order.id && (
+                  <tr className="accordionRow">
+                    <td colSpan="7">
+                      <div className="order-details">
+                        <div className="order-details-grid">
+                          {/* PRODUCTS */}
+                          <div className="products-section">
+                            {order.order_products?.map((product) => (
+                              <div key={product.product_order_id}>
+                                <div className="product-card">
+                                  <div className="product-info">
+                                    <Image
+                                      src={
+                                        product.product_image?.image
+                                          ? `${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${product.product_image.image}`
+                                          : "/img/cartPro.png"
+                                      }
+                                      alt="orderImage"
+                                      width={110}
+                                      height={110}
+                                      className="product-image"
+                                    />
+
+                                    <div className="product-text">
+                                      <span className="product-name">
+                                        {product.product_name}
+                                      </span>
+
+                                      <div className="product-specs">
+                                        <span>
+                                          {t?.quantity}: {product.quantity}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div className="product-actions">
+                                    <Link
+                                      href={`/products/${product.product_id}`}
+                                      className="see-product-link"
+                                    >
+                                      {t?.showProducts}
+                                    </Link>
+
+                                    <span className="product-price">
+                                      {product.product_price} azn
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="product-cardLine"></div>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* SUMMARY */}
+                          <div className="order-summary">
+                            <div className="order-summaryItems">
+                              <p className="summary-title">{t?.orderSummary}</p>
+
+                              <div className="summary-items">
+                                <div className="summary-row">
+                                  <span>{t?.itemTotal}</span>
+                                  <span>{order.order_products?.length}</span>
+                                </div>
+
+                                <div className="summary-row">
+                                  <span>{t?.total}</span>
+                                  <span>{order.amount} azn</span>
+                                </div>
+                              </div>
+
+                              <div className="summary-total">
+                                <span>{t?.total} :</span>
+                                <span>{order.amount} azn</span>
                               </div>
                             </div>
                           </div>
-                          <div className="product-actions">
-                            <Link
-                              href="/product/id"
-                              className="see-product-link"
-                            >
-                              {t?.showProducts}
-                            </Link>
-                            <span className="product-price">37 azn</span>
-                          </div>
-                        </div>
-                        <div className="product-cardLine"></div>
-                      </div>
-
-                      {/* SUMMARY */}
-                      <div className="order-summary">
-                        <div className="order-summaryItems">
-                          <p className="summary-title">{t?.orderSummary}</p>
-                          <div className="summary-items">
-                            <div className="summary-row">
-                              <span>{t?.itemTotal}</span>
-                              <span>4</span>
-                            </div>
-                            <div className="summary-row">
-                              <span>{t?.subTotal}</span>
-                              <span>148 azn</span>
-                            </div>
-                            <div className="summary-row">
-                              <span>{t?.delivery}</span>
-                              <span>1 azn</span>
-                            </div>
-                          </div>
-
-                          <div className="summary-total">
-                            <span>{t?.total} :</span>
-                            <span>149 azn</span>
-                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            )}
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
           </tbody>
         </table>
       </div>
