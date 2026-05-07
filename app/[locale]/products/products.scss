@@ -543,6 +543,7 @@
     gap: 2rem;
     margin-bottom: 2rem;
 
+
     .filterAccordionContentPricesItemsMinPrice {
       display: flex;
       flex-direction: column;
@@ -580,10 +581,41 @@
         }
       }
     }
-    // .filterAccordionCustomScrollbar {
-    //   top: 5rem;
-    // }
   }
+
+  .filterAccordionContentPricesItems{
+    width: 100% !important;
+    display: flex;
+    gap: 4rem !important;
+    
+    .filterAccordionContentPricesItemsMinPrice{
+      width: 50% !important;
+       p{
+        display: none !important;
+      }
+      .minPriceValue{
+        width: 100% !important;
+        height: 5rem !important;
+        font-size: 1.6rem !important;
+        font-weight: 500 !important;
+
+      }
+    }
+    .filterAccordionContentPricesItemsMaxPrice{
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      p{
+        display: none !important;
+      }
+    }
+  }
+}
+
+.rangeSliderDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .filterAccordionContentSearch {

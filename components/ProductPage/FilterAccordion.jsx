@@ -410,18 +410,6 @@
 
 // export default FilterAccordion;
 
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { Collapse } from "antd";
@@ -437,7 +425,7 @@ const FilterAccordion = ({
   categories,
   t,
   onMobileClose,
-  minPrice = 0,  // ✅ YENİ PROP
+  minPrice = 0, // ✅ YENİ PROP
   maxPrice = 999, // ✅ YENİ PROP
 }) => {
   const scrollRefs = useRef({});
@@ -627,7 +615,9 @@ const FilterAccordion = ({
                       <li
                         key={cat.id}
                         onClick={() => {
-                          router.push(`/products?category=${cat.url_slug}-${cat.id}`);
+                          router.push(
+                            `/products?category=${cat.url_slug}-${cat.id}`,
+                          );
                           closeIfMobile();
                         }}
                         style={{ cursor: "pointer" }}
@@ -645,7 +635,9 @@ const FilterAccordion = ({
                         <li
                           key={cat.id}
                           onClick={() => {
-                            router.push(`/products?category=${cat.url_slug}-${cat.id}`);
+                            router.push(
+                              `/products?category=${cat.url_slug}-${cat.id}`,
+                            );
                             closeIfMobile();
                           }}
                           style={{
@@ -685,19 +677,21 @@ const FilterAccordion = ({
                 <p>Min.</p>
                 <div className="minPriceValue">{priceRange[0]}</div>
               </div>
-              <div className="filterAccordionContentPricesItemsMinPrice">
+              <div className="filterAccordionContentPricesItemsMinPrice filterAccordionContentPricesItemsMaxPrice">
                 <p>Max.</p>
                 <div className="minPriceValue">{priceRange[1]}</div>
               </div>
             </div>
 
-            <RangeSlider
-              value={priceRange}
-              onChange={setPriceRange}
-              min={minPrice}
-              max={maxPrice}
-            />
-
+            <div className="rangeSliderDiv">
+              <RangeSlider
+                value={priceRange}
+                onChange={setPriceRange}
+                min={minPrice}
+                max={maxPrice}
+              />
+            </div>
+            
             <div className="filterPriceApplyButton">
               <button
                 onClick={() => {
@@ -705,7 +699,9 @@ const FilterAccordion = ({
                   params.set("min_price", priceRange[0]);
                   params.set("max_price", priceRange[1]);
                   params.delete("page");
-                  router.push(`${pathname}?${params.toString()}`, { scroll: false });
+                  router.push(`${pathname}?${params.toString()}`, {
+                    scroll: false,
+                  });
                   closeIfMobile();
                 }}
               >
@@ -752,14 +748,18 @@ const FilterAccordion = ({
                       .filter((val) =>
                         val.name
                           .toLowerCase()
-                          .includes((searchTerms[topAttr.id] || "").toLowerCase()),
+                          .includes(
+                            (searchTerms[topAttr.id] || "").toLowerCase(),
+                          ),
                       )
                       .map((val) => (
                         <li key={val.id}>
                           <input
                             className="searchCheck"
                             type="checkbox"
-                            checked={selectedAttributes.includes(String(val.id))}
+                            checked={selectedAttributes.includes(
+                              String(val.id),
+                            )}
                             onChange={() => handleAttributeChange(val.id)}
                           />
                           {val.name}
@@ -780,28 +780,7 @@ const FilterAccordion = ({
 
 export default FilterAccordion;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ! claude code 
-
-
+// ! claude code
 
 // "use client";
 // import React, { useRef, useState, useEffect } from "react";
@@ -1082,8 +1061,6 @@ export default FilterAccordion;
 //               </button>
 //             </div> */}
 
-
-
 //             <div className="filterPriceApplyButton">
 //   <button
 //     onClick={() => {
@@ -1098,13 +1075,6 @@ export default FilterAccordion;
 //     {t?.apply}
 //   </button>
 // </div>
-
-
-
-
-
-
-
 
 //           </div>
 //         </Panel>
@@ -1204,6 +1174,3 @@ export default FilterAccordion;
 // };
 
 // export default FilterAccordion;
-
-
-

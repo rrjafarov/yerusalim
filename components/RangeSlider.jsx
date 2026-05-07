@@ -57,7 +57,16 @@ export default function RangeSlider({ value, onChange, min = 0, max = 999 }) {
   };
 
   return (
-    <Box sx={{ width: "100%"  }}>
+    <Box
+    //  sx={{ width: "100%"  }}
+    sx={{
+        width: {
+          xs: "95%",
+          sm: "98%",
+        },
+      }}
+    
+    >
       <Slider
         value={value}
         onChange={handleChange}
