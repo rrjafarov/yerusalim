@@ -65,12 +65,12 @@ async function getTranslations() {
 }
 
 const page = async ({ searchParams }) => {
-  const cookieStore = await cookies();
-  const hasAccess = cookieStore.get("allow-access");
+  // const cookieStore = await cookies();
+  // const hasAccess = cookieStore.get("allow-access");
 
-  if (!hasAccess) {
-    notFound();
-  }
+  // if (!hasAccess) {
+  //   notFound();
+  // }
 
   const t = await getTranslations();
 
