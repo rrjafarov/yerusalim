@@ -4514,3 +4514,33 @@ ul {
     opacity: 1;
   }
 }
+
+.filterPriceApplyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  height: 4rem;
+  margin-top: 1.5rem;
+
+  button {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.8rem;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.0117rem; /* 143.69% */
+    letter-spacing: 0.014rem;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    &:hover {
+      background: #711111; // hover rəngi
+    }
+  }
+}

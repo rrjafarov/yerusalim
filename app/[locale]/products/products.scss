@@ -550,17 +550,18 @@
 
       p {
         margin: 0;
-        font-size: 0.9rem;
+        font-size: 1.2rem;
       }
 
       .minPriceValue {
         border-radius: 0.4rem;
         background: #f2eee7;
         width: 12.3rem;
-        height: 3rem;
+        height: 3.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 1.4rem;
       }
     }
   }

@@ -91,6 +91,10 @@
 // export default ProductPageDetails;
 // !YUXARIDA OLAN KODDA HECBIR DATA YOXDUR
 
+
+
+
+
 "use client";
 import React, { useState, useEffect } from "react";
 import SortBy from "./SortBy";
@@ -109,9 +113,9 @@ const ProductPageDetails = ({
   filterAttributes,
   productsPageInfo,
   t,
+  minPrice, // ✅ YENİ PROP
+  maxPrice, // ✅ YENİ PROP
 }) => {
-  // const categoryBanner =
-  //   productsData?.data?.data?.[0]?.category?.[0]?.banner;
 
   const categoryBanner = selectedCategory
     ? productsData?.data?.data?.[0]?.category?.[0]?.banner
@@ -222,6 +226,8 @@ const ProductPageDetails = ({
                   categories={categoriesData?.data?.data || []}
                   onMobileClose={closeMobileFilter}
                   products={products}
+                  minPrice={minPrice} // ✅ YENİ
+                  maxPrice={maxPrice} // ✅ YENİ
                 />
               </div>
             </div>
@@ -250,6 +256,8 @@ const ProductPageDetails = ({
                     categories={categoriesData?.data?.data || []}
                     onMobileClose={closeMobileFilter}
                     products={products}
+                    minPrice={minPrice} // ✅ YENİ
+                    maxPrice={maxPrice} // ✅ YENİ
                   />
                 </div>
               </div>
@@ -258,7 +266,7 @@ const ProductPageDetails = ({
             {/* Products */}
             <div className="xl-9 lg-8 md-6 sm-12">
               <div className="productPageLayoutRight">
-                {categoryBanner && products.length > 0 && (
+                {!loading && categoryBanner && products.length > 0 &&(
                   <div className="productPageLayoutRightBanner">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${categoryBanner}`}
