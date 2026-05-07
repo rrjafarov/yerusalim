@@ -10,12 +10,12 @@ const Loading = () => {
           justify-content: center;
           align-items: center;
           width: 100%;
-          padding: 60px 0;
+          padding: 0.6rem 0;
         }
 
         .spinner {
-          width: 40px;
-          height: 40px;
+          width: 4rem;
+          height: 4rem;
           border-radius: 50%;
           background: conic-gradient(
             rgba(255, 255, 255, 0.9),

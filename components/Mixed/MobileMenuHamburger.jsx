@@ -17,8 +17,6 @@ const MobileMenuHamburger = ({
   const [active, setActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
 
-  
-
   useEffect(() => {
     setActive(isOpen);
   }, [isOpen]);
@@ -183,6 +181,7 @@ const MobileMenuHamburger = ({
                     return (
                       <li key={topCat.id}>
                         <Link
+                          onClick={onClose}
                           href={`/products?category=${topCat.url_slug}-${topCat.id}`}
                         >
                           {topCat.name}
@@ -193,6 +192,7 @@ const MobileMenuHamburger = ({
                             {subCategories.map((sub) => (
                               <li key={sub.id} style={{ marginLeft: "1.5rem" }}>
                                 <Link
+                                  onClick={onClose}
                                   href={`/products?category=${sub.url_slug}-${sub.id}`}
                                 >
                                   {sub.name}
@@ -210,6 +210,7 @@ const MobileMenuHamburger = ({
 
           <li>
             <Link
+              onClick={onClose}
               href="/products?status=is_bestseller"
               className="accordionHeader"
             >
@@ -218,13 +219,17 @@ const MobileMenuHamburger = ({
           </li>
 
           <li>
-            <Link href="/products?status=is_new" className="accordionHeader">
+            <Link onClick={onClose} href="/products?status=is_new" className="accordionHeader">
               <span>{t?.newProducts}</span>
             </Link>
           </li>
 
           <li>
-            <Link href="/products?status=is_discounted" className="accordionHeader">
+            <Link
+              onClick={onClose}
+              href="/products?status=is_discounted"
+              className="accordionHeader"
+            >
               <span>{t?.sale}</span>
             </Link>
           </li>
