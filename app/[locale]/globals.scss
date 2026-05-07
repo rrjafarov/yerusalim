@@ -1334,7 +1334,6 @@ ul {
   .mobileMenuHamburgerTop {
     position: relative; // <- close button üçün container relative olmalıdır
     margin-top: 5.5rem;
-    padding-bottom: 8rem;
     display: flex;
     align-items: center;
 
@@ -1534,6 +1533,7 @@ ul {
   .mobileMenuHamburgerContactUs {
     padding: 0 4rem;
     padding-top: 5.4rem;
+    padding-bottom: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
