@@ -324,23 +324,6 @@
 
 // !  Cart redux generate
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 import React, { useEffect, useState } from "react";
 import GuestUserForm from "./GuestUserForm";
@@ -499,10 +482,16 @@ const Cart = ({ t, delveryRegions }) => {
           // guest_user: getGuestUserPayload(),
           [isUser ? "user" : "guest_user"]: getGuestUserPayload(),
           payment_method: paymentMethodLabel,
+          delivery_region: {
+            id: selectedRegion?.id ?? null,
+          },
         }),
       };
 
-      const sendResponse = await axiosInstance.post("form-data/send", orderPayload);
+      const sendResponse = await axiosInstance.post(
+        "form-data/send",
+        orderPayload,
+      );
       const orderId = sendResponse?.data?.order_id;
 
       if (!orderId) {
@@ -522,7 +511,7 @@ const Cart = ({ t, delveryRegions }) => {
         `make-payment/${orderId}`,
         {
           payment_method: getPaymentMethodBody(),
-        }
+        },
       );
 
       const paymentUrl = paymentResponse?.data?.payment_url;
@@ -658,7 +647,8 @@ const Cart = ({ t, delveryRegions }) => {
                               {oldPrice && (
                                 <div className="cartPageLeftItemsProductsRightDiscount">
                                   <span>
-                                    - {Math.round((1 - price / oldPrice) * 100)}% Discount
+                                    - {Math.round((1 - price / oldPrice) * 100)}
+                                    % Discount
                                   </span>
                                 </div>
                               )}
@@ -808,37 +798,7 @@ const Cart = ({ t, delveryRegions }) => {
 
 export default Cart;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// !asagidaki kod kohne versiyadir her sey var amma post yoxdur 
+// !asagidaki kod kohne versiyadir her sey var amma post yoxdur
 
 // "use client";
 // import React, { useEffect, useState } from "react";
@@ -872,7 +832,6 @@ export default Cart;
 //   const { data: cartData, isLoading } = useGetCartQuery();
 
 //   console.log(cartData , "cART DATA 1991");
-  
 
 //   // ✅ 2. SONRA derive data
 //   const cartProducts = cartData?.cart?.cart_products ?? [];
