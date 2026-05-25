@@ -7,7 +7,7 @@ const NotFound = ({t}) => {
     <div className="notFound">
       <Image
         src="/img/notFound1.png"
-        alt="Not Found"
+        alt="notFound"
         width={5000}
         height={1000}
       />

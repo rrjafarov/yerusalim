@@ -29,7 +29,7 @@ const AboutPageDirector = ({ aboutData }) => {
               <div className="aboutPageDirectorItemsImage">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}${aboutData.director_image}`}
-                  alt="director"
+                  alt={aboutData.director_name}
                   width={500}
                   height={500}
                 />
