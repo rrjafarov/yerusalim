@@ -32,6 +32,7 @@ const AboutPageDirector = ({ aboutData }) => {
                   alt={aboutData.director_name}
                   width={500}
                   height={500}
+                  loading="lazy"
                 />
               </div>
             </div>

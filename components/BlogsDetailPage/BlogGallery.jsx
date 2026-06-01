@@ -50,6 +50,7 @@ const BlogGallery = ({ blogData,t }) => {
                         width={720}
                         height={560}
                         style={{ objectFit: "cover" }}
+                        loading="lazy"
                       />
                     </a>
                   </div>
@@ -73,6 +74,7 @@ const BlogGallery = ({ blogData,t }) => {
                             width={360}
                             height={270}
                             style={{ objectFit: "cover" }}
+                            loading="lazy"
                           />
                         </a>
                       </div>

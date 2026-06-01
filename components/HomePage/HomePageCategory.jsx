@@ -64,6 +64,7 @@ const HomePageCategory = ({ categoryData, t }) => {
                       alt={category.name}
                       width={400}
                       height={500}
+                      loading="lazy"
                     />
                   </div>
 
