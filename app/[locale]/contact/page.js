@@ -22,7 +22,6 @@ async function fetchContactPageData() {
   }
 }
 
-
 async function getTranslations() {
   const cookieStore = await cookies();
   // const lang = cookieStore.get("NEXT_LOCALE");
@@ -38,14 +37,19 @@ async function getTranslations() {
   }
 }
 
-
-
 export async function generateMetadata() {
   const contactPageData = await fetchContactPageData();
   const contactData = contactPageData.data;
 
   const lang = (await cookies()).get("NEXT_LOCALE")?.value || "az";
-  const imageUrl = contactData?.og_image;
+  // const imageUrl = contactData?.og_image;
+
+  const rawImage = contactData?.og_image;
+
+  const imageUrl = rawImage
+    ? `https://admin.yerusalim18.com/storage${rawImage.replace(/^\//, "")}`
+    : "https://yerusalim18.com/og.png";
+
   const imageAlt = contactData?.meta_title || "Yerusalim18";
   const canonicalUrl = "https://yerusalim18.com/contact";
 
@@ -61,7 +65,7 @@ export async function generateMetadata() {
         {
           url: imageUrl
             ? `https://admin.yerusalim18.com/storage${imageUrl}`
-            : "https://yerusalim18.com/default-og.png",
+            : "https://yerusalim18.com/og.png",
           alt: imageAlt,
           width: 1200,
           height: 630,
@@ -81,7 +85,7 @@ export async function generateMetadata() {
       images: [
         imageUrl
           ? `https://admin.yerusalim18.com/storage${imageUrl}`
-          : "https://yerusalim18.com/default-og.png",
+          : "https://yerusalim18.com/og.png",
       ],
     },
 
@@ -114,4 +118,3 @@ const page = async () => {
 };
 
 export default page;
-

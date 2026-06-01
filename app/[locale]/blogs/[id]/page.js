@@ -62,7 +62,18 @@ export async function generateMetadata({ params }) {
   if (!blog) {
     return { title: "Yerusalim18", description: "Blog not found." };
   }
-  const imageUrl = blog.cover_image || blog.main_image || "";
+  // const imageUrl = blog.cover_image || blog.main_image || "";
+
+  const rawImage = blog.cover_image || blog.main_image;
+
+const imageUrl = rawImage
+  ? rawImage.startsWith("http")
+    ? rawImage
+    : `https://admin.yerusalim18.com/storage${rawImage.replace(/^\//, "")}`
+  : "https://yerusalim18.com/og.png";
+
+
+
   const baseUrl = "https://yerusalim.com";
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
@@ -76,7 +87,7 @@ export async function generateMetadata({ params }) {
       url: canonicalUrl,
       images: [
         {
-          url: `https://admin.yerusalim18.com/storage${imageUrl}`,
+          url: imageUrl,
           width: 1200,
           height: 630,
         },

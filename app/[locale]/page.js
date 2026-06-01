@@ -11,43 +11,100 @@ import React from "react";
 import axiosInstance from "@/lib/axios";
 import { cookies } from "next/headers";
 
+// export async function generateMetadata() {
+//   const seo = await fetchPageData(`/page-data/home`);
+//   const imageUrl = seo?.data?.og_image;
+//   const imageAlt = seo?.data?.meta_title || "Yerusalim18";
+//   const canonicalUrl = "https://yerusalim18.com";
+
+//   const cookieStore = await cookies();
+//   const lang = cookieStore.get("NEXT_LOCALE");
+
+//   return {
+//     title: seo?.data?.meta_title,
+//     description: seo?.data?.meta_description,
+
+//     openGraph: {
+//       title: seo?.data?.meta_title || "Yerusalim18",
+//       description: seo?.data?.meta_description,
+//       url: canonicalUrl,
+//       images: [
+//         {
+//           url: `https://admin.yerusalim18.com/storage${imageUrl}`,
+//           alt: imageAlt,
+//           width: 1200,
+//           height: 630,
+//         },
+//       ],
+//       site_name: "Yerusalim18",
+//       type: "website",
+//       locale: lang?.value,
+//     },
+
+//     twitter: {
+//       card: "summary_large_image",
+//       title: seo?.data?.meta_title || "Yerusalim18",
+//       description: seo?.data?.meta_description || "Yerusalim18",
+//       creator: "@yerusalim18",
+//       site: "@yerusalim18",
+//       images: [`https://admin.yerusalim18.com/storage${imageUrl}`],
+//     },
+
+//     alternates: {
+//       canonical: canonicalUrl,
+//     },
+//   };
+// }
+
+
+
+
 export async function generateMetadata() {
   const seo = await fetchPageData(`/page-data/home`);
-  const imageUrl = seo?.data?.og_image;
-  const imageAlt = seo?.data?.meta_title || "Yerusalim18";
-  const canonicalUrl = "https://yerusalim18.com";
 
   const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE");
+  const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
+
+  const rawImage = seo?.data?.og_image;
+
+  const imageUrl = rawImage
+    ? rawImage.startsWith("/storage")
+      ? `https://admin.yerusalim18.com${rawImage}`
+      : `https://admin.yerusalim18.com/storage/${rawImage.replace(/^\//, "")}`
+    : "https://yerusalim18.com/og.png";
+
+  const title = seo?.data?.meta_title || "Yerusalim18";
+  const description = seo?.data?.meta_description || "Yerusalim18";
+  const canonicalUrl = "https://yerusalim18.com";
 
   return {
-    title: seo?.data?.meta_title,
-    description: seo?.data?.meta_description,
+    title,
+    description,
 
     openGraph: {
-      title: seo?.data?.meta_title || "Yerusalim18",
-      description: seo?.data?.meta_description,
+      title,
+      description,
       url: canonicalUrl,
+      siteName: "Yerusalim18",
+      type: "website",
+      locale: lang,
       images: [
         {
-          url: `https://admin.yerusalim18.com/storage${imageUrl}`,
-          alt: imageAlt,
+          url: imageUrl,
+          alt: title,
           width: 1200,
           height: 630,
         },
       ],
-      site_name: "Yerusalim18",
-      type: "website",
-      locale: lang?.value,
     },
 
     twitter: {
       card: "summary_large_image",
-      title: seo?.data?.meta_title || "Yerusalim18",
-      description: seo?.data?.meta_description || "Yerusalim18",
+      title,
+      description,
       creator: "@yerusalim18",
       site: "@yerusalim18",
-      images: [`https://admin.yerusalim18.com/storage${imageUrl}`],
+      images: [imageUrl],
     },
 
     alternates: {
@@ -55,6 +112,10 @@ export async function generateMetadata() {
     },
   };
 }
+
+
+
+
 
 async function fetchPageData(endpoint) {
   const cookieStore = await cookies();

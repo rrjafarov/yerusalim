@@ -22,17 +22,19 @@ async function fetchBlogsPageData() {
   }
 }
 
-
 async function fetchBlogsCategoriesData() {
   const cookieStore = await cookies();
   // const lang = cookieStore.get("NEXT_LOCALE");
   const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
 
   try {
-    const { data: blog } = await axiosInstance.get(`/page-data/blog-categories`, {
-      headers: { Lang: langValue },
-      cache: "no-store",
-    });
+    const { data: blog } = await axiosInstance.get(
+      `/page-data/blog-categories`,
+      {
+        headers: { Lang: langValue },
+        cache: "no-store",
+      },
+    );
     return blog;
   } catch (error) {
     throw error;
@@ -67,7 +69,14 @@ export async function generateMetadata() {
   const blogInfo = await fetchBlogInfo();
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
-  const imageUrl = blogInfo?.data?.og_image;
+  // const imageUrl = blogInfo?.data?.og_image;
+
+  const rawImage = blogInfo?.data?.og_img;
+
+  const imageUrl = rawImage
+    ? `https://admin.yerusalim18.com/storage${rawImage.replace(/^\//, "")}`
+    : "https://yerusalim18.com/og.png";
+
   const imageAlt = blogInfo?.data?.meta_title || "Yerusalim18";
   const canonicalUrl = "https://yerusalim18.com/blogs";
   return {
@@ -82,7 +91,7 @@ export async function generateMetadata() {
         {
           url: imageUrl
             ? `https://admin.yerusalim18.com/storage${imageUrl}`
-            : "https://yerusalim18.com/default-og.png",
+            : "https://yerusalim18.com/og.png",
           alt: imageAlt,
           width: 1200,
           height: 630,
@@ -102,7 +111,7 @@ export async function generateMetadata() {
       images: [
         imageUrl
           ? `https://admin.yerusalim18.com/storage${imageUrl}`
-          : "https://yerusalim18.com/default-og.png",
+          : "https://yerusalim18.com/og.png",
       ],
     },
 
@@ -145,7 +154,11 @@ const page = async () => {
       <BlogsPageHero blogNameData={blogNameData} />
       <div className="productPageBackground">
         <BlogsBreadcrumbs t={t} blogNameData={blogNameData} />
-        <BlogsPage t={t} blogsCategoryData={blogsCategoryData} blogsData={blogsData} />
+        <BlogsPage
+          t={t}
+          blogsCategoryData={blogsCategoryData}
+          blogsData={blogsData}
+        />
       </div>
     </div>
   );

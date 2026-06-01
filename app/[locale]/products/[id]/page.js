@@ -57,6 +57,62 @@ async function fetchSimilarProducts(categoryId, currentProductId) {
   }
 }
 
+
+
+// export async function generateMetadata({ params }) {
+//   const resolvedParams = await params;
+//   const slug = resolvedParams?.id;
+
+//   if (!slug) {
+//     return {
+//       title: "Yerusalim18",
+//       description: "Yerusalim18",
+//     };
+//   }
+
+//   const id = slug.split("-").pop();
+//   const productDetail = await fetchProductById(id);
+
+//   const pageTitle = productDetail?.meta_title || "Yerusalim18";
+//   const pageDescription = productDetail?.meta_description || "Yerusalim18";
+//   const imageUrl = productDetail?.image_gallery?.[0] || "/favicon.ico";
+//   const imageAlt = productDetail?.name || "Yerusalim18";
+//   const canonicalUrl = `https://yerusalim18.com/products/${slug}`;
+
+//   return {
+//     title: pageTitle,
+//     description: pageDescription,
+//     openGraph: {
+//       title: pageTitle,
+//       description: pageDescription,
+//       url: canonicalUrl,
+//       images: [
+//         {
+//           url: `https://admin.yerusalim18.com/storage${imageUrl}`,
+//           alt: imageAlt,
+//           width: 1200,
+//           height: 630,
+//         },
+//       ],
+//       site_name: "Yerusalim18",
+//       type: "website",
+//       locale: "az",
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: pageTitle,
+//       description: pageDescription,
+//       creator: "@yerusalim18",
+//       site: "@yerusalim18",
+//       images: [`https://admin.yerusalim18.com/storage${imageUrl}`],
+//     },
+//     alternates: {
+//       canonical: canonicalUrl,
+//     },
+//   };
+// }
+
+
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const slug = resolvedParams?.id;
@@ -73,42 +129,63 @@ export async function generateMetadata({ params }) {
 
   const pageTitle = productDetail?.meta_title || "Yerusalim18";
   const pageDescription = productDetail?.meta_description || "Yerusalim18";
-  const imageUrl = productDetail?.image_gallery?.[0] || "/favicon.ico";
+
+  const rawImage = productDetail?.image_gallery?.[0];
+
+  const imageUrl = rawImage
+    ? rawImage.startsWith("/storage")
+      ? `https://admin.yerusalim18.com${rawImage}`
+      : `https://admin.yerusalim18.com/storage/${rawImage.replace(/^\//, "")}`
+    : "https://yerusalim18.com/og.png";
+
   const imageAlt = productDetail?.name || "Yerusalim18";
   const canonicalUrl = `https://yerusalim18.com/products/${slug}`;
+
+  const lang = (await cookies()).get("NEXT_LOCALE")?.value || "az";
 
   return {
     title: pageTitle,
     description: pageDescription,
+
     openGraph: {
       title: pageTitle,
       description: pageDescription,
       url: canonicalUrl,
+      siteName: "Yerusalim18",
+      type: "website",
+      locale: lang,
       images: [
         {
-          url: `https://admin.yerusalim18.com/storage${imageUrl}`,
+          url: imageUrl,
           alt: imageAlt,
           width: 1200,
           height: 630,
         },
       ],
-      site_name: "Yerusalim18",
-      type: "website",
-      locale: "az",
     },
+
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
       creator: "@yerusalim18",
       site: "@yerusalim18",
-      images: [`https://admin.yerusalim18.com/storage${imageUrl}`],
+      images: [imageUrl],
     },
+
     alternates: {
       canonical: canonicalUrl,
     },
   };
 }
+
+
+
+
+
+
+
+
 
 async function fetchCraftPageData() {
   const cookieStore = await cookies();

@@ -6,7 +6,6 @@ import BrandsBreadcrumbs from "@/components/BrandsPage/BrandsBreadcrumbs";
 import axiosInstance from "@/lib/axios";
 import { cookies } from "next/headers";
 
-
 async function fetchBrandsPageData() {
   const cookieStore = await cookies();
   // const lang = cookieStore.get("NEXT_LOCALE");
@@ -63,7 +62,16 @@ export async function generateMetadata() {
   const brandInfo = await fetchBrandInfo();
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
-  const imageUrl = brandInfo?.data?.og_image;
+  // const imageUrl = brandInfo?.data?.og_image;
+  const rawImage = brandInfo?.data?.og_image;
+
+  const imageUrl = rawImage
+    ? `https://admin.yerusalim18.com/storage${rawImage.replace(/^\//, "")}`
+    : "https://yerusalim18.com/og.png";
+
+
+
+
   const imageAlt = brandInfo?.data?.meta_title || "Yerusalim18";
   const canonicalUrl = "https://yerusalim18.com/brands";
 
@@ -79,7 +87,7 @@ export async function generateMetadata() {
         {
           url: imageUrl
             ? `https://admin.yerusalim18.com/storage${imageUrl}`
-            : "https://yerusalim18.com/default-og.png",
+            : "https://yerusalim18.com/og.png",
           alt: imageAlt,
           width: 1200,
           height: 630,
@@ -99,7 +107,7 @@ export async function generateMetadata() {
       images: [
         imageUrl
           ? `https://admin.yerusalim18.com/storage${imageUrl}`
-          : "https://yerusalim18.com/default-og.png",
+          : "https://yerusalim18.com/og.png",
       ],
     },
 
@@ -114,7 +122,7 @@ export async function generateMetadata() {
   };
 }
 const page = async () => {
-  const brandsName = await fetchBrandsSeoPageData()
+  const brandsName = await fetchBrandsSeoPageData();
   const brandsNameData = brandsName;
   const brandsPageData = await fetchBrandsPageData();
   const brandsData = brandsPageData;

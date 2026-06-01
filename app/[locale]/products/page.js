@@ -520,6 +520,38 @@ async function getTranslations() {
   }
 }
 
+// export async function generateMetadata({ searchParams }) {
+//   const params = await searchParams;
+
+//   const categoryParam = params?.category;
+//   const categoryId = categoryParam
+//     ? parseInt(categoryParam.split("-").pop())
+//     : null;
+
+//   let seoData = null;
+
+//   if (categoryId) {
+//     const categoriesData = await fetchCategoryPageData();
+//     if (categoriesData?.data?.data) {
+//       seoData = categoriesData.data.data.find((cat) => cat.id === categoryId);
+//     }
+//   }
+
+//   if (!seoData) {
+//     seoData = await fetchProductsPageInfo();
+//   }
+
+//   return {
+//     title: seoData?.meta_title || "Yerusalim18",
+//     description: seoData?.meta_description || "Yerusalim18",
+//     alternates: {
+//       canonical: "https://yerusalim18.com/products",
+//     },
+//   };
+// }
+
+
+
 export async function generateMetadata({ searchParams }) {
   const params = await searchParams;
 
@@ -530,6 +562,7 @@ export async function generateMetadata({ searchParams }) {
 
   let seoData = null;
 
+  // Category varsa onun SEO-sunu götür
   if (categoryId) {
     const categoriesData = await fetchCategoryPageData();
     if (categoriesData?.data?.data) {
@@ -537,18 +570,56 @@ export async function generateMetadata({ searchParams }) {
     }
   }
 
+  // Yoxdursa page-info istifadə et
   if (!seoData) {
     seoData = await fetchProductsPageInfo();
   }
 
+  // ✅ OG IMAGE LOGIC
+  const rawImage = seoData?.og_image;
+
+  const imageUrl = rawImage
+    ? `https://admin.yerusalim18.com/storage${rawImage.replace(/^\//, "")}`
+    : "https://yerusalim18.com/og.png";
+
   return {
     title: seoData?.meta_title || "Yerusalim18",
     description: seoData?.meta_description || "Yerusalim18",
+
+    openGraph: {
+      title: seoData?.meta_title || "Yerusalim18",
+      description: seoData?.meta_description,
+      url: "https://yerusalim18.com/products",
+      siteName: "Yerusalim18",
+      type: "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: seoData?.meta_title || "Yerusalim18",
+      description: seoData?.meta_description || "Yerusalim18",
+      images: [imageUrl],
+    },
+
     alternates: {
       canonical: "https://yerusalim18.com/products",
     },
   };
 }
+
+
+
+
+
+
+
 
 const page = async ({ searchParams }) => {
   const params = await searchParams;

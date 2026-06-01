@@ -46,7 +46,7 @@ async function fetchCraftPageData() {
   const cookieStore = await cookies();
   // const lang = cookieStore.get("NEXT_LOCALE");
   const langValue = cookieStore.get("NEXT_LOCALE")?.value || "az"; // ✅
-  
+
   try {
     const { data: about } = await axiosInstance.get(
       `/page-data/benefit-craft`,
@@ -82,7 +82,17 @@ export async function generateMetadata() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("NEXT_LOCALE")?.value || "az";
 
-  const imageUrl = aboutInfo?.data?.banner_image;
+  // const imageUrl = aboutInfo?.data?.banner_image;
+
+  const rawImage = aboutInfo?.data?.banner_image;
+
+  const imageUrl = rawImage
+    ? `https://admin.yerusalim18.com/storage${rawImage.replace(/^\//, "")}`
+    : "https://yerusalim18.com/og.png";
+
+
+
+
   const imageAlt = aboutInfo?.data?.meta_title || "Yerusalim18";
   const canonicalUrl = "https://yerusalim18.com/about";
 
@@ -98,7 +108,7 @@ export async function generateMetadata() {
         {
           url: imageUrl
             ? `https://admin.yerusalim18.com/storage${imageUrl}`
-            : "https://yerusalim18.com/default-og.png",
+            : "https://yerusalim18.com/og.png",
           alt: imageAlt,
           width: 1200,
           height: 630,
@@ -118,7 +128,7 @@ export async function generateMetadata() {
       images: [
         imageUrl
           ? `https://admin.yerusalim18.com/storage${imageUrl}`
-          : "https://yerusalim18.com/default-og.png",
+          : "https://yerusalim18.com/og.png",
       ],
     },
 
@@ -142,15 +152,12 @@ const page = async () => {
 
   const t = await getTranslations();
 
-
   const craftPageData = await fetchCraftPageData();
   const craftData =
     craftPageData?.data?.data?.filter(
       (item) => item.page_section === "craft",
     ) || [];
 
-
-    
   return (
     <div>
       <AboutPageHero aboutData={aboutData} />
