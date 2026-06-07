@@ -51,7 +51,7 @@ const ProductCard = ({
       setIsAdded(true);
       setTimeout(() => setIsAdded(false), 5000);
     } catch (error) {
-      console.log("Cart error:", error);
+      // console.log("Cart error:", error);
     }
   };
 

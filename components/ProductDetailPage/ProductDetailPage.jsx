@@ -23,7 +23,7 @@ const ProductDetailPage = ({ productDetail, t }) => {
       setIsAdded(true);
       setTimeout(() => setIsAdded(false), 4000);
     } catch (error) {
-      console.log("Cart error:", error);
+      // console.log("Cart error:", error);
     }
   };
 

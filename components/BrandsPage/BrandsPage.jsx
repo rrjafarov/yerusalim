@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 
 const BrandsPage = ({ brandsData,t }) => {
-  console.log("brandsData:", brandsData.data);
   return (
     <div className="brandsPage">
       <div className="container">

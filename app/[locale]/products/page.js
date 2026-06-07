@@ -368,7 +368,7 @@ async function fetchProducts(
       url += `&filters[${filterIndex}][value]=${categoryId}`;
     }
 
-    console.log("FINAL URL:", url);
+    // console.log("FINAL URL:", url);
 
     const { data } = await axiosInstance.get(url, {
       headers: { Lang: langValue },
